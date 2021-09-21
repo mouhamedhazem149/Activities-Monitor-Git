@@ -61,6 +61,7 @@ namespace OpsMoi.Utilities
             using (IDbConnection conn = Database_Connection.Create_Connection<SQLiteConnection>())
             {
                 Settings sets = conn.QuerySingleOrDefault<Settings>("SELECT * from settings WHERE serialnumber = @serialnumber;", new { serialnumber = Program.serialNumber });
+                var c = Decrypt(sets.mainpassword);
                 if (sets != null && Decrypt(sets.mainpassword) == password)
                 {
                     Success_addition(label, "تم تسجيل الدخول");
@@ -103,6 +104,8 @@ namespace OpsMoi.Utilities
 
         public static Dictionary<string, object> GetObjectAsDictionary(object obj) => obj.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public)
                         .ToDictionary(prop => prop.Name, prop => prop.GetValue(obj, null));
+
+        public static void WriteBytesToConsole(byte[] Array,string name = "Array") => Console.WriteLine($"Length:: {Array.Length} {name}:: {string.Join(" ", Array.Select(byt => byt.ToString()))}");
 
         public static string[] commonEntities => Program.Todos_List.Select(tdo => tdo.duefrom).Union(Program.Todos_List.Select(tdo => tdo.dueto)).Union(Program.Finances_List.Select(fnc => fnc.relatedentity)).ToArray();
         public static string[] commonCategories => Program.Todos_List.Select(tdo => tdo.category).Union(Program.Finances_List.Select(fnc => fnc.category)).ToArray();

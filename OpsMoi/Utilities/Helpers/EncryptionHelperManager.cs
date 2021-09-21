@@ -3,24 +3,34 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Windows.Forms;
 
 namespace OpsMoi.Utilities
 {
     public static partial class HM_Manager
     {
-        public static byte[] topEncrypt(string plainText, Tuple<byte[], byte[]> KeyIV = null)
+        public static byte[] topEncrypt(string plainText, Tuple<byte[], byte[]> KeyIV = null, Label MsgLabel = null)
         {
             try
             {
                 byte[] Key = KeyIV != null ? KeyIV.Item1 : null; byte[] IV = KeyIV != null ? KeyIV.Item2 : null; byte[] encrypted = null; byte[] toReturn = null;
-                byte keyLength = KeyIV != null ? (byte)KeyIV.Item1.Length : (byte)GetRandomInt(10, 16);
-                byte ivLength = KeyIV != null ? (byte)KeyIV.Item2.Length : (byte)GetRandomInt(10, 16);
+                byte keyLength = KeyIV != null ? (byte)KeyIV.Item1.Length : (byte)GetRandomInt(20, 32);
+                byte ivLength = KeyIV != null ? (byte)KeyIV.Item2.Length : (byte)GetRandomInt(20, 32);
                 var rnd = new RNGCryptoServiceProvider();
                 if (Key == null) { Key = new byte[keyLength]; rnd.GetNonZeroBytes(Key); }
                 if (IV == null) { IV = new byte[ivLength]; rnd.GetNonZeroBytes(IV); }
-                using (RC2CryptoServiceProvider RC2 = new RC2CryptoServiceProvider())
+                using (AesCryptoServiceProvider AesCrypto = new AesCryptoServiceProvider() { Mode = CipherMode.CBC, KeySize = 256,Padding = PaddingMode.ISO10126})
                 {
-                    ICryptoTransform encryptor = RC2.CreateEncryptor(Key, IV);
+                    byte[] fKey = new byte[32];
+                    byte[] fIV = new byte[16];
+                    for (int fCount = 0; fCount < 16; fCount++)
+                    {
+                        fKey[fCount] = Key[fCount % Key.Length];
+                        fIV[fCount] = IV[fCount % IV.Length];
+                    }
+                    for (int fCount = 16; fCount < 32; fCount++)
+                        fKey[fCount] = Key[fCount % Key.Length];
+                    ICryptoTransform encryptor = AesCrypto.CreateEncryptor(fKey, fIV);
                     using (MemoryStream ms = new MemoryStream())
                     {
                         using (CryptoStream cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
@@ -28,15 +38,17 @@ namespace OpsMoi.Utilities
                             using (StreamWriter sw = new StreamWriter(cs))
                             {
                                 var sfs = strEncrypt(plainText);
+                                Console.WriteLine($"Length:: {sfs.Length} sfs:: {sfs}");
                                 sw.Write(sfs);
                             }
                             encrypted = ms.ToArray();
+                            Console.WriteLine($"Length:: {encrypted.Length} encrypted:: {string.Join(" ", encrypted.Select(byt => byt.ToString()))}");
                         }
                     }
                 }
                 if (KeyIV == null)
                 {
-                    byte encryptMultiplayer = (byte)GetRandomInt(4, 12);
+                    byte encryptMultiplayer = (byte)GetRandomInt(8, Math.Min((int)(256 / keyLength),(int)(256 / ivLength)));
                     toReturn = new byte[encrypted.Length + keyLength + ivLength + 2];
                     encrypted.CopyTo(toReturn, ivLength + 1);
                     toReturn[0] = (byte)(keyLength * encryptMultiplayer);
@@ -50,15 +62,16 @@ namespace OpsMoi.Utilities
                     Array.Copy(toReturn, position, finalReturn, position + 1, toReturn.Length - position);
                     return finalReturn;
                 }
-                else return encrypted;
+                else { if (MsgLabel != null) Success_addition(MsgLabel, $"تم التشفير بمفتاح : KEY:: '[{Encoding.UTF8.GetString(Key)}]'"); return encrypted; }
             }
-            catch (Exception ex) { return Encoding.UTF8.GetBytes("فشل التشفير"); }
+            catch (Exception ex) { if (MsgLabel != null) Fail_addition(MsgLabel, "فشل التشفير"); return Encoding.UTF8.GetBytes("فشل التشفير"); }
         }
-        public static string Decrypt(byte[] cipherText,Tuple<byte[], byte[]> KeyIV = null)
+        public static string Decrypt(byte[] cipherText,Tuple<byte[], byte[]> KeyIV = null,Label MsgLabel = null)
         {
             try
             {
                 byte[] toDecrypt = cipherText;
+                Console.WriteLine($"Length:: {toDecrypt.Length} toDecrypt:: {string.Join(" ", toDecrypt.Select(byt => byt.ToString()))}");
                 byte[] Key = null; byte[] IV = null; string plaintext = null;
                 if (KeyIV == null)
                 {
@@ -83,21 +96,30 @@ namespace OpsMoi.Utilities
                     Array.Copy(tempCipher, ivLength + 1, toDecrypt, 0, toDecrypt.Length);
                 }
                 else { Key = KeyIV.Item1; IV = KeyIV.Item2; }
-                using (RC2CryptoServiceProvider RC2 = new RC2CryptoServiceProvider())
+                using (AesCryptoServiceProvider AesCrypto = new AesCryptoServiceProvider() { Mode = CipherMode.CBC, KeySize = 256,Padding = PaddingMode.ISO10126})
                 {
-                    ICryptoTransform decryptor = RC2.CreateDecryptor(Key, IV);
+                    byte[] fKey = new byte[32];
+                    byte[] fIV = new byte[16];
+                    for (int fCount = 0; fCount < 16; fCount++)
+                    {
+                        fKey[fCount] = Key[fCount % Key.Length];
+                        fIV[fCount] = IV[fCount % IV.Length];
+                    }
+                    for (int fCount = 16; fCount < 32; fCount++)
+                        fKey[fCount] = Key[fCount % Key.Length];
+                    ICryptoTransform decryptor = AesCrypto.CreateDecryptor(fKey, fIV);
                     using (MemoryStream ms = new MemoryStream(toDecrypt))
                     {
                         using (CryptoStream cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
                         {
                             using (StreamReader reader = new StreamReader(cs))
-                                plaintext = reader.ReadToEnd();
+                                plaintext = reader.ReadToEnd(); 
                         }
                     }
                 }
                 return strDecrypt(plaintext);
             }
-            catch (Exception ex) { return "فشل فك التشفير"; }
+            catch (Exception ex) { if (MsgLabel != null) Fail_addition(MsgLabel, "فشل فك التشفير"); return Encoding.Unicode.GetString(cipherText); }
         }
         // what i want is get byte for text multiply it by factor then save as factor + encrypted text
         public static int GetRandomInt(int min, int max) => new Random(Guid.NewGuid().GetHashCode()).Next(min, max);
@@ -105,7 +127,7 @@ namespace OpsMoi.Utilities
         {
             StringBuilder encryptedText = new StringBuilder();
             int encryptMultiplier = GetRandomInt(1,256);
-            byte[] textBytes = Encoding.UTF8.GetBytes(plainText);
+            byte[] textBytes = Encoding.Unicode.GetBytes(plainText);
             foreach (byte byt in textBytes)
                 SB_Insert(encryptedText, byt, "x4");
             SB_Insert(encryptedText, encryptMultiplier, "x2", (int)Math.Floor((decimal)encryptedText.Length / 2));
@@ -125,7 +147,7 @@ namespace OpsMoi.Utilities
             encryptedText = encryptedText.Remove(index, 2);
             for (int ind = 0; ind < encryptedText.Length - 3; ind += 4)
                 OriginalByte[ind / 4] = (byte)FromHex(encryptedText.Substring(ind, 4));
-            return Encoding.UTF8.GetString(OriginalByte);
+            return Encoding.Unicode.GetString(OriginalByte);
         }
         static int FromHex(string Hex) => int.Parse(Hex.ToUpper(), System.Globalization.NumberStyles.HexNumber);
     }

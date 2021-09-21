@@ -15,7 +15,7 @@ namespace OpsMoi.User_Interfaces
             HM_Manager.Func tobeDone = null;
             int id = oldModel != null ? oldModel.id : 0;
             DateTime? doneDate;
-            if (doneDatePicker.Checked) doneDate = doneDatePicker.Value;
+            if (doneDatePicker != null && doneDatePicker.Checked) doneDate = doneDatePicker.Value;
             else doneDate = null;
             Todos _todoNew = new Todos() { id = id, duefrom = duefrom, dueto = dueto, todo = todo, category = category, due_date = dueDate, done_date = doneDate, duration = duration, notes = notes, added_date = DateTime.Now };
             int _id = id;
@@ -25,8 +25,8 @@ namespace OpsMoi.User_Interfaces
                 case Enums.genericHandle_Type.إضافة:
                     tobeDone = delegate ()
                     {
-                        _id = DBHelper.Insert_Database("todos", new List<string> { "category", "duefrom", "todo", "dueto", "duedate", "notes", "addeddate" }, new List<Todos> { _todoNew }, HM_Manager.HandleHistory, new string[] { "المهام المطلوبة", "إضافة مهمة", "" });
-                        SpecificMsg = $"تمت الإضافة بنجاح. كود عملية الصيانة : {_id}";
+                        _id = DBHelper.Insert_Database("todos", new List<string> { "category", "duefrom", "todo", "dueto", "duedate", "notes", "addeddate", "donedate", "duration" }, new List<Todos> { _todoNew }, HM_Manager.HandleHistory, new string[] { "المهام المطلوبة", "إضافة مهمة", "" });
+                        SpecificMsg = $"تمت الإضافة بنجاح. كود المهمة : {_id}";
                     };
                     break;
                 case Enums.genericHandle_Type.تعديل:

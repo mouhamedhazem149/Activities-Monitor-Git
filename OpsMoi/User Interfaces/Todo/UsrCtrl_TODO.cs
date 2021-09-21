@@ -87,11 +87,12 @@ namespace OpsMoi.User_Interfaces
 
         private void TODO_duration_Textbox_TextChanged(object sender, EventArgs e)
         {
+            double minutes = double.TryParse(TODO_duration_Textbox.Text, out minutes) ? double.Parse(TODO_duration_Textbox.Text): 0;
             if (HM_Manager.CheckTxtBoxDecimal(TODO_duration_Textbox, TODO_duration_value_Label))
-                HM_Manager.Success_addition(TODO_duration_value_Label, HM_Manager.MinutesToDuration(double.Parse(TODO_duration_Textbox.Text)));
+                HM_Manager.Success_addition(TODO_duration_value_Label, HM_Manager.MinutesToDuration(minutes));
         }
 
-        private void AddMaintenance_Groupbox_ForeColorChanged(object sender, EventArgs e) { HM_Manager.Reset_Textbox_Controls(sender as GroupBox); /*editControls.ForEach(ctrl => ctrl.Visible = TODO_id_Textbox.Enabled = (sender as GroupBox).ForeColor == Enums.modColor);*/ }
+        private void AddMaintenance_Groupbox_ForeColorChanged(object sender, EventArgs e) { HM_Manager.Reset_Textbox_Controls(sender as GroupBox); TODO_id_Textbox.Enabled = (sender as GroupBox).ForeColor == Enums.modColor;/*editControls.ForEach(ctrl => ctrl.Visible = TODO_id_Textbox.Enabled = (sender as GroupBox).ForeColor == Enums.modColor);*/ }
 
         private void TODO_id_Textbox_SelectedItemChanged(object sender, EventArgs e)
         {

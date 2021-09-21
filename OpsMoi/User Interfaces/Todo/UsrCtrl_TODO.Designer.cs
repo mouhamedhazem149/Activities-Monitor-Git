@@ -232,14 +232,15 @@ namespace OpsMoi.User_Interfaces
             // 
             // TODO_done_date_Datetimepicker
             // 
-            this.TODO_done_date_Datetimepicker.CalendarFont = new System.Drawing.Font("Times New Roman", 15.8F);
+            this.TODO_done_date_Datetimepicker.CalendarFont = new System.Drawing.Font("Times New Roman", 13.8F);
+            this.TODO_done_date_Datetimepicker.Checked = false;
             this.TODO_done_date_Datetimepicker.CustomFormat = "dddd, dd-MMMM-yyyy -- hh:mm tt";
-            this.TODO_done_date_Datetimepicker.Font = new System.Drawing.Font("Times New Roman", 15.8F);
+            this.TODO_done_date_Datetimepicker.Font = new System.Drawing.Font("Times New Roman", 13.8F);
             this.TODO_done_date_Datetimepicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.TODO_done_date_Datetimepicker.Location = new System.Drawing.Point(846, 290);
+            this.TODO_done_date_Datetimepicker.Location = new System.Drawing.Point(846, 294);
             this.TODO_done_date_Datetimepicker.Name = "TODO_done_date_Datetimepicker";
             this.TODO_done_date_Datetimepicker.ShowCheckBox = true;
-            this.TODO_done_date_Datetimepicker.Size = new System.Drawing.Size(546, 38);
+            this.TODO_done_date_Datetimepicker.Size = new System.Drawing.Size(546, 34);
             this.TODO_done_date_Datetimepicker.TabIndex = 7;
             // 
             // TODO_done_date_Adj_Label
@@ -254,13 +255,13 @@ namespace OpsMoi.User_Interfaces
             // 
             // TODO_due_date_Datetimepicker
             // 
-            this.TODO_due_date_Datetimepicker.CalendarFont = new System.Drawing.Font("Times New Roman", 15.8F);
+            this.TODO_due_date_Datetimepicker.CalendarFont = new System.Drawing.Font("Times New Roman", 13.8F);
             this.TODO_due_date_Datetimepicker.CustomFormat = "dddd, dd-MMMM-yyyy -- hh:mm tt";
-            this.TODO_due_date_Datetimepicker.Font = new System.Drawing.Font("Times New Roman", 15.8F);
+            this.TODO_due_date_Datetimepicker.Font = new System.Drawing.Font("Times New Roman", 13.8F);
             this.TODO_due_date_Datetimepicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.TODO_due_date_Datetimepicker.Location = new System.Drawing.Point(879, 243);
+            this.TODO_due_date_Datetimepicker.Location = new System.Drawing.Point(879, 245);
             this.TODO_due_date_Datetimepicker.Name = "TODO_due_date_Datetimepicker";
-            this.TODO_due_date_Datetimepicker.Size = new System.Drawing.Size(513, 38);
+            this.TODO_due_date_Datetimepicker.Size = new System.Drawing.Size(513, 34);
             this.TODO_due_date_Datetimepicker.TabIndex = 5;
             // 
             // TODO_notes_Adj_Label

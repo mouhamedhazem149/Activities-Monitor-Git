@@ -68,5 +68,9 @@ namespace OpsMoi.User_Interfaces
 
         private void Backup_Button_Click(object sender, EventArgs e) => BackupHelperManager.BackUp(Restore_Label);
         private void Restore_Button_Click(object sender, EventArgs e) => BackupHelperManager.Restore(Restore_Label);
+
+        private void RENew_Password_Textbox_TextChanged(object sender, EventArgs e) => ChangePassword_Label.Visible = (New_Password_Textbox.Text != "" && RENew_Password_Textbox.Text != New_Password_Textbox.Text);
+
+        private void STNG_PasswordChange_Button_Click(object sender, EventArgs e) => Settings.Settings_Processor.ChangePassword(Old_Password_Textbox.Text, New_Password_Textbox.Text, RENew_Password_Textbox.Text, ChangePassword_Label);
     }
 }

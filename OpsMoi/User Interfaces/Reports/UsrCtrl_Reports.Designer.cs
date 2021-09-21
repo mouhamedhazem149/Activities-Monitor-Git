@@ -135,6 +135,7 @@
             this.Todos_Objectlistview.AllColumns.Add(this.TodosAddeddate_Column);
             this.Todos_Objectlistview.AllColumns.Add(this.TodosDuration_Column);
             this.Todos_Objectlistview.AllColumns.Add(this.TodosNotes_Column);
+            this.Todos_Objectlistview.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.DoubleClick;
             this.Todos_Objectlistview.CellEditUseWholeCell = false;
             this.Todos_Objectlistview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Todos_idColumn,
@@ -165,19 +166,22 @@
             this.Todos_Objectlistview.TabIndex = 0;
             this.Todos_Objectlistview.TintSortColumn = true;
             this.Todos_Objectlistview.UseCompatibleStateImageBehavior = false;
+            this.Todos_Objectlistview.UseFilterIndicator = true;
+            this.Todos_Objectlistview.UseFiltering = true;
             this.Todos_Objectlistview.UseHotControls = false;
             this.Todos_Objectlistview.View = System.Windows.Forms.View.Details;
             this.Todos_Objectlistview.AboutToCreateGroups += new System.EventHandler<BrightIdeasSoftware.CreateGroupsEventArgs>(this.TODOs_Objectlistview_AboutToCreateGroups);
+            this.Todos_Objectlistview.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.Objectlistview_CellEditFinishing);
+            this.Todos_Objectlistview.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.Objectlistview_CellEditStarting);
+            this.Todos_Objectlistview.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.Todos_Objectlistview_FormatRow);
             this.Todos_Objectlistview.DoubleClick += new System.EventHandler(this.TODO_Objectlistview_DoubleClick);
             // 
             // Todos_idColumn
             // 
             this.Todos_idColumn.AspectName = "id";
-            this.Todos_idColumn.Groupable = false;
             this.Todos_idColumn.Hideable = false;
             this.Todos_idColumn.IsEditable = false;
             this.Todos_idColumn.MinimumWidth = 45;
-            this.Todos_idColumn.Sortable = false;
             this.Todos_idColumn.Tag = "string";
             this.Todos_idColumn.Text = "كود";
             this.Todos_idColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -240,7 +244,7 @@
             this.TodosDonedate_Column.AspectToStringFormat = "";
             this.TodosDonedate_Column.Hideable = false;
             this.TodosDonedate_Column.MinimumWidth = 250;
-            this.TodosDonedate_Column.Tag = "string";
+            this.TodosDonedate_Column.Tag = "date_nullable";
             this.TodosDonedate_Column.Text = "تاريخ الانتهاء";
             this.TodosDonedate_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TodosDonedate_Column.Width = 250;
@@ -328,9 +332,13 @@
             this.Finances_Objectlistview.TabIndex = 1;
             this.Finances_Objectlistview.TintSortColumn = true;
             this.Finances_Objectlistview.UseCompatibleStateImageBehavior = false;
+            this.Finances_Objectlistview.UseFilterIndicator = true;
+            this.Finances_Objectlistview.UseFiltering = true;
             this.Finances_Objectlistview.UseHotControls = false;
             this.Finances_Objectlistview.View = System.Windows.Forms.View.Details;
             this.Finances_Objectlistview.AboutToCreateGroups += new System.EventHandler<BrightIdeasSoftware.CreateGroupsEventArgs>(this.Finances_Objectlistview_AboutToCreateGroups);
+            this.Finances_Objectlistview.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.Objectlistview_CellEditFinishing);
+            this.Finances_Objectlistview.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.Objectlistview_CellEditStarting);
             this.Finances_Objectlistview.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.Finances_Objectlistview_FormatRow);
             this.Finances_Objectlistview.DoubleClick += new System.EventHandler(this.FNC_Objectlistview_DoubleClick);
             // 
@@ -338,10 +346,8 @@
             // 
             this.FinanceID_Column.AspectName = "id";
             this.FinanceID_Column.AspectToStringFormat = "";
-            this.FinanceID_Column.Groupable = false;
             this.FinanceID_Column.IsEditable = false;
             this.FinanceID_Column.MinimumWidth = 70;
-            this.FinanceID_Column.Sortable = false;
             this.FinanceID_Column.Tag = "string";
             this.FinanceID_Column.Text = "كود";
             this.FinanceID_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -488,8 +494,12 @@
             this.Notes_Objectlistview.TabIndex = 1;
             this.Notes_Objectlistview.TintSortColumn = true;
             this.Notes_Objectlistview.UseCompatibleStateImageBehavior = false;
+            this.Notes_Objectlistview.UseFilterIndicator = true;
+            this.Notes_Objectlistview.UseFiltering = true;
             this.Notes_Objectlistview.View = System.Windows.Forms.View.Details;
             this.Notes_Objectlistview.AboutToCreateGroups += new System.EventHandler<BrightIdeasSoftware.CreateGroupsEventArgs>(this.Notes_Objectlistview_AboutToCreateGroups);
+            this.Notes_Objectlistview.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.Objectlistview_CellEditFinishing);
+            this.Notes_Objectlistview.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.Objectlistview_CellEditStarting);
             this.Notes_Objectlistview.DoubleClick += new System.EventHandler(this.Notes_Objectlistview_DoubleClick);
             // 
             // NotesTitle_Column

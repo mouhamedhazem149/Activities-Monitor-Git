@@ -40,10 +40,10 @@ namespace OpsMoi.Utilities
             if (int.TryParse(txtbox.Text, out value) || txtbox.ForeColor == Color.Silver) lbl.Visible = false;
             else { Fail_addition(lbl, "تاكد من إدخال رقم مناسب "); txtbox.Text = ""; }
         }
-        public static bool CheckTxtBoxDecimal(TextBox txtbox, Label lbl)
+        public static bool CheckTxtBoxDecimal(ModdedControls.ModdedTextBox txtbox, Label lbl)
         {
             decimal value = 0;
-            if (decimal.TryParse(txtbox.Text, out value) || txtbox.ForeColor == Color.Silver) { lbl.Visible = false; return true; }
+            if (decimal.TryParse(txtbox.Text, out value) || txtbox.IsPlaceholder || txtbox.Text == "") { lbl.Visible = false; return true; }
             else { Fail_addition(lbl, "تاكد من إدخال رقم مناسب "); txtbox.Text = ""; return false; }
         }
 

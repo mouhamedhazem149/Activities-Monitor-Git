@@ -18,7 +18,7 @@ namespace OpsMoi.Utilities
         , new AlternateView($@"{System.AppDomain.CurrentDomain.BaseDirectory}\Resources\footer.png","image/png") { ContentId = "FooterImage_ContentID" }
         , new AlternateView($@"{System.AppDomain.CurrentDomain.BaseDirectory}\Resources\Img3_2x.jpg","image/png") { ContentId = "MessageImage_ContentID" }
         };
-        public static void SendEmail(string reciever, string body, string subject = "Essa Corp,Inc خدمة العملاء")
+        public static void SendEmail(string reciever, string body, string subject = "OpsMoi Corp,Inc for personal use apps, خدمة عملاء")
         {
 
             using (MailMessage message = new MailMessage())

@@ -79,8 +79,8 @@ namespace OpsMoi.Utilities
                         rdobtn.Checked = Dict[Prop].ToString() == "1";
                         break;
                     case DateTimePicker dtp:
-                        if ((Dict[Prop] as DateTime?).HasValue) dtp.Value = (Dict[Prop] as DateTime?).Value;
-                        else dtp.CalendarTitleBackColor = Enums.modColor;
+                        if ((Dict[Prop] as DateTime?).HasValue) { dtp.Checked = true; dtp.Value = (Dict[Prop] as DateTime?).Value; }
+                        else dtp.Checked = false;
                         break;
                     default:
                         break;

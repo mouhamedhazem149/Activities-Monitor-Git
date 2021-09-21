@@ -39,10 +39,10 @@ namespace OpsMoi.Forms
                 if (cur == null) HM_Manager.Fail_addition(MsgLabel, "هذا المستخدم غير موجود");
                 else
                 {
-                    HM_Manager.SendEmail(cur.email, Forgetpassword_Email_Body_Helper.GetBody(Temp_Password, Program.WebpageLink));
+                    Console.WriteLine($"{Temp_Password}");
+                    //HM_Manager.SendEmail(cur.email, Forgetpassword_Email_Body_Helper.GetBody(Temp_Password, Program.WebpageLink));
                     //message.Body = $"نأسف لعدم تمكنك من الدخول لحسابك يمكنك استخدام كلمة المرور : \r\n {Temp_Password} \r\n ككلمة مرور مؤقتة";
-                    DBHelper.Update_Database("settings", new List<string> { "mainpassword" }, new { serialnumber = cur.serialnumber, password = Temp_Password }, HM_Manager.HandleHistory ,new string[] { "الإعدادات", "نسيان وإعادة تعيين كلمة المرور", $"اسم المستخدم: {cur.name} وكلمة المرور القديمة: {cur.mainpassword} والجديدة: {Temp_Password}" }, KEY: "serialnumber");
-                    cur.mainpassword = HM_Manager.topEncrypt(Temp_Password);
+                    User_Interfaces.Settings.Settings_Processor.ChangePassword(HM_Manager.Decrypt(cur.mainpassword),Temp_Password,Temp_Password,MsgLabel);
                     HM_Manager.Success_addition(MsgLabel, "تم إرسال كلمة المرور المؤقتة لبريدك الالكتروني المسجل");
                 }
             }

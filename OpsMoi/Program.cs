@@ -44,8 +44,8 @@ namespace OpsMoi
                     if (mainSettings.serialnumber != serialNumber) return;
                     Application.Run(new LogInForm());
                 }
-                else Environment.Exit(0);
-            else { Application.Run(new FirstTime()); }
+                else if (MessageBox.Show("تم اكتشاف مشكلة في قاعدة البيانات الخاصة بالبرنامج. إعادة ضبط البرنامج ؟","إخطار",MessageBoxButtons.OKCancel) == DialogResult.OK) Application.Run(new FirstTime());
+                else { Application.Run(new FirstTime()); }
         }
         
         public static Utilities.Enums.Resolution currentResolution = Enums.Resolution.A_1920x1080;

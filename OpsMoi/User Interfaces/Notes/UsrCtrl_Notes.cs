@@ -82,17 +82,19 @@ namespace OpsMoi.User_Interfaces
         private void Encrypt_Button_Click(object sender, EventArgs e)
         {
         GETKEY:
-            string tempKey = Interaction.InputBox("أدخل كلمة المرور لتشفير الملحوظات من 16-10 رقم 'الأحرف تحسب برقمين'", "إخطار");
-            if (Encoding.UTF8.GetBytes(tempKey).Length < 10 || Encoding.UTF8.GetBytes(tempKey).Length > 16) goto GETKEY;
-            NOT_strNote_Textbox.Text = new string(HM_Manager.topEncrypt(NOT_strNote_Textbox.Text,new Tuple<byte[],byte[]>(Encoding.UTF8.GetBytes(tempKey), Encoding.UTF8.GetBytes(tempKey))).Select(byt => (char)byt).ToArray());
+            string tempKey = Interaction.InputBox("أدخل كلمة المرور لتشفير الملحوظات من 32-20 رقم (لا تستخدم مسافات) 'الأحرف تحسب برقمين'", "إخطار");
+            byte[] Key = Encoding.UTF8.GetBytes(tempKey);
+            if (Key.Length < 20 || Key.Length > 32) goto GETKEY;
+            NOT_strNote_Textbox.Text = $@"{Convert.ToBase64String(HM_Manager.topEncrypt($@"{NOT_strNote_Textbox.Text}", new Tuple<byte[], byte[]>(Key, Key.Reverse().ToArray()), Not_Label))}";
         }
 
         private void Decrypt_Button_Click(object sender, EventArgs e)
         {
         GETKEY:
-            string tempKey = Interaction.InputBox("أدخل كلمة المرور لفك تشفير الملحوظات من 16-10 رقم 'الأحرف تحسب برقمين'", "إخطار");
-            if (Encoding.UTF8.GetBytes(tempKey).Length < 10 || Encoding.UTF8.GetBytes(tempKey).Length > 16) goto GETKEY;
-            NOT_strNote_Textbox.Text = (HM_Manager.Decrypt(NOT_strNote_Textbox.Text.ToCharArray().Select(c => (byte)c).ToArray(),new Tuple<byte[],byte[]>(Encoding.UTF8.GetBytes(tempKey), Encoding.UTF8.GetBytes(tempKey))));
+            string tempKey = Interaction.InputBox("أدخل كلمة المرور لفك تشفير الملحوظات من 32-20 رقم (لا تستخدم مسافات) 'الأحرف تحسب برقمين'", "إخطار");
+            byte[] Key = Encoding.UTF8.GetBytes(tempKey); /*Encoding.UTF8.GetBytes(tempKey);*/
+            if (Key.Length < 20 || Key.Length > 32) goto GETKEY;
+            NOT_strNote_Textbox.Text = $@"{HM_Manager.Decrypt(Convert.FromBase64String($@"{NOT_strNote_Textbox.Text}"), new Tuple<byte[], byte[]>(Key, Key.Reverse().ToArray()), Not_Label)}";
         }
 
         private void NOT_title_Textbox_SelectedItemChanged(object sender, EventArgs e)

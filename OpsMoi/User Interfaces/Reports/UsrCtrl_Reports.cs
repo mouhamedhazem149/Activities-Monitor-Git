@@ -7,6 +7,7 @@ using OpsMoi.Utilities;
 using OpsMoi.User_Interfaces.Reports;
 using ns1;
 using OpsMoi.Models;
+using System.Drawing;
 
 namespace OpsMoi.User_Interfaces
 {
@@ -74,7 +75,11 @@ namespace OpsMoi.User_Interfaces
 
         private void Finances_Objectlistview_FormatRow(object sender, FormatRowEventArgs e)
         {
-           
+            if ((e.Model as Finances).done_date.HasValue)
+                if ((e.Model as Finances).due == (e.Model as Finances).paid) e.Item.BackColor = Color.Green;
+                else e.Item.BackColor = Color.LimeGreen;
+            else if ((e.Model as Finances).due_date < DateTime.Now) e.Item.BackColor = Color.Yellow;
+            else e.Item.BackColor = Color.Red;
         }
 
         
@@ -153,5 +158,63 @@ namespace OpsMoi.User_Interfaces
         private void FNC_Objectlistview_DoubleClick(object sender, EventArgs e) => Program.WorkingForm.Click_FNC(Enums.financeArgument.loadFinanceItem, ((Finances)Finances_Objectlistview.SelectedObject).id);
 
         private void Notes_Objectlistview_DoubleClick(object sender, EventArgs e) => Program.WorkingForm.Click_Note(Enums.noteArgument.loadNoteItem, ((Models.Notes)Notes_Objectlistview.SelectedObject).title);
+
+        private void Todos_Objectlistview_FormatRow(object sender, FormatRowEventArgs e)
+        {
+            if ((e.Model as Todos).done_date.HasValue) e.Item.BackColor = Color.LimeGreen;
+            else if ((e.Model as Todos).due_date < DateTime.Now) e.Item.BackColor = Color.Yellow;
+            else e.Item.BackColor = Color.Red;
+        }
+
+        private void Objectlistview_CellEditStarting(object sender, CellEditEventArgs e)
+        {
+            DateTime temp;
+            if (e.Column.Tag != null)
+                switch (e.Column.Tag.ToString())
+                {
+                    case "date_nullable":
+                        DateTimePicker dtpThis = new DateTimePicker()
+                        {
+                            Bounds = e.CellBounds,
+                            Value = DateTime.TryParse(e.Value.ToString(), out temp) ? DateTime.Parse(e.Value.ToString()): DateTime.Now,
+                            Checked = DateTime.TryParse(e.Value.ToString(), out temp) ,
+                            CustomFormat = "dd MMMM yyyy",
+                            Format = DateTimePickerFormat.Custom,
+                            ShowCheckBox = true,
+                            ShowUpDown = true
+                        };
+                        e.Control = dtpThis;
+                        break;
+                    case "date":
+                        dtpThis = new DateTimePicker()
+                        {
+                            Bounds = e.CellBounds,
+                            Value = DateTime.Parse(e.Value.ToString()),
+                            Checked = true,
+                            CustomFormat = "dd MMMM yyyy",
+                            Format = DateTimePickerFormat.Custom,
+                            ShowUpDown = true
+                        };
+                        e.Control = dtpThis;
+                        break;
+                    case "decimal":
+                        NumericUpDown nud = new NumericUpDown()
+                        {
+                            Bounds = e.CellBounds,
+                            Minimum = decimal.MinValue,
+                            Maximum = decimal.MaxValue,
+                            Value = decimal.Parse(e.Value.ToString())
+                        };
+                        e.Control = nud;
+                        break;
+                }
+        }
+
+        private void Objectlistview_CellEditFinishing(object sender, CellEditEventArgs e)
+        {
+            if (e.Control is DateTimePicker)
+                if (((DateTimePicker)e.Control).Checked == false)
+                    e.NewValue = null;
+        }
     }
 }

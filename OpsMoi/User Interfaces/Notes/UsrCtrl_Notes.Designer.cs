@@ -208,7 +208,7 @@ namespace OpsMoi.User_Interfaces
             // 
             // NOT_strNote_Textbox
             // 
-            this.NOT_strNote_Textbox.Font = new System.Drawing.Font("El Messiri", 11.8F);
+            this.NOT_strNote_Textbox.Font = new System.Drawing.Font("El Messiri", 12.8F);
             this.NOT_strNote_Textbox.ForeColor = System.Drawing.Color.Silver;
             this.NOT_strNote_Textbox.IsPasswordTextbox = false;
             this.NOT_strNote_Textbox.IsPlaceholder = true;
@@ -218,6 +218,7 @@ namespace OpsMoi.User_Interfaces
             this.NOT_strNote_Textbox.Placeholder = "الملاحظات";
             this.NOT_strNote_Textbox.placeholderColor = System.Drawing.Color.Silver;
             this.NOT_strNote_Textbox.placeholderFont = null;
+            this.NOT_strNote_Textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.NOT_strNote_Textbox.SelectedItem = null;
             this.NOT_strNote_Textbox.Size = new System.Drawing.Size(1443, 577);
             this.NOT_strNote_Textbox.TabIndex = 5;

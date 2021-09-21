@@ -253,14 +253,15 @@ namespace OpsMoi
             // 
             // FNC_done_date_Datetimepicker
             // 
-            this.FNC_done_date_Datetimepicker.CalendarFont = new System.Drawing.Font("Times New Roman", 15.8F);
-            this.FNC_done_date_Datetimepicker.CustomFormat = "dddd, dd-MMMM-yyyy :: HH-mm";
-            this.FNC_done_date_Datetimepicker.Font = new System.Drawing.Font("Times New Roman", 15.8F);
+            this.FNC_done_date_Datetimepicker.CalendarFont = new System.Drawing.Font("Times New Roman", 13.8F);
+            this.FNC_done_date_Datetimepicker.Checked = false;
+            this.FNC_done_date_Datetimepicker.CustomFormat = "dddd, dd-MMMM-yyyy -- hh:mm tt";
+            this.FNC_done_date_Datetimepicker.Font = new System.Drawing.Font("Times New Roman", 13.8F);
             this.FNC_done_date_Datetimepicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FNC_done_date_Datetimepicker.Location = new System.Drawing.Point(821, 361);
+            this.FNC_done_date_Datetimepicker.Location = new System.Drawing.Point(821, 365);
             this.FNC_done_date_Datetimepicker.Name = "FNC_done_date_Datetimepicker";
             this.FNC_done_date_Datetimepicker.ShowCheckBox = true;
-            this.FNC_done_date_Datetimepicker.Size = new System.Drawing.Size(548, 38);
+            this.FNC_done_date_Datetimepicker.Size = new System.Drawing.Size(548, 34);
             this.FNC_done_date_Datetimepicker.TabIndex = 8;
             // 
             // FNC_done_date_Adj_Label
@@ -275,13 +276,13 @@ namespace OpsMoi
             // 
             // FNC_due_date_Datetimepicker
             // 
-            this.FNC_due_date_Datetimepicker.CalendarFont = new System.Drawing.Font("Times New Roman", 15.8F);
-            this.FNC_due_date_Datetimepicker.CustomFormat = "dddd, dd-MMMM-yyyy :: HH-mm";
-            this.FNC_due_date_Datetimepicker.Font = new System.Drawing.Font("Times New Roman", 15.8F);
+            this.FNC_due_date_Datetimepicker.CalendarFont = new System.Drawing.Font("Times New Roman", 13.8F);
+            this.FNC_due_date_Datetimepicker.CustomFormat = "dddd, dd-MMMM-yyyy -- hh:mm tt";
+            this.FNC_due_date_Datetimepicker.Font = new System.Drawing.Font("Times New Roman", 13.8F);
             this.FNC_due_date_Datetimepicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FNC_due_date_Datetimepicker.Location = new System.Drawing.Point(871, 307);
+            this.FNC_due_date_Datetimepicker.Location = new System.Drawing.Point(871, 309);
             this.FNC_due_date_Datetimepicker.Name = "FNC_due_date_Datetimepicker";
-            this.FNC_due_date_Datetimepicker.Size = new System.Drawing.Size(498, 38);
+            this.FNC_due_date_Datetimepicker.Size = new System.Drawing.Size(498, 34);
             this.FNC_due_date_Datetimepicker.TabIndex = 6;
             // 
             // FNC_notes_Adj_Label

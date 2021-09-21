@@ -13,7 +13,7 @@ namespace OpsMoi.User_Interfaces.Finance
         {
             HM_Manager.Func tobeDone = null;
             DateTime? done_date;
-            if (done_datePicker.Checked) done_date = done_datePicker.Value;
+            if (done_datePicker != null && done_datePicker.Checked) done_date = done_datePicker.Value;
             else done_date = null;
             int id = oldModel != null ? oldModel.id : 0;
             Finances _fncNew = new Finances() { id = id, relatedentity = relatedentity,type = type,category= category,due = due,paid = paid,due_date = due_date,done_date = done_date, notes = notes };

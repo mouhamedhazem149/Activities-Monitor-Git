@@ -201,6 +201,7 @@
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "تسجيل الدخول";
+            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LogInForm_FormClosed);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LogInForm_KeyDown);
             this.tableLayoutPanel1.ResumeLayout(false);

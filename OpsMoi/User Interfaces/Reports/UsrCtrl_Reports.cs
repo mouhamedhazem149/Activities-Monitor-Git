@@ -1,25 +1,39 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using BrightIdeasSoftware;
-using OpsMoi.Utilities;
-using OpsMoi.User_Interfaces.Reports;
 using ns1;
 using OpsMoi.Models;
-using System.Drawing;
+using OpsMoi.User_Interfaces.Reports;
+using OpsMoi.Utilities;
 
 namespace OpsMoi.User_Interfaces
 {
     public partial class UsrCtrl_Reports : UserControl, ICustomControl
     {
-        public UsrCtrl_Reports()
+        public UsrCtrl_Reports() => load();
+        public UsrCtrl_Reports(Enums.report_tabState report_TabState)
         {
-            InitializeByResolution(); 
+            load();
+            switch (report_TabState)
+            {
+                case Enums.report_tabState.مهام:
+                    TileButtons_Click(Todos_TileButton, EventArgs.Empty); break;
+                case Enums.report_tabState.مالية:
+                    TileButtons_Click(Financial_Tilebutton, EventArgs.Empty); break;
+                case Enums.report_tabState.ملاحظات:
+                    TileButtons_Click(Notes_TileButton, EventArgs.Empty); break;
+            }
+        }
+        void load()
+        {
+            InitializeByResolution();
             HM_Manager.IControlInit(this, Reports_Tabcontrol, TileButtons_Panel);
             Reports_Span_Combobox.DataSource = Enum.GetValues(typeof(Enums.Span));
         }
-        public void SetButton_Tags() { }
+        public void Set_Tags() { }
         public void InitializeByResolution()
         {
             switch (Program.currentResolution)
@@ -27,12 +41,6 @@ namespace OpsMoi.User_Interfaces
                 case Enums.Resolution.A_1920x1080:
                     InitializeComponent();
                     break;
-                    /*case Enums.Resolution.B_1366x768:
-                        InitializeComponent1366x768();
-                        break;
-                    case Enums.Resolution.C_1280x1040:
-                        InitializeComponent1280x1040();
-                        break;*/
             }
         }
         
@@ -55,7 +63,7 @@ namespace OpsMoi.User_Interfaces
         private void LoadFinance_Listview(DateTime from, DateTime to) { HM_Manager.Update_OLV(Reports_Processor.FinancesList(from, to), Finances_Objectlistview);/* Reports_Processor.UpdatePieChart(Reports_PieChart, Finances_Objectlistview.Groups);*/ }
         private void LoadTodos_Listview(DateTime from, DateTime to) { HM_Manager.Update_OLV(Reports_Processor.TodosList(from, to), Todos_Objectlistview); }
         private void LoadNotes_Listview(string SearchTerm) { HM_Manager.Update_OLV(Reports_Processor.NotesList(SearchTerm), Notes_Objectlistview); }
-        private void LoadHR_Listview(DateTime from, DateTime to) { HM_Manager.Update_OLV(Reports_Processor.hrList(from, to), HR_Objectlistview); }
+        private void LoadHR_Listview(DateTime from, DateTime to) { /*HM_Manager.Update_OLV(Reports_Processor.hrList(from, to), HR_Objectlistview);*/ }
 
         private void Listviews_UPDATE()
         {
@@ -72,17 +80,6 @@ namespace OpsMoi.User_Interfaces
             DateTimePicker dtPickerTo = Controls.Find(btn.Name.Replace("SearchButton", "To_Datetimepicker"), true).First() as DateTimePicker;
             btn.Enabled = dtPickerTo.Value >= dtPickerFrom.Value;
         }
-
-        private void Finances_Objectlistview_FormatRow(object sender, FormatRowEventArgs e)
-        {
-            if ((e.Model as Finances).done_date.HasValue)
-                if ((e.Model as Finances).due == (e.Model as Finances).paid) e.Item.BackColor = Color.Green;
-                else e.Item.BackColor = Color.LimeGreen;
-            else if ((e.Model as Finances).due_date < DateTime.Now) e.Item.BackColor = Color.Yellow;
-            else e.Item.BackColor = Color.Red;
-        }
-
-        
 
         private void Reports_Tabcontrol_SelectedIndexChanged(object sender, EventArgs e) 
         {
@@ -138,7 +135,7 @@ namespace OpsMoi.User_Interfaces
 
         private void HR_Objectlistview_AboutToCreateGroups(object sender, CreateGroupsEventArgs e)
         {
-            UpdatePie(e);
+            /*UpdatePie(e);
             foreach (OLVGroup group in e.Groups)
             {
                 int count = group.Items.Count;
@@ -148,7 +145,7 @@ namespace OpsMoi.User_Interfaces
                 group.Header = string.Format($"{tempHeader} :: العدد:{count}  إجمالي عدد العمليات:{totalOperations} وإجمالي الفواتير المتعلقة: {totalBills}");
                 group.Tag = count;
             }
-            e.Groups = e.Groups.OrderByDescending(p => (p.Tag as int?).Value).ToList();
+            e.Groups = e.Groups.OrderByDescending(p => (p.Tag as int?).Value).ToList();*/
         }
 
         private void HR_Objectlistview_DoubleClick(object sender, EventArgs e) { }
@@ -162,7 +159,21 @@ namespace OpsMoi.User_Interfaces
         private void Todos_Objectlistview_FormatRow(object sender, FormatRowEventArgs e)
         {
             if ((e.Model as Todos).done_date.HasValue) e.Item.BackColor = Color.LimeGreen;
-            else if ((e.Model as Todos).due_date < DateTime.Now) e.Item.BackColor = Color.Yellow;
+            else if ((e.Model as Todos).due_date > DateTime.Now) e.Item.BackColor = Color.Yellow;
+            else e.Item.BackColor = Color.Red;
+        }
+        private void Finances_Objectlistview_FormatRow(object sender, FormatRowEventArgs e)
+        {
+            if ((e.Model as Finances).done_date.HasValue)
+                if ((e.Model as Finances).due <= (e.Model as Finances).paid)
+                    if ((e.Model as Finances).type == Enums.financeType.دخل) e.Item.BackColor = Color.Green;
+                    else e.Item.BackColor = Color.DeepPink;
+                else
+                {
+                    if ((e.Model as Finances).type == Enums.financeType.دخل) e.Item.BackColor = Color.LimeGreen;
+                    else e.Item.BackColor = Color.LightPink;
+                }
+            else if ((e.Model as Finances).due_date > DateTime.Now) e.Item.BackColor = Color.Yellow;
             else e.Item.BackColor = Color.Red;
         }
 

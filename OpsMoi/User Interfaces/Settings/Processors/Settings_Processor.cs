@@ -1,7 +1,7 @@
-﻿using OpsMoi.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using OpsMoi.Utilities;
 
 namespace OpsMoi.User_Interfaces.Settings
 {
@@ -21,7 +21,7 @@ namespace OpsMoi.User_Interfaces.Settings
                     else { HM_Manager.Fail_addition(MsgLabel, "تأكد من تطابق كلمتي المرور!"); }
                 else { HM_Manager.Fail_addition(MsgLabel, "تأكد من صحة كلمة المرور القديمة!"); }
             }
-            catch (Exception exce) { HM_Manager.Fail_addition(MsgLabel, "فشل التعديل!"); }
+            catch (Exception) { HM_Manager.Fail_addition(MsgLabel, "فشل التعديل!"); }
         }
     }
 }

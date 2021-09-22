@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OpsMoi.Utilities
 {
-	public static class DBHelper
+    public static class DBHelper
 	{
 		public static T Execute<T>(string sql, IDbConnection alt_connection = null) => SQL_DBH_Lib.Database_Activities.Execute<T, SQLiteConnection>(sql, alt_connection);
 		public static async Task<T> Execute_Async<T>(string sql, IDbConnection alt_connection = null) => await SQL_DBH_Lib.Database_Activities.Execute_Async<T, SQLiteConnection>(sql, alt_connection);

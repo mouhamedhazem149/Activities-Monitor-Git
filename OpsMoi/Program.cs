@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Windows.Forms;
-using SQL_DBH_Lib;
-using OpsMoi.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Data.SQLite;
+using System.Linq;
+using System.Windows.Forms;
+using OpsMoi.Models;
 using OpsMoi.Utilities;
+using SQL_DBH_Lib;
 
 namespace OpsMoi
 {
@@ -48,11 +48,11 @@ namespace OpsMoi
                 else { Application.Run(new FirstTime()); }
         }
         
-        public static Utilities.Enums.Resolution currentResolution = Enums.Resolution.A_1920x1080;
+        public static Enums.Resolution currentResolution = Enums.Resolution.A_1920x1080;
         public static void SetResolution()
         {
-            if (Enum.IsDefined(typeof(Utilities.Enums.Resolution), System.Configuration.ConfigurationManager.AppSettings["Resolution"]))
-                currentResolution = (Utilities.Enums.Resolution)Enum.Parse(typeof(Utilities.Enums.Resolution), System.Configuration.ConfigurationManager.AppSettings["Resolution"]);
+            if (Enum.IsDefined(typeof(Enums.Resolution), System.Configuration.ConfigurationManager.AppSettings["Resolution"]))
+                currentResolution = (Enums.Resolution)Enum.Parse(typeof(Enums.Resolution), System.Configuration.ConfigurationManager.AppSettings["Resolution"]);
             else Console.WriteLine("WRONG RESOLUTION.setting defaults");
         }
 

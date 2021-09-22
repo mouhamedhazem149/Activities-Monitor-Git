@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Windows.Forms;
-using OpsMoi.Utilities;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using ns1;
-using OpsMoi.User_Interfaces.Settings;
 using OpsMoi.Models;
+using OpsMoi.User_Interfaces.Settings;
+using OpsMoi.Utilities;
 
 namespace OpsMoi.User_Interfaces
 {
@@ -39,16 +39,10 @@ namespace OpsMoi.User_Interfaces
                 case Enums.Resolution.A_1920x1080:
                     InitializeComponent();
                     break;
-                    /*case Enums.Resolution.B_1366x768:
-                          InitializeComponent1366x768();
-                          break;
-                      case Enums.Resolution.C_1280x1040:
-                          InitializeComponent1280x1040();
-                          break;*/
             }
         }
         private int tempBill_ID = -1;
-        public void SetButton_Tags()
+        public void Set_Tags()
         {
             Add_TODO_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.إضافة, Title = "إضافة مهام", color = Enums.addColor };
             Modify_TODO_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.تعديل, Title = "تعديل مهام", color = Enums.modColor };

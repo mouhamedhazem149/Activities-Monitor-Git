@@ -1,12 +1,7 @@
-﻿using SQL_DBH_Lib;
-using OpsMoi.Models;
-using Dapper;
-using Newtonsoft.Json;
-using RestSharp;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
@@ -16,7 +11,9 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Data.SQLite;
+using Dapper;
+using OpsMoi.Models;
+using SQL_DBH_Lib;
 
 namespace OpsMoi.Utilities
 {
@@ -66,25 +63,14 @@ namespace OpsMoi.Utilities
                 {
                     Success_addition(label, "تم تسجيل الدخول");
                     stngs = sets;
-                    HandleHistory(new string[] { "المستخدمين", $"تسجيل دخول ناجح في {Caller}", $"الموقع الجغرافي:{GetCurrentIPandLocation()[1]} " + $"IP الخاص بالمحاولة: {GetCurrentIPandLocation()[0]} " });
+                    HandleHistory(new string[] { "المستخدمين", $"تسجيل دخول ناجح في {Caller}", $"الوقت :: [{CurrentTime}]" });
                     return true;
                 }
-                else { Fail_addition(label, "كلمة المرور غير صحيحة"); HandleHistory(new string[] { "المستخدمين", $"محاولة تسجيل دخول فاشلة في {Caller}", $"الموقع الجغرافي:{GetCurrentIPandLocation()[1]} IP الخاص بالمحاولة: {GetCurrentIPandLocation()[0]} " }); return false; }
+                else { Fail_addition(label, "كلمة المرور غير صحيحة"); HandleHistory(new string[] { "المستخدمين", $"محاولة تسجيل دخول فاشلة في {Caller}", $"الوقت :: [{CurrentTime}]" }); return false; }
             }
         }
-        private static string[] GetCurrentIPandLocation()
-        {
-            try
-            {
-                string[] Result = new string[2];
-                RestClient _clnt = new RestClient("https://ipapi.co/json"); RestRequest _req = new RestRequest() { Method = Method.GET };
-                IDictionary response = JsonConvert.DeserializeObject<IDictionary>(_clnt.Execute(_req).Content);
-                Result[0] = response["ip"].ToString(); Result[1] = response["country_name"].ToString();
-                return Result;
-            }
-            catch (Exception exe) { return new string[] { "can't find IP", "location can't be found" }; }
-        }
-        
+        private static string CurrentTime => DateTime.Now.ToString("dddd, dd-MMMM-yyyy :: hh:mm tt");
+
         public delegate object ConstructorDelegate(params object[] args);
         public static ConstructorDelegate CreateConstructor(Type type, params Type[] parameters)
         {

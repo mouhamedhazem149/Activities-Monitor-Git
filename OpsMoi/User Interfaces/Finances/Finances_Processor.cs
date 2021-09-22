@@ -1,9 +1,9 @@
-﻿using OpsMoi.Models;
-using OpsMoi.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using OpsMoi.Models;
+using OpsMoi.Utilities;
 
 namespace OpsMoi.User_Interfaces.Finance
 {

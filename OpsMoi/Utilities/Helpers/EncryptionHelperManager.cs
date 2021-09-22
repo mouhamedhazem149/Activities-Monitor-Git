@@ -64,7 +64,7 @@ namespace OpsMoi.Utilities
                 }
                 else { if (MsgLabel != null) Success_addition(MsgLabel, $"تم التشفير بمفتاح : KEY:: '[{Encoding.UTF8.GetString(Key)}]'"); return encrypted; }
             }
-            catch (Exception ex) { if (MsgLabel != null) Fail_addition(MsgLabel, "فشل التشفير"); return Encoding.UTF8.GetBytes("فشل التشفير"); }
+            catch (Exception) { if (MsgLabel != null) Fail_addition(MsgLabel, "فشل التشفير"); return Encoding.UTF8.GetBytes("فشل التشفير"); }
         }
         public static string Decrypt(byte[] cipherText,Tuple<byte[], byte[]> KeyIV = null,Label MsgLabel = null)
         {
@@ -119,7 +119,7 @@ namespace OpsMoi.Utilities
                 }
                 return strDecrypt(plaintext);
             }
-            catch (Exception ex) { if (MsgLabel != null) Fail_addition(MsgLabel, "فشل فك التشفير"); return Encoding.Unicode.GetString(cipherText); }
+            catch (Exception) { if (MsgLabel != null) Fail_addition(MsgLabel, "فشل فك التشفير"); return Encoding.Unicode.GetString(cipherText); }
         }
         // what i want is get byte for text multiply it by factor then save as factor + encrypted text
         public static int GetRandomInt(int min, int max) => new Random(Guid.NewGuid().GetHashCode()).Next(min, max);

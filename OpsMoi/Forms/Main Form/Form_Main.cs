@@ -1,13 +1,13 @@
-﻿using OpsMoi.Forms;
-using OpsMoi.Utilities;
-using ns1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using ns1;
+using OpsMoi.Forms;
 using OpsMoi.User_Interfaces;
+using OpsMoi.Utilities;
 
 namespace OpsMoi
 {
@@ -55,7 +55,7 @@ namespace OpsMoi
             else Finances_TileButton_Click(prepareFNCUsrCtrl(argument, null), EventArgs.Empty);
         }
         public void Click_Note(Enums.noteArgument argument, string argLists) { Notes_TileButton_Click(prepareNotUsrCtrl(argument,argLists), EventArgs.Empty); }
-        public void Click_Reports(string argument) => Reports_TileButton_Click(argument, EventArgs.Empty);
+        public void Click_Reports(Enums.report_tabState argument) => Reports_TileButton_Click(prepareRportUsrCtrl(argument), EventArgs.Empty);
         public void Click_Settings(string argument, string eventArgs = "") => Settings_TileButton_Click(prepareSettingsUsrCtrl(argument, eventArgs), EventArgs.Empty);
         //93,93,93 Main , 126,126,126 Second
         public void Change_Color(Color mClr, Color sClr)
@@ -66,7 +66,7 @@ namespace OpsMoi
         }
         private void Shutdown_ImageButton_Click(object sender, EventArgs e) => MainForm_Handler.HandleExit();
 
-        private void Dashboard_TileButton_Click(object sender, EventArgs e) { } /*=> Tilebutton_Click_Handle<UsrCtrl_Dashboard>(Dashboard_TileButton);*/
+        private void Dashboard_TileButton_Click(object sender, EventArgs e) => Tilebutton_Click_Handle<UsrCtrl_Dashboard>(Dashboard_TileButton);
         
         private void Todo_TileButton_Click(object sender, EventArgs e)
         {
@@ -98,8 +98,16 @@ namespace OpsMoi
         }
         private UsrCtrl_Notes prepareNotUsrCtrl(Enums.noteArgument LoadArg, string MethodArg = null) => new UsrCtrl_Notes(LoadArg, MethodArg);
 
-        private void Reports_TileButton_Click(object sender, EventArgs e) => Tilebutton_Click_Handle<UsrCtrl_Reports>(Reports_TileButton);
-        
+        private void Reports_TileButton_Click(object sender, EventArgs e)
+        {
+            PreapreToAdd(Reports_TileButton);
+            UsrCtrl_Reports item;
+            if (sender is UsrCtrl_Reports) item = sender as UsrCtrl_Reports;
+            else item = sender is Enums.report_tabState ? prepareRportUsrCtrl((sender as Enums.report_tabState?).Value) : prepareRportUsrCtrl(Enums.report_tabState.مهام);
+            EndAdd(item);
+        }
+        private UsrCtrl_Reports prepareRportUsrCtrl(Enums.report_tabState LoadArg) => new UsrCtrl_Reports(LoadArg);
+
         private void Settings_TileButton_Click(object sender, EventArgs e) 
         {
             PreapreToAdd(Settings_TileButton);
@@ -109,11 +117,8 @@ namespace OpsMoi
             else item = prepareSettingsUsrCtrl();
             EndAdd(item);
         }
-        private UsrCtrl_Settings prepareSettingsUsrCtrl(string LoadArg = "",string MethodArg = "")
-        {
-            UsrCtrl_Settings item = new UsrCtrl_Settings(LoadArg, MethodArg);
-            return item;
-        }
+        private UsrCtrl_Settings prepareSettingsUsrCtrl(string LoadArg = "", string MethodArg = "") => new UsrCtrl_Settings(LoadArg, MethodArg);
+            
 
         void Tilebutton_Click_Handle<T>(BunifuTileButton btn) where T : Control, new()
         {

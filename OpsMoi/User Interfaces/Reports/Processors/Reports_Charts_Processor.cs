@@ -1,12 +1,12 @@
-﻿using OpsMoi.Utilities;
-using LiveCharts.Wpf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using LiveCharts;
-using System.Drawing;
+using LiveCharts.Wpf;
+using OpsMoi.Utilities;
 
 namespace OpsMoi.User_Interfaces.Reports
 {

@@ -1,8 +1,7 @@
-﻿using OpsMoi.Models;
-using OpsMoi.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using OpsMoi.Models;
 
 namespace OpsMoi.User_Interfaces.Reports
 {
@@ -30,7 +29,5 @@ namespace OpsMoi.User_Interfaces.Reports
 
         public static List<Models.Notes> NotesList(string searchWord) => Program.Notes_List.Where(nt => nt.title.Contains(searchWord) || nt.strNote.Contains(searchWord)).ToList();
 
-        public static List<HR_Item_Struct> hrList(DateTime from, DateTime to) =>
-           null;
     }
 }

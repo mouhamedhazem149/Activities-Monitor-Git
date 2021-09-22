@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Windows.Forms;
-using OpsMoi.Models;
-using OpsMoi.Utilities;
-using OpsMoi.User_Interfaces.Settings;
-using ns1;
-using OpsMoi.User_Interfaces.Notes;
-using Microsoft.VisualBasic;
 using System.Text;
+using System.Windows.Forms;
+using Microsoft.VisualBasic;
+using ns1;
+using OpsMoi.Models;
+using OpsMoi.User_Interfaces.Notes;
+using OpsMoi.User_Interfaces.Settings;
+using OpsMoi.Utilities;
 
 namespace OpsMoi.User_Interfaces
 {
@@ -53,7 +52,7 @@ namespace OpsMoi.User_Interfaces
                         break;*/
             }
         }
-        public void SetButton_Tags()
+        public void Set_Tags()
         {
             Add_NOT_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.إضافة, Title = "إضافة ملاحظات", color = Enums.addColor };
             Modify_NOT_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.تعديل, Title = "تعديل ملاحظات", color = Enums.modColor };
@@ -82,7 +81,7 @@ namespace OpsMoi.User_Interfaces
         private void Encrypt_Button_Click(object sender, EventArgs e)
         {
         GETKEY:
-            string tempKey = Interaction.InputBox("أدخل كلمة المرور لتشفير الملحوظات من 32-20 رقم (لا تستخدم مسافات) 'الأحرف تحسب برقمين'", "إخطار");
+            string tempKey = Interaction.InputBox("أدخل كلمة المرور لتشفير الملحوظات من 32-20 رقم (لا تستخدم مسافات) 'الأحرف العربية تحسب برقمين'", "إخطار");
             byte[] Key = Encoding.UTF8.GetBytes(tempKey);
             if (Key.Length < 20 || Key.Length > 32) goto GETKEY;
             NOT_strNote_Textbox.Text = $@"{Convert.ToBase64String(HM_Manager.topEncrypt($@"{NOT_strNote_Textbox.Text}", new Tuple<byte[], byte[]>(Key, Key.Reverse().ToArray()), Not_Label))}";
@@ -91,7 +90,7 @@ namespace OpsMoi.User_Interfaces
         private void Decrypt_Button_Click(object sender, EventArgs e)
         {
         GETKEY:
-            string tempKey = Interaction.InputBox("أدخل كلمة المرور لفك تشفير الملحوظات من 32-20 رقم (لا تستخدم مسافات) 'الأحرف تحسب برقمين'", "إخطار");
+            string tempKey = Interaction.InputBox("أدخل كلمة المرور لفك تشفير الملحوظات من 32-20 رقم (لا تستخدم مسافات) 'الأحرف العربية تحسب برقمين'", "إخطار");
             byte[] Key = Encoding.UTF8.GetBytes(tempKey); /*Encoding.UTF8.GetBytes(tempKey);*/
             if (Key.Length < 20 || Key.Length > 32) goto GETKEY;
             NOT_strNote_Textbox.Text = $@"{HM_Manager.Decrypt(Convert.FromBase64String($@"{NOT_strNote_Textbox.Text}"), new Tuple<byte[], byte[]>(Key, Key.Reverse().ToArray()), Not_Label)}";

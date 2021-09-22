@@ -63,9 +63,9 @@ namespace OpsMoi.Utilities
                     add_info = $"تم النسخ الاحتياطي للملف: {backup_name}.zip بواسطة: {Program.mainSettings.name} بكلمة مرور: {compress_password}";
                 }
                 HM_Manager.HandleHistory(new string[] { table_affected, operation, add_info });
-                HM_Manager.Success_addition(MsgLabel, $"تم النسخ الاحتياطي بنجاح. اسم الملف:" + Environment.NewLine + $"{backup_name}.zip");
+                HM_Manager.Success_addition(MsgLabel, $"تم النسخ الاحتياطي بنجاح. اسم الملف:" + Environment.NewLine + $"{backup_name}");
             }
-            catch (Exception e) { HM_Manager.Fail_addition(MsgLabel); }
+            catch (Exception) { HM_Manager.Fail_addition(MsgLabel); }
         }
         public static void Restore(Label MsgLabel)
         {
@@ -82,7 +82,7 @@ namespace OpsMoi.Utilities
                     if (MessageBox.Show("تم الاسترجاع بنجاح. سيتم الخروج من البرنامج الان", "إخطار", MessageBoxButtons.OK) == DialogResult.OK) Environment.Exit(0);
                 }
             }
-            catch (Exception ex) { HM_Manager.Fail_addition(MsgLabel); }
+            catch (Exception) { HM_Manager.Fail_addition(MsgLabel); }
         }
         public static ProcessStartInfo ExecuteProcess(string processName, string Args,string path ="")
         {

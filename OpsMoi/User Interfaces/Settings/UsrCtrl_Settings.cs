@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using OpsMoi.Models;
 using ns1;
+using OpsMoi.Models;
 using OpsMoi.Utilities;
 
 namespace OpsMoi.User_Interfaces
@@ -20,7 +20,7 @@ namespace OpsMoi.User_Interfaces
             InitializeByResolution();
             HM_Manager.IControlInit(this, Settings_Tabcontnol, TileButtons_Panel);
         }
-        public void SetButton_Tags() { }
+        public void Set_Tags() { }
         public void InitializeByResolution()
         {
             switch (Program.currentResolution)

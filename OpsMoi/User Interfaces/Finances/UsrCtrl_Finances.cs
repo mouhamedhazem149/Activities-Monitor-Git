@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using OpsMoi.Models;
-using OpsMoi.Utilities;
 using ns1;
-using System.Collections.Generic;
-using OpsMoi.User_Interfaces.Settings;
+using OpsMoi.Models;
 using OpsMoi.User_Interfaces.Finance;
+using OpsMoi.User_Interfaces.Settings;
+using OpsMoi.Utilities;
 
 namespace OpsMoi
 {
@@ -40,7 +40,7 @@ namespace OpsMoi
         {
             FNC_id_Textbox.Values = Program.Finances_List.Select(tdo => tdo.id.ToString()).ToArray();
             FNC_relatedentity_Textbox.Values = HM_Manager.commonEntities;
-            FNC_category_Textbox.Values = HM_Manager.commonEntities;   
+            FNC_category_Textbox.Values = HM_Manager.commonCategories;   
         }
         public void InitializeByResolution()
         {
@@ -57,7 +57,7 @@ namespace OpsMoi
                         break;*/
             }
         }
-        public void SetButton_Tags()
+        public void Set_Tags()
         {
             Add_FNC_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.إضافة, Title = "إضافة عملية مالية", color = Enums.addColor };
             Modify_FNC_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.تعديل, Title = "تعديل عملية مالية", color = Enums.modColor };

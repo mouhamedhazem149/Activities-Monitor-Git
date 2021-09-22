@@ -57,7 +57,7 @@ namespace OpsMoi.Utilities
                 }
                 return $"{strDuration} تقريبًا";
             }
-            catch (Exception ex) { return ""; }
+            catch (Exception) { return ""; }
         }
     }
 }

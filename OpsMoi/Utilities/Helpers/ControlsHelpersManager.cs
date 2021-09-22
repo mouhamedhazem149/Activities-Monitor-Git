@@ -1,10 +1,10 @@
-﻿using BrightIdeasSoftware;
-using ns1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using BrightIdeasSoftware;
+using ns1;
 
 namespace OpsMoi.Utilities
 {
@@ -64,7 +64,7 @@ namespace OpsMoi.Utilities
                     if (ctrl is ModdedControls.ModdedTextBox && ctrl.Visible && ctrl.Enabled) { ctrl.Select(); (ctrl as ModdedControls.ModdedTextBox).Text = ""; (ctrl as ModdedControls.ModdedTextBox).SelectedItem = null; ctrl.Refresh(); }
                     else if (ctrl is ListView) (ctrl as ListView).Items.Clear();
                 }
-                catch (Exception ex) { Console.WriteLine($"{ctrl.Name}"); }
+                catch (Exception) { Console.WriteLine($"{ctrl.Name}"); }
             }
             groupbox.Focus();
         }
@@ -101,7 +101,7 @@ namespace OpsMoi.Utilities
         public static void IControlInit(Models.ICustomControl cusControl, TransparentTabControl tabCtrl, Panel tilePanel)
         {
             tabCtrl.MakeTransparent();
-            cusControl.SetButton_Tags();
+            cusControl.Set_Tags();
             SetButtons_Color(tilePanel);
             cusControl.Sync();
         }

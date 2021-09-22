@@ -26,7 +26,7 @@ namespace OpsMoi.Utilities
                 }
                 else { Reset_Textbox_Controls(grpbox); /*if (oldModel != null) SetControlsFromModel(grpbox, oldModel);*/ }
             }
-            catch (Exception exc) { Fail_addition(MsgLabel); }
+            catch (Exception) { Fail_addition(MsgLabel); }
             return false;
         }
         

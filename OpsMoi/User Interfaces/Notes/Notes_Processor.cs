@@ -1,8 +1,8 @@
-﻿using OpsMoi.Utilities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using OpsMoi.Utilities;
 
 namespace OpsMoi.User_Interfaces.Notes
 {

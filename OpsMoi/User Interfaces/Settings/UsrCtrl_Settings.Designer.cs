@@ -47,32 +47,32 @@ namespace OpsMoi.User_Interfaces
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.Settings_Tabcontnol = new TransparentTabControl();
-            this.HR_Tabpage = new System.Windows.Forms.TabPage();
-            this.permissions_Tabpage = new System.Windows.Forms.TabPage();
-            this.Storage_Tabpage = new System.Windows.Forms.TabPage();
             this.General_Tabpage = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.STNG_PasswordChange_Button = new System.Windows.Forms.Button();
+            this.Old_Password_Textbox = new ModdedControls.ModdedTextBox();
+            this.ChangePassword_Label = new System.Windows.Forms.Label();
+            this.RENew_Password_Textbox = new ModdedControls.ModdedTextBox();
+            this.New_Password_Textbox = new ModdedControls.ModdedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Restore_Label = new System.Windows.Forms.Label();
             this.Backup_Button = new System.Windows.Forms.Button();
             this.Restore_Button = new System.Windows.Forms.Button();
+            this.HR_Tabpage = new System.Windows.Forms.TabPage();
+            this.permissions_Tabpage = new System.Windows.Forms.TabPage();
+            this.Storage_Tabpage = new System.Windows.Forms.TabPage();
             this.TileButtons_Panel = new System.Windows.Forms.Panel();
             this.General_TileButton = new ns1.BunifuTileButton();
             this.Permission_Tilebutton = new ns1.BunifuTileButton();
             this.Storages_TileButton = new ns1.BunifuTileButton();
             this.SidePanel1 = new System.Windows.Forms.Panel();
             this.HR_TileButton = new ns1.BunifuTileButton();
-            this.Old_Password_Textbox = new ModdedControls.ModdedTextBox();
-            this.New_Password_Textbox = new ModdedControls.ModdedTextBox();
-            this.RENew_Password_Textbox = new ModdedControls.ModdedTextBox();
-            this.ChangePassword_Label = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.STNG_PasswordChange_Button = new System.Windows.Forms.Button();
             this.GeneralSettings_Groupbox.SuspendLayout();
             this.Settings_Tabcontnol.SuspendLayout();
             this.General_Tabpage.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.TileButtons_Panel.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GeneralSettings_Groupbox
@@ -249,35 +249,6 @@ namespace OpsMoi.User_Interfaces
             this.Settings_Tabcontnol.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.Settings_Tabcontnol.TabIndex = 61;
             // 
-            // HR_Tabpage
-            // 
-            this.HR_Tabpage.Location = new System.Drawing.Point(4, 5);
-            this.HR_Tabpage.Name = "HR_Tabpage";
-            this.HR_Tabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.HR_Tabpage.Size = new System.Drawing.Size(1707, 900);
-            this.HR_Tabpage.TabIndex = 0;
-            this.HR_Tabpage.Text = "موارد بشرية";
-            this.HR_Tabpage.UseVisualStyleBackColor = true;
-            // 
-            // permissions_Tabpage
-            // 
-            this.permissions_Tabpage.Location = new System.Drawing.Point(4, 5);
-            this.permissions_Tabpage.Name = "permissions_Tabpage";
-            this.permissions_Tabpage.Size = new System.Drawing.Size(1707, 900);
-            this.permissions_Tabpage.TabIndex = 3;
-            this.permissions_Tabpage.Text = "صلاحيات المستخدمين";
-            this.permissions_Tabpage.UseVisualStyleBackColor = true;
-            // 
-            // Storage_Tabpage
-            // 
-            this.Storage_Tabpage.Location = new System.Drawing.Point(4, 5);
-            this.Storage_Tabpage.Name = "Storage_Tabpage";
-            this.Storage_Tabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.Storage_Tabpage.Size = new System.Drawing.Size(1707, 900);
-            this.Storage_Tabpage.TabIndex = 1;
-            this.Storage_Tabpage.Text = "المخازن";
-            this.Storage_Tabpage.UseVisualStyleBackColor = true;
-            // 
             // General_Tabpage
             // 
             this.General_Tabpage.Controls.Add(this.groupBox1);
@@ -289,6 +260,120 @@ namespace OpsMoi.User_Interfaces
             this.General_Tabpage.TabIndex = 2;
             this.General_Tabpage.Text = "إعدادات عامة";
             this.General_Tabpage.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.groupBox1.Controls.Add(this.STNG_PasswordChange_Button);
+            this.groupBox1.Controls.Add(this.Old_Password_Textbox);
+            this.groupBox1.Controls.Add(this.ChangePassword_Label);
+            this.groupBox1.Controls.Add(this.RENew_Password_Textbox);
+            this.groupBox1.Controls.Add(this.New_Password_Textbox);
+            this.groupBox1.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.DarkRed;
+            this.groupBox1.Location = new System.Drawing.Point(366, 436);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.groupBox1.Size = new System.Drawing.Size(1262, 306);
+            this.groupBox1.TabIndex = 64;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "إعدادات الدخول";
+            // 
+            // STNG_PasswordChange_Button
+            // 
+            this.STNG_PasswordChange_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.STNG_PasswordChange_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.STNG_PasswordChange_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.STNG_PasswordChange_Button.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.STNG_PasswordChange_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.STNG_PasswordChange_Button.Location = new System.Drawing.Point(8, 164);
+            this.STNG_PasswordChange_Button.Name = "STNG_PasswordChange_Button";
+            this.STNG_PasswordChange_Button.Size = new System.Drawing.Size(367, 44);
+            this.STNG_PasswordChange_Button.TabIndex = 64;
+            this.STNG_PasswordChange_Button.Text = "تغيير كلمة المرور";
+            this.STNG_PasswordChange_Button.UseVisualStyleBackColor = false;
+            this.STNG_PasswordChange_Button.Click += new System.EventHandler(this.STNG_PasswordChange_Button_Click);
+            // 
+            // Old_Password_Textbox
+            // 
+            this.Old_Password_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Old_Password_Textbox.Font = new System.Drawing.Font("Times New Roman", 13.8F);
+            this.Old_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
+            this.Old_Password_Textbox.IsPasswordTextbox = true;
+            this.Old_Password_Textbox.IsPlaceholder = true;
+            this.Old_Password_Textbox.Location = new System.Drawing.Point(8, 37);
+            this.Old_Password_Textbox.Name = "Old_Password_Textbox";
+            this.Old_Password_Textbox.Placeholder = "ادخل كلمة المرور القديمة";
+            this.Old_Password_Textbox.placeholderColor = System.Drawing.Color.Silver;
+            this.Old_Password_Textbox.placeholderFont = null;
+            this.Old_Password_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Old_Password_Textbox.SelectedItem = null;
+            this.Old_Password_Textbox.Size = new System.Drawing.Size(1241, 34);
+            this.Old_Password_Textbox.TabIndex = 1;
+            this.Old_Password_Textbox.Tag = "";
+            this.Old_Password_Textbox.Text = "ادخل كلمة المرور القديمة";
+            this.Old_Password_Textbox.Values = null;
+            this.Old_Password_Textbox.Visible_Password_Button = true;
+            // 
+            // ChangePassword_Label
+            // 
+            this.ChangePassword_Label.Font = new System.Drawing.Font("El Messiri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.ChangePassword_Label.ForeColor = System.Drawing.Color.DarkRed;
+            this.ChangePassword_Label.Location = new System.Drawing.Point(6, 239);
+            this.ChangePassword_Label.Name = "ChangePassword_Label";
+            this.ChangePassword_Label.Size = new System.Drawing.Size(1248, 60);
+            this.ChangePassword_Label.TabIndex = 63;
+            this.ChangePassword_Label.Text = "كلمة المرور غير مطابقة";
+            this.ChangePassword_Label.Visible = false;
+            // 
+            // RENew_Password_Textbox
+            // 
+            this.RENew_Password_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RENew_Password_Textbox.Font = new System.Drawing.Font("Times New Roman", 13.8F);
+            this.RENew_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
+            this.RENew_Password_Textbox.IsPasswordTextbox = true;
+            this.RENew_Password_Textbox.IsPlaceholder = true;
+            this.RENew_Password_Textbox.Location = new System.Drawing.Point(8, 123);
+            this.RENew_Password_Textbox.Name = "RENew_Password_Textbox";
+            this.RENew_Password_Textbox.Placeholder = "ادخل كلمة المرور الجديدة مرة أخري";
+            this.RENew_Password_Textbox.placeholderColor = System.Drawing.Color.Silver;
+            this.RENew_Password_Textbox.placeholderFont = null;
+            this.RENew_Password_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.RENew_Password_Textbox.SelectedItem = null;
+            this.RENew_Password_Textbox.Size = new System.Drawing.Size(1241, 34);
+            this.RENew_Password_Textbox.TabIndex = 3;
+            this.RENew_Password_Textbox.Tag = "";
+            this.RENew_Password_Textbox.Text = "ادخل كلمة المرور الجديدة مرة أخري";
+            this.RENew_Password_Textbox.Values = null;
+            this.RENew_Password_Textbox.Visible_Password_Button = true;
+            this.RENew_Password_Textbox.TextChanged += new System.EventHandler(this.RENew_Password_Textbox_TextChanged);
+            // 
+            // New_Password_Textbox
+            // 
+            this.New_Password_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.New_Password_Textbox.Font = new System.Drawing.Font("Times New Roman", 13.8F);
+            this.New_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
+            this.New_Password_Textbox.IsPasswordTextbox = true;
+            this.New_Password_Textbox.IsPlaceholder = true;
+            this.New_Password_Textbox.Location = new System.Drawing.Point(8, 83);
+            this.New_Password_Textbox.Name = "New_Password_Textbox";
+            this.New_Password_Textbox.Placeholder = "ادخل كلمة المرور الجديدة";
+            this.New_Password_Textbox.placeholderColor = System.Drawing.Color.Silver;
+            this.New_Password_Textbox.placeholderFont = null;
+            this.New_Password_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.New_Password_Textbox.SelectedItem = null;
+            this.New_Password_Textbox.Size = new System.Drawing.Size(1242, 34);
+            this.New_Password_Textbox.TabIndex = 2;
+            this.New_Password_Textbox.Tag = "";
+            this.New_Password_Textbox.Text = "ادخل كلمة المرور الجديدة";
+            this.New_Password_Textbox.Values = null;
+            this.New_Password_Textbox.Visible_Password_Button = true;
             // 
             // groupBox2
             // 
@@ -347,12 +432,41 @@ namespace OpsMoi.User_Interfaces
             this.Restore_Button.UseVisualStyleBackColor = false;
             this.Restore_Button.Click += new System.EventHandler(this.Restore_Button_Click);
             // 
+            // HR_Tabpage
+            // 
+            this.HR_Tabpage.Location = new System.Drawing.Point(4, 5);
+            this.HR_Tabpage.Name = "HR_Tabpage";
+            this.HR_Tabpage.Padding = new System.Windows.Forms.Padding(3);
+            this.HR_Tabpage.Size = new System.Drawing.Size(1707, 900);
+            this.HR_Tabpage.TabIndex = 0;
+            this.HR_Tabpage.Text = "موارد بشرية";
+            this.HR_Tabpage.UseVisualStyleBackColor = true;
+            // 
+            // permissions_Tabpage
+            // 
+            this.permissions_Tabpage.Location = new System.Drawing.Point(4, 5);
+            this.permissions_Tabpage.Name = "permissions_Tabpage";
+            this.permissions_Tabpage.Size = new System.Drawing.Size(1707, 900);
+            this.permissions_Tabpage.TabIndex = 3;
+            this.permissions_Tabpage.Text = "صلاحيات المستخدمين";
+            this.permissions_Tabpage.UseVisualStyleBackColor = true;
+            // 
+            // Storage_Tabpage
+            // 
+            this.Storage_Tabpage.Location = new System.Drawing.Point(4, 5);
+            this.Storage_Tabpage.Name = "Storage_Tabpage";
+            this.Storage_Tabpage.Padding = new System.Windows.Forms.Padding(3);
+            this.Storage_Tabpage.Size = new System.Drawing.Size(1707, 900);
+            this.Storage_Tabpage.TabIndex = 1;
+            this.Storage_Tabpage.Text = "المخازن";
+            this.Storage_Tabpage.UseVisualStyleBackColor = true;
+            // 
             // TileButtons_Panel
             // 
+            this.TileButtons_Panel.Controls.Add(this.SidePanel1);
             this.TileButtons_Panel.Controls.Add(this.General_TileButton);
             this.TileButtons_Panel.Controls.Add(this.Permission_Tilebutton);
             this.TileButtons_Panel.Controls.Add(this.Storages_TileButton);
-            this.TileButtons_Panel.Controls.Add(this.SidePanel1);
             this.TileButtons_Panel.Controls.Add(this.HR_TileButton);
             this.TileButtons_Panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.TileButtons_Panel.Location = new System.Drawing.Point(0, 0);
@@ -464,120 +578,6 @@ namespace OpsMoi.User_Interfaces
             this.HR_TileButton.Visible = false;
             this.HR_TileButton.Click += new System.EventHandler(this.TileButtons_Click);
             // 
-            // Old_Password_Textbox
-            // 
-            this.Old_Password_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Old_Password_Textbox.Font = new System.Drawing.Font("Times New Roman", 13.8F);
-            this.Old_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
-            this.Old_Password_Textbox.IsPasswordTextbox = true;
-            this.Old_Password_Textbox.IsPlaceholder = true;
-            this.Old_Password_Textbox.Location = new System.Drawing.Point(8, 37);
-            this.Old_Password_Textbox.Name = "Old_Password_Textbox";
-            this.Old_Password_Textbox.Placeholder = "ادخل كلمة المرور القديمة";
-            this.Old_Password_Textbox.placeholderColor = System.Drawing.Color.Silver;
-            this.Old_Password_Textbox.placeholderFont = null;
-            this.Old_Password_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Old_Password_Textbox.SelectedItem = null;
-            this.Old_Password_Textbox.Size = new System.Drawing.Size(1241, 34);
-            this.Old_Password_Textbox.TabIndex = 1;
-            this.Old_Password_Textbox.Tag = "";
-            this.Old_Password_Textbox.Text = "ادخل كلمة المرور القديمة";
-            this.Old_Password_Textbox.Values = null;
-            this.Old_Password_Textbox.Visible_Password_Button = true;
-            // 
-            // New_Password_Textbox
-            // 
-            this.New_Password_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.New_Password_Textbox.Font = new System.Drawing.Font("Times New Roman", 13.8F);
-            this.New_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
-            this.New_Password_Textbox.IsPasswordTextbox = true;
-            this.New_Password_Textbox.IsPlaceholder = true;
-            this.New_Password_Textbox.Location = new System.Drawing.Point(8, 83);
-            this.New_Password_Textbox.Name = "New_Password_Textbox";
-            this.New_Password_Textbox.Placeholder = "ادخل كلمة المرور الجديدة";
-            this.New_Password_Textbox.placeholderColor = System.Drawing.Color.Silver;
-            this.New_Password_Textbox.placeholderFont = null;
-            this.New_Password_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.New_Password_Textbox.SelectedItem = null;
-            this.New_Password_Textbox.Size = new System.Drawing.Size(1242, 34);
-            this.New_Password_Textbox.TabIndex = 2;
-            this.New_Password_Textbox.Tag = "";
-            this.New_Password_Textbox.Text = "ادخل كلمة المرور الجديدة";
-            this.New_Password_Textbox.Values = null;
-            this.New_Password_Textbox.Visible_Password_Button = true;
-            // 
-            // RENew_Password_Textbox
-            // 
-            this.RENew_Password_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RENew_Password_Textbox.Font = new System.Drawing.Font("Times New Roman", 13.8F);
-            this.RENew_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
-            this.RENew_Password_Textbox.IsPasswordTextbox = true;
-            this.RENew_Password_Textbox.IsPlaceholder = true;
-            this.RENew_Password_Textbox.Location = new System.Drawing.Point(8, 123);
-            this.RENew_Password_Textbox.Name = "RENew_Password_Textbox";
-            this.RENew_Password_Textbox.Placeholder = "ادخل كلمة المرور الجديدة مرة أخري";
-            this.RENew_Password_Textbox.placeholderColor = System.Drawing.Color.Silver;
-            this.RENew_Password_Textbox.placeholderFont = null;
-            this.RENew_Password_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.RENew_Password_Textbox.SelectedItem = null;
-            this.RENew_Password_Textbox.Size = new System.Drawing.Size(1241, 34);
-            this.RENew_Password_Textbox.TabIndex = 3;
-            this.RENew_Password_Textbox.Tag = "";
-            this.RENew_Password_Textbox.Text = "ادخل كلمة المرور الجديدة مرة أخري";
-            this.RENew_Password_Textbox.Values = null;
-            this.RENew_Password_Textbox.Visible_Password_Button = true;
-            this.RENew_Password_Textbox.TextChanged += new System.EventHandler(this.RENew_Password_Textbox_TextChanged);
-            // 
-            // ChangePassword_Label
-            // 
-            this.ChangePassword_Label.Font = new System.Drawing.Font("El Messiri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.ChangePassword_Label.ForeColor = System.Drawing.Color.DarkRed;
-            this.ChangePassword_Label.Location = new System.Drawing.Point(6, 239);
-            this.ChangePassword_Label.Name = "ChangePassword_Label";
-            this.ChangePassword_Label.Size = new System.Drawing.Size(1248, 60);
-            this.ChangePassword_Label.TabIndex = 63;
-            this.ChangePassword_Label.Text = "كلمة المرور غير مطابقة";
-            this.ChangePassword_Label.Visible = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.groupBox1.Controls.Add(this.STNG_PasswordChange_Button);
-            this.groupBox1.Controls.Add(this.Old_Password_Textbox);
-            this.groupBox1.Controls.Add(this.ChangePassword_Label);
-            this.groupBox1.Controls.Add(this.RENew_Password_Textbox);
-            this.groupBox1.Controls.Add(this.New_Password_Textbox);
-            this.groupBox1.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.DarkRed;
-            this.groupBox1.Location = new System.Drawing.Point(366, 436);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.groupBox1.Size = new System.Drawing.Size(1262, 306);
-            this.groupBox1.TabIndex = 64;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "إعدادات الدخول";
-            // 
-            // STNG_PasswordChange_Button
-            // 
-            this.STNG_PasswordChange_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.STNG_PasswordChange_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            this.STNG_PasswordChange_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.STNG_PasswordChange_Button.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.STNG_PasswordChange_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.STNG_PasswordChange_Button.Location = new System.Drawing.Point(8, 164);
-            this.STNG_PasswordChange_Button.Name = "STNG_PasswordChange_Button";
-            this.STNG_PasswordChange_Button.Size = new System.Drawing.Size(367, 44);
-            this.STNG_PasswordChange_Button.TabIndex = 64;
-            this.STNG_PasswordChange_Button.Text = "تغيير كلمة المرور";
-            this.STNG_PasswordChange_Button.UseVisualStyleBackColor = false;
-            this.STNG_PasswordChange_Button.Click += new System.EventHandler(this.STNG_PasswordChange_Button_Click);
-            // 
             // UsrCtrl_Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -592,10 +592,10 @@ namespace OpsMoi.User_Interfaces
             this.GeneralSettings_Groupbox.PerformLayout();
             this.Settings_Tabcontnol.ResumeLayout(false);
             this.General_Tabpage.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.TileButtons_Panel.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.TileButtons_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
          }

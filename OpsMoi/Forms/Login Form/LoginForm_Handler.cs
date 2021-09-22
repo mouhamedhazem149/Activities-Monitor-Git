@@ -1,11 +1,11 @@
-﻿using OpsMoi.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Data;
-using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Linq;
+using System.Windows.Forms;
+using OpsMoi.Utilities;
 
 namespace OpsMoi.Forms
 {
@@ -39,14 +39,14 @@ namespace OpsMoi.Forms
                 if (cur == null) HM_Manager.Fail_addition(MsgLabel, "هذا المستخدم غير موجود");
                 else
                 {
-                    Console.WriteLine($"{Temp_Password}");
-                    //HM_Manager.SendEmail(cur.email, Forgetpassword_Email_Body_Helper.GetBody(Temp_Password, Program.WebpageLink));
+                    //Console.WriteLine($"{Temp_Password}");
+                    HM_Manager.SendEmail(cur.email, Forgetpassword_Email_Body_Helper.GetBody(Temp_Password, Program.WebpageLink));
                     //message.Body = $"نأسف لعدم تمكنك من الدخول لحسابك يمكنك استخدام كلمة المرور : \r\n {Temp_Password} \r\n ككلمة مرور مؤقتة";
                     User_Interfaces.Settings.Settings_Processor.ChangePassword(HM_Manager.Decrypt(cur.mainpassword),Temp_Password,Temp_Password,MsgLabel);
                     HM_Manager.Success_addition(MsgLabel, "تم إرسال كلمة المرور المؤقتة لبريدك الالكتروني المسجل");
                 }
             }
-            catch (Exception exec) { HM_Manager.Fail_addition(MsgLabel, "حدثت مشكلة! برجاءالتواصل مع خدمة العملاء"); }
+            catch (Exception) { HM_Manager.Fail_addition(MsgLabel, "حدثت مشكلة! برجاءالتواصل مع خدمة العملاء"); }
         }
     }
 }

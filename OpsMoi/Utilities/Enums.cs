@@ -21,6 +21,27 @@ namespace OpsMoi.Utilities
             مدفوعات
         }
 
+        #region Dashboard
+        public enum DashboardField
+        {
+            إجمالي_عدد_المهام_المطلوبة,
+            عدد_المهام_المطلوبة_هذا_الشهر,
+            متوسط_عدد_المهام_الشهر,
+            إجمالي_المدة_المستغرقة,
+            إجمالي_المدة_المستغرقة_هذا_الشهر,
+            متوسط_المدة_المستغرقة_الشهر,
+            إجمالي_عدد_العمليات_المالية_,
+            عدد_العمليات_المالية_هذا_الشهر,
+            متوسط_عدد_العمليات_المالية__الشهر,
+            إجمالي_قيمة_العمليات_المالية,
+            قيمة_العمليات_المالية_هذا_الشهر,
+            متوسط_قيمة_العمليات_المالية_الشهر,
+            إجمالي_عدد_الملاحظات,
+            إجمالي_طول_الملاحظات,
+            متوسط_طول_الملاحظات
+        }
+        #endregion
+        
         #region General
         public enum Resolution
         {
@@ -61,12 +82,6 @@ namespace OpsMoi.Utilities
             مسؤول,
             موظف
         }
-        public enum employeeType
-        {
-            فني,
-            مستخدم,
-            تصنيف_آخر
-        }
         public enum genericHandle_Type
         {
             إضافة,
@@ -83,11 +98,6 @@ namespace OpsMoi.Utilities
             شهري,
             يومي
         }
-        public enum clientType
-        {
-            عملاء_تركيب,
-            عملاء_صيانة
-        }
         public enum report_tabState
         {
             مهام,
@@ -95,74 +105,7 @@ namespace OpsMoi.Utilities
             ملاحظات,
         }
         #endregion
-        
-        #region ClientHandle
-        public enum installmentState
-        {
-            مدفوع,
-            مستحق,
-            منتظر
-        }
-        public enum clientHandle_Type
-        {
-            تعديل,
-            إضافة
-        }
-        public enum clientpayment_Status
-        {
-            منتهي,
-            غير_منتهي
-        }
-        public enum installmentsHandle_Type
-        {
-            تسجيل,
-            عرض
-        }
-        #endregion
-        
-        #region Models
-        #region User_ENUMS
-        public enum Permission_Level
-        {
-            مدير_البرنامج,
-            مسؤول,
-            موظف
-        }
-        #endregion
-        #region Branch_ENUMS
-        public enum Branch_type
-        {
-            مخزن,
-            مبيعات,
-            مخزن_مبيعات,
-        }
-        #endregion
-        #region Client_ENUMS
-        public enum Payment_type
-        {
-            كاش,
-            قسط
-        }
-        #endregion
-        #region Maintenance_ENUMS
-        public enum Maintenance_clientType
-        {
-            عميل_جديد,
-            عميل_حالي
-        }
-        public enum Maintenance_type
-        {
-            صيانة_دورية,
-            مشكلة,
-            أمر_شغل_آخر
-        }
-        public enum Maintenance_Status
-        {
-            منتظر,
-            تم
-        }
-        #endregion
-        #endregion
+
 
         public static string GetDisplayName(this System.Enum enumValue)
         {
@@ -172,10 +115,7 @@ namespace OpsMoi.Utilities
                 .FirstOrDefault()
                 .GetCustomAttribute<DisplayAttribute>()?
                 .GetName();
-            if (string.IsNullOrEmpty(displayName))
-            {
-                displayName = enumValue.ToString();
-            }
+            if (string.IsNullOrEmpty(displayName)) displayName = enumValue.ToString();
             return displayName;
         }
         public static T GetValueFromName<T>(string name)
@@ -190,9 +130,7 @@ namespace OpsMoi.Utilities
                 if (attribute != null)
                 {
                     if (attribute.Name == name)
-                    {
                         return (T)field.GetValue(null);
-                    }
                 }
                 else
                 {
@@ -200,7 +138,6 @@ namespace OpsMoi.Utilities
                         return (T)field.GetValue(null);
                 }
             }
-
             throw new ArgumentOutOfRangeException("name");
         }
     }

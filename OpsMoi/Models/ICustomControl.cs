@@ -3,7 +3,7 @@
     public interface ICustomControl
     {
         void InitializeByResolution();
-        void SetButton_Tags();
+        void Set_Tags();
         void Sync();
     }
 }

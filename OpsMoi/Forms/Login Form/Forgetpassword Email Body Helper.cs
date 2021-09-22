@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace OpsMoi.Forms
+﻿namespace OpsMoi.Forms
 {
     public static class Forgetpassword_Email_Body_Helper
     {

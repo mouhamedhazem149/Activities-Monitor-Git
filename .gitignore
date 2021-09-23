@@ -161,3 +161,5 @@ OpsMoi/FodyWeavers.xsd
 OpsMoi/nuget.config
 new.ppk
 newa
+OpsMoi/opsmoidb\[Original\].db
+OpsMoi/bin/Debug/Resources/opsmoidb.db

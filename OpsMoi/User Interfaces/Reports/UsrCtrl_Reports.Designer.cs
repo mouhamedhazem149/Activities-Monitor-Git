@@ -346,6 +346,7 @@
             // 
             this.FinanceID_Column.AspectName = "id";
             this.FinanceID_Column.AspectToStringFormat = "";
+            this.FinanceID_Column.Hideable = false;
             this.FinanceID_Column.IsEditable = false;
             this.FinanceID_Column.MinimumWidth = 70;
             this.FinanceID_Column.Tag = "string";
@@ -409,6 +410,7 @@
             // 
             this.FinancialDuedate_Column.AspectName = "due_date";
             this.FinancialDuedate_Column.AspectToStringFormat = "{0: dddd, dd MMMM yyyy}";
+            this.FinancialDuedate_Column.Hideable = false;
             this.FinancialDuedate_Column.MinimumWidth = 200;
             this.FinancialDuedate_Column.Tag = "datetime";
             this.FinancialDuedate_Column.Text = "تاريخ الاستحقاق";
@@ -418,6 +420,7 @@
             // FinancialDonedate_Column
             // 
             this.FinancialDonedate_Column.AspectName = "str_done_date";
+            this.FinancialDonedate_Column.Hideable = false;
             this.FinancialDonedate_Column.MinimumWidth = 200;
             this.FinancialDonedate_Column.Tag = "datetime";
             this.FinancialDonedate_Column.Text = "تاريخ الانتهاء";
@@ -427,6 +430,7 @@
             // FinancialNotes_Column
             // 
             this.FinancialNotes_Column.AspectName = "notes";
+            this.FinancialNotes_Column.Hideable = false;
             this.FinancialNotes_Column.MinimumWidth = 250;
             this.FinancialNotes_Column.Tag = "string";
             this.FinancialNotes_Column.Text = "ملاحظات";

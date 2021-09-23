@@ -484,7 +484,7 @@ namespace OpsMoi
             this.FNC_notes_Textbox.Size = new System.Drawing.Size(1488, 237);
             this.FNC_notes_Textbox.TabIndex = 7;
             this.FNC_notes_Textbox.Tag = "";
-            this.FNC_notes_Textbox.Text = "الملاحظات";
+            this.FNC_notes_Textbox.Text = "لا يوجد ملاحظات";
             this.FNC_notes_Textbox.Values = null;
             this.FNC_notes_Textbox.Visible_Password_Button = false;
             // 

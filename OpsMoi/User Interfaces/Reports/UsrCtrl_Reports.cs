@@ -150,12 +150,22 @@ namespace OpsMoi.User_Interfaces
 
         private void HR_Objectlistview_DoubleClick(object sender, EventArgs e) { }
 
-        private void TODO_Objectlistview_DoubleClick(object sender, EventArgs e) => Program.WorkingForm.Click_TODO(Enums.todoArgument.loadTodoItem, ((Todos)Todos_Objectlistview.SelectedObject).id);
+        private void TODO_Objectlistview_DoubleClick(object sender, EventArgs e)
+        {
+            if (Todos_Objectlistview.SelectedObjects.Count == 1)
+                Program.WorkingForm.Click_TODO(Enums.todoArgument.loadTodoItem, ((Todos)Todos_Objectlistview.SelectedObject).id);
+        }
 
-        private void FNC_Objectlistview_DoubleClick(object sender, EventArgs e) => Program.WorkingForm.Click_FNC(Enums.financeArgument.loadFinanceItem, ((Finances)Finances_Objectlistview.SelectedObject).id);
-
-        private void Notes_Objectlistview_DoubleClick(object sender, EventArgs e) => Program.WorkingForm.Click_Note(Enums.noteArgument.loadNoteItem, ((Models.Notes)Notes_Objectlistview.SelectedObject).title);
-
+        private void FNC_Objectlistview_DoubleClick(object sender, EventArgs e)
+        {
+            if (Finances_Objectlistview.SelectedObjects.Count == 1)
+                Program.WorkingForm.Click_FNC(Enums.financeArgument.loadFinanceItem, ((Finances)Finances_Objectlistview.SelectedObject).id);
+        }
+        private void Notes_Objectlistview_DoubleClick(object sender, EventArgs e)
+        {
+            if (Notes_Objectlistview.SelectedObjects.Count == 1)
+                Program.WorkingForm.Click_Note(Enums.noteArgument.loadNoteItem, ((Models.Notes)Notes_Objectlistview.SelectedObject).title);
+        }
         private void Todos_Objectlistview_FormatRow(object sender, FormatRowEventArgs e)
         {
             if ((e.Model as Todos).done_date.HasValue) e.Item.BackColor = Color.LimeGreen;

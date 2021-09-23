@@ -417,7 +417,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_notes_Textbox.Size = new System.Drawing.Size(1507, 304);
             this.TODO_notes_Textbox.TabIndex = 6;
             this.TODO_notes_Textbox.Tag = "";
-            this.TODO_notes_Textbox.Text = "ملاحظات";
+            this.TODO_notes_Textbox.Text = "لا يوجد ملاحظات";
             this.TODO_notes_Textbox.Values = null;
             this.TODO_notes_Textbox.Visible_Password_Button = false;
             // 

@@ -18,9 +18,8 @@ namespace OpsMoi.Utilities
         , new AlternateView($@"{System.AppDomain.CurrentDomain.BaseDirectory}\Resources\footer.png","image/png") { ContentId = "FooterImage_ContentID" }
         , new AlternateView($@"{System.AppDomain.CurrentDomain.BaseDirectory}\Resources\Img3_2x.jpg","image/png") { ContentId = "MessageImage_ContentID" }
         };
-        public static void SendEmail(string reciever, string body, string subject = "OpsMoi Corp,Inc for personal use apps, خدمة عملاء")
+        public static MailMessage EMessage(string reciever, string body, string subject = "OpsMoi Corp,Inc for personal use apps, خدمة عملاء")
         {
-
             using (MailMessage message = new MailMessage())
             {
                 message.From = new MailAddress(Program.emailSender_Email);
@@ -35,17 +34,20 @@ namespace OpsMoi.Utilities
                         att.ContentDisposition.Inline = true;
                         message.Attachments.Add(att);
                     }
-
-                using (SmtpClient smtp = new SmtpClient())
-                {
-                    smtp.Port = 587; smtp.Host = "smtp.gmail.com"; //for gmail host  
-                  //smtp.Port = 465; smtp.Host = "smtp.mail.yahoo.com"; //for yahoo host
-                    smtp.EnableSsl = true;
-                    smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = new NetworkCredential(Program.emailSender_Email, Program.emailSender_Password);
-                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    smtp.Send(message);
-                }
+                return message;
+            }
+        }
+        public static SmtpClient Email()
+        {
+            using (SmtpClient smtp = new SmtpClient())
+            {
+                smtp.Port = 587; smtp.Host = "smtp.gmail.com"; //for gmail host  
+                                                               //smtp.Port = 465; smtp.Host = "smtp.mail.yahoo.com"; //for yahoo host
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential(Program.emailSender_Email, Program.emailSender_Password);
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                return smtp;
             }
         }
         private static void AddImageToEmail(MailMessage mail, Stream imageStream,string imageContentID)

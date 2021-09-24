@@ -95,6 +95,7 @@ namespace OpsMoi.Utilities
 
         public static string[] commonEntities => Program.Todos_List.Select(tdo => tdo.duefrom).Union(Program.Todos_List.Select(tdo => tdo.dueto)).Union(Program.Finances_List.Select(fnc => fnc.relatedentity)).ToArray();
         public static string[] commonCategories => Program.Todos_List.Select(tdo => tdo.category).Union(Program.Finances_List.Select(fnc => fnc.category)).ToArray();
+        public static string[] commonTodos => Program.Todos_List.Select(tdo => tdo.todo).Distinct().ToArray();
 
         public static void Success_addition(Label label, string Msg = "تم الإضافة بنجاح") => label.Invoke((MethodInvoker)delegate () { label.ForeColor = Color.Green; label.Text = Msg; label.Visible = true; label.Update(); });
         public static void Fail_addition(Label label, string Msg = "برجاء التأكد من صحة البيانات") => label.Invoke((MethodInvoker)delegate () { label.ForeColor = Color.Red; label.Text = Msg; label.Visible = true; });

@@ -40,7 +40,7 @@ namespace OpsMoi.Forms
                 else
                 {
                     //Console.WriteLine($"{Temp_Password}");
-                    HM_Manager.SendEmail(cur.email, Forgetpassword_Email_Body_Helper.GetBody(Temp_Password, Program.WebpageLink));
+                    await HM_Manager.Email().SendMailAsync(HM_Manager.EMessage(cur.email, Forgetpassword_Email_Body_Helper.GetBody(Temp_Password, Program.WebpageLink)));
                     //message.Body = $"نأسف لعدم تمكنك من الدخول لحسابك يمكنك استخدام كلمة المرور : \r\n {Temp_Password} \r\n ككلمة مرور مؤقتة";
                     User_Interfaces.Settings.Settings_Processor.ChangePassword(HM_Manager.Decrypt(cur.mainpassword),Temp_Password,Temp_Password,MsgLabel);
                     HM_Manager.Success_addition(MsgLabel, "تم إرسال كلمة المرور المؤقتة لبريدك الالكتروني المسجل");

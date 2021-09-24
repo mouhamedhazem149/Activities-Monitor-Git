@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using OpsMoi.Forms;
 using OpsMoi.Utilities;
@@ -23,7 +24,7 @@ namespace OpsMoi
         // // // // // // // BUTTONS // // // // // // //
         private void showpassword_ImageButton_Click(object sender, EventArgs e) => Login_Password_Textbox.UseSystemPasswordChar = !Login_Password_Textbox.UseSystemPasswordChar;
 
-        private async void ForgetPassword_Button_Click(object sender, EventArgs e) => await LoginForm_Handler.ForgetPassword_Handle(Login_Label);
+        private async void ForgetPassword_Button_Click(object sender, EventArgs e) => await Task.Run(() => LoginForm_Handler.ForgetPassword_Handle(Login_Label));
 
         private void Login_Button_Click(object sender, EventArgs e) =>  LoginForm_Handler.loginAttempt_Handle(this, Login_Password_Textbox.Text, Login_Label);
 

@@ -211,7 +211,7 @@
             this.Todo_TileButton.Location = new System.Drawing.Point(0, 301);
             this.Todo_TileButton.Margin = new System.Windows.Forms.Padding(6);
             this.Todo_TileButton.Name = "Todo_TileButton";
-            this.Todo_TileButton.Size = new System.Drawing.Size(235, 155);
+            this.Todo_TileButton.Size = new System.Drawing.Size(235, 154);
             this.Todo_TileButton.TabIndex = 2;
             this.Todo_TileButton.Click += new System.EventHandler(this.Todo_TileButton_Click);
             // 
@@ -469,7 +469,6 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
-            this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.TileButtons_Panel.ResumeLayout(false);

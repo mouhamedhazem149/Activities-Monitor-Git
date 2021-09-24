@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using OpsMoi.Models;
 using OpsMoi.Utilities;
@@ -24,7 +25,7 @@ namespace OpsMoi.Forms.FirstTime_Form
                 txtbox.BackColor = System.Drawing.Color.IndianRed; startButton.Enabled = false;
             }
         }
-        public static void Ignite(bool Overwrite_CurrentDB, string user_name, string user_address, string user_phonenumber, string user_email, GroupBox ownerGrpbox
+        public static async Task Ignite(string user_name, string user_address, string user_phonenumber, string user_email, GroupBox ownerGrpbox
             , string mainPassword, string serial, string coWebpage, GroupBox userGrpbox
             , Label MsgLabel, ProgressBar progBar, Control sender)
         {
@@ -45,7 +46,7 @@ namespace OpsMoi.Forms.FirstTime_Form
                 Console.WriteLine("Checked");
                 Console.WriteLine("Creating Database");
                 progBar.Invoke((MethodInvoker)delegate () { progBar.Value = 30; progBar.Update(); });
-                PrepareDB(Overwrite_CurrentDB, connectionString, Program.dbName);
+                PrepareDB(connectionString, Program.dbName);
                 HM_Manager.Success_addition(MsgLabel, $"تم إنشاء قاعدة البيانات: {Program.dbName} بنجاح!");
                 Console.WriteLine("Done");
                 progBar.Invoke((MethodInvoker)delegate () { progBar.Value = 70; progBar.Update(); });
@@ -57,7 +58,7 @@ namespace OpsMoi.Forms.FirstTime_Form
                     Console.WriteLine("Settings Update Done");
                     Console.WriteLine("Saved");
                     Console.WriteLine("Sending email");
-                    HM_Manager.SendEmail(user_email, FirstTimeEmail_Helper.GetBody(user_name, serial, user_address, user_phonenumber, user_email, mainPassword, coWebpage),"OpsMoi Corp,Inc for personal use apps, خدمة عملاء");
+                    await HM_Manager.Email().SendMailAsync(HM_Manager.EMessage(user_email, FirstTimeEmail_Helper.GetBody(user_name, serial, user_address, user_phonenumber, user_email, mainPassword, coWebpage),"OpsMoi Corp,Inc for personal use apps, خدمة عملاء"));
                     Console.WriteLine("Done");
                     progBar.Invoke((MethodInvoker)delegate () { progBar.Value = 90; progBar.Update(); });
                     Console.WriteLine("Logging in");
@@ -71,7 +72,7 @@ namespace OpsMoi.Forms.FirstTime_Form
             catch (Exception e) { Console.WriteLine(e.Message); HM_Manager.Fail_addition(MsgLabel); progBar.Value = 0; progBar.Visible = false; }
         }
 
-        private static void PrepareDB(bool Overwrite_CurrentDB, string ConnectionString, string dbName)
+        private static void PrepareDB(string ConnectionString, string dbName)
         {
             HM_Manager.UpdateConfiguration(new List<Tuple<string, string>> { new Tuple<string, string>("Initiated", "true"), new Tuple<string, string>("dbConnectionName", "default") });
 

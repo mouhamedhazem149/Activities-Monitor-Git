@@ -54,6 +54,7 @@ namespace OpsMoi.User_Interfaces
         {
             TODO_id_Textbox.Values = Program.Todos_List.Select(tdo => tdo.id.ToString()).ToArray();
             TODO_category_Textbox.Values = HM_Manager.commonCategories;
+            TODO_todo_Textbox.Values = HM_Manager.commonTodos;
             TODO_duefrom_Textbox.Values = TODO_dueto_Textbox.Values = HM_Manager.commonEntities;
         }
 

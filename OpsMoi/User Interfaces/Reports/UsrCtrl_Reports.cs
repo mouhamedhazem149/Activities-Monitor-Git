@@ -33,7 +33,27 @@ namespace OpsMoi.User_Interfaces
             HM_Manager.IControlInit(this, Reports_Tabcontrol, TileButtons_Panel);
             Reports_Span_Combobox.DataSource = Enum.GetValues(typeof(Enums.Span));
         }
-        public void Set_Tags() { }
+        public void Set_Tags() 
+        {
+            TodosDonedate_Column.GroupKeyGetter = delegate (object rowObject)
+            {
+                if (((Todos)rowObject).done_date.HasValue)
+                    return DateTime.Parse(((Todos)rowObject).done_date.Value.ToString("d"));
+                else return DateTime.MaxValue;
+            };
+            TodosAddeddate_Column.GroupKeyGetter = delegate (object rowObject) { return DateTime.Parse(((Todos)rowObject).added_date.ToString("d")); };
+            TodosDuedate_Column.GroupKeyGetter = delegate (object rowObject) { return DateTime.Parse(((Todos)rowObject).due_date.ToString("d")); };
+            TodosDonedate_Column.GroupKeyToTitleConverter = TodosAddeddate_Column.GroupKeyToTitleConverter = TodosDuedate_Column.GroupKeyToTitleConverter = delegate (object groupKey) { return ((DateTime)groupKey).ToString("dddd, dd MMMM,yyyy", System.Globalization.CultureInfo.GetCultureInfo("ar-EG")); };
+
+            FinancialDonedate_Column.GroupKeyGetter = delegate (object rowObject)
+            {
+                if (((Finances)rowObject).done_date.HasValue)
+                    return DateTime.Parse(((Finances)rowObject).done_date.Value.ToString("d"));
+                else return DateTime.MaxValue;
+            };
+            FinancialDuedate_Column.GroupKeyGetter = delegate (object rowObject) { return DateTime.Parse(((Finances)rowObject).due_date.ToString("d")); };
+            FinancialDonedate_Column.GroupKeyToTitleConverter = FinancialDuedate_Column.GroupKeyToTitleConverter = delegate (object groupKey) { return ((DateTime)groupKey).ToString("dddd, dd MMMM,yyyy", System.Globalization.CultureInfo.GetCultureInfo("ar-EG")); };
+        }
         public void InitializeByResolution()
         {
             switch (Program.currentResolution)

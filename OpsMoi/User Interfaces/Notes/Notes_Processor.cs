@@ -13,7 +13,9 @@ namespace OpsMoi.User_Interfaces.Notes
         public static bool Handle_Note(Enums.genericHandle_Type handleType, GroupBox grpbox, string title, string note,Label MsgLabel, string Title, Color color, Models.Notes oldModel)
         {
             HM_Manager.Func tobeDone = null;
-            Models.Notes _noteNew = new Models.Notes() { title = title, strNote = note };
+            int id = oldModel != null ? oldModel.id : 0;
+            int _id = id;
+            Models.Notes _noteNew = new Models.Notes() {id = _id, title = title, strNote = note };
             string SpecificMsg = "تمت العملية بنجاح"; bool byPass = false;
             switch (handleType)
             {

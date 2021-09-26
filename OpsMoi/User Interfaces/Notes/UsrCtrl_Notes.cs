@@ -44,12 +44,6 @@ namespace OpsMoi.User_Interfaces
                 case Enums.Resolution.A_1920x1080:
                     InitializeComponent();
                     break;
-                    /*case Enums.Resolution.B_1366x768:
-                        InitializeComponent1366x768();
-                        break;
-                    case Enums.Resolution.C_1280x1040:
-                        InitializeComponent1280x1040();
-                        break;*/
             }
         }
         public void Set_Tags()
@@ -57,7 +51,6 @@ namespace OpsMoi.User_Interfaces
             Add_NOT_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.إضافة, Title = "إضافة ملاحظات", color = Enums.addColor };
             Modify_NOT_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.تعديل, Title = "تعديل ملاحظات", color = Enums.modColor };
             Del_NOT_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.حذف, Title = "تعديل ملاحظات", color = Enums.modColor };
-
         }
 
         private void NOTE_Button_Click(object sender, EventArgs e)

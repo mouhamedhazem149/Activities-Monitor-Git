@@ -26,7 +26,7 @@ namespace OpsMoi.Utilities
                 }
                 else { Reset_Textbox_Controls(grpbox); /*if (oldModel != null) SetControlsFromModel(grpbox, oldModel);*/ }
             }
-            catch (Exception) { Fail_addition(MsgLabel); }
+            catch (Exception ex) { Fail_addition(MsgLabel); }
             return false;
         }
         
@@ -63,7 +63,7 @@ namespace OpsMoi.Utilities
                         {
                             int indo = cmbobx.FindStringExact(Dict[Prop].ToString());
                             cmbobx.SelectedIndex = indo;
-                            cmbobx.Text = Dict[Prop].ToString();
+                            cmbobx.Text = Dict[Prop].GetType().IsEnum ? (Dict[Prop] as Enum).GetDisplayName() : Dict[Prop].ToString();
                         }
                         break;
                     case ObjectListView olv:
@@ -84,32 +84,6 @@ namespace OpsMoi.Utilities
                         break;
                     default:
                         break;
-                        /*if (ctrl is ModdedControls.ModdedTextBox)
-                            (ctrl as ModdedControls.ModdedTextBox).Text = Dict[Prop].ToString();
-                        else if (ctrl is Label)
-                            ctrl.Text = Dict[Prop].ToString();
-                        else if (ctrl is ComboBox)
-                            if (int.TryParse(Dict[Prop].ToString(), out ind))
-                            {
-                                if ((ctrl as ComboBox).ValueMember == "id") (ctrl as ComboBox).SelectedValue = (int)Dict[Prop];
-                                else (ctrl as ComboBox).SelectedIndex = (int)Dict[Prop];
-                            }
-                            else
-                            {
-                                int indo = (ctrl as ComboBox).FindStringExact(Dict[Prop].ToString());
-                                (ctrl as ComboBox).SelectedIndex = indo;
-                                (ctrl as ComboBox).Text = Dict[Prop].ToString();
-                            }
-                        else if (ctrl is ObjectListView)
-                            HM_Manager.Update_OLV((dynamic)Dict[Prop], ctrl as ObjectListView);
-                        else if (ctrl is ListView)
-                        { (ctrl as ListView).Items.Clear(); foreach (string item in Dict[Prop] as List<string>) (ctrl as ListView).Items.Add(item); }
-                        else if (ctrl is CheckBox)
-                            (ctrl as CheckBox).Checked = Dict[Prop].ToString() == "1";
-                        else if (ctrl is RadioButton)
-                            (ctrl as RadioButton).Checked = Dict[Prop].ToString() == "1";
-                        else if (ctrl is DateTimePicker)
-                            (ctrl as DateTimePicker).Value = (Dict[Prop] as DateTime?).Value;*/
                 }
             ctrl.Update();
         }

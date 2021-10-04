@@ -5,10 +5,11 @@ namespace OpsMoi.Utilities
 {
     public static partial class HM_Manager
     {
-        public static string MinutesToDuration(double minutes)
+        public static string MinutesToDuration(object mins)
         {
             try
             {
+                double minutes = double.Parse(mins.ToString());
                 TimeSpan tSpan = TimeSpan.FromMinutes(minutes);
                 StringBuilder strDuration = new StringBuilder();
                 if (tSpan.Days > 365)

@@ -261,7 +261,7 @@
             // Minimize_ImageButton
             // 
             this.Minimize_ImageButton.BackColor = System.Drawing.Color.Transparent;
-            this.Minimize_ImageButton.Image = global::OpsMoi.Properties.Resources.global;
+            this.Minimize_ImageButton.Image = ((System.Drawing.Image)(resources.GetObject("Minimize_ImageButton.Image")));
             this.Minimize_ImageButton.ImageActive = null;
             this.Minimize_ImageButton.Location = new System.Drawing.Point(168, 29);
             this.Minimize_ImageButton.Margin = new System.Windows.Forms.Padding(2);
@@ -271,6 +271,7 @@
             this.Minimize_ImageButton.TabIndex = 30;
             this.Minimize_ImageButton.TabStop = false;
             this.Minimize_ImageButton.Zoom = 10;
+            this.Minimize_ImageButton.Click += new System.EventHandler(this.Minimize_ImageButton_Click);
             // 
             // CompanyName_Label
             // 

@@ -142,14 +142,14 @@ namespace OpsMoi.User_Interfaces
             this.TODO_id_Textbox.ForeColor = System.Drawing.Color.Silver;
             this.TODO_id_Textbox.IsPasswordTextbox = false;
             this.TODO_id_Textbox.IsPlaceholder = true;
-            this.TODO_id_Textbox.Location = new System.Drawing.Point(149, 48);
+            this.TODO_id_Textbox.Location = new System.Drawing.Point(32, 48);
             this.TODO_id_Textbox.Name = "TODO_id_Textbox";
             this.TODO_id_Textbox.Placeholder = "كود العملية (أدخل أرقام فقط)[في حالة التعديل او الحذف فقط]";
             this.TODO_id_Textbox.placeholderColor = System.Drawing.Color.Silver;
             this.TODO_id_Textbox.placeholderFont = null;
             this.TODO_id_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TODO_id_Textbox.SelectedItem = null;
-            this.TODO_id_Textbox.Size = new System.Drawing.Size(371, 29);
+            this.TODO_id_Textbox.Size = new System.Drawing.Size(488, 29);
             this.TODO_id_Textbox.TabIndex = 74;
             this.TODO_id_Textbox.Tag = "";
             this.TODO_id_Textbox.Text = "كود العملية (أدخل أرقام فقط)[في حالة التعديل او الحذف فقط]";
@@ -347,7 +347,7 @@ namespace OpsMoi.User_Interfaces
             // 
             this.id_Label.AutoSize = true;
             this.id_Label.Font = new System.Drawing.Font("El Messiri", 10.8F);
-            this.id_Label.Location = new System.Drawing.Point(6, 47);
+            this.id_Label.Location = new System.Drawing.Point(32, 80);
             this.id_Label.Name = "id_Label";
             this.id_Label.Size = new System.Drawing.Size(137, 29);
             this.id_Label.TabIndex = 52;

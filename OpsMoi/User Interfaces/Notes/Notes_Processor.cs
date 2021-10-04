@@ -10,13 +10,13 @@ namespace OpsMoi.User_Interfaces.Notes
     {
         public static string[] titlesList => Program.Notes_List.Select(not => not.title).ToArray();
 
-        public static bool Handle_Note(Enums.genericHandle_Type handleType, GroupBox grpbox, string title, string note,Label MsgLabel, string Title, Color color, Models.Notes oldModel)
+        public static bool Handle_Note(Enums.genericHandle_Type handleType, GroupBox grpbox, string title, string note,Label MsgLabel, string Title, Color color, Models.Notes oldModel, bool byPass = false)
         {
             HM_Manager.Func tobeDone = null;
             int id = oldModel != null ? oldModel.id : 0;
             int _id = id;
             Models.Notes _noteNew = new Models.Notes() {id = _id, title = title, strNote = note };
-            string SpecificMsg = "تمت العملية بنجاح"; bool byPass = false;
+            string SpecificMsg = "تمت العملية بنجاح";
             switch (handleType)
             {
                 case Enums.genericHandle_Type.إضافة:

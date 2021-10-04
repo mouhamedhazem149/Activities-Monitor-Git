@@ -39,6 +39,8 @@ namespace OpsMoi.User_Interfaces.Reports
                     List<int> incomeCount = new List<int>(chart.AxisX.Count);
                     List<double> billsValues = new List<double>(chart.AxisX.Count);
                     List<int> billCount = new List<int>(chart.AxisX.Count);
+                    List<double> transValues = new List<double>(chart.AxisX.Count);
+                    List<int> transCount = new List<int>(chart.AxisX.Count);
                     List<double> values = new List<double>(chart.AxisX.Count);
                     List<int> totalCount = new List<int>(chart.AxisX.Count);
                     for (int x = 0; x < dateList.Count - 1; x++)
@@ -50,14 +52,19 @@ namespace OpsMoi.User_Interfaces.Reports
                         var billList = temp.Where(item => item.type == Enums.financeType.مدفوعات);
                         billsValues.Add(billList.Select(p => p.paid).Sum());
                         billCount.Add(billList.Count());
+                        var transList = temp.Where(item => item.type == Enums.financeType.تحويل_أرصدة);
+                        transValues.Add(transList.Select(p => p.paid).Sum());
+                        transCount.Add(transList.Count());
                         values.Add(incomeValues[x] - billsValues[x]);
                         totalCount.Add(temp.Count);
                     }
                     collect.Add(new LineSeries() { Title = "الدخل", Values = new ChartValues<double>(incomeValues) });
                     collect.Add(new LineSeries() { Title = "المصاريف", Values = new ChartValues<double>(billsValues) });
+                    collect.Add(new LineSeries() { Title = "التحويلات الشخصية", Values = new ChartValues<double>(transValues) });
                     collect.Add(new LineSeries() { Title = "الصافي", Values = new ChartValues<double>(values) });
                     collect.Add(new LineSeries() { Title = "عدد عمليات الدخل", Values = new ChartValues<int>(incomeCount) });
                     collect.Add(new LineSeries() { Title = "عدد عمليات المصاريف", Values = new ChartValues<int>(billCount) });
+                    collect.Add(new LineSeries() { Title = "عدد عمليات التحويلات الشخصية", Values = new ChartValues<int>(transCount) });
                     collect.Add(new LineSeries() { Title = "عدد العمليات الكلي", Values = new ChartValues<int>(totalCount) });
                     break;
                 case Enums.report_tabState.ملاحظات:
@@ -136,14 +143,16 @@ namespace OpsMoi.User_Interfaces.Reports
                 {
                     case "decimal":
                     case "double":
-                        collection.Add(new PieSeries() { Title = grp.SortValue == null ? "" : grp.SortValue.ToString(), Values = new ChartValues<decimal>(new List<decimal> { grp.Items.OfType<BrightIdeasSoftware.OLVListItem>().Select(item => decimal.Parse(item.SubItems[listviewGroupsSortsArgs.Parameters.PrimarySort.Index].Text)).Sum() }) });
+                        collection.Add(new PieSeries() { Title = grp.SortValue == null ? "" : grp.SortValue.ToString(), Values = new ChartValues<decimal>(new List<decimal> { grp.Items.OfType<BrightIdeasSoftware.OLVListItem>().Select(item => decimal.Parse(item.GetSubItem(listviewGroupsSortsArgs.Parameters.PrimarySort.Index).ModelValue.ToString())).Sum() }) });
                         break;
                     default:
                         collection.Add(new PieSeries() { Title = grp.SortValue == null ? "" : grp.SortValue.ToString(), Values = new ChartValues<int>(new List<int> { grp.Items.Count }) });
                         break;
                 }
             }
-            pieChart.Series = collection;
+            SeriesCollection finalCollection = new SeriesCollection();
+            collection.OrderByDescending(serDes => serDes.Values[0]).ToList().ForEach(series => finalCollection.Add(series));
+            pieChart.Series = finalCollection;
         }
     }
 }

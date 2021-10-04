@@ -32,5 +32,6 @@ namespace OpsMoi.Models
         public double duration { get; set; }
         public string notes { get; set; }
 
+        public bool Equals(Todos obj) => id == obj.id && duefrom == obj.duefrom && dueto == obj.dueto && category == obj.category && todo == obj.todo && addeddate == obj.addeddate && duedate == obj.duedate && donedate == obj.donedate && duration == obj.duration && notes == obj.notes;
     }
 }

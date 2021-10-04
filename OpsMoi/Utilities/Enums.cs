@@ -18,7 +18,9 @@ namespace OpsMoi.Utilities
         public enum financeType
         {
             دخل,
-            مدفوعات
+            مدفوعات,
+            [Display(Name = "( شحن شخصي) تحويل أرصدة بدون مدفوعات فعلية")]
+            تحويل_أرصدة
         }
 
         #region Dashboard
@@ -107,7 +109,7 @@ namespace OpsMoi.Utilities
         #endregion
 
 
-        public static string GetDisplayName(this System.Enum enumValue)
+        public static string GetDisplayName(this Enum enumValue)
         {
             string displayName;
             displayName = enumValue.GetType()
@@ -125,18 +127,9 @@ namespace OpsMoi.Utilities
 
             foreach (var field in type.GetFields())
             {
-                var attribute = Attribute.GetCustomAttribute(field,
-                    typeof(DisplayAttribute)) as DisplayAttribute;
-                if (attribute != null)
-                {
-                    if (attribute.Name == name)
-                        return (T)field.GetValue(null);
-                }
-                else
-                {
-                    if (field.Name == name)
-                        return (T)field.GetValue(null);
-                }
+                var attribute = Attribute.GetCustomAttribute(field, typeof(DisplayAttribute)) as DisplayAttribute;
+                if (attribute != null) { if (attribute.Name == name) return (T)field.GetValue(null); }
+                else { if (field.Name == name) return (T)field.GetValue(null); }
             }
             throw new ArgumentOutOfRangeException("name");
         }

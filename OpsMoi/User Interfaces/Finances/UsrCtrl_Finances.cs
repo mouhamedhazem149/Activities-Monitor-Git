@@ -34,7 +34,7 @@ namespace OpsMoi
         {
             InitializeByResolution(); 
             HM_Manager.IControlInit(this, FNC_TabControl, TileButtons_Panel);
-            FNC_type_Combobox.DataSource = Enum.GetValues(typeof(Enums.financeType));
+            FNC_type_Combobox.DataSource = Enum.GetValues(typeof(Enums.financeType)).OfType<Enums.financeType>().Select(enm => enm.GetDisplayName()).ToList();
         }
         public void Sync()
         {
@@ -63,15 +63,6 @@ namespace OpsMoi
             Modify_FNC_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.تعديل, Title = "تعديل عملية مالية", color = Enums.modColor };
             Del_FNC_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.حذف, Title = "تعديل عملية مالية", color = Enums.modColor };
         }
-        /*
-        private DateTime reqlist_From { get { return REQSearch_From_Datetimepicker.Value.Date; } }
-        private DateTime reqlist_To { get { return REQSearch_To_Datetimepicker.Value.Date; } }
-        private string reqlist_SearchTerm { get { return REQ_MTN_Search.Text; } }
-
-        private DateTime searchlist_From { get { return SearchFromDateTimePicker.Value.Date; } }
-        private DateTime searchlist_To { get { return SearchToDateTimePicker.Value.Date; } }
-        private string searchlist_SearchTerm { get { return Searchterm_Textbox.Text; } }
-        */
         private List<Control> editControls => new List<Control> { FNC_done_date_Adj_Label, FNC_done_date_Datetimepicker };
         
         private void FNC_Button_Click(object sender, EventArgs e)
@@ -81,13 +72,13 @@ namespace OpsMoi
                 double tempDue = double.TryParse(FNC_due_Textbox.Text, out tempDue) ? double.Parse(FNC_due_Textbox.Text) : 0;
                 double tempPaid = double.TryParse(FNC_paid_Textbox.Text, out tempPaid) ? double.Parse(FNC_paid_Textbox.Text) : 0;
                 Finances_Processor.HandleFNC(((sender as Button).Tag as settingsButtonTag_Item?).Value.handleType, AddFinance_Groupbox
-                    , FNC_relatedentity_Textbox.Text, (Enums.financeType)Enum.Parse(typeof(Enums.financeType), FNC_type_Combobox.Text), FNC_category_Textbox.Text, tempDue, tempPaid, FNC_due_date_Datetimepicker.Value, FNC_done_date_Datetimepicker, FNC_notes_Textbox.Text
+                    , FNC_relatedentity_Textbox.Text,Enums.GetValueFromName<Enums.financeType>(FNC_type_Combobox.Text) /*(Enums.financeType)Enum.Parse(typeof(Enums.financeType), FNC_type_Combobox.Text)*/, FNC_category_Textbox.Text, tempDue, tempPaid, FNC_due_date_Datetimepicker.Value, FNC_done_date_Datetimepicker.Checked, FNC_done_date_Datetimepicker.Value, FNC_notes_Textbox.Text
                     , FNC_Label, ((sender as Button).Tag as settingsButtonTag_Item?).Value.Title, ((sender as Button).Tag as settingsButtonTag_Item?).Value.color
                     , Program.Finances_List.Where(item => item.id.ToString() == FNC_id_Textbox.Text).FirstOrDefault());
             }
             else
                 Finances_Processor.HandleFNC(Enums.genericHandle_Type.تحميل_البيانات, AddFinance_Groupbox
-                    , "", Enums.financeType.دخل, "", 0,0 ,DateTime.Now, null, "", FNC_Label, (Modify_FNC_Button.Tag as settingsButtonTag_Item?).Value.Title, (Modify_FNC_Button.Tag as settingsButtonTag_Item?).Value.color
+                    , "", Enums.financeType.دخل, "", 0,0 ,DateTime.Now,false ,DateTime.Now, "", FNC_Label, (Modify_FNC_Button.Tag as settingsButtonTag_Item?).Value.Title, (Modify_FNC_Button.Tag as settingsButtonTag_Item?).Value.color
                     , Program.Finances_List.Where(item => item.id.ToString() == FNC_id_Textbox.Text).FirstOrDefault());
             Sync();
         }

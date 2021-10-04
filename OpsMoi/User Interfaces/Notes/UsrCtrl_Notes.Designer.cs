@@ -232,13 +232,13 @@ namespace OpsMoi.User_Interfaces
             this.NOT_title_Textbox.ForeColor = System.Drawing.Color.Silver;
             this.NOT_title_Textbox.IsPasswordTextbox = false;
             this.NOT_title_Textbox.IsPlaceholder = true;
-            this.NOT_title_Textbox.Location = new System.Drawing.Point(90, 42);
+            this.NOT_title_Textbox.Location = new System.Drawing.Point(31, 42);
             this.NOT_title_Textbox.Name = "NOT_title_Textbox";
             this.NOT_title_Textbox.Placeholder = "العنوان";
             this.NOT_title_Textbox.placeholderColor = System.Drawing.Color.Silver;
             this.NOT_title_Textbox.placeholderFont = null;
             this.NOT_title_Textbox.SelectedItem = null;
-            this.NOT_title_Textbox.Size = new System.Drawing.Size(1317, 43);
+            this.NOT_title_Textbox.Size = new System.Drawing.Size(1376, 43);
             this.NOT_title_Textbox.TabIndex = 3;
             this.NOT_title_Textbox.Text = "العنوان";
             this.NOT_title_Textbox.Values = null;

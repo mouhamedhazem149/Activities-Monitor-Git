@@ -372,14 +372,14 @@ namespace OpsMoi
             this.FNC_id_Textbox.ForeColor = System.Drawing.Color.Silver;
             this.FNC_id_Textbox.IsPasswordTextbox = false;
             this.FNC_id_Textbox.IsPlaceholder = true;
-            this.FNC_id_Textbox.Location = new System.Drawing.Point(160, 51);
+            this.FNC_id_Textbox.Location = new System.Drawing.Point(31, 51);
             this.FNC_id_Textbox.Name = "FNC_id_Textbox";
             this.FNC_id_Textbox.Placeholder = "كود العملية (أدخل أرقام فقط)[في حالة التعديل او الحذف فقط]";
             this.FNC_id_Textbox.placeholderColor = System.Drawing.Color.Silver;
             this.FNC_id_Textbox.placeholderFont = null;
             this.FNC_id_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.FNC_id_Textbox.SelectedItem = null;
-            this.FNC_id_Textbox.Size = new System.Drawing.Size(339, 27);
+            this.FNC_id_Textbox.Size = new System.Drawing.Size(468, 27);
             this.FNC_id_Textbox.TabIndex = 53;
             this.FNC_id_Textbox.Tag = "";
             this.FNC_id_Textbox.Text = "كود العملية (أدخل أرقام فقط)[في حالة التعديل او الحذف فقط]";
@@ -392,7 +392,7 @@ namespace OpsMoi
             // 
             this.id_Label.AutoSize = true;
             this.id_Label.Font = new System.Drawing.Font("El Messiri", 10.8F);
-            this.id_Label.Location = new System.Drawing.Point(6, 53);
+            this.id_Label.Location = new System.Drawing.Point(31, 81);
             this.id_Label.Name = "id_Label";
             this.id_Label.Size = new System.Drawing.Size(137, 29);
             this.id_Label.TabIndex = 52;
@@ -405,9 +405,9 @@ namespace OpsMoi
             this.FNC_type_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FNC_type_Combobox.Font = new System.Drawing.Font("El Messiri", 15F);
             this.FNC_type_Combobox.FormattingEnabled = true;
-            this.FNC_type_Combobox.Location = new System.Drawing.Point(871, 97);
+            this.FNC_type_Combobox.Location = new System.Drawing.Point(735, 97);
             this.FNC_type_Combobox.Name = "FNC_type_Combobox";
-            this.FNC_type_Combobox.Size = new System.Drawing.Size(549, 47);
+            this.FNC_type_Combobox.Size = new System.Drawing.Size(685, 47);
             this.FNC_type_Combobox.TabIndex = 2;
             // 
             // FNC_due_Textbox

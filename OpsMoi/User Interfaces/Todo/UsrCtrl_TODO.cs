@@ -68,14 +68,15 @@ namespace OpsMoi.User_Interfaces
             if (sender is Button)
             {
                 double tempDuration = double.TryParse(TODO_duration_Textbox.Text, out tempDuration) ? double.Parse(TODO_duration_Textbox.Text) : 0;
+                Todos old = Program.Todos_List.Where(item => item.id.ToString() == TODO_id_Textbox.Text).FirstOrDefault();
                 Todo_Processor.HandleTODO(((sender as Button).Tag as settingsButtonTag_Item?).Value.handleType, AddTodo_Groupbox
-                    , TODO_duefrom_Textbox.Text, TODO_dueto_Textbox.Text,TODO_todo_Textbox.Text ,TODO_category_Textbox.Text,TODO_due_date_Datetimepicker.Value,TODO_done_date_Datetimepicker, tempDuration,TODO_notes_Textbox.Text
-                    ,AddTODO_Label, ((sender as Button).Tag as settingsButtonTag_Item?).Value.Title, ((sender as Button).Tag as settingsButtonTag_Item?).Value.color
-                    , Program.Todos_List.Where(item => item.id.ToString() == TODO_id_Textbox.Text).FirstOrDefault());
+                    , TODO_duefrom_Textbox.Text, TODO_dueto_Textbox.Text, TODO_todo_Textbox.Text, TODO_category_Textbox.Text, TODO_due_date_Datetimepicker.Value, TODO_done_date_Datetimepicker.Checked, TODO_done_date_Datetimepicker.Value, old != null ? old.added_date : DateTime.Now, tempDuration, TODO_notes_Textbox.Text
+                    , AddTODO_Label, ((sender as Button).Tag as settingsButtonTag_Item?).Value.Title, ((sender as Button).Tag as settingsButtonTag_Item?).Value.color
+                    , old);
             }
             else
                 Todo_Processor.HandleTODO(Enums.genericHandle_Type.تحميل_البيانات, AddTodo_Groupbox
-                    , "", "","", "",DateTime.Now, null, 0,"", AddTODO_Label, (Modify_TODO_Button.Tag as settingsButtonTag_Item?).Value.Title, (Modify_TODO_Button.Tag as settingsButtonTag_Item?).Value.color
+                    , "", "", "", "", DateTime.Now, false, DateTime.Now, DateTime.Now, 0, "", AddTODO_Label, (Modify_TODO_Button.Tag as settingsButtonTag_Item?).Value.Title, (Modify_TODO_Button.Tag as settingsButtonTag_Item?).Value.color
                     , Program.Todos_List.Where(item => item.id.ToString() == TODO_id_Textbox.Text).FirstOrDefault());
             Sync();
         }

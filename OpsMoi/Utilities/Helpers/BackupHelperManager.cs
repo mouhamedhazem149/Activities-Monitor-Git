@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 
@@ -19,9 +20,11 @@ namespace OpsMoi.Utilities
                 string table_affected = "قاعدة البيانات"; string operation = "نسخ احتياطي قاعدة البيانات";
                 bool compress = MessageBox.Show("هل تريد إنشاء نسخة مضغوطة لقاعدة البيانات", "إخطار", MessageBoxButtons.YesNo) == DialogResult.Yes;
                 string compress_password = " -p";
+            GETPASSWORD:    
                 if (compress)
                 {
-                    string tempPass = Interaction.InputBox("أدخل كلمة المرور لضغط الملف", "إخطار");
+                    string tempPass = Interaction.InputBox("أدخل كلمة المرور لضغط الملف (حروف إنجليزية أو أرقام فقط)", "إخطار");
+                    if (tempPass.ToCharArray().Any(p => "ضصثقفلإعهخحجدطكمنتاأللأبيسشئءؤرىآةوزظذ".Contains(p))) goto GETPASSWORD;
                     if (tempPass == "") compress_password = "";
                     else compress_password += tempPass;
                 }
@@ -52,10 +55,11 @@ namespace OpsMoi.Utilities
                 string backup_name = $@"{path}\backup-{DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")}.db";
                 string cmdCompress = $@"a{compress_password} {string.Concat('"', backup_name, ".zip", '"')} {string.Concat('"', backup_name, '"')} -sdel";
 
-                //
                 string add_info = $"تم النسخ الاحتياطي للملف: {backup_name} بواسطة: {Program.mainSettings.name}";
                 using (IDbConnection location = SQL_DBH_Lib.Database_Connection.Create_Connection<SQLiteConnection>(testConn: true))
-                    DBHelper.Execute<dynamic>($@"VACUUM INTO '{backup_name}'");
+                {
+                    DBHelper.Execute<dynamic>($@"VACUUM INTO '{backup_name}'"); 
+                }
                 if (compress)
                 {
                     Process compressProcess = Process.Start(ExecuteProcess(compressor_7z, cmdCompress, path));

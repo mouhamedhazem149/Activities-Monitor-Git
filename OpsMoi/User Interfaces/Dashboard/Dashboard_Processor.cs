@@ -35,20 +35,20 @@ namespace OpsMoi.User_Interfaces.Dashboard
         private static void Load_FNC_Section()
         {
             var monthFNCs = Reports.Reports_Processor.FinancesList(DateTime.Now.Subtract(new TimeSpan(DateTime.Now.Day, 0, 0, 0)), DateTime.Now.AddMonths(1));
-            var total = Program.Finances_List; var income = Program.Finances_List.Where(fnc => fnc.type == Enums.financeType.دخل).ToList(); var outcome = Program.Finances_List.Where(fnc => fnc.type == Enums.financeType.مدفوعات).ToList();
-            Dashboard_Elements.Add(Enums.DashboardField.إجمالي_عدد_العمليات_المالية_, $"إجمالي : {total.Count} (دخل: {income.Count} / مصروف: {outcome.Count})");
-            Dashboard_Elements.Add(Enums.DashboardField.عدد_العمليات_المالية_هذا_الشهر, $"إجمالي : {monthFNCs.Count} (دخل: {monthFNCs.Count(p => p.type == Enums.financeType.دخل)} / مصروف: {monthFNCs.Count(p => p.type == Enums.financeType.مدفوعات)})");
+            var total = Program.Finances_List; var income = Program.Finances_List.Where(fnc => fnc.type == Enums.financeType.دخل).ToList(); var outcome = Program.Finances_List.Where(fnc => fnc.type == Enums.financeType.مدفوعات).ToList(); var trans = Program.Finances_List.Where(fnc => fnc.type == Enums.financeType.تحويل_أرصدة).ToList();
+            Dashboard_Elements.Add(Enums.DashboardField.إجمالي_عدد_العمليات_المالية_, $"إجمالي : {total.Count} (دخل: {income.Count} / مصروف: {outcome.Count} / تحويل: {trans.Count})");
+            Dashboard_Elements.Add(Enums.DashboardField.عدد_العمليات_المالية_هذا_الشهر, $"إجمالي : {monthFNCs.Count} (دخل: {monthFNCs.Count(p => p.type == Enums.financeType.دخل)} / مصروف: {monthFNCs.Count(p => p.type == Enums.financeType.مدفوعات)} / تحويل: {monthFNCs.Count(p => p.type == Enums.financeType.تحويل_أرصدة)}  )");
 
             double Months_Span = Math.Max(Program.Finances_List.Select(fnc => fnc.due_date).Max().Subtract(Program.Finances_List.Select(fnc => fnc.due_date).Min()).TotalDays / 30, 1);
-            Dashboard_Elements.Add(Enums.DashboardField.متوسط_عدد_العمليات_المالية__الشهر, $"إجمالي : {(total.Count / Months_Span).ToString("F2")} (دخل: {(income.Count / Months_Span).ToString("F2")} / مصروف: {(outcome.Count / Months_Span).ToString("F2")})");
+            Dashboard_Elements.Add(Enums.DashboardField.متوسط_عدد_العمليات_المالية__الشهر, $"إجمالي : {(total.Count / Months_Span).ToString("F2")} (دخل: {(income.Count / Months_Span).ToString("F2")} / مصروف: {(outcome.Count / Months_Span).ToString("F2")}) / تحويل: {(trans.Count / Months_Span).ToString("F2")} ");
 
-            double totalSum = monthFNCs.Select(fnc => fnc.paid).Sum(); double incomeSum = monthFNCs.Where(p => p.type == Enums.financeType.دخل).Select(fnc => fnc.paid).Sum(); double outcomeSum = monthFNCs.Where(p => p.type == Enums.financeType.مدفوعات).Select(fnc => fnc.paid).Sum();
-            Dashboard_Elements.Add(Enums.DashboardField.قيمة_العمليات_المالية_هذا_الشهر, $"إجمالي : {totalSum.ToString("F2")} (دخل: {incomeSum.ToString("F2")} / مصروف: {outcomeSum.ToString("F2")}) صافي: {(incomeSum - outcomeSum).ToString("F2")}");
+            double totalSum = monthFNCs.Select(fnc => fnc.paid).Sum(); double incomeSum = monthFNCs.Where(p => p.type == Enums.financeType.دخل).Select(fnc => fnc.paid).Sum(); double outcomeSum = monthFNCs.Where(p => p.type == Enums.financeType.مدفوعات).Select(fnc => fnc.paid).Sum(); double transSum = monthFNCs.Where(p => p.type == Enums.financeType.تحويل_أرصدة).Select(fnc => fnc.paid).Sum();
+            Dashboard_Elements.Add(Enums.DashboardField.قيمة_العمليات_المالية_هذا_الشهر, $"إجمالي : {totalSum.ToString("F2")} (دخل: {incomeSum.ToString("F2")} / مصروف: {outcomeSum.ToString("F2")} / تحويل: {(transSum / Months_Span).ToString("F2")}) صافي: {(incomeSum - outcomeSum).ToString("F2")}");
 
-            totalSum = total.Select(fnc => fnc.paid).Sum(); incomeSum = income.Select(fnc => fnc.paid).Sum(); outcomeSum = outcome.Select(fnc => fnc.paid).Sum();
-            Dashboard_Elements.Add(Enums.DashboardField.إجمالي_قيمة_العمليات_المالية, $"إجمالي : {totalSum.ToString("F2")} (دخل: {incomeSum.ToString("F2")} / مصروف: {outcomeSum.ToString("F2")}) صافي: {(incomeSum - outcomeSum).ToString("F2")}");
+            totalSum = total.Select(fnc => fnc.paid).Sum(); incomeSum = income.Select(fnc => fnc.paid).Sum(); outcomeSum = outcome.Select(fnc => fnc.paid).Sum(); transSum = outcome.Select(fnc => fnc.paid).Sum();
+            Dashboard_Elements.Add(Enums.DashboardField.إجمالي_قيمة_العمليات_المالية, $"إجمالي : {totalSum.ToString("F2")} (دخل: {incomeSum.ToString("F2")} / مصروف: {outcomeSum.ToString("F2")} / تحويل: {(transSum / Months_Span).ToString("F2")}) صافي: {(incomeSum - outcomeSum).ToString("F2")}");
 
-            Dashboard_Elements.Add(Enums.DashboardField.متوسط_قيمة_العمليات_المالية_الشهر, $"إجمالي : {(totalSum / Months_Span).ToString("F2")} (دخل: {(incomeSum / Months_Span).ToString("F2")} / مصروف: {(outcomeSum / Months_Span).ToString("F2")}) صافي: {((incomeSum - outcomeSum) / Months_Span).ToString("F2")}");
+            Dashboard_Elements.Add(Enums.DashboardField.متوسط_قيمة_العمليات_المالية_الشهر, $"إجمالي : {(totalSum / Months_Span).ToString("F2")} (دخل: {(incomeSum / Months_Span).ToString("F2")} / تحويل: {(transSum / Months_Span).ToString("F2")} / مصروف: {(outcomeSum / Months_Span).ToString("F2")}) صافي: {((incomeSum - outcomeSum) / Months_Span).ToString("F2")}");
         }
         private static void Load_NOT_Section()
         {

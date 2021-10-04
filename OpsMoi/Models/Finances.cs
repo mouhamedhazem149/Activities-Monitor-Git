@@ -30,5 +30,6 @@ namespace OpsMoi.Models
 
         public string notes { get; set; }
 
+        public bool Equals(Finances obj) => (id == obj.id && relatedentity == obj.relatedentity && type == obj.type && category == obj.category && due == obj.due && paid == obj.paid && duedate == obj.duedate && donedate == obj.donedate && notes == obj.notes);
     }
 }

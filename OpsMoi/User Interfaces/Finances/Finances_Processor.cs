@@ -9,16 +9,16 @@ namespace OpsMoi.User_Interfaces.Finance
 {
     public static partial class Finances_Processor
     {
-        public static bool HandleFNC(Enums.genericHandle_Type handleType, GroupBox grpbox, string relatedentity, Enums.financeType type, string category, double due,double paid ,DateTime due_date, DateTimePicker done_datePicker, string notes,Label MsgLabel, string Title, Color color, Finances oldModel)
+        public static bool HandleFNC(Enums.genericHandle_Type handleType, GroupBox grpbox, string relatedentity, Enums.financeType type, string category, double due,double paid ,DateTime due_date,bool done_dateDone ,DateTime doneDate, string notes,Label MsgLabel, string Title, Color color, Finances oldModel, bool byPass = false)
         {
             HM_Manager.Func tobeDone = null;
             DateTime? done_date;
-            if (done_datePicker != null && done_datePicker.Checked) done_date = done_datePicker.Value;
+            if (done_dateDone) done_date = doneDate;
             else done_date = null;
             int id = oldModel != null ? oldModel.id : 0;
             Finances _fncNew = new Finances() { id = id, relatedentity = relatedentity,type = type,category= category,due = due,paid = paid,due_date = due_date,done_date = done_date, notes = notes };
             int _id = id;
-            string SpecificMsg = "تمت العملية بنجاح"; bool byPass = false;
+            string SpecificMsg = "تمت العملية بنجاح";
             switch (handleType)
             {
                 case Enums.genericHandle_Type.إضافة:

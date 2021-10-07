@@ -261,7 +261,7 @@ namespace OpsMoi.User_Interfaces
                         var old = Program.Todos_List.Where(p => p.id == selectesTDs.id).FirstOrDefault();
                         if (!selectesTDs.Equals(old))
                             Todo_Processor.HandleTODO(Enums.genericHandle_Type.تعديل, new GroupBox()
-                            , selectesTDs.duefrom, selectesTDs.dueto, selectesTDs.todo, selectesTDs.category, selectesTDs.due_date, selectesTDs.done_date.HasValue, selectesTDs.done_date.GetValueOrDefault(),selectesTDs.added_date ,selectesTDs.duration, selectesTDs.notes
+                            , selectesTDs.duefrom, selectesTDs.dueto, selectesTDs.todo, selectesTDs.category,selectesTDs.start_date ,selectesTDs.due_date, selectesTDs.done_date.HasValue, selectesTDs.done_date.GetValueOrDefault(),selectesTDs.added_date ,selectesTDs.duration, selectesTDs.notes,selectesTDs.chkpoint_list
                             , Reports_OLV_Label, "", Color.White, old, true);
                     }
                     break;

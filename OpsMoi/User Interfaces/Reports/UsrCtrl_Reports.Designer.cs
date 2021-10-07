@@ -38,6 +38,7 @@
             this.TodosCategory_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.TodosTodo_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.TodosDuedate_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.TodosStartdate_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.TodosDonedate_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.TodosAddeddate_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.TodosDuration_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -133,6 +134,7 @@
             this.Todos_Objectlistview.AllColumns.Add(this.TodosCategory_Column);
             this.Todos_Objectlistview.AllColumns.Add(this.TodosTodo_Column);
             this.Todos_Objectlistview.AllColumns.Add(this.TodosDuedate_Column);
+            this.Todos_Objectlistview.AllColumns.Add(this.TodosStartdate_Column);
             this.Todos_Objectlistview.AllColumns.Add(this.TodosDonedate_Column);
             this.Todos_Objectlistview.AllColumns.Add(this.TodosAddeddate_Column);
             this.Todos_Objectlistview.AllColumns.Add(this.TodosDuration_Column);
@@ -146,6 +148,7 @@
             this.TodosCategory_Column,
             this.TodosTodo_Column,
             this.TodosDuedate_Column,
+            this.TodosStartdate_Column,
             this.TodosDonedate_Column,
             this.TodosAddeddate_Column,
             this.TodosDuration_Column,
@@ -239,6 +242,16 @@
             this.TodosDuedate_Column.Text = "التاريخ النهائي";
             this.TodosDuedate_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TodosDuedate_Column.Width = 200;
+            // 
+            // TodosStartdate_Column
+            // 
+            this.TodosStartdate_Column.AspectName = "start_date";
+            this.TodosStartdate_Column.AspectToStringFormat = "{0: dddd, dd MMMM yyyy}";
+            this.TodosStartdate_Column.Hideable = false;
+            this.TodosStartdate_Column.MinimumWidth = 200;
+            this.TodosStartdate_Column.Text = "تاريخ البداية";
+            this.TodosStartdate_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TodosStartdate_Column.Width = 200;
             // 
             // TodosDonedate_Column
             // 
@@ -892,7 +905,7 @@
             // 
             // Reports_OLV_Label
             // 
-            this.Reports_OLV_Label.Font = new System.Drawing.Font("El Messiri", 8.8F);
+            this.Reports_OLV_Label.Font = new System.Drawing.Font("Cairo SemiBold", 7F, System.Drawing.FontStyle.Bold);
             this.Reports_OLV_Label.ForeColor = System.Drawing.Color.Maroon;
             this.Reports_OLV_Label.Location = new System.Drawing.Point(661, 383);
             this.Reports_OLV_Label.Name = "Reports_OLV_Label";
@@ -998,5 +1011,6 @@
         private System.Windows.Forms.Button Reports_Edit_Button;
         private System.Windows.Forms.Button Reports_SaveChanges_Button;
         private System.Windows.Forms.Label Reports_OLV_Label;
+        private BrightIdeasSoftware.OLVColumn TodosStartdate_Column;
     }
 }

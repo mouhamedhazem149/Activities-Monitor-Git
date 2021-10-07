@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpsMoi.Models
 {
@@ -16,6 +18,9 @@ namespace OpsMoi.Models
         public string duedate { get; set; }
         public DateTime due_date { get => DateTime.Parse(duedate); set { duedate = value.ToString("g"); } }
 
+        public string startdate { get; set; }
+        public DateTime start_date { get => DateTime.Parse(startdate); set { startdate = value.ToString("g"); } }
+        
         public string donedate { get; set; }
         public DateTime? done_date { get { if (donedate != null) return DateTime.Parse(donedate); else return null; } set {if (value != null) donedate = value.Value.ToString("g"); } }
         public string str_done_date
@@ -32,6 +37,19 @@ namespace OpsMoi.Models
         public double duration { get; set; }
         public string notes { get; set; }
 
-        public bool Equals(Todos obj) => id == obj.id && duefrom == obj.duefrom && dueto == obj.dueto && category == obj.category && todo == obj.todo && addeddate == obj.addeddate && duedate == obj.duedate && donedate == obj.donedate && duration == obj.duration && notes == obj.notes;
+        public string chklist
+        {
+            get => chkpoint_list != null ? string.Join(Checkpoint.chkpointSeparator, chkpoint_list.Select(p => p.ToString()).ToList()): "";
+            set
+            {
+                string[] chk_points = value.Length > 1 ? value.Split(new string[] { Checkpoint.chkpointJoint }, StringSplitOptions.None) : new string[0];
+                chkpoint_list = new List<Checkpoint>(chk_points.Length);
+                foreach (string chkPoint in chk_points)
+                    chkpoint_list.Add(Checkpoint.GetCheckpoint(chkPoint));
+            }
+        }
+        public List<Checkpoint> chkpoint_list { get;  set;}
+
+        public bool Equals(Todos obj) => id == obj.id && duefrom == obj.duefrom && dueto == obj.dueto && category == obj.category && todo == obj.todo && addeddate == obj.addeddate && startdate == obj.startdate && duedate == obj.duedate && donedate == obj.donedate && duration == obj.duration && notes == obj.notes;
     }
 }

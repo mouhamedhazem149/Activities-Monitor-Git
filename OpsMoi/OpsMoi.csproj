@@ -167,6 +167,7 @@
     <Compile Include="Forms\Splash Form\SplashForm.Designer.cs">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Checkpoint.cs" />
     <Compile Include="Models\Finances.cs" />
     <Compile Include="Models\History.cs" />
     <Compile Include="Models\ICustomControl.cs" />

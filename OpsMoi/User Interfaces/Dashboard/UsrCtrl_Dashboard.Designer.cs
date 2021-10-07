@@ -548,8 +548,8 @@ namespace OpsMoi
             this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.19271F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.65104F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Controls.Add(this.FNC_AveragePaid_Label, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.FNC_MonthPaid_Label, 3, 4);
@@ -588,7 +588,7 @@ namespace OpsMoi
             this.FNC_AveragePaid_Label.ForeColor = System.Drawing.Color.MidnightBlue;
             this.FNC_AveragePaid_Label.Location = new System.Drawing.Point(3, 280);
             this.FNC_AveragePaid_Label.Name = "FNC_AveragePaid_Label";
-            this.FNC_AveragePaid_Label.Size = new System.Drawing.Size(303, 56);
+            this.FNC_AveragePaid_Label.Size = new System.Drawing.Size(347, 56);
             this.FNC_AveragePaid_Label.TabIndex = 27;
             this.FNC_AveragePaid_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -600,7 +600,7 @@ namespace OpsMoi
             this.FNC_MonthPaid_Label.ForeColor = System.Drawing.Color.MidnightBlue;
             this.FNC_MonthPaid_Label.Location = new System.Drawing.Point(3, 224);
             this.FNC_MonthPaid_Label.Name = "FNC_MonthPaid_Label";
-            this.FNC_MonthPaid_Label.Size = new System.Drawing.Size(303, 56);
+            this.FNC_MonthPaid_Label.Size = new System.Drawing.Size(347, 56);
             this.FNC_MonthPaid_Label.TabIndex = 26;
             this.FNC_MonthPaid_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -612,7 +612,7 @@ namespace OpsMoi
             this.FNC_TotalPaid_Label.ForeColor = System.Drawing.Color.MidnightBlue;
             this.FNC_TotalPaid_Label.Location = new System.Drawing.Point(3, 168);
             this.FNC_TotalPaid_Label.Name = "FNC_TotalPaid_Label";
-            this.FNC_TotalPaid_Label.Size = new System.Drawing.Size(303, 56);
+            this.FNC_TotalPaid_Label.Size = new System.Drawing.Size(347, 56);
             this.FNC_TotalPaid_Label.TabIndex = 25;
             this.FNC_TotalPaid_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -624,7 +624,7 @@ namespace OpsMoi
             this.FNC_AverageCount_Label.ForeColor = System.Drawing.Color.MidnightBlue;
             this.FNC_AverageCount_Label.Location = new System.Drawing.Point(3, 112);
             this.FNC_AverageCount_Label.Name = "FNC_AverageCount_Label";
-            this.FNC_AverageCount_Label.Size = new System.Drawing.Size(303, 56);
+            this.FNC_AverageCount_Label.Size = new System.Drawing.Size(347, 56);
             this.FNC_AverageCount_Label.TabIndex = 24;
             this.FNC_AverageCount_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -636,7 +636,7 @@ namespace OpsMoi
             this.FNC_MonthCount_Label.ForeColor = System.Drawing.Color.MidnightBlue;
             this.FNC_MonthCount_Label.Location = new System.Drawing.Point(3, 56);
             this.FNC_MonthCount_Label.Name = "FNC_MonthCount_Label";
-            this.FNC_MonthCount_Label.Size = new System.Drawing.Size(303, 56);
+            this.FNC_MonthCount_Label.Size = new System.Drawing.Size(347, 56);
             this.FNC_MonthCount_Label.TabIndex = 23;
             this.FNC_MonthCount_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -648,7 +648,7 @@ namespace OpsMoi
             this.FNC_TotalCount_Label.ForeColor = System.Drawing.Color.MidnightBlue;
             this.FNC_TotalCount_Label.Location = new System.Drawing.Point(3, 0);
             this.FNC_TotalCount_Label.Name = "FNC_TotalCount_Label";
-            this.FNC_TotalCount_Label.Size = new System.Drawing.Size(303, 56);
+            this.FNC_TotalCount_Label.Size = new System.Drawing.Size(347, 56);
             this.FNC_TotalCount_Label.TabIndex = 22;
             this.FNC_TotalCount_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -656,11 +656,11 @@ namespace OpsMoi
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.label13, 3);
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Font = new System.Drawing.Font("A Nasr", 15.2F);
+            this.label13.Font = new System.Drawing.Font("A Nasr", 14.2F);
             this.label13.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label13.Location = new System.Drawing.Point(312, 280);
+            this.label13.Location = new System.Drawing.Point(356, 280);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(453, 56);
+            this.label13.Size = new System.Drawing.Size(409, 56);
             this.label13.TabIndex = 21;
             this.label13.Text = "متوسط قيمة العمليات المالية / الشهر (دخل / مصروف)";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -669,11 +669,11 @@ namespace OpsMoi
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.label14, 3);
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Font = new System.Drawing.Font("A Nasr", 17.2F);
+            this.label14.Font = new System.Drawing.Font("A Nasr", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label14.Location = new System.Drawing.Point(312, 224);
+            this.label14.Location = new System.Drawing.Point(356, 224);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(453, 56);
+            this.label14.Size = new System.Drawing.Size(409, 56);
             this.label14.TabIndex = 20;
             this.label14.Text = "قيمة العمليات المالية هذا الشهر (دخل / مصروف)";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -718,11 +718,11 @@ namespace OpsMoi
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.label15, 3);
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label15.Font = new System.Drawing.Font("A Nasr", 18.2F);
+            this.label15.Font = new System.Drawing.Font("A Nasr", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label15.Location = new System.Drawing.Point(312, 168);
+            this.label15.Location = new System.Drawing.Point(356, 168);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(453, 56);
+            this.label15.Size = new System.Drawing.Size(409, 56);
             this.label15.TabIndex = 17;
             this.label15.Text = "إجمالي قيمة العمليات المالية ( دخل / مصروف)";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -731,11 +731,11 @@ namespace OpsMoi
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.label18, 3);
             this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label18.Font = new System.Drawing.Font("A Nasr", 15.2F);
+            this.label18.Font = new System.Drawing.Font("A Nasr", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label18.Location = new System.Drawing.Point(312, 112);
+            this.label18.Location = new System.Drawing.Point(356, 112);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(453, 56);
+            this.label18.Size = new System.Drawing.Size(409, 56);
             this.label18.TabIndex = 18;
             this.label18.Text = "متوسط عدد العمليات المالية / الشهر (دخل / مصروف)";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -744,11 +744,11 @@ namespace OpsMoi
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.label19, 3);
             this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label19.Font = new System.Drawing.Font("A Nasr", 17.2F);
+            this.label19.Font = new System.Drawing.Font("A Nasr", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label19.Location = new System.Drawing.Point(312, 56);
+            this.label19.Location = new System.Drawing.Point(356, 56);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(453, 56);
+            this.label19.Size = new System.Drawing.Size(409, 56);
             this.label19.TabIndex = 19;
             this.label19.Text = "عدد العمليات المالية هذا الشهر (دخل / مصروف)";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -757,11 +757,11 @@ namespace OpsMoi
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.label20, 3);
             this.label20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label20.Font = new System.Drawing.Font("A Nasr", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Font = new System.Drawing.Font("A Nasr", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label20.Location = new System.Drawing.Point(312, 0);
+            this.label20.Location = new System.Drawing.Point(356, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(453, 56);
+            this.label20.Size = new System.Drawing.Size(409, 56);
             this.label20.TabIndex = 16;
             this.label20.Text = "إجمالي عدد العمليات المالية (دخل / مصروف)";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

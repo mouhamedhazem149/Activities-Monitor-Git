@@ -42,7 +42,7 @@ namespace OpsMoi.Models
             get => chkpoint_list != null ? string.Join(Checkpoint.chkpointSeparator, chkpoint_list.Select(p => p.ToString()).ToList()): "";
             set
             {
-                string[] chk_points = value.Length > 1 ? value.Split(new string[] { Checkpoint.chkpointJoint }, StringSplitOptions.None) : new string[0];
+                string[] chk_points = value.Length > 1 ? value.Split(new string[] { Checkpoint.chkpointSeparator }, StringSplitOptions.None) : new string[0];
                 chkpoint_list = new List<Checkpoint>(chk_points.Length);
                 foreach (string chkPoint in chk_points)
                     chkpoint_list.Add(Checkpoint.GetCheckpoint(chkPoint));

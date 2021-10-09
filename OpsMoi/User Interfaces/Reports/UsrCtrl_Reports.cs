@@ -194,7 +194,7 @@ namespace OpsMoi.User_Interfaces
                             Bounds = e.CellBounds,
                             Value = DateTime.TryParse(e.Value.ToString(), out temp) ? DateTime.Parse(e.Value.ToString()) : DateTime.Now,
                             Checked = DateTime.TryParse(e.Value.ToString(), out temp),
-                            CustomFormat = "dd MMMM yyyy",
+                            CustomFormat = "dddd, dd-MMMM-yyyy -- hh:mm tt",
                             Format = DateTimePickerFormat.Custom,
                             ShowCheckBox = true,
                             ShowUpDown = true
@@ -207,7 +207,7 @@ namespace OpsMoi.User_Interfaces
                             Bounds = e.CellBounds,
                             Value = DateTime.Parse(e.Value.ToString()),
                             Checked = true,
-                            CustomFormat = "dd MMMM yyyy",
+                            CustomFormat = "dddd, dd-MMMM-yyyy -- hh:mm tt",
                             Format = DateTimePickerFormat.Custom,
                             ShowUpDown = true
                         };

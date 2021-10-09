@@ -149,6 +149,6 @@ namespace OpsMoi.Utilities
                 OriginalByte[ind / 4] = (byte)FromHex(encryptedText.Substring(ind, 4));
             return Encoding.Unicode.GetString(OriginalByte);
         }
-        static int FromHex(string Hex) => int.Parse(Hex.ToUpper(), System.Globalization.NumberStyles.HexNumber);
+        public static int FromHex(string Hex) => int.Parse(Hex.ToUpper(), System.Globalization.NumberStyles.HexNumber);
     }
 }

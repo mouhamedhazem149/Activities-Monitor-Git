@@ -33,6 +33,7 @@ namespace OpsMoi.User_Interfaces
             this.todos_Tabcontrol = new TransparentTabControl();
             this.TODO_manageTab = new System.Windows.Forms.TabPage();
             this.AddTodo_Groupbox = new System.Windows.Forms.GroupBox();
+            this.TODOs_DelChkPnt_Button = new System.Windows.Forms.Button();
             this.TODOs_AddChkPnt_Button = new System.Windows.Forms.Button();
             this.TODOs_chkpoint_list_Adj_Label = new System.Windows.Forms.Label();
             this.Todos_chkpoint_list_Objectlistview = new BrightIdeasSoftware.ObjectListView();
@@ -122,6 +123,7 @@ namespace OpsMoi.User_Interfaces
             this.AddTodo_Groupbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddTodo_Groupbox.Controls.Add(this.TODOs_DelChkPnt_Button);
             this.AddTodo_Groupbox.Controls.Add(this.TODOs_AddChkPnt_Button);
             this.AddTodo_Groupbox.Controls.Add(this.TODOs_chkpoint_list_Adj_Label);
             this.AddTodo_Groupbox.Controls.Add(this.Todos_chkpoint_list_Objectlistview);
@@ -162,6 +164,22 @@ namespace OpsMoi.User_Interfaces
             this.AddTodo_Groupbox.Text = "إضافة مهام";
             this.AddTodo_Groupbox.ForeColorChanged += new System.EventHandler(this.AddMaintenance_Groupbox_ForeColorChanged);
             // 
+            // TODOs_DelChkPnt_Button
+            // 
+            this.TODOs_DelChkPnt_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.TODOs_DelChkPnt_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.TODOs_DelChkPnt_Button.Enabled = false;
+            this.TODOs_DelChkPnt_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TODOs_DelChkPnt_Button.Font = new System.Drawing.Font("El Messiri", 10.8F);
+            this.TODOs_DelChkPnt_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.TODOs_DelChkPnt_Button.Location = new System.Drawing.Point(1065, 749);
+            this.TODOs_DelChkPnt_Button.Name = "TODOs_DelChkPnt_Button";
+            this.TODOs_DelChkPnt_Button.Size = new System.Drawing.Size(220, 35);
+            this.TODOs_DelChkPnt_Button.TabIndex = 80;
+            this.TODOs_DelChkPnt_Button.Text = "حذف المحدد";
+            this.TODOs_DelChkPnt_Button.UseVisualStyleBackColor = false;
+            this.TODOs_DelChkPnt_Button.Click += new System.EventHandler(this.TODOs_DelChkPnt_Button_Click);
+            // 
             // TODOs_AddChkPnt_Button
             // 
             this.TODOs_AddChkPnt_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -201,7 +219,7 @@ namespace OpsMoi.User_Interfaces
             this.Todos_chkpoint_list_Objectlistview.Cursor = System.Windows.Forms.Cursors.Default;
             this.Todos_chkpoint_list_Objectlistview.EmptyListMsg = "لا يوجد عناصر";
             this.Todos_chkpoint_list_Objectlistview.EmptyListMsgFont = new System.Drawing.Font("Cairo SemiBold", 15F, System.Drawing.FontStyle.Bold);
-            this.Todos_chkpoint_list_Objectlistview.Font = new System.Drawing.Font("El Messiri", 7F);
+            this.Todos_chkpoint_list_Objectlistview.Font = new System.Drawing.Font("El Messiri", 8.2F);
             this.Todos_chkpoint_list_Objectlistview.FullRowSelect = true;
             this.Todos_chkpoint_list_Objectlistview.HideSelection = false;
             this.Todos_chkpoint_list_Objectlistview.Location = new System.Drawing.Point(839, 425);
@@ -221,6 +239,7 @@ namespace OpsMoi.User_Interfaces
             this.Todos_chkpoint_list_Objectlistview.UseHotControls = false;
             this.Todos_chkpoint_list_Objectlistview.View = System.Windows.Forms.View.Details;
             this.Todos_chkpoint_list_Objectlistview.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.Todos_chkpoint_list_Objectlistview_CellEditStarting);
+            this.Todos_chkpoint_list_Objectlistview.SelectionChanged += new System.EventHandler(this.Todos_chkpoint_list_Objectlistview_SelectionChanged);
             // 
             // ChkPnt_index_Column
             // 
@@ -246,7 +265,7 @@ namespace OpsMoi.User_Interfaces
             // ChkPnt_date_Column
             // 
             this.ChkPnt_date_Column.AspectName = "Chk_Date";
-            this.ChkPnt_date_Column.AspectToStringFormat = "{0: dddd, dd MMMM yyyy}";
+            this.ChkPnt_date_Column.AspectToStringFormat = "{0: dddd, dd-MMMM-yyyy -- hh:mm tt}";
             this.ChkPnt_date_Column.Hideable = false;
             this.ChkPnt_date_Column.MinimumWidth = 200;
             this.ChkPnt_date_Column.Tag = "date";
@@ -264,6 +283,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_start_date_Datetimepicker.Name = "TODO_start_date_Datetimepicker";
             this.TODO_start_date_Datetimepicker.Size = new System.Drawing.Size(513, 34);
             this.TODO_start_date_Datetimepicker.TabIndex = 75;
+            this.TODO_start_date_Datetimepicker.ValueChanged += new System.EventHandler(this.TODO_Datetimepicker_ValueChanged);
             // 
             // TODO_start_date_Adj_Label
             // 
@@ -383,6 +403,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_done_date_Datetimepicker.ShowCheckBox = true;
             this.TODO_done_date_Datetimepicker.Size = new System.Drawing.Size(546, 34);
             this.TODO_done_date_Datetimepicker.TabIndex = 7;
+            this.TODO_done_date_Datetimepicker.ValueChanged += new System.EventHandler(this.TODO_Datetimepicker_ValueChanged);
             // 
             // TODO_done_date_Adj_Label
             // 
@@ -612,7 +633,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_reqTab.Padding = new System.Windows.Forms.Padding(3);
             this.TODO_reqTab.Size = new System.Drawing.Size(1754, 941);
             this.TODO_reqTab.TabIndex = 1;
-            this.TODO_reqTab.Text = "المهام غير المنتهية";
+            this.TODO_reqTab.Text = "المهام المطلوبة";
             this.TODO_reqTab.UseVisualStyleBackColor = true;
             // 
             // History_Groupbox
@@ -784,12 +805,11 @@ namespace OpsMoi.User_Interfaces
             this.TODOreq_TileButton.Image = null;
             this.TODOreq_TileButton.ImagePosition = 0;
             this.TODOreq_TileButton.ImageZoom = 0;
-            this.TODOreq_TileButton.LabelPosition = 175;
+            this.TODOreq_TileButton.LabelPosition = 150;
             this.TODOreq_TileButton.LabelText = "المهام المطلوبة";
             this.TODOreq_TileButton.Location = new System.Drawing.Point(0, 317);
             this.TODOreq_TileButton.Margin = new System.Windows.Forms.Padding(6);
             this.TODOreq_TileButton.Name = "TODOreq_TileButton";
-            this.TODOreq_TileButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TODOreq_TileButton.Size = new System.Drawing.Size(150, 317);
             this.TODOreq_TileButton.TabIndex = 48;
             this.TODOreq_TileButton.Tag = this.TODO_reqTab;
@@ -926,5 +946,6 @@ namespace OpsMoi.User_Interfaces
         private BrightIdeasSoftware.OLVColumn ChkPnt_name_Column;
         private BrightIdeasSoftware.OLVColumn ChkPnt_date_Column;
         private System.Windows.Forms.Button TODOs_AddChkPnt_Button;
+        private System.Windows.Forms.Button TODOs_DelChkPnt_Button;
     }
 }

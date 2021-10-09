@@ -148,7 +148,7 @@ namespace OpsMoi.User_Interfaces
                             Bounds = e.CellBounds,
                             Value = DateTime.Parse(e.Value.ToString()),
                             Checked = true,
-                            CustomFormat = "dd MMMM yyyy",
+                            CustomFormat = "dddd, dd-MMMM-yyyy -- hh:mm tt",
                             Format = DateTimePickerFormat.Custom,
                             ShowUpDown = true
                         };
@@ -166,6 +166,21 @@ namespace OpsMoi.User_Interfaces
                 Chk_Date = DateTime.Now
             });
             HM_Manager.Update_OLV(temp_Checks, Todos_chkpoint_list_Objectlistview);
+        }
+
+        private void TODO_Datetimepicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (TODO_done_date_Datetimepicker.Checked && TODO_done_date_Datetimepicker.Value > TODO_start_date_Datetimepicker.Value) 
+                TODO_duration_Textbox.Text = TODO_done_date_Datetimepicker.Value.Subtract(TODO_start_date_Datetimepicker.Value).TotalMinutes.ToString();
+        }
+
+        private void Todos_chkpoint_list_Objectlistview_SelectionChanged(object sender, EventArgs e) => TODOs_DelChkPnt_Button.Enabled = Todos_chkpoint_list_Objectlistview.SelectedObjects != null;
+
+        private void TODOs_DelChkPnt_Button_Click(object sender, EventArgs e)
+        {
+            HM_Manager.Update_OLV
+                (Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().Where(chkpnt => !Todos_chkpoint_list_Objectlistview.SelectedObjects.Contains(chkpnt)).ToList()
+                , Todos_chkpoint_list_Objectlistview);
         }
     }
 }

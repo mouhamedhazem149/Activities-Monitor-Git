@@ -66,7 +66,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_dueto_Textbox = new ModdedControls.ModdedTextBox();
             this.TODO_duefrom_Textbox = new ModdedControls.ModdedTextBox();
             this.TODO_reqTab = new System.Windows.Forms.TabPage();
-            this.History_Groupbox = new System.Windows.Forms.GroupBox();
+            this.TodoReq_Groupbox = new System.Windows.Forms.GroupBox();
             this.TODO_SearchButton = new System.Windows.Forms.Button();
             this.TODO_To_Adj_Label = new System.Windows.Forms.Label();
             this.TODO_From_Adj_Label = new System.Windows.Forms.Label();
@@ -76,10 +76,19 @@ namespace OpsMoi.User_Interfaces
             this.ReqTODO_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.categoryTODO_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.finalTODO_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.Bills_Tab = new System.Windows.Forms.TabPage();
+            this.Timeline_Tab = new System.Windows.Forms.TabPage();
+            this.Timeline_Groupbox = new System.Windows.Forms.GroupBox();
+            this.Timeline_Panel = new System.Windows.Forms.Panel();
+            this.Todo_Timeline_Control = new MaterialWinforms.Controls.MaterialTimeline();
+            this.Comment_Label = new System.Windows.Forms.Label();
+            this.Timeline_Button = new System.Windows.Forms.Button();
+            this.Timeline_To_Adj_Label = new System.Windows.Forms.Label();
+            this.Timeline_From_Adj_Label = new System.Windows.Forms.Label();
+            this.Timeline_To_DateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.Timeline_From_DateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.TileButtons_Panel = new System.Windows.Forms.Panel();
             this.TODOreq_TileButton = new ns1.BunifuTileButton();
-            this.Bills_TileButton = new ns1.BunifuTileButton();
+            this.Timeline_TileButton = new ns1.BunifuTileButton();
             this.SidePanel1 = new System.Windows.Forms.Panel();
             this.TODOmanage_TileButton = new ns1.BunifuTileButton();
             this.todos_Tabcontrol.SuspendLayout();
@@ -87,8 +96,11 @@ namespace OpsMoi.User_Interfaces
             this.AddTodo_Groupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Todos_chkpoint_list_Objectlistview)).BeginInit();
             this.TODO_reqTab.SuspendLayout();
-            this.History_Groupbox.SuspendLayout();
+            this.TodoReq_Groupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reqTODO_Objectlistview)).BeginInit();
+            this.Timeline_Tab.SuspendLayout();
+            this.Timeline_Groupbox.SuspendLayout();
+            this.Timeline_Panel.SuspendLayout();
             this.TileButtons_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,7 +108,7 @@ namespace OpsMoi.User_Interfaces
             // 
             this.todos_Tabcontrol.Controls.Add(this.TODO_manageTab);
             this.todos_Tabcontrol.Controls.Add(this.TODO_reqTab);
-            this.todos_Tabcontrol.Controls.Add(this.Bills_Tab);
+            this.todos_Tabcontrol.Controls.Add(this.Timeline_Tab);
             this.todos_Tabcontrol.ItemSize = new System.Drawing.Size(0, 1);
             this.todos_Tabcontrol.Location = new System.Drawing.Point(152, 1);
             this.todos_Tabcontrol.Multiline = true;
@@ -238,6 +250,7 @@ namespace OpsMoi.User_Interfaces
             this.Todos_chkpoint_list_Objectlistview.UseFiltering = true;
             this.Todos_chkpoint_list_Objectlistview.UseHotControls = false;
             this.Todos_chkpoint_list_Objectlistview.View = System.Windows.Forms.View.Details;
+            this.Todos_chkpoint_list_Objectlistview.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.Todos_chkpoint_list_Objectlistview_CellEditFinishing);
             this.Todos_chkpoint_list_Objectlistview.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.Todos_chkpoint_list_Objectlistview_CellEditStarting);
             this.Todos_chkpoint_list_Objectlistview.SelectionChanged += new System.EventHandler(this.Todos_chkpoint_list_Objectlistview_SelectionChanged);
             // 
@@ -627,7 +640,7 @@ namespace OpsMoi.User_Interfaces
             // 
             // TODO_reqTab
             // 
-            this.TODO_reqTab.Controls.Add(this.History_Groupbox);
+            this.TODO_reqTab.Controls.Add(this.TodoReq_Groupbox);
             this.TODO_reqTab.Location = new System.Drawing.Point(4, 5);
             this.TODO_reqTab.Name = "TODO_reqTab";
             this.TODO_reqTab.Padding = new System.Windows.Forms.Padding(3);
@@ -636,24 +649,24 @@ namespace OpsMoi.User_Interfaces
             this.TODO_reqTab.Text = "المهام المطلوبة";
             this.TODO_reqTab.UseVisualStyleBackColor = true;
             // 
-            // History_Groupbox
+            // TodoReq_Groupbox
             // 
-            this.History_Groupbox.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.History_Groupbox.Controls.Add(this.TODO_SearchButton);
-            this.History_Groupbox.Controls.Add(this.TODO_To_Adj_Label);
-            this.History_Groupbox.Controls.Add(this.TODO_From_Adj_Label);
-            this.History_Groupbox.Controls.Add(this.TODO_To_Datetimepicker);
-            this.History_Groupbox.Controls.Add(this.TODO_From_Datetimepicker);
-            this.History_Groupbox.Controls.Add(this.reqTODO_Objectlistview);
-            this.History_Groupbox.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.History_Groupbox.ForeColor = System.Drawing.Color.DarkRed;
-            this.History_Groupbox.Location = new System.Drawing.Point(6, 6);
-            this.History_Groupbox.Name = "History_Groupbox";
-            this.History_Groupbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.History_Groupbox.Size = new System.Drawing.Size(1503, 879);
-            this.History_Groupbox.TabIndex = 11;
-            this.History_Groupbox.TabStop = false;
-            this.History_Groupbox.Text = "تاريخ العمليات";
+            this.TodoReq_Groupbox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.TodoReq_Groupbox.Controls.Add(this.TODO_SearchButton);
+            this.TodoReq_Groupbox.Controls.Add(this.TODO_To_Adj_Label);
+            this.TodoReq_Groupbox.Controls.Add(this.TODO_From_Adj_Label);
+            this.TodoReq_Groupbox.Controls.Add(this.TODO_To_Datetimepicker);
+            this.TodoReq_Groupbox.Controls.Add(this.TODO_From_Datetimepicker);
+            this.TodoReq_Groupbox.Controls.Add(this.reqTODO_Objectlistview);
+            this.TodoReq_Groupbox.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TodoReq_Groupbox.ForeColor = System.Drawing.Color.DarkRed;
+            this.TodoReq_Groupbox.Location = new System.Drawing.Point(6, 6);
+            this.TodoReq_Groupbox.Name = "TodoReq_Groupbox";
+            this.TodoReq_Groupbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.TodoReq_Groupbox.Size = new System.Drawing.Size(1503, 879);
+            this.TodoReq_Groupbox.TabIndex = 11;
+            this.TodoReq_Groupbox.TabStop = false;
+            this.TodoReq_Groupbox.Text = "تاريخ العمليات";
             // 
             // TODO_SearchButton
             // 
@@ -772,20 +785,128 @@ namespace OpsMoi.User_Interfaces
             this.finalTODO_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.finalTODO_Column.Width = 250;
             // 
-            // Bills_Tab
+            // Timeline_Tab
             // 
-            this.Bills_Tab.Location = new System.Drawing.Point(4, 5);
-            this.Bills_Tab.Name = "Bills_Tab";
-            this.Bills_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.Bills_Tab.Size = new System.Drawing.Size(1754, 941);
-            this.Bills_Tab.TabIndex = 2;
-            this.Bills_Tab.Text = "الطلبات (تجهيزات - نقل أجهزة)";
-            this.Bills_Tab.UseVisualStyleBackColor = true;
+            this.Timeline_Tab.Controls.Add(this.Timeline_Groupbox);
+            this.Timeline_Tab.Location = new System.Drawing.Point(4, 5);
+            this.Timeline_Tab.Name = "Timeline_Tab";
+            this.Timeline_Tab.Padding = new System.Windows.Forms.Padding(3);
+            this.Timeline_Tab.Size = new System.Drawing.Size(1754, 941);
+            this.Timeline_Tab.TabIndex = 2;
+            this.Timeline_Tab.Text = "خط زمني";
+            this.Timeline_Tab.UseVisualStyleBackColor = true;
+            // 
+            // Timeline_Groupbox
+            // 
+            this.Timeline_Groupbox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.Timeline_Groupbox.Controls.Add(this.Timeline_Panel);
+            this.Timeline_Groupbox.Controls.Add(this.Comment_Label);
+            this.Timeline_Groupbox.Controls.Add(this.Timeline_Button);
+            this.Timeline_Groupbox.Controls.Add(this.Timeline_To_Adj_Label);
+            this.Timeline_Groupbox.Controls.Add(this.Timeline_From_Adj_Label);
+            this.Timeline_Groupbox.Controls.Add(this.Timeline_To_DateTimePicker);
+            this.Timeline_Groupbox.Controls.Add(this.Timeline_From_DateTimePicker);
+            this.Timeline_Groupbox.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Timeline_Groupbox.ForeColor = System.Drawing.Color.DarkRed;
+            this.Timeline_Groupbox.Location = new System.Drawing.Point(8, 6);
+            this.Timeline_Groupbox.Name = "Timeline_Groupbox";
+            this.Timeline_Groupbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Timeline_Groupbox.Size = new System.Drawing.Size(1503, 879);
+            this.Timeline_Groupbox.TabIndex = 12;
+            this.Timeline_Groupbox.TabStop = false;
+            this.Timeline_Groupbox.Text = "خط زمني";
+            // 
+            // Timeline_Panel
+            // 
+            this.Timeline_Panel.AutoScroll = true;
+            this.Timeline_Panel.Controls.Add(this.Todo_Timeline_Control);
+            this.Timeline_Panel.Location = new System.Drawing.Point(6, 141);
+            this.Timeline_Panel.Name = "Timeline_Panel";
+            this.Timeline_Panel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Timeline_Panel.Size = new System.Drawing.Size(1491, 732);
+            this.Timeline_Panel.TabIndex = 21;
+            // 
+            // Todo_Timeline_Control
+            // 
+            this.Todo_Timeline_Control.AufsteigendSortieren = false;
+            this.Todo_Timeline_Control.Depth = 0;
+            this.Todo_Timeline_Control.Location = new System.Drawing.Point(13, 7);
+            this.Todo_Timeline_Control.Name = "Todo_Timeline_Control";
+            this.Todo_Timeline_Control.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Todo_Timeline_Control.Size = new System.Drawing.Size(1450, 716);
+            this.Todo_Timeline_Control.TabIndex = 19;
+            this.Todo_Timeline_Control.Text = "materialTimeline1";
+            // 
+            // Comment_Label
+            // 
+            this.Comment_Label.Font = new System.Drawing.Font("Cairo", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Comment_Label.Location = new System.Drawing.Point(3, 83);
+            this.Comment_Label.Name = "Comment_Label";
+            this.Comment_Label.Size = new System.Drawing.Size(1494, 54);
+            this.Comment_Label.TabIndex = 20;
+            this.Comment_Label.Text = "label1";
+            this.Comment_Label.Visible = false;
+            // 
+            // Timeline_Button
+            // 
+            this.Timeline_Button.ForeColor = System.Drawing.Color.Black;
+            this.Timeline_Button.Location = new System.Drawing.Point(17, 35);
+            this.Timeline_Button.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Timeline_Button.Name = "Timeline_Button";
+            this.Timeline_Button.Size = new System.Drawing.Size(146, 46);
+            this.Timeline_Button.TabIndex = 18;
+            this.Timeline_Button.Text = "بحث";
+            this.Timeline_Button.UseVisualStyleBackColor = true;
+            this.Timeline_Button.Click += new System.EventHandler(this.Timeline_Button_Click);
+            // 
+            // Timeline_To_Adj_Label
+            // 
+            this.Timeline_To_Adj_Label.AutoSize = true;
+            this.Timeline_To_Adj_Label.Font = new System.Drawing.Font("El Messiri", 12F);
+            this.Timeline_To_Adj_Label.Location = new System.Drawing.Point(555, 40);
+            this.Timeline_To_Adj_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Timeline_To_Adj_Label.Name = "Timeline_To_Adj_Label";
+            this.Timeline_To_Adj_Label.Size = new System.Drawing.Size(43, 31);
+            this.Timeline_To_Adj_Label.TabIndex = 17;
+            this.Timeline_To_Adj_Label.Text = "إلى";
+            // 
+            // Timeline_From_Adj_Label
+            // 
+            this.Timeline_From_Adj_Label.AutoSize = true;
+            this.Timeline_From_Adj_Label.Font = new System.Drawing.Font("El Messiri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Timeline_From_Adj_Label.Location = new System.Drawing.Point(990, 40);
+            this.Timeline_From_Adj_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Timeline_From_Adj_Label.Name = "Timeline_From_Adj_Label";
+            this.Timeline_From_Adj_Label.Size = new System.Drawing.Size(38, 31);
+            this.Timeline_From_Adj_Label.TabIndex = 16;
+            this.Timeline_From_Adj_Label.Text = "من";
+            // 
+            // Timeline_To_DateTimePicker
+            // 
+            this.Timeline_To_DateTimePicker.CalendarFont = new System.Drawing.Font("El Messiri", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Timeline_To_DateTimePicker.Font = new System.Drawing.Font("El Messiri", 12F);
+            this.Timeline_To_DateTimePicker.Location = new System.Drawing.Point(195, 36);
+            this.Timeline_To_DateTimePicker.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Timeline_To_DateTimePicker.Name = "Timeline_To_DateTimePicker";
+            this.Timeline_To_DateTimePicker.Size = new System.Drawing.Size(355, 39);
+            this.Timeline_To_DateTimePicker.TabIndex = 15;
+            this.Timeline_To_DateTimePicker.Value = new System.DateTime(2021, 10, 13, 0, 0, 0, 0);
+            // 
+            // Timeline_From_DateTimePicker
+            // 
+            this.Timeline_From_DateTimePicker.CalendarFont = new System.Drawing.Font("El Messiri", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Timeline_From_DateTimePicker.Font = new System.Drawing.Font("El Messiri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Timeline_From_DateTimePicker.Location = new System.Drawing.Point(630, 36);
+            this.Timeline_From_DateTimePicker.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Timeline_From_DateTimePicker.Name = "Timeline_From_DateTimePicker";
+            this.Timeline_From_DateTimePicker.Size = new System.Drawing.Size(355, 39);
+            this.Timeline_From_DateTimePicker.TabIndex = 14;
+            this.Timeline_From_DateTimePicker.Value = new System.DateTime(2021, 10, 13, 0, 0, 0, 0);
             // 
             // TileButtons_Panel
             // 
             this.TileButtons_Panel.Controls.Add(this.TODOreq_TileButton);
-            this.TileButtons_Panel.Controls.Add(this.Bills_TileButton);
+            this.TileButtons_Panel.Controls.Add(this.Timeline_TileButton);
             this.TileButtons_Panel.Controls.Add(this.SidePanel1);
             this.TileButtons_Panel.Controls.Add(this.TODOmanage_TileButton);
             this.TileButtons_Panel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -815,29 +936,28 @@ namespace OpsMoi.User_Interfaces
             this.TODOreq_TileButton.Tag = this.TODO_reqTab;
             this.TODOreq_TileButton.Click += new System.EventHandler(this.TileButton_Click);
             // 
-            // Bills_TileButton
+            // Timeline_TileButton
             // 
-            this.Bills_TileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Bills_TileButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Bills_TileButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.Bills_TileButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Bills_TileButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Bills_TileButton.Font = new System.Drawing.Font("A Nasr", 13F);
-            this.Bills_TileButton.ForeColor = System.Drawing.Color.Black;
-            this.Bills_TileButton.Image = null;
-            this.Bills_TileButton.ImagePosition = 0;
-            this.Bills_TileButton.ImageZoom = 0;
-            this.Bills_TileButton.LabelPosition = 160;
-            this.Bills_TileButton.LabelText = "مدفوعات";
-            this.Bills_TileButton.Location = new System.Drawing.Point(0, 634);
-            this.Bills_TileButton.Margin = new System.Windows.Forms.Padding(49, 57, 49, 57);
-            this.Bills_TileButton.Name = "Bills_TileButton";
-            this.Bills_TileButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Bills_TileButton.Size = new System.Drawing.Size(150, 316);
-            this.Bills_TileButton.TabIndex = 47;
-            this.Bills_TileButton.Tag = this.Bills_Tab;
-            this.Bills_TileButton.Visible = false;
-            this.Bills_TileButton.Click += new System.EventHandler(this.TileButton_Click);
+            this.Timeline_TileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.Timeline_TileButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.Timeline_TileButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.Timeline_TileButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Timeline_TileButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Timeline_TileButton.Font = new System.Drawing.Font("A Nasr", 13F);
+            this.Timeline_TileButton.ForeColor = System.Drawing.Color.Black;
+            this.Timeline_TileButton.Image = null;
+            this.Timeline_TileButton.ImagePosition = 0;
+            this.Timeline_TileButton.ImageZoom = 0;
+            this.Timeline_TileButton.LabelPosition = 160;
+            this.Timeline_TileButton.LabelText = "خط زمني";
+            this.Timeline_TileButton.Location = new System.Drawing.Point(0, 634);
+            this.Timeline_TileButton.Margin = new System.Windows.Forms.Padding(49, 57, 49, 57);
+            this.Timeline_TileButton.Name = "Timeline_TileButton";
+            this.Timeline_TileButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Timeline_TileButton.Size = new System.Drawing.Size(150, 316);
+            this.Timeline_TileButton.TabIndex = 47;
+            this.Timeline_TileButton.Tag = this.Timeline_Tab;
+            this.Timeline_TileButton.Click += new System.EventHandler(this.TileButton_Click);
             // 
             // SidePanel1
             // 
@@ -886,9 +1006,13 @@ namespace OpsMoi.User_Interfaces
             this.AddTodo_Groupbox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Todos_chkpoint_list_Objectlistview)).EndInit();
             this.TODO_reqTab.ResumeLayout(false);
-            this.History_Groupbox.ResumeLayout(false);
-            this.History_Groupbox.PerformLayout();
+            this.TodoReq_Groupbox.ResumeLayout(false);
+            this.TodoReq_Groupbox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reqTODO_Objectlistview)).EndInit();
+            this.Timeline_Tab.ResumeLayout(false);
+            this.Timeline_Groupbox.ResumeLayout(false);
+            this.Timeline_Groupbox.PerformLayout();
+            this.Timeline_Panel.ResumeLayout(false);
             this.TileButtons_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -898,10 +1022,10 @@ namespace OpsMoi.User_Interfaces
         private TransparentTabControl todos_Tabcontrol;
         private System.Windows.Forms.TabPage TODO_manageTab;
         private System.Windows.Forms.TabPage TODO_reqTab;
-        private System.Windows.Forms.TabPage Bills_Tab;
+        private System.Windows.Forms.TabPage Timeline_Tab;
         private System.Windows.Forms.Panel TileButtons_Panel;
         private ns1.BunifuTileButton TODOreq_TileButton;
-        private ns1.BunifuTileButton Bills_TileButton;
+        private ns1.BunifuTileButton Timeline_TileButton;
         private System.Windows.Forms.Panel SidePanel1;
         private ns1.BunifuTileButton TODOmanage_TileButton;
         private System.Windows.Forms.GroupBox AddTodo_Groupbox;
@@ -930,7 +1054,7 @@ namespace OpsMoi.User_Interfaces
         private ModdedTextBox TODO_id_Textbox;
         private System.Windows.Forms.DateTimePicker TODO_start_date_Datetimepicker;
         private System.Windows.Forms.Label TODO_start_date_Adj_Label;
-        private System.Windows.Forms.GroupBox History_Groupbox;
+        private System.Windows.Forms.GroupBox TodoReq_Groupbox;
         private System.Windows.Forms.Button TODO_SearchButton;
         private System.Windows.Forms.Label TODO_To_Adj_Label;
         private System.Windows.Forms.Label TODO_From_Adj_Label;
@@ -947,5 +1071,14 @@ namespace OpsMoi.User_Interfaces
         private BrightIdeasSoftware.OLVColumn ChkPnt_date_Column;
         private System.Windows.Forms.Button TODOs_AddChkPnt_Button;
         private System.Windows.Forms.Button TODOs_DelChkPnt_Button;
+        private System.Windows.Forms.GroupBox Timeline_Groupbox;
+        private System.Windows.Forms.Button Timeline_Button;
+        private System.Windows.Forms.Label Timeline_To_Adj_Label;
+        private System.Windows.Forms.Label Timeline_From_Adj_Label;
+        private System.Windows.Forms.DateTimePicker Timeline_To_DateTimePicker;
+        private System.Windows.Forms.DateTimePicker Timeline_From_DateTimePicker;
+        private MaterialWinforms.Controls.MaterialTimeline Todo_Timeline_Control;
+        private System.Windows.Forms.Label Comment_Label;
+        private System.Windows.Forms.Panel Timeline_Panel;
     }
 }

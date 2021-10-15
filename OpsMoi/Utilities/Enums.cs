@@ -133,5 +133,7 @@ namespace OpsMoi.Utilities
             }
             throw new ArgumentOutOfRangeException("name");
         }
+        public static Enum GetValueFromName(Enum type, string name) => 
+            type.GetType().GetEnumValues().OfType<Enum>().Where(eNum => eNum.GetDisplayName() == name).FirstOrDefault();
     }
 }

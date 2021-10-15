@@ -35,8 +35,14 @@ namespace OpsMoi
                     break;*/
             }
         }
+
         public Color mainColor = Color.Transparent;
         public Color secColor = Color.Transparent;
+        public static string tabPageName = "tabPage";
+        public static string todoPageName = "تبويب المهام رقم:";
+        public static string fncPageName = "تبويب المالية رقم:";
+        public static string notPageName = "تبويب الملاحظات رقم:";
+
         public void LoadUserInfo()
         {
             HM_Manager.ScaleFontforLabel(CompanyName_Label, Program.companyName);
@@ -62,7 +68,7 @@ namespace OpsMoi
         {
             HM_Manager.UpdateConfiguration(new List<Tuple<string, string>> { new Tuple<string, string>("primaryColor", $"{mClr.R},{mClr.G},{mClr.B}"), new Tuple<string, string>("secondaryColor", $"{sClr.R},{sClr.G},{sClr.B}") });
             mainColor = mClr; secColor = sClr;
-            MainForm_Handler.ChangeColor(mClr, sClr, new List<Control>() { Header_Panel }, new List<Control>() { TileButtons_Panel }, new List<Control>() { SidePanel1, UserInterfaces_Panel }, TileButtons_Panel.Controls.OfType<ns1.BunifuTileButton>().ToList());
+            MainForm_Handler.ChangeColor(mClr, sClr, new List<Control>() { Header_Panel }, new List<Control>() { TileButtons_Panel }, new List<Control>() { SidePanel1, UserInterfaces_Panel,ActiveTabs_Tabcontrol }, TileButtons_Panel.Controls.OfType<ns1.BunifuTileButton>().ToList());
         }
         private void Shutdown_ImageButton_Click(object sender, EventArgs e) => MainForm_Handler.HandleExit();
 
@@ -71,36 +77,74 @@ namespace OpsMoi
         private void Todo_TileButton_Click(object sender, EventArgs e)
         {
             PreapreToAdd(Todo_TileButton);
+            foreach (Control ctrl in UserInterfaces_Panel.Controls) ctrl.Dispose();
             UsrCtrl_Todo item;
             if (sender is UsrCtrl_Todo) item = sender as UsrCtrl_Todo;
             else item = sender is Enums.todoArgument ? prepareTodoUsrCtrl((sender as Enums.todoArgument?).Value) : prepareTodoUsrCtrl(Enums.todoArgument.none);
-            EndAdd(item);
+
+            ActiveTabs_Tabcontrol.TabPages.Add($"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count + 1}",$"{todoPageName} {ActiveTabs_Tabcontrol.TabPages.OfType<TabPage>().Where(p => p.Text.Contains(todoPageName)).Count() + 1}" );
+            ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].Controls.Add(item);
+            item.Dock = DockStyle.Fill;
+            ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].BackColor = secColor;
+            ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            ActiveTabs_Tabcontrol.PageColor = ActiveTabs_Tabcontrol.HeaderBackgroundColor = ActiveTabs_Tabcontrol.BorderColor = secColor;
+            ActiveTabs_Tabcontrol.Visible = true;
+            ActiveTabs_Tabcontrol.SelectedIndex = ActiveTabs_Tabcontrol.TabCount - 1;
+            TileButtons_Panel.Enabled = true;
+
+            //EndAdd(item);
         }
         private UsrCtrl_Todo prepareTodoUsrCtrl(Enums.todoArgument Arg, int? e_ID = null) => new UsrCtrl_Todo(Arg, e_ID);
 
         private void Finances_TileButton_Click(object sender, EventArgs e)
         {
             PreapreToAdd(Finances_TileButton);
+            foreach (Control ctrl in UserInterfaces_Panel.Controls) ctrl.Dispose();
             UsrCtrl_Finances item;
             if (sender is UsrCtrl_Finances) item = sender as UsrCtrl_Finances;
-            else item = sender is Enums.financeArgument? prepareFNCUsrCtrl((sender as Enums.financeArgument?).Value): prepareFNCUsrCtrl(Enums.financeArgument.none);
-            EndAdd(item);
+            else item = sender is Enums.financeArgument ? prepareFNCUsrCtrl((sender as Enums.financeArgument?).Value) : prepareFNCUsrCtrl(Enums.financeArgument.none);
+            ActiveTabs_Tabcontrol.TabPages.Add($"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count + 1}", $"{fncPageName} {ActiveTabs_Tabcontrol.TabPages.OfType<TabPage>().Where(p => p.Text.Contains(fncPageName)).Count() + 1}");
+            ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].Controls.Add(item);
+            item.Dock = DockStyle.Fill;
+            ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].BackColor = secColor;
+            ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            ActiveTabs_Tabcontrol.Width = 1685;
+            ActiveTabs_Tabcontrol.PageColor = ActiveTabs_Tabcontrol.HeaderBackgroundColor = ActiveTabs_Tabcontrol.BorderColor = secColor;
+            ActiveTabs_Tabcontrol.Visible = true;
+            ActiveTabs_Tabcontrol.SelectedIndex = ActiveTabs_Tabcontrol.TabCount - 1;
+            TileButtons_Panel.Enabled = true;
+            //EndAdd(item);
         }
         private UsrCtrl_Finances prepareFNCUsrCtrl(Enums.financeArgument LoadArg, int? e_ID = null) => new UsrCtrl_Finances(LoadArg, e_ID);
 
         private void Notes_TileButton_Click(object sender, EventArgs e)
         {
             PreapreToAdd(Notes_TileButton);
+            foreach (Control ctrl in UserInterfaces_Panel.Controls) ctrl.Dispose();
             UsrCtrl_Notes item;
             if (sender is UsrCtrl_Notes) item = sender as UsrCtrl_Notes;
             else item = sender is Enums.noteArgument? prepareNotUsrCtrl((sender as Enums.noteArgument?).Value): prepareNotUsrCtrl(Enums.noteArgument.none);
-            EndAdd(item);
+
+            ActiveTabs_Tabcontrol.TabPages.Add($"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count + 1}",$"{notPageName} {ActiveTabs_Tabcontrol.TabPages.OfType<TabPage>().Where(p => p.Text.Contains(notPageName)).Count() + 1}");
+            ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].Controls.Add(item);
+            item.Dock = DockStyle.Fill;
+            ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].BackColor = secColor;
+            ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            ActiveTabs_Tabcontrol.Width = 1685;
+            ActiveTabs_Tabcontrol.PageColor = ActiveTabs_Tabcontrol.HeaderBackgroundColor = ActiveTabs_Tabcontrol.BorderColor = secColor;
+            ActiveTabs_Tabcontrol.Visible = true;
+            ActiveTabs_Tabcontrol.SelectedIndex = ActiveTabs_Tabcontrol.TabCount - 1;
+            TileButtons_Panel.Enabled = true;
+            //EndAdd(item);
         }
+
+
         private UsrCtrl_Notes prepareNotUsrCtrl(Enums.noteArgument LoadArg, string MethodArg = null) => new UsrCtrl_Notes(LoadArg, MethodArg);
 
         private void Reports_TileButton_Click(object sender, EventArgs e)
         {
             PreapreToAdd(Reports_TileButton);
+            ActiveTabs_Tabcontrol.Visible = false;
             UsrCtrl_Reports item;
             if (sender is UsrCtrl_Reports) item = sender as UsrCtrl_Reports;
             else item = sender is Enums.report_tabState ? prepareRportUsrCtrl((sender as Enums.report_tabState?).Value) : prepareRportUsrCtrl(Enums.report_tabState.مهام);
@@ -111,7 +155,9 @@ namespace OpsMoi
         private void Settings_TileButton_Click(object sender, EventArgs e) 
         {
             PreapreToAdd(Settings_TileButton);
-            foreach (Control ctrl in UserInterfaces_Panel.Controls) ctrl.Dispose();
+            ActiveTabs_Tabcontrol.Visible = false;
+            foreach (Control ctrl in UserInterfaces_Panel.Controls)  ctrl.Dispose();
+            foreach (TabPage pag in ActiveTabs_Tabcontrol.TabPages) pag.Dispose();
             UsrCtrl_Settings item;
             if (sender is UsrCtrl_Settings) item = sender as UsrCtrl_Settings;
             else item = prepareSettingsUsrCtrl();
@@ -123,6 +169,7 @@ namespace OpsMoi
         void Tilebutton_Click_Handle<T>(BunifuTileButton btn) where T : Control, new()
         {
             PreapreToAdd(btn);
+            ActiveTabs_Tabcontrol.Visible = false;
             foreach (Control ctrl in UserInterfaces_Panel.Controls) ctrl.Dispose();
             T item = new T(); EndAdd(item);
         }
@@ -145,5 +192,7 @@ namespace OpsMoi
         private void Refresh_Button_Click(object sender, EventArgs e) => HM_Manager.SyncAll(Program.WorkingForm, Screenshot_Label);
 
         private void Minimize_ImageButton_Click(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
+
+        private void ActiveTabs_Tabcontrol_DoubleClick(object sender, EventArgs e) { if (ActiveTabs_Tabcontrol.SelectedTab != null) ActiveTabs_Tabcontrol.TabPages.Remove(ActiveTabs_Tabcontrol.SelectedTab); }
     }
 }

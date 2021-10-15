@@ -29,6 +29,7 @@
        
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsrCtrl_Reports));
             this.Reports_Tabcontrol = new TransparentTabControl();
             this.Todos_Tabpage = new System.Windows.Forms.TabPage();
             this.Todos_Objectlistview = new BrightIdeasSoftware.ObjectListView();
@@ -78,14 +79,17 @@
             this.Reports_Search_Button = new System.Windows.Forms.Button();
             this.Reports_Label = new System.Windows.Forms.Label();
             this.TileButtons_Panel = new System.Windows.Forms.Panel();
-            this.Financial_Tilebutton = new ns1.BunifuTileButton();
-            this.Notes_TileButton = new ns1.BunifuTileButton();
             this.SidePanel1 = new System.Windows.Forms.Panel();
             this.Todos_TileButton = new ns1.BunifuTileButton();
+            this.Financial_Tilebutton = new ns1.BunifuTileButton();
+            this.Notes_TileButton = new ns1.BunifuTileButton();
             this.Reports_PieChart = new LiveCharts.WinForms.PieChart();
             this.Reports_Edit_Button = new System.Windows.Forms.Button();
             this.Reports_SaveChanges_Button = new System.Windows.Forms.Button();
             this.Reports_OLV_Label = new System.Windows.Forms.Label();
+            this.Charts_Panel = new System.Windows.Forms.Panel();
+            this.PieChart_Button = new XanderUI.XUIButton();
+            this.ColumnChart_Column = new XanderUI.XUIButton();
             this.Reports_Tabcontrol.SuspendLayout();
             this.Todos_Tabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Todos_Objectlistview)).BeginInit();
@@ -96,6 +100,7 @@
             this.HR_Tabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HR_Objectlistview)).BeginInit();
             this.TileButtons_Panel.SuspendLayout();
+            this.Charts_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Reports_Tabcontrol
@@ -105,11 +110,11 @@
             this.Reports_Tabcontrol.Controls.Add(this.Notes_Tabpage);
             this.Reports_Tabcontrol.Controls.Add(this.HR_Tabpage);
             this.Reports_Tabcontrol.ItemSize = new System.Drawing.Size(0, 1);
-            this.Reports_Tabcontrol.Location = new System.Drawing.Point(149, 414);
+            this.Reports_Tabcontrol.Location = new System.Drawing.Point(149, 56);
             this.Reports_Tabcontrol.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Reports_Tabcontrol.Name = "Reports_Tabcontrol";
             this.Reports_Tabcontrol.SelectedIndex = 0;
-            this.Reports_Tabcontrol.Size = new System.Drawing.Size(1244, 520);
+            this.Reports_Tabcontrol.Size = new System.Drawing.Size(1583, 770);
             this.Reports_Tabcontrol.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.Reports_Tabcontrol.TabIndex = 19;
             this.Reports_Tabcontrol.SelectedIndexChanged += new System.EventHandler(this.Reports_Tabcontrol_SelectedIndexChanged);
@@ -121,7 +126,7 @@
             this.Todos_Tabpage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Todos_Tabpage.Name = "Todos_Tabpage";
             this.Todos_Tabpage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Todos_Tabpage.Size = new System.Drawing.Size(1236, 511);
+            this.Todos_Tabpage.Size = new System.Drawing.Size(1575, 761);
             this.Todos_Tabpage.TabIndex = 0;
             this.Todos_Tabpage.Text = "المهام المطلوبة";
             this.Todos_Tabpage.UseVisualStyleBackColor = true;
@@ -166,7 +171,7 @@
             this.Todos_Objectlistview.RightToLeftLayout = true;
             this.Todos_Objectlistview.ShowCommandMenuOnRightClick = true;
             this.Todos_Objectlistview.ShowFilterMenuOnRightClick = false;
-            this.Todos_Objectlistview.Size = new System.Drawing.Size(1230, 507);
+            this.Todos_Objectlistview.Size = new System.Drawing.Size(1569, 757);
             this.Todos_Objectlistview.SortGroupItemsByPrimaryColumn = false;
             this.Todos_Objectlistview.SpaceBetweenGroups = 5;
             this.Todos_Objectlistview.TabIndex = 0;
@@ -237,21 +242,22 @@
             this.TodosDuedate_Column.AspectName = "due_date";
             this.TodosDuedate_Column.AspectToStringFormat = "{0: dddd, dd MMMM yyyy}";
             this.TodosDuedate_Column.Hideable = false;
-            this.TodosDuedate_Column.MinimumWidth = 200;
+            this.TodosDuedate_Column.MinimumWidth = 250;
             this.TodosDuedate_Column.Tag = "date";
             this.TodosDuedate_Column.Text = "التاريخ النهائي";
             this.TodosDuedate_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TodosDuedate_Column.Width = 200;
+            this.TodosDuedate_Column.Width = 250;
             // 
             // TodosStartdate_Column
             // 
             this.TodosStartdate_Column.AspectName = "start_date";
             this.TodosStartdate_Column.AspectToStringFormat = "{0: dddd, dd MMMM yyyy}";
             this.TodosStartdate_Column.Hideable = false;
-            this.TodosStartdate_Column.MinimumWidth = 200;
+            this.TodosStartdate_Column.MinimumWidth = 250;
+            this.TodosStartdate_Column.Tag = "date";
             this.TodosStartdate_Column.Text = "تاريخ البداية";
             this.TodosStartdate_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TodosStartdate_Column.Width = 200;
+            this.TodosStartdate_Column.Width = 250;
             // 
             // TodosDonedate_Column
             // 
@@ -269,11 +275,11 @@
             this.TodosAddeddate_Column.AspectName = "added_date";
             this.TodosAddeddate_Column.AspectToStringFormat = "{0: dddd, dd MMMM yyyy}";
             this.TodosAddeddate_Column.Hideable = false;
-            this.TodosAddeddate_Column.MinimumWidth = 120;
+            this.TodosAddeddate_Column.MinimumWidth = 250;
             this.TodosAddeddate_Column.Tag = "date";
             this.TodosAddeddate_Column.Text = "تاريخ الإضافة";
             this.TodosAddeddate_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TodosAddeddate_Column.Width = 120;
+            this.TodosAddeddate_Column.Width = 250;
             // 
             // TodosDuration_Column
             // 
@@ -302,7 +308,7 @@
             this.financial_Tabpage.Location = new System.Drawing.Point(4, 5);
             this.financial_Tabpage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.financial_Tabpage.Name = "financial_Tabpage";
-            this.financial_Tabpage.Size = new System.Drawing.Size(1236, 511);
+            this.financial_Tabpage.Size = new System.Drawing.Size(1238, 835);
             this.financial_Tabpage.TabIndex = 2;
             this.financial_Tabpage.Text = "المالية";
             this.financial_Tabpage.UseVisualStyleBackColor = true;
@@ -318,6 +324,7 @@
             this.Finances_Objectlistview.AllColumns.Add(this.FinancialDuedate_Column);
             this.Finances_Objectlistview.AllColumns.Add(this.FinancialDonedate_Column);
             this.Finances_Objectlistview.AllColumns.Add(this.FinancialNotes_Column);
+            this.Finances_Objectlistview.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.DoubleClick;
             this.Finances_Objectlistview.CellEditUseWholeCell = false;
             this.Finances_Objectlistview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.FinanceID_Column,
@@ -341,7 +348,7 @@
             this.Finances_Objectlistview.Name = "Finances_Objectlistview";
             this.Finances_Objectlistview.RightToLeftLayout = true;
             this.Finances_Objectlistview.ShowCommandMenuOnRightClick = true;
-            this.Finances_Objectlistview.Size = new System.Drawing.Size(1236, 511);
+            this.Finances_Objectlistview.Size = new System.Drawing.Size(1238, 835);
             this.Finances_Objectlistview.SortGroupItemsByPrimaryColumn = false;
             this.Finances_Objectlistview.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.Finances_Objectlistview.SpaceBetweenGroups = 5;
@@ -384,7 +391,7 @@
             this.FinanceType_Column.AspectName = "type";
             this.FinanceType_Column.Hideable = false;
             this.FinanceType_Column.MinimumWidth = 200;
-            this.FinanceType_Column.Tag = "string";
+            this.FinanceType_Column.Tag = "enum";
             this.FinanceType_Column.Text = "نوع العملية";
             this.FinanceType_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.FinanceType_Column.Width = 200;
@@ -460,7 +467,7 @@
             this.Notes_Tabpage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Notes_Tabpage.Name = "Notes_Tabpage";
             this.Notes_Tabpage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Notes_Tabpage.Size = new System.Drawing.Size(1236, 511);
+            this.Notes_Tabpage.Size = new System.Drawing.Size(1238, 835);
             this.Notes_Tabpage.TabIndex = 1;
             this.Notes_Tabpage.Text = "الملاحظات";
             this.Notes_Tabpage.UseVisualStyleBackColor = true;
@@ -478,7 +485,7 @@
             this.ReportNOT_Search_Textbox.placeholderColor = System.Drawing.Color.Silver;
             this.ReportNOT_Search_Textbox.placeholderFont = null;
             this.ReportNOT_Search_Textbox.SelectedItem = null;
-            this.ReportNOT_Search_Textbox.Size = new System.Drawing.Size(1230, 36);
+            this.ReportNOT_Search_Textbox.Size = new System.Drawing.Size(1232, 36);
             this.ReportNOT_Search_Textbox.TabIndex = 4;
             this.ReportNOT_Search_Textbox.Text = "كلمة البحث";
             this.ReportNOT_Search_Textbox.Values = null;
@@ -500,7 +507,7 @@
             this.Notes_Objectlistview.Font = new System.Drawing.Font("El Messiri", 10F);
             this.Notes_Objectlistview.FullRowSelect = true;
             this.Notes_Objectlistview.HideSelection = false;
-            this.Notes_Objectlistview.Location = new System.Drawing.Point(3, 43);
+            this.Notes_Objectlistview.Location = new System.Drawing.Point(3, 106);
             this.Notes_Objectlistview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Notes_Objectlistview.Name = "Notes_Objectlistview";
             this.Notes_Objectlistview.RightToLeftLayout = true;
@@ -508,7 +515,7 @@
             this.Notes_Objectlistview.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None;
             this.Notes_Objectlistview.ShowCommandMenuOnRightClick = true;
             this.Notes_Objectlistview.ShowFilterMenuOnRightClick = false;
-            this.Notes_Objectlistview.Size = new System.Drawing.Size(1230, 466);
+            this.Notes_Objectlistview.Size = new System.Drawing.Size(1232, 727);
             this.Notes_Objectlistview.SortGroupItemsByPrimaryColumn = false;
             this.Notes_Objectlistview.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.Notes_Objectlistview.SpaceBetweenGroups = 5;
@@ -548,7 +555,7 @@
             this.HR_Tabpage.Location = new System.Drawing.Point(4, 5);
             this.HR_Tabpage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HR_Tabpage.Name = "HR_Tabpage";
-            this.HR_Tabpage.Size = new System.Drawing.Size(1236, 511);
+            this.HR_Tabpage.Size = new System.Drawing.Size(1238, 835);
             this.HR_Tabpage.TabIndex = 3;
             this.HR_Tabpage.Text = "الموارد بشرية";
             this.HR_Tabpage.UseVisualStyleBackColor = true;
@@ -668,12 +675,13 @@
             // Reports_Chart
             // 
             this.Reports_Chart.BackColor = System.Drawing.Color.White;
+            this.Reports_Chart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Reports_Chart.Font = new System.Drawing.Font("A Nasr", 8F);
             this.Reports_Chart.ForeColor = System.Drawing.Color.White;
-            this.Reports_Chart.Location = new System.Drawing.Point(155, 7);
+            this.Reports_Chart.Location = new System.Drawing.Point(0, 0);
             this.Reports_Chart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Reports_Chart.Name = "Reports_Chart";
-            this.Reports_Chart.Size = new System.Drawing.Size(1240, 370);
+            this.Reports_Chart.Size = new System.Drawing.Size(1580, 670);
             this.Reports_Chart.TabIndex = 20;
             this.Reports_Chart.Text = "cartesianChart1";
             this.Reports_Chart.Visible = false;
@@ -683,7 +691,7 @@
             this.Reports_To_Adj_Label.AutoSize = true;
             this.Reports_To_Adj_Label.Font = new System.Drawing.Font("El Messiri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Reports_To_Adj_Label.ForeColor = System.Drawing.Color.Brown;
-            this.Reports_To_Adj_Label.Location = new System.Drawing.Point(1747, 63);
+            this.Reports_To_Adj_Label.Location = new System.Drawing.Point(1352, 13);
             this.Reports_To_Adj_Label.Name = "Reports_To_Adj_Label";
             this.Reports_To_Adj_Label.Size = new System.Drawing.Size(32, 23);
             this.Reports_To_Adj_Label.TabIndex = 26;
@@ -694,7 +702,7 @@
             this.Reports_From_Adj_Label.AutoSize = true;
             this.Reports_From_Adj_Label.Font = new System.Drawing.Font("El Messiri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Reports_From_Adj_Label.ForeColor = System.Drawing.Color.Brown;
-            this.Reports_From_Adj_Label.Location = new System.Drawing.Point(1747, 14);
+            this.Reports_From_Adj_Label.Location = new System.Drawing.Point(1725, 10);
             this.Reports_From_Adj_Label.Name = "Reports_From_Adj_Label";
             this.Reports_From_Adj_Label.Size = new System.Drawing.Size(28, 23);
             this.Reports_From_Adj_Label.TabIndex = 25;
@@ -704,7 +712,7 @@
             // 
             this.Reports_To_Datetimepicker.CalendarFont = new System.Drawing.Font("El Messiri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Reports_To_Datetimepicker.Font = new System.Drawing.Font("El Messiri", 9F);
-            this.Reports_To_Datetimepicker.Location = new System.Drawing.Point(1412, 59);
+            this.Reports_To_Datetimepicker.Location = new System.Drawing.Point(1017, 9);
             this.Reports_To_Datetimepicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Reports_To_Datetimepicker.Name = "Reports_To_Datetimepicker";
             this.Reports_To_Datetimepicker.Size = new System.Drawing.Size(331, 31);
@@ -716,7 +724,7 @@
             // 
             this.Reports_From_Datetimepicker.CalendarFont = new System.Drawing.Font("El Messiri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Reports_From_Datetimepicker.Font = new System.Drawing.Font("El Messiri", 9F);
-            this.Reports_From_Datetimepicker.Location = new System.Drawing.Point(1412, 11);
+            this.Reports_From_Datetimepicker.Location = new System.Drawing.Point(1390, 7);
             this.Reports_From_Datetimepicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Reports_From_Datetimepicker.Name = "Reports_From_Datetimepicker";
             this.Reports_From_Datetimepicker.Size = new System.Drawing.Size(331, 31);
@@ -729,7 +737,7 @@
             this.Reports_Span_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Reports_Span_Combobox.Font = new System.Drawing.Font("El Messiri", 11F);
             this.Reports_Span_Combobox.FormattingEnabled = true;
-            this.Reports_Span_Combobox.Location = new System.Drawing.Point(1412, 110);
+            this.Reports_Span_Combobox.Location = new System.Drawing.Point(624, 7);
             this.Reports_Span_Combobox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Reports_Span_Combobox.Name = "Reports_Span_Combobox";
             this.Reports_Span_Combobox.Size = new System.Drawing.Size(271, 36);
@@ -740,7 +748,7 @@
             this.Reports_Span_Adj_Label.AutoSize = true;
             this.Reports_Span_Adj_Label.Font = new System.Drawing.Font("El Messiri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Reports_Span_Adj_Label.ForeColor = System.Drawing.Color.Brown;
-            this.Reports_Span_Adj_Label.Location = new System.Drawing.Point(1688, 114);
+            this.Reports_Span_Adj_Label.Location = new System.Drawing.Point(900, 11);
             this.Reports_Span_Adj_Label.Name = "Reports_Span_Adj_Label";
             this.Reports_Span_Adj_Label.Size = new System.Drawing.Size(87, 23);
             this.Reports_Span_Adj_Label.TabIndex = 21;
@@ -753,7 +761,7 @@
             this.Reports_Search_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Reports_Search_Button.Font = new System.Drawing.Font("El Messiri", 10F);
             this.Reports_Search_Button.ForeColor = System.Drawing.Color.Black;
-            this.Reports_Search_Button.Location = new System.Drawing.Point(1412, 210);
+            this.Reports_Search_Button.Location = new System.Drawing.Point(155, 2);
             this.Reports_Search_Button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Reports_Search_Button.Name = "Reports_Search_Button";
             this.Reports_Search_Button.Size = new System.Drawing.Size(112, 44);
@@ -765,25 +773,56 @@
             // Reports_Label
             // 
             this.Reports_Label.ForeColor = System.Drawing.Color.Maroon;
-            this.Reports_Label.Location = new System.Drawing.Point(1535, 155);
+            this.Reports_Label.Location = new System.Drawing.Point(272, 7);
             this.Reports_Label.Name = "Reports_Label";
-            this.Reports_Label.Size = new System.Drawing.Size(237, 120);
+            this.Reports_Label.Size = new System.Drawing.Size(346, 36);
             this.Reports_Label.TabIndex = 36;
             this.Reports_Label.Text = "label15";
             this.Reports_Label.Visible = false;
             // 
             // TileButtons_Panel
             // 
-            this.TileButtons_Panel.Controls.Add(this.Financial_Tilebutton);
-            this.TileButtons_Panel.Controls.Add(this.Notes_TileButton);
             this.TileButtons_Panel.Controls.Add(this.SidePanel1);
             this.TileButtons_Panel.Controls.Add(this.Todos_TileButton);
+            this.TileButtons_Panel.Controls.Add(this.Financial_Tilebutton);
+            this.TileButtons_Panel.Controls.Add(this.Notes_TileButton);
             this.TileButtons_Panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.TileButtons_Panel.Location = new System.Drawing.Point(0, 0);
             this.TileButtons_Panel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TileButtons_Panel.Name = "TileButtons_Panel";
             this.TileButtons_Panel.Size = new System.Drawing.Size(147, 950);
             this.TileButtons_Panel.TabIndex = 63;
+            // 
+            // SidePanel1
+            // 
+            this.SidePanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.SidePanel1.Location = new System.Drawing.Point(0, 0);
+            this.SidePanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SidePanel1.Name = "SidePanel1";
+            this.SidePanel1.Size = new System.Drawing.Size(12, 238);
+            this.SidePanel1.TabIndex = 46;
+            // 
+            // Todos_TileButton
+            // 
+            this.Todos_TileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.Todos_TileButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.Todos_TileButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.Todos_TileButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Todos_TileButton.Font = new System.Drawing.Font("A Nasr", 15F);
+            this.Todos_TileButton.ForeColor = System.Drawing.Color.Black;
+            this.Todos_TileButton.Image = null;
+            this.Todos_TileButton.ImagePosition = 0;
+            this.Todos_TileButton.ImageZoom = 0;
+            this.Todos_TileButton.LabelPosition = 135;
+            this.Todos_TileButton.LabelText = "المهام المطلوبة";
+            this.Todos_TileButton.Location = new System.Drawing.Point(3, 1);
+            this.Todos_TileButton.Margin = new System.Windows.Forms.Padding(5);
+            this.Todos_TileButton.Name = "Todos_TileButton";
+            this.Todos_TileButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Todos_TileButton.Size = new System.Drawing.Size(143, 238);
+            this.Todos_TileButton.TabIndex = 45;
+            this.Todos_TileButton.Tag = this.Todos_Tabpage;
+            this.Todos_TileButton.Click += new System.EventHandler(this.TileButtons_Click);
             // 
             // Financial_Tilebutton
             // 
@@ -830,45 +869,15 @@
             this.Notes_TileButton.Tag = this.Notes_Tabpage;
             this.Notes_TileButton.Click += new System.EventHandler(this.TileButtons_Click);
             // 
-            // SidePanel1
-            // 
-            this.SidePanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.SidePanel1.Location = new System.Drawing.Point(0, 0);
-            this.SidePanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.SidePanel1.Name = "SidePanel1";
-            this.SidePanel1.Size = new System.Drawing.Size(12, 238);
-            this.SidePanel1.TabIndex = 46;
-            // 
-            // Todos_TileButton
-            // 
-            this.Todos_TileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Todos_TileButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Todos_TileButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.Todos_TileButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Todos_TileButton.Font = new System.Drawing.Font("A Nasr", 15F);
-            this.Todos_TileButton.ForeColor = System.Drawing.Color.Black;
-            this.Todos_TileButton.Image = null;
-            this.Todos_TileButton.ImagePosition = 0;
-            this.Todos_TileButton.ImageZoom = 0;
-            this.Todos_TileButton.LabelPosition = 135;
-            this.Todos_TileButton.LabelText = "المهام المطلوبة";
-            this.Todos_TileButton.Location = new System.Drawing.Point(3, 0);
-            this.Todos_TileButton.Margin = new System.Windows.Forms.Padding(5);
-            this.Todos_TileButton.Name = "Todos_TileButton";
-            this.Todos_TileButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Todos_TileButton.Size = new System.Drawing.Size(143, 238);
-            this.Todos_TileButton.TabIndex = 45;
-            this.Todos_TileButton.Tag = this.Todos_Tabpage;
-            this.Todos_TileButton.Click += new System.EventHandler(this.TileButtons_Click);
-            // 
             // Reports_PieChart
             // 
+            this.Reports_PieChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Reports_PieChart.Font = new System.Drawing.Font("A Nasr", 8F);
             this.Reports_PieChart.ForeColor = System.Drawing.Color.White;
-            this.Reports_PieChart.Location = new System.Drawing.Point(1405, 282);
+            this.Reports_PieChart.Location = new System.Drawing.Point(0, 0);
             this.Reports_PieChart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Reports_PieChart.Name = "Reports_PieChart";
-            this.Reports_PieChart.Size = new System.Drawing.Size(380, 640);
+            this.Reports_PieChart.Size = new System.Drawing.Size(1580, 670);
             this.Reports_PieChart.TabIndex = 64;
             this.Reports_PieChart.Text = "pieChart1";
             this.Reports_PieChart.Visible = false;
@@ -880,7 +889,7 @@
             this.Reports_Edit_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Reports_Edit_Button.Font = new System.Drawing.Font("El Messiri", 10.8F);
             this.Reports_Edit_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.Reports_Edit_Button.Location = new System.Drawing.Point(407, 379);
+            this.Reports_Edit_Button.Location = new System.Drawing.Point(1486, 834);
             this.Reports_Edit_Button.Name = "Reports_Edit_Button";
             this.Reports_Edit_Button.Size = new System.Drawing.Size(248, 35);
             this.Reports_Edit_Button.TabIndex = 65;
@@ -895,9 +904,9 @@
             this.Reports_SaveChanges_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Reports_SaveChanges_Button.Font = new System.Drawing.Font("El Messiri", 10.8F);
             this.Reports_SaveChanges_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Reports_SaveChanges_Button.Location = new System.Drawing.Point(164, 379);
+            this.Reports_SaveChanges_Button.Location = new System.Drawing.Point(1232, 834);
             this.Reports_SaveChanges_Button.Name = "Reports_SaveChanges_Button";
-            this.Reports_SaveChanges_Button.Size = new System.Drawing.Size(220, 35);
+            this.Reports_SaveChanges_Button.Size = new System.Drawing.Size(248, 35);
             this.Reports_SaveChanges_Button.TabIndex = 66;
             this.Reports_SaveChanges_Button.Text = "حفظ التغييرات";
             this.Reports_SaveChanges_Button.UseVisualStyleBackColor = false;
@@ -907,32 +916,87 @@
             // 
             this.Reports_OLV_Label.Font = new System.Drawing.Font("Cairo SemiBold", 7F, System.Drawing.FontStyle.Bold);
             this.Reports_OLV_Label.ForeColor = System.Drawing.Color.Maroon;
-            this.Reports_OLV_Label.Location = new System.Drawing.Point(661, 383);
+            this.Reports_OLV_Label.Location = new System.Drawing.Point(773, 836);
             this.Reports_OLV_Label.Name = "Reports_OLV_Label";
-            this.Reports_OLV_Label.Size = new System.Drawing.Size(725, 29);
+            this.Reports_OLV_Label.Size = new System.Drawing.Size(453, 30);
             this.Reports_OLV_Label.TabIndex = 67;
             this.Reports_OLV_Label.Text = "label15";
             this.Reports_OLV_Label.Visible = false;
+            // 
+            // Charts_Panel
+            // 
+            this.Charts_Panel.Controls.Add(this.Reports_Chart);
+            this.Charts_Panel.Controls.Add(this.Reports_PieChart);
+            this.Charts_Panel.Location = new System.Drawing.Point(151, 158);
+            this.Charts_Panel.Name = "Charts_Panel";
+            this.Charts_Panel.Size = new System.Drawing.Size(1580, 670);
+            this.Charts_Panel.TabIndex = 68;
+            this.Charts_Panel.Visible = false;
+            // 
+            // PieChart_Button
+            // 
+            this.PieChart_Button.BackgroundColor = System.Drawing.Color.White;
+            this.PieChart_Button.ButtonImage = global::OpsMoi.Properties.Resources.piechart;
+            this.PieChart_Button.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
+            this.PieChart_Button.ButtonText = "";
+            this.PieChart_Button.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.PieChart_Button.ClickTextColor = System.Drawing.Color.DodgerBlue;
+            this.PieChart_Button.CornerRadius = 5;
+            this.PieChart_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.PieChart_Button.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.PieChart_Button.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.PieChart_Button.HoverTextColor = System.Drawing.Color.DodgerBlue;
+            this.PieChart_Button.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
+            this.PieChart_Button.Location = new System.Drawing.Point(235, 833);
+            this.PieChart_Button.Name = "PieChart_Button";
+            this.PieChart_Button.Size = new System.Drawing.Size(80, 70);
+            this.PieChart_Button.TabIndex = 71;
+            this.PieChart_Button.TextColor = System.Drawing.Color.Black;
+            this.PieChart_Button.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.PieChart_Button.Click += new System.EventHandler(this.PieChart_Button_Click);
+            // 
+            // ColumnChart_Column
+            // 
+            this.ColumnChart_Column.BackgroundColor = System.Drawing.Color.White;
+            this.ColumnChart_Column.ButtonImage = ((System.Drawing.Image)(resources.GetObject("ColumnChart_Column.ButtonImage")));
+            this.ColumnChart_Column.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
+            this.ColumnChart_Column.ButtonText = "";
+            this.ColumnChart_Column.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.ColumnChart_Column.ClickTextColor = System.Drawing.Color.DodgerBlue;
+            this.ColumnChart_Column.CornerRadius = 5;
+            this.ColumnChart_Column.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.ColumnChart_Column.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.ColumnChart_Column.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.ColumnChart_Column.HoverTextColor = System.Drawing.Color.DodgerBlue;
+            this.ColumnChart_Column.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
+            this.ColumnChart_Column.Location = new System.Drawing.Point(149, 834);
+            this.ColumnChart_Column.Name = "ColumnChart_Column";
+            this.ColumnChart_Column.Size = new System.Drawing.Size(80, 70);
+            this.ColumnChart_Column.TabIndex = 72;
+            this.ColumnChart_Column.TextColor = System.Drawing.Color.Black;
+            this.ColumnChart_Column.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.ColumnChart_Column.Click += new System.EventHandler(this.ColumnChart_Column_Click);
             // 
             // UsrCtrl_Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.Charts_Panel);
+            this.Controls.Add(this.Reports_From_Datetimepicker);
             this.Controls.Add(this.Reports_OLV_Label);
-            this.Controls.Add(this.Reports_Edit_Button);
-            this.Controls.Add(this.Reports_SaveChanges_Button);
-            this.Controls.Add(this.Reports_PieChart);
-            this.Controls.Add(this.TileButtons_Panel);
+            this.Controls.Add(this.Reports_Span_Adj_Label);
+            this.Controls.Add(this.Reports_Span_Combobox);
+            this.Controls.Add(this.Reports_To_Datetimepicker);
+            this.Controls.Add(this.Reports_From_Adj_Label);
+            this.Controls.Add(this.Reports_To_Adj_Label);
             this.Controls.Add(this.Reports_Label);
             this.Controls.Add(this.Reports_Search_Button);
-            this.Controls.Add(this.Reports_To_Adj_Label);
-            this.Controls.Add(this.Reports_From_Adj_Label);
-            this.Controls.Add(this.Reports_To_Datetimepicker);
-            this.Controls.Add(this.Reports_From_Datetimepicker);
-            this.Controls.Add(this.Reports_Span_Combobox);
-            this.Controls.Add(this.Reports_Span_Adj_Label);
-            this.Controls.Add(this.Reports_Chart);
+            this.Controls.Add(this.ColumnChart_Column);
+            this.Controls.Add(this.PieChart_Button);
+            this.Controls.Add(this.Reports_Edit_Button);
+            this.Controls.Add(this.Reports_SaveChanges_Button);
+            this.Controls.Add(this.TileButtons_Panel);
             this.Controls.Add(this.Reports_Tabcontrol);
             this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -950,6 +1014,7 @@
             this.HR_Tabpage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.HR_Objectlistview)).EndInit();
             this.TileButtons_Panel.ResumeLayout(false);
+            this.Charts_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1012,5 +1077,8 @@
         private System.Windows.Forms.Button Reports_SaveChanges_Button;
         private System.Windows.Forms.Label Reports_OLV_Label;
         private BrightIdeasSoftware.OLVColumn TodosStartdate_Column;
+        private System.Windows.Forms.Panel Charts_Panel;
+        private XanderUI.XUIButton PieChart_Button;
+        private XanderUI.XUIButton ColumnChart_Column;
     }
 }

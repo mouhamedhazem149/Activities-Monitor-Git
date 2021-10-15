@@ -60,6 +60,10 @@ namespace OpsMoi.User_Interfaces
         
         public DateTime req_From { get { return TODO_From_Datetimepicker.Value; } }
         public DateTime req_To { get { return TODO_To_Datetimepicker.Value; } }
+        public DateTime timeline_From { get { return Timeline_From_DateTimePicker.Value; } }
+        public DateTime timeline_To { get { return Timeline_To_DateTimePicker.Value; } }
+
+
         private List<Control> editControls { get { return new List<Control> { TODO_due_date_Datetimepicker,TODO_due_date_Adj_Label,TODO_done_date_Datetimepicker,TODO_done_date_Adj_Label,TODO_duration_Textbox,TODO_duration_Adj_Label,TODO_duration_value_Label }; } }
 
         public void Sync()
@@ -162,8 +166,8 @@ namespace OpsMoi.User_Interfaces
             List<Checkpoint> temp_Checks = Todos_chkpoint_list_Objectlistview.Objects != null ? Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().ToList(): new List<Checkpoint>();
             temp_Checks.Add(new Checkpoint()
             {
-                index = temp_Checks.Count > 0 ? temp_Checks.Select(p => p.index).Max() + 1: 1,
-                Chk_Date = DateTime.Now
+                index = temp_Checks.Count > 0 ? temp_Checks.Select(p => p.index).Max() + 1 : 1,
+                Chk_Date = TODO_done_date_Datetimepicker.Checked ? TODO_start_date_Datetimepicker.Value : DateTime.Now
             });
             HM_Manager.Update_OLV(temp_Checks, Todos_chkpoint_list_Objectlistview);
         }
@@ -172,6 +176,12 @@ namespace OpsMoi.User_Interfaces
         {
             if (TODO_done_date_Datetimepicker.Checked && TODO_done_date_Datetimepicker.Value > TODO_start_date_Datetimepicker.Value) 
                 TODO_duration_Textbox.Text = TODO_done_date_Datetimepicker.Value.Subtract(TODO_start_date_Datetimepicker.Value).TotalMinutes.ToString();
+            if (TODO_done_date_Datetimepicker.Checked && Todos_chkpoint_list_Objectlistview.Objects != null && Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().Any(chk => chk.Chk_Date > TODO_done_date_Datetimepicker.Value))
+            {
+                HM_Manager.Fail_addition(AddTODO_Label, "لا يمكن أن يكون تاريخ النقطة الفاصلة أكبر من تاريخ الإنهاء");
+                TODO_done_date_Datetimepicker.Value = Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().Max(p => p.Chk_Date);
+            }
+            else HM_Manager.Success_addition(AddTODO_Label, "");
         }
 
         private void Todos_chkpoint_list_Objectlistview_SelectionChanged(object sender, EventArgs e) => TODOs_DelChkPnt_Button.Enabled = Todos_chkpoint_list_Objectlistview.SelectedObjects != null;
@@ -181,6 +191,44 @@ namespace OpsMoi.User_Interfaces
             HM_Manager.Update_OLV
                 (Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().Where(chkpnt => !Todos_chkpoint_list_Objectlistview.SelectedObjects.Contains(chkpnt)).ToList()
                 , Todos_chkpoint_list_Objectlistview);
+        }
+
+
+        private void Todos_chkpoint_list_Objectlistview_CellEditFinishing(object sender, BrightIdeasSoftware.CellEditEventArgs e)
+        {
+            if (TODO_done_date_Datetimepicker.Checked && e.NewValue is DateTime? && (e.NewValue as DateTime?).Value > TODO_done_date_Datetimepicker.Value)
+            {
+                HM_Manager.Fail_addition(AddTODO_Label, "لا يمكن أن يكون تاريخ النقطة الفاصلة أكبر من تاريخ الإنهاء");
+                e.NewValue = TODO_done_date_Datetimepicker.Value;
+            }
+            else HM_Manager.Success_addition(AddTODO_Label, "");
+        }
+
+        private void Timeline_Button_Click(object sender, EventArgs e)
+        {
+            List<Timeline> timeLines = new List<Timeline>();
+            int totalCount = 0; double totalDuration = 0;
+            Todo_Timeline_Control.Entrys.Clear();
+            Todo_Timeline_Control.Visible = false;
+            foreach (var todo in Reports_Processor.TodosList(timeline_From, timeline_To))
+            {
+                if (todo.done_date.HasValue) Todo_Timeline_Control.Entrys.Add(new MaterialWinforms.Controls.MaterialTimeLineEntry() { Title = todo.todo, AdditionalInfo = todo.category, Time = todo.done_date.Value, UserName = todo.dueto, Text = "" });
+                else Todo_Timeline_Control.Entrys.Add(new MaterialWinforms.Controls.MaterialTimeLineEntry() { Title = todo.todo, AdditionalInfo = todo.category, Time = todo.due_date, UserName = todo.dueto, Text = "غير مكتملة" });
+                totalCount += 1; totalDuration += todo.duration;
+                if (todo.chkpoint_list != null && todo.chkpoint_list.Count > 0)
+                    foreach (Checkpoint chk in todo.chkpoint_list)
+                    {
+                        totalCount += 1; Todo_Timeline_Control.Entrys.Add(new MaterialWinforms.Controls.MaterialTimeLineEntry() { Title = todo.todo, AdditionalInfo = todo.category, Time = chk.Chk_Date, UserName = todo.dueto, Text = chk.ChkName });
+                    }
+                /* if (todo.done_date.HasValue) timeLines.Add(new Timeline() { Category = todo.category, Title = todo.todo, date = todo.done_date.Value, Mission = "", DueTo = todo.dueto });
+                 else timeLines.Add(new Timeline() { Category = todo.category, Title = todo.todo, date = todo.due_date, Mission = "غير مكتملة", DueTo = todo.dueto });
+                 if (todo.chkpoint_list != null && todo.chkpoint_list.Count > 0)
+                     foreach (Checkpoint chk in todo.chkpoint_list)
+                         timeLines.Add(new Timeline() { Category = todo.category, Title = todo.todo, date = chk.Chk_Date, Mission = chk.ChkName, DueTo = todo.dueto });*/
+            }
+            Todo_Timeline_Control.SkinManager.ColorScheme = new MaterialWinforms.ColorScheme(MaterialWinforms.Primary.Amber500, MaterialWinforms.Primary.Amber700, MaterialWinforms.Primary.Amber100, MaterialWinforms.Accent.Amber200, MaterialWinforms.TextShade.WHITE);
+            Todo_Timeline_Control.Visible = true;
+            HM_Manager.Success_addition(Comment_Label, $"إجمالي عدد المهام {totalCount} بإجمالي فترة زمنية: {totalDuration}");
         }
     }
 }

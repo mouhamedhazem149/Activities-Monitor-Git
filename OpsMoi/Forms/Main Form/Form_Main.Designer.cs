@@ -55,6 +55,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.Shutdown_ImageButton = new ns1.BunifuImageButton();
             this.UserInterfaces_Panel = new System.Windows.Forms.Panel();
+            this.ActiveTabs_Tabcontrol = new XanderUI.XUIFlatTab();
             this.TileButtons_Panel.SuspendLayout();
             this.Header_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Minimize_ImageButton)).BeginInit();
@@ -452,6 +453,28 @@
             this.UserInterfaces_Panel.TabIndex = 7;
             this.UserInterfaces_Panel.TabStop = true;
             // 
+            // ActiveTabs_Tabcontrol
+            // 
+            this.ActiveTabs_Tabcontrol.ActiveHeaderColor = System.Drawing.Color.White;
+            this.ActiveTabs_Tabcontrol.ActiveTextColor = System.Drawing.Color.Black;
+            this.ActiveTabs_Tabcontrol.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.ActiveTabs_Tabcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ActiveTabs_Tabcontrol.Font = new System.Drawing.Font("Cairo", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ActiveTabs_Tabcontrol.HeaderBackgroundColor = System.Drawing.Color.White;
+            this.ActiveTabs_Tabcontrol.InActiveHeaderColor = System.Drawing.Color.Silver;
+            this.ActiveTabs_Tabcontrol.InActiveTextColor = System.Drawing.Color.DimGray;
+            this.ActiveTabs_Tabcontrol.ItemSize = new System.Drawing.Size(240, 16);
+            this.ActiveTabs_Tabcontrol.Location = new System.Drawing.Point(0, 139);
+            this.ActiveTabs_Tabcontrol.Name = "ActiveTabs_Tabcontrol";
+            this.ActiveTabs_Tabcontrol.OnlyTopLine = true;
+            this.ActiveTabs_Tabcontrol.PageColor = System.Drawing.Color.LightGray;
+            this.ActiveTabs_Tabcontrol.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ActiveTabs_Tabcontrol.SelectedIndex = 0;
+            this.ActiveTabs_Tabcontrol.Size = new System.Drawing.Size(1685, 941);
+            this.ActiveTabs_Tabcontrol.TabIndex = 82;
+            this.ActiveTabs_Tabcontrol.Visible = false;
+            this.ActiveTabs_Tabcontrol.DoubleClick += new System.EventHandler(this.ActiveTabs_Tabcontrol_DoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -459,6 +482,7 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.ControlBox = false;
+            this.Controls.Add(this.ActiveTabs_Tabcontrol);
             this.Controls.Add(this.UserInterfaces_Panel);
             this.Controls.Add(this.Header_Panel);
             this.Controls.Add(this.TileButtons_Panel);
@@ -509,5 +533,6 @@
         private ns1.BunifuImageButton Refresh_Button;
         private System.Windows.Forms.Label CompanyName_Label;
         private ns1.BunifuImageButton Minimize_ImageButton;
+        private XanderUI.XUIFlatTab ActiveTabs_Tabcontrol;
     }
 }

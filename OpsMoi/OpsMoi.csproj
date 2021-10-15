@@ -60,6 +60,10 @@
     <Reference Include="LiveCharts.Wpf">
       <HintPath>F:\packages\livecharts.wpf\0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialWinforms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MaterialWinforms.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.IO.RecyclableMemoryStream">
       <HintPath>F:\packages\microsoft.io.recyclablememorystream\1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
     </Reference>
@@ -173,6 +177,7 @@
     <Compile Include="Models\ICustomControl.cs" />
     <Compile Include="Models\Notes.cs" />
     <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\Timeline.cs" />
     <Compile Include="Models\Todos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -300,6 +305,9 @@
     <None Include="Resources\aircondition.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\ArbFONTS-Cairo-Regular-1.ttf" />
+    <None Include="Resources\ArbFONTS-Cairo-Regular.ttf" />
+    <None Include="Resources\ArbFONTS-Cairo-SemiBold-1.ttf" />
     <None Include="Resources\dashboard.png" />
   </ItemGroup>
   <ItemGroup>
@@ -355,6 +363,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="avatar.ico" />
+    <None Include="Resources\piechart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="F:\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('F:\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />

@@ -18,7 +18,6 @@ namespace OpsMoi.User_Interfaces.Reports
             if (from > to) { HM_Manager.Fail_addition(Msglabel, "برجاء ادخال تاريخ صالح"); return; }
             List<DateTime> dateList = getDateList(from, to, span);
             PrepareChart(chart, dateList);
-            List<int> valus = new List<int>();
             LiveCharts.SeriesCollection collect = new SeriesCollection();
             switch (state)
             {
@@ -68,19 +67,6 @@ namespace OpsMoi.User_Interfaces.Reports
                     collect.Add(new LineSeries() { Title = "عدد العمليات الكلي", Values = new ChartValues<int>(totalCount) });
                     break;
                 case Enums.report_tabState.ملاحظات:
-                    /*List<int> incomingValus = new List<int>(chart.AxisX.Count);
-                    List<int> outgoingValus = new List<int>(chart.AxisX.Count);
-                    valus = new List<int>(chart.AxisX.Count);
-                    for (int x = 0; x < dateList.Count - 1; x++)
-                    {
-                        List<Storage_Item_Struct> temp = storageList(dateList[x], dateList[x + 1]);
-                        incomingValus.Add(temp.Select(strg => strg.incoming).Sum());
-                        outgoingValus.Add(temp.Select(strg => strg.outgoing).Sum());
-                        valus.Add(outgoingValus[x] - incomingValus[x]);
-                    }
-                    collect.Add(new LineSeries() { Title = "أجهزة واردة للمخازن", Values = new ChartValues<int>(incomingValus) });
-                    collect.Add(new LineSeries() { Title = "توريد أجهزة للعملاء", Values = new ChartValues<int>(outgoingValus) });
-                    collect.Add(new LineSeries() { Title = "صافي الحركات (المورد للعملاء - الوارد)", Values = new ChartValues<int>(valus) });*/
                     break;
             }
             chart.Series = collect;

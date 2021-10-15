@@ -127,8 +127,8 @@ namespace OpsMoi
             this.Todos_TablelayoutPanel.ColumnCount = 5;
             this.Todos_TablelayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.Todos_TablelayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.Todos_TablelayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.Todos_TablelayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.Todos_TablelayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.032349F));
+            this.Todos_TablelayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.91139F));
             this.Todos_TablelayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.Todos_TablelayoutPanel.Controls.Add(this.TODOs_AverageDuration_Label, 3, 5);
             this.Todos_TablelayoutPanel.Controls.Add(this.TODOs_MonthDuration_Label, 3, 4);
@@ -163,11 +163,11 @@ namespace OpsMoi
             // 
             this.Todos_TablelayoutPanel.SetColumnSpan(this.TODOs_AverageDuration_Label, 2);
             this.TODOs_AverageDuration_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TODOs_AverageDuration_Label.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TODOs_AverageDuration_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.TODOs_AverageDuration_Label.ForeColor = System.Drawing.Color.Firebrick;
             this.TODOs_AverageDuration_Label.Location = new System.Drawing.Point(3, 280);
             this.TODOs_AverageDuration_Label.Name = "TODOs_AverageDuration_Label";
-            this.TODOs_AverageDuration_Label.Size = new System.Drawing.Size(279, 56);
+            this.TODOs_AverageDuration_Label.Size = new System.Drawing.Size(371, 56);
             this.TODOs_AverageDuration_Label.TabIndex = 27;
             this.TODOs_AverageDuration_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -175,11 +175,11 @@ namespace OpsMoi
             // 
             this.Todos_TablelayoutPanel.SetColumnSpan(this.TODOs_MonthDuration_Label, 2);
             this.TODOs_MonthDuration_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TODOs_MonthDuration_Label.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TODOs_MonthDuration_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.TODOs_MonthDuration_Label.ForeColor = System.Drawing.Color.Firebrick;
             this.TODOs_MonthDuration_Label.Location = new System.Drawing.Point(3, 224);
             this.TODOs_MonthDuration_Label.Name = "TODOs_MonthDuration_Label";
-            this.TODOs_MonthDuration_Label.Size = new System.Drawing.Size(279, 56);
+            this.TODOs_MonthDuration_Label.Size = new System.Drawing.Size(371, 56);
             this.TODOs_MonthDuration_Label.TabIndex = 26;
             this.TODOs_MonthDuration_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -187,11 +187,11 @@ namespace OpsMoi
             // 
             this.Todos_TablelayoutPanel.SetColumnSpan(this.TODOs_TotalDuration_Label, 2);
             this.TODOs_TotalDuration_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TODOs_TotalDuration_Label.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TODOs_TotalDuration_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.TODOs_TotalDuration_Label.ForeColor = System.Drawing.Color.Firebrick;
             this.TODOs_TotalDuration_Label.Location = new System.Drawing.Point(3, 168);
             this.TODOs_TotalDuration_Label.Name = "TODOs_TotalDuration_Label";
-            this.TODOs_TotalDuration_Label.Size = new System.Drawing.Size(279, 56);
+            this.TODOs_TotalDuration_Label.Size = new System.Drawing.Size(371, 56);
             this.TODOs_TotalDuration_Label.TabIndex = 25;
             this.TODOs_TotalDuration_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -199,11 +199,11 @@ namespace OpsMoi
             // 
             this.Todos_TablelayoutPanel.SetColumnSpan(this.TODOs_AverageCount_Label, 2);
             this.TODOs_AverageCount_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TODOs_AverageCount_Label.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TODOs_AverageCount_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.TODOs_AverageCount_Label.ForeColor = System.Drawing.Color.Firebrick;
             this.TODOs_AverageCount_Label.Location = new System.Drawing.Point(3, 112);
             this.TODOs_AverageCount_Label.Name = "TODOs_AverageCount_Label";
-            this.TODOs_AverageCount_Label.Size = new System.Drawing.Size(279, 56);
+            this.TODOs_AverageCount_Label.Size = new System.Drawing.Size(371, 56);
             this.TODOs_AverageCount_Label.TabIndex = 24;
             this.TODOs_AverageCount_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -211,11 +211,11 @@ namespace OpsMoi
             // 
             this.Todos_TablelayoutPanel.SetColumnSpan(this.TODOs_MonthCount_Label, 2);
             this.TODOs_MonthCount_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TODOs_MonthCount_Label.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TODOs_MonthCount_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.TODOs_MonthCount_Label.ForeColor = System.Drawing.Color.Firebrick;
             this.TODOs_MonthCount_Label.Location = new System.Drawing.Point(3, 56);
             this.TODOs_MonthCount_Label.Name = "TODOs_MonthCount_Label";
-            this.TODOs_MonthCount_Label.Size = new System.Drawing.Size(279, 56);
+            this.TODOs_MonthCount_Label.Size = new System.Drawing.Size(371, 56);
             this.TODOs_MonthCount_Label.TabIndex = 23;
             this.TODOs_MonthCount_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -223,11 +223,11 @@ namespace OpsMoi
             // 
             this.Todos_TablelayoutPanel.SetColumnSpan(this.TODOs_TotalCount_Label, 2);
             this.TODOs_TotalCount_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TODOs_TotalCount_Label.Font = new System.Drawing.Font("Cairo", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TODOs_TotalCount_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.TODOs_TotalCount_Label.ForeColor = System.Drawing.Color.Firebrick;
             this.TODOs_TotalCount_Label.Location = new System.Drawing.Point(3, 0);
             this.TODOs_TotalCount_Label.Name = "TODOs_TotalCount_Label";
-            this.TODOs_TotalCount_Label.Size = new System.Drawing.Size(279, 56);
+            this.TODOs_TotalCount_Label.Size = new System.Drawing.Size(371, 56);
             this.TODOs_TotalCount_Label.TabIndex = 22;
             this.TODOs_TotalCount_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -235,11 +235,11 @@ namespace OpsMoi
             // 
             this.Todos_TablelayoutPanel.SetColumnSpan(this.label11, 3);
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Font = new System.Drawing.Font("A Nasr", 20.2F);
+            this.label11.Font = new System.Drawing.Font("A Nasr", 16F);
             this.label11.ForeColor = System.Drawing.Color.Firebrick;
-            this.label11.Location = new System.Drawing.Point(288, 280);
+            this.label11.Location = new System.Drawing.Point(380, 280);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(420, 56);
+            this.label11.Size = new System.Drawing.Size(328, 56);
             this.label11.TabIndex = 21;
             this.label11.Text = "متوسط المدة المستغرقة/الشهر";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -248,11 +248,11 @@ namespace OpsMoi
             // 
             this.Todos_TablelayoutPanel.SetColumnSpan(this.label8, 3);
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Font = new System.Drawing.Font("A Nasr", 20.2F);
+            this.label8.Font = new System.Drawing.Font("A Nasr", 16F);
             this.label8.ForeColor = System.Drawing.Color.Firebrick;
-            this.label8.Location = new System.Drawing.Point(288, 224);
+            this.label8.Location = new System.Drawing.Point(380, 224);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(420, 56);
+            this.label8.Size = new System.Drawing.Size(328, 56);
             this.label8.TabIndex = 20;
             this.label8.Text = "إجمالي المدة المستغرقة هذا الشهر";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -297,11 +297,11 @@ namespace OpsMoi
             // 
             this.Todos_TablelayoutPanel.SetColumnSpan(this.label1, 3);
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("A Nasr", 22.2F);
+            this.label1.Font = new System.Drawing.Font("A Nasr", 16F);
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
-            this.label1.Location = new System.Drawing.Point(288, 168);
+            this.label1.Location = new System.Drawing.Point(380, 168);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(420, 56);
+            this.label1.Size = new System.Drawing.Size(328, 56);
             this.label1.TabIndex = 17;
             this.label1.Text = "إجمالي المدة المستغرقة";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -310,11 +310,11 @@ namespace OpsMoi
             // 
             this.Todos_TablelayoutPanel.SetColumnSpan(this.label2, 3);
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("A Nasr", 22.2F);
+            this.label2.Font = new System.Drawing.Font("A Nasr", 16F);
             this.label2.ForeColor = System.Drawing.Color.Firebrick;
-            this.label2.Location = new System.Drawing.Point(288, 112);
+            this.label2.Location = new System.Drawing.Point(380, 112);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(420, 56);
+            this.label2.Size = new System.Drawing.Size(328, 56);
             this.label2.TabIndex = 18;
             this.label2.Text = "متوسط عدد المهام/الشهر";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -323,11 +323,11 @@ namespace OpsMoi
             // 
             this.Todos_TablelayoutPanel.SetColumnSpan(this.label3, 3);
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("A Nasr", 20.2F);
+            this.label3.Font = new System.Drawing.Font("A Nasr", 16F);
             this.label3.ForeColor = System.Drawing.Color.Firebrick;
-            this.label3.Location = new System.Drawing.Point(288, 56);
+            this.label3.Location = new System.Drawing.Point(380, 56);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(420, 56);
+            this.label3.Size = new System.Drawing.Size(328, 56);
             this.label3.TabIndex = 19;
             this.label3.Text = "عدد المهام المطلوبة هذا الشهر";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -336,11 +336,11 @@ namespace OpsMoi
             // 
             this.Todos_TablelayoutPanel.SetColumnSpan(this.label4, 3);
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("A Nasr", 22.2F);
+            this.label4.Font = new System.Drawing.Font("A Nasr", 16F);
             this.label4.ForeColor = System.Drawing.Color.Firebrick;
-            this.label4.Location = new System.Drawing.Point(288, 0);
+            this.label4.Location = new System.Drawing.Point(380, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(420, 56);
+            this.label4.Size = new System.Drawing.Size(328, 56);
             this.label4.TabIndex = 16;
             this.label4.Text = "إجمالي عدد المهام المطلوبة";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

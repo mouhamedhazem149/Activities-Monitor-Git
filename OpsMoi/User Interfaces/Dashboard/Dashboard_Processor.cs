@@ -28,9 +28,9 @@ namespace OpsMoi.User_Interfaces.Dashboard
             Dashboard_Elements.Add(Enums.DashboardField.عدد_المهام_المطلوبة_هذا_الشهر, monthTodos.Count.ToString());
             double Months_Span = Math.Max(Program.Todos_List.Select(tdo => tdo.due_date).Max().Subtract(Program.Todos_List.Select(tdo => tdo.due_date).Min()).TotalDays / 30, 1);
             Dashboard_Elements.Add(Enums.DashboardField.متوسط_عدد_المهام_الشهر, (int.Parse(Dashboard_Elements[Enums.DashboardField.إجمالي_عدد_المهام_المطلوبة]) / Months_Span).ToString("F2"));
-            Dashboard_Elements.Add(Enums.DashboardField.إجمالي_المدة_المستغرقة, Program.Todos_List.Select(tdo => tdo.duration).Sum().ToString("F2"));
-            Dashboard_Elements.Add(Enums.DashboardField.إجمالي_المدة_المستغرقة_هذا_الشهر, monthTodos.Select(tdo => tdo.duration).Sum().ToString("F2"));
-            Dashboard_Elements.Add(Enums.DashboardField.متوسط_المدة_المستغرقة_الشهر, (double.Parse(Dashboard_Elements[Enums.DashboardField.إجمالي_المدة_المستغرقة_هذا_الشهر]) / Months_Span).ToString("F2"));
+            Dashboard_Elements.Add(Enums.DashboardField.إجمالي_المدة_المستغرقة, HM_Manager.MinutesToDuration(Program.Todos_List.Select(tdo => tdo.duration).Sum()));
+            Dashboard_Elements.Add(Enums.DashboardField.إجمالي_المدة_المستغرقة_هذا_الشهر, HM_Manager.MinutesToDuration(monthTodos.Select(tdo => tdo.duration).Sum()));
+            Dashboard_Elements.Add(Enums.DashboardField.متوسط_المدة_المستغرقة_الشهر, HM_Manager.MinutesToDuration(monthTodos.Select(tdo => tdo.duration).Sum() / Months_Span));
         }
         private static void Load_FNC_Section()
         {

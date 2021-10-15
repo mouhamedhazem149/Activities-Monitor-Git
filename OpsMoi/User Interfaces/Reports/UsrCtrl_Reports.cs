@@ -55,6 +55,7 @@ namespace OpsMoi.User_Interfaces
             };
             FinancialDuedate_Column.GroupKeyGetter = delegate (object rowObject) { return DateTime.Parse(((Finances)rowObject).due_date.ToString("d")); };
             FinancialDonedate_Column.GroupKeyToTitleConverter = FinancialDuedate_Column.GroupKeyToTitleConverter = delegate (object groupKey) { return ((DateTime)groupKey).ToString("dddd, dd MMMM,yyyy", System.Globalization.CultureInfo.GetCultureInfo("ar-EG")); };
+            FinanceType_Column.AspectToStringConverter = delegate (object rowObject) { return (rowObject as Enum).GetDisplayName(); };
         }
         public void InitializeByResolution()
         {
@@ -65,7 +66,8 @@ namespace OpsMoi.User_Interfaces
                     break;
             }
         }
-
+        
+        private CreateGroupsEventArgs pieGroupArgs = null;
         private Enums.report_tabState _state;
         public Enums.Span Span { get { Enums.Span _span; Enum.TryParse(Reports_Span_Combobox.Text.ToString(), out _span); return _span; } }
         public DateTime _From { get { return Reports_From_Datetimepicker.Value; } }
@@ -74,7 +76,6 @@ namespace OpsMoi.User_Interfaces
         public void Sync()
         {
             Listviews_UPDATE();
-            Reports_Processor.UpdateLiveChart(Reports_Chart, _state, _From, _To, Span, Reports_Label);
         }
         private void TileButtons_Click(object sender, EventArgs e) =>
             HM_Manager.TabButtonsClick(Reports_Tabcontrol, TileButtons_Panel, sender as BunifuTileButton, SidePanel1, delegate () { Sync(); });
@@ -112,10 +113,9 @@ namespace OpsMoi.User_Interfaces
                 _state = (Enums.report_tabState)tempIndex;
             }
         }
-
         private void Finances_Objectlistview_AboutToCreateGroups(object sender, CreateGroupsEventArgs e)
         {
-            UpdatePie(e);
+            pieGroupArgs = e;
             foreach (OLVGroup group in e.Groups)
             {
                 int count = group.Items.Count;
@@ -130,7 +130,7 @@ namespace OpsMoi.User_Interfaces
         }
         private void TODOs_Objectlistview_AboutToCreateGroups(object sender, CreateGroupsEventArgs e)
         {
-            UpdatePie(e);
+            pieGroupArgs = e;
             foreach (OLVGroup group in e.Groups)
             {
                 int count = group.Items.Count;
@@ -145,7 +145,7 @@ namespace OpsMoi.User_Interfaces
         }
         private void Notes_Objectlistview_AboutToCreateGroups(object sender, CreateGroupsEventArgs e)
         {
-            UpdatePie(e);
+            pieGroupArgs = e;
             foreach (OLVGroup group in e.Groups)
             {
                 int count = group.Items.Count;
@@ -169,14 +169,17 @@ namespace OpsMoi.User_Interfaces
         }
         private void Finances_Objectlistview_FormatRow(object sender, FormatRowEventArgs e)
         {
+            if ((e.Model as Finances).type == Enums.financeType.تحويل_أرصدة) e.Item.BackColor = Color.Gray;
             if ((e.Model as Finances).done_date.HasValue)
                 if ((e.Model as Finances).due <= (e.Model as Finances).paid)
+                {
                     if ((e.Model as Finances).type == Enums.financeType.دخل) e.Item.BackColor = Color.Green;
-                    else e.Item.BackColor = Color.DeepPink;
+                    else if ((e.Model as Finances).type == Enums.financeType.مدفوعات) e.Item.BackColor = Color.HotPink;
+                }
                 else
                 {
                     if ((e.Model as Finances).type == Enums.financeType.دخل) e.Item.BackColor = Color.LimeGreen;
-                    else e.Item.BackColor = Color.LightPink;
+                    else if ((e.Model as Finances).type == Enums.financeType.مدفوعات) e.Item.BackColor = Color.LightPink;
                 }
             else if ((e.Model as Finances).due_date > DateTime.Now) e.Item.BackColor = Color.Yellow;
             else e.Item.BackColor = Color.Red;
@@ -184,7 +187,6 @@ namespace OpsMoi.User_Interfaces
 
         private void Objectlistview_CellEditStarting(object sender, CellEditEventArgs e)
         {
-            DateTime temp;
             if (e.Column.Tag != null)
                 switch (e.Column.Tag.ToString())
                 {
@@ -192,8 +194,8 @@ namespace OpsMoi.User_Interfaces
                         DateTimePicker dtpThis = new DateTimePicker()
                         {
                             Bounds = e.CellBounds,
-                            Value = DateTime.TryParse(e.Value.ToString(), out temp) ? DateTime.Parse(e.Value.ToString()) : DateTime.Now,
-                            Checked = DateTime.TryParse(e.Value.ToString(), out temp),
+                            Value = e.Value is DateTime ? (e.Value as DateTime?).Value : DateTime.Now,
+                            Checked = e.Value is DateTime,
                             CustomFormat = "dddd, dd-MMMM-yyyy -- hh:mm tt",
                             Format = DateTimePickerFormat.Custom,
                             ShowCheckBox = true,
@@ -223,16 +225,34 @@ namespace OpsMoi.User_Interfaces
                         };
                         e.Control = nud;
                         break;
+                    case "enum":
+                        ComboBox cmboBx = new ComboBox()
+                        {
+                            Bounds = e.CellBounds,
+                            DropDownStyle = ComboBoxStyle.DropDownList,
+                            AutoCompleteSource = AutoCompleteSource.CustomSource,
+                            DataSource = Enum.GetValues(e.Value.GetType()).OfType<Enum>().Select(enm => enm.GetDisplayName()).ToList(),
+                            FormattingEnabled = true
+                        };
+                        e.Control = cmboBx;
+                        break;
                 }
         }
 
         private void Objectlistview_CellEditFinishing(object sender, CellEditEventArgs e)
         {
             if (e.Column.Tag != null)
-                if (e.Column.Tag.ToString() == "date_nullable")
-                    if (((DateTimePicker)e.Control).Checked == false)
-                        e.NewValue = null;
-                    else e.NewValue = (e.NewValue as DateTime?).Value.ToString();
+                switch (e.Column.Tag.ToString())
+                {
+                    case "date_nullable":
+                        if (((DateTimePicker)e.Control).Checked == false)
+                            e.NewValue = null;
+                        else e.NewValue = (e.NewValue as DateTime?).Value.ToString();
+                        break;
+                    case "enum":
+                        e.NewValue = Enums.GetValueFromName(e.Value as Enum, e.NewValue.ToString());
+                        break;
+                }
         }
 
         private void Reports_Edit_Button_Click(object sender, EventArgs e)
@@ -285,6 +305,28 @@ namespace OpsMoi.User_Interfaces
                         , Reports_OLV_Label, "", Color.White, old, true);
                     }
                     break;
+            }
+        }
+
+        private void PieChart_Button_Click(object sender, EventArgs e)
+        {
+            if (Reports_PieChart.Visible) Charts_Panel.Visible = Reports_PieChart.Visible = false;
+            else
+            {
+                Reports_Chart.Visible = false;
+                if (pieGroupArgs != null) UpdatePie(pieGroupArgs);
+                Charts_Panel.Visible = Reports_PieChart.Visible = true;
+            }
+        }
+
+        private void ColumnChart_Column_Click(object sender, EventArgs e)
+        {
+            if (Reports_Chart.Visible) Charts_Panel.Visible = Reports_Chart.Visible = false;
+            else
+            {
+                Reports_PieChart.Visible = false;
+                Reports_Processor.UpdateLiveChart(Reports_Chart, _state, _From, _To, Span, Reports_Label);
+                Charts_Panel.Visible = Reports_Chart.Visible = true;
             }
         }
     }

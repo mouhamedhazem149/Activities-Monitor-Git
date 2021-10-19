@@ -175,7 +175,7 @@ namespace OpsMoi.User_Interfaces
         private void TODO_Datetimepicker_ValueChanged(object sender, EventArgs e)
         {
             if (TODO_done_date_Datetimepicker.Checked && TODO_done_date_Datetimepicker.Value > TODO_start_date_Datetimepicker.Value) 
-                TODO_duration_Textbox.Text = TODO_done_date_Datetimepicker.Value.Subtract(TODO_start_date_Datetimepicker.Value).TotalMinutes.ToString();
+                TODO_duration_Textbox.Text = Math.Ceiling(TODO_done_date_Datetimepicker.Value.Subtract(TODO_start_date_Datetimepicker.Value).TotalMinutes).ToString();
             if (TODO_done_date_Datetimepicker.Checked && Todos_chkpoint_list_Objectlistview.Objects != null && Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().Any(chk => chk.Chk_Date > TODO_done_date_Datetimepicker.Value))
             {
                 HM_Manager.Fail_addition(AddTODO_Label, "لا يمكن أن يكون تاريخ النقطة الفاصلة أكبر من تاريخ الإنهاء");

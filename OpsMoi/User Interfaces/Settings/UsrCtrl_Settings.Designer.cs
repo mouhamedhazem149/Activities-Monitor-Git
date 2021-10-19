@@ -48,30 +48,42 @@ namespace OpsMoi.User_Interfaces
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.Settings_Tabcontnol = new TransparentTabControl();
             this.General_Tabpage = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Restore_Label = new System.Windows.Forms.Label();
+            this.Backup_Button = new System.Windows.Forms.Button();
+            this.Restore_Button = new System.Windows.Forms.Button();
+            this.HR_Tabpage = new System.Windows.Forms.TabPage();
+            this.Login_Tabpage = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.STNG_PasswordChange_Button = new System.Windows.Forms.Button();
             this.Old_Password_Textbox = new ModdedControls.ModdedTextBox();
             this.ChangePassword_Label = new System.Windows.Forms.Label();
             this.RENew_Password_Textbox = new ModdedControls.ModdedTextBox();
             this.New_Password_Textbox = new ModdedControls.ModdedTextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.Restore_Label = new System.Windows.Forms.Label();
-            this.Backup_Button = new System.Windows.Forms.Button();
-            this.Restore_Button = new System.Windows.Forms.Button();
-            this.HR_Tabpage = new System.Windows.Forms.TabPage();
-            this.permissions_Tabpage = new System.Windows.Forms.TabPage();
-            this.Storage_Tabpage = new System.Windows.Forms.TabPage();
+            this.FNC_Tabpage = new System.Windows.Forms.TabPage();
+            this.Wallets_Groupbox = new System.Windows.Forms.GroupBox();
+            this.Wallet_credit_Textbox = new ModdedControls.ModdedTextBox();
+            this.Wallet_credit_Adj_Label = new System.Windows.Forms.Label();
+            this.Wallet_name_Adj_Label = new System.Windows.Forms.Label();
+            this.Modify_Wallet_Button = new System.Windows.Forms.Button();
+            this.Del_Wallet_Button = new System.Windows.Forms.Button();
+            this.Wallet_Label = new System.Windows.Forms.Label();
+            this.Add_Wallet_Button = new System.Windows.Forms.Button();
+            this.Wallet_name_Textbox = new ModdedControls.ModdedTextBox();
             this.TileButtons_Panel = new System.Windows.Forms.Panel();
-            this.General_TileButton = new ns1.BunifuTileButton();
-            this.Permission_Tilebutton = new ns1.BunifuTileButton();
-            this.Storages_TileButton = new ns1.BunifuTileButton();
             this.SidePanel1 = new System.Windows.Forms.Panel();
+            this.General_TileButton = new ns1.BunifuTileButton();
+            this.LoginTilebutton = new ns1.BunifuTileButton();
+            this.Finances_TileButton = new ns1.BunifuTileButton();
             this.HR_TileButton = new ns1.BunifuTileButton();
             this.GeneralSettings_Groupbox.SuspendLayout();
             this.Settings_Tabcontnol.SuspendLayout();
             this.General_Tabpage.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.Login_Tabpage.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.FNC_Tabpage.SuspendLayout();
+            this.Wallets_Groupbox.SuspendLayout();
             this.TileButtons_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -238,8 +250,8 @@ namespace OpsMoi.User_Interfaces
             // 
             this.Settings_Tabcontnol.Controls.Add(this.General_Tabpage);
             this.Settings_Tabcontnol.Controls.Add(this.HR_Tabpage);
-            this.Settings_Tabcontnol.Controls.Add(this.permissions_Tabpage);
-            this.Settings_Tabcontnol.Controls.Add(this.Storage_Tabpage);
+            this.Settings_Tabcontnol.Controls.Add(this.Login_Tabpage);
+            this.Settings_Tabcontnol.Controls.Add(this.FNC_Tabpage);
             this.Settings_Tabcontnol.ItemSize = new System.Drawing.Size(0, 1);
             this.Settings_Tabcontnol.Location = new System.Drawing.Point(147, 1);
             this.Settings_Tabcontnol.Name = "Settings_Tabcontnol";
@@ -251,7 +263,6 @@ namespace OpsMoi.User_Interfaces
             // 
             // General_Tabpage
             // 
-            this.General_Tabpage.Controls.Add(this.groupBox1);
             this.General_Tabpage.Controls.Add(this.groupBox2);
             this.General_Tabpage.Controls.Add(this.GeneralSettings_Groupbox);
             this.General_Tabpage.Location = new System.Drawing.Point(4, 5);
@@ -260,120 +271,6 @@ namespace OpsMoi.User_Interfaces
             this.General_Tabpage.TabIndex = 2;
             this.General_Tabpage.Text = "إعدادات عامة";
             this.General_Tabpage.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.groupBox1.Controls.Add(this.STNG_PasswordChange_Button);
-            this.groupBox1.Controls.Add(this.Old_Password_Textbox);
-            this.groupBox1.Controls.Add(this.ChangePassword_Label);
-            this.groupBox1.Controls.Add(this.RENew_Password_Textbox);
-            this.groupBox1.Controls.Add(this.New_Password_Textbox);
-            this.groupBox1.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.DarkRed;
-            this.groupBox1.Location = new System.Drawing.Point(366, 436);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.groupBox1.Size = new System.Drawing.Size(1262, 306);
-            this.groupBox1.TabIndex = 64;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "إعدادات الدخول";
-            // 
-            // STNG_PasswordChange_Button
-            // 
-            this.STNG_PasswordChange_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.STNG_PasswordChange_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
-            this.STNG_PasswordChange_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.STNG_PasswordChange_Button.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.STNG_PasswordChange_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.STNG_PasswordChange_Button.Location = new System.Drawing.Point(8, 164);
-            this.STNG_PasswordChange_Button.Name = "STNG_PasswordChange_Button";
-            this.STNG_PasswordChange_Button.Size = new System.Drawing.Size(367, 44);
-            this.STNG_PasswordChange_Button.TabIndex = 64;
-            this.STNG_PasswordChange_Button.Text = "تغيير كلمة المرور";
-            this.STNG_PasswordChange_Button.UseVisualStyleBackColor = false;
-            this.STNG_PasswordChange_Button.Click += new System.EventHandler(this.STNG_PasswordChange_Button_Click);
-            // 
-            // Old_Password_Textbox
-            // 
-            this.Old_Password_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Old_Password_Textbox.Font = new System.Drawing.Font("Times New Roman", 13.8F);
-            this.Old_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
-            this.Old_Password_Textbox.IsPasswordTextbox = true;
-            this.Old_Password_Textbox.IsPlaceholder = true;
-            this.Old_Password_Textbox.Location = new System.Drawing.Point(8, 37);
-            this.Old_Password_Textbox.Name = "Old_Password_Textbox";
-            this.Old_Password_Textbox.Placeholder = "ادخل كلمة المرور القديمة";
-            this.Old_Password_Textbox.placeholderColor = System.Drawing.Color.Silver;
-            this.Old_Password_Textbox.placeholderFont = null;
-            this.Old_Password_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Old_Password_Textbox.SelectedItem = null;
-            this.Old_Password_Textbox.Size = new System.Drawing.Size(1241, 34);
-            this.Old_Password_Textbox.TabIndex = 1;
-            this.Old_Password_Textbox.Tag = "";
-            this.Old_Password_Textbox.Text = "ادخل كلمة المرور القديمة";
-            this.Old_Password_Textbox.Values = null;
-            this.Old_Password_Textbox.Visible_Password_Button = true;
-            // 
-            // ChangePassword_Label
-            // 
-            this.ChangePassword_Label.Font = new System.Drawing.Font("El Messiri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.ChangePassword_Label.ForeColor = System.Drawing.Color.DarkRed;
-            this.ChangePassword_Label.Location = new System.Drawing.Point(6, 239);
-            this.ChangePassword_Label.Name = "ChangePassword_Label";
-            this.ChangePassword_Label.Size = new System.Drawing.Size(1248, 60);
-            this.ChangePassword_Label.TabIndex = 63;
-            this.ChangePassword_Label.Text = "كلمة المرور غير مطابقة";
-            this.ChangePassword_Label.Visible = false;
-            // 
-            // RENew_Password_Textbox
-            // 
-            this.RENew_Password_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.RENew_Password_Textbox.Font = new System.Drawing.Font("Times New Roman", 13.8F);
-            this.RENew_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
-            this.RENew_Password_Textbox.IsPasswordTextbox = true;
-            this.RENew_Password_Textbox.IsPlaceholder = true;
-            this.RENew_Password_Textbox.Location = new System.Drawing.Point(8, 123);
-            this.RENew_Password_Textbox.Name = "RENew_Password_Textbox";
-            this.RENew_Password_Textbox.Placeholder = "ادخل كلمة المرور الجديدة مرة أخري";
-            this.RENew_Password_Textbox.placeholderColor = System.Drawing.Color.Silver;
-            this.RENew_Password_Textbox.placeholderFont = null;
-            this.RENew_Password_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.RENew_Password_Textbox.SelectedItem = null;
-            this.RENew_Password_Textbox.Size = new System.Drawing.Size(1241, 34);
-            this.RENew_Password_Textbox.TabIndex = 3;
-            this.RENew_Password_Textbox.Tag = "";
-            this.RENew_Password_Textbox.Text = "ادخل كلمة المرور الجديدة مرة أخري";
-            this.RENew_Password_Textbox.Values = null;
-            this.RENew_Password_Textbox.Visible_Password_Button = true;
-            this.RENew_Password_Textbox.TextChanged += new System.EventHandler(this.RENew_Password_Textbox_TextChanged);
-            // 
-            // New_Password_Textbox
-            // 
-            this.New_Password_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.New_Password_Textbox.Font = new System.Drawing.Font("Times New Roman", 13.8F);
-            this.New_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
-            this.New_Password_Textbox.IsPasswordTextbox = true;
-            this.New_Password_Textbox.IsPlaceholder = true;
-            this.New_Password_Textbox.Location = new System.Drawing.Point(8, 83);
-            this.New_Password_Textbox.Name = "New_Password_Textbox";
-            this.New_Password_Textbox.Placeholder = "ادخل كلمة المرور الجديدة";
-            this.New_Password_Textbox.placeholderColor = System.Drawing.Color.Silver;
-            this.New_Password_Textbox.placeholderFont = null;
-            this.New_Password_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.New_Password_Textbox.SelectedItem = null;
-            this.New_Password_Textbox.Size = new System.Drawing.Size(1242, 34);
-            this.New_Password_Textbox.TabIndex = 2;
-            this.New_Password_Textbox.Tag = "";
-            this.New_Password_Textbox.Text = "ادخل كلمة المرور الجديدة";
-            this.New_Password_Textbox.Values = null;
-            this.New_Password_Textbox.Visible_Password_Button = true;
             // 
             // groupBox2
             // 
@@ -442,31 +339,284 @@ namespace OpsMoi.User_Interfaces
             this.HR_Tabpage.Text = "موارد بشرية";
             this.HR_Tabpage.UseVisualStyleBackColor = true;
             // 
-            // permissions_Tabpage
+            // Login_Tabpage
             // 
-            this.permissions_Tabpage.Location = new System.Drawing.Point(4, 5);
-            this.permissions_Tabpage.Name = "permissions_Tabpage";
-            this.permissions_Tabpage.Size = new System.Drawing.Size(1707, 900);
-            this.permissions_Tabpage.TabIndex = 3;
-            this.permissions_Tabpage.Text = "صلاحيات المستخدمين";
-            this.permissions_Tabpage.UseVisualStyleBackColor = true;
+            this.Login_Tabpage.Controls.Add(this.groupBox1);
+            this.Login_Tabpage.Location = new System.Drawing.Point(4, 5);
+            this.Login_Tabpage.Name = "Login_Tabpage";
+            this.Login_Tabpage.Size = new System.Drawing.Size(1707, 900);
+            this.Login_Tabpage.TabIndex = 3;
+            this.Login_Tabpage.Text = "صلاحيات المستخدمين";
+            this.Login_Tabpage.UseVisualStyleBackColor = true;
             // 
-            // Storage_Tabpage
+            // groupBox1
             // 
-            this.Storage_Tabpage.Location = new System.Drawing.Point(4, 5);
-            this.Storage_Tabpage.Name = "Storage_Tabpage";
-            this.Storage_Tabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.Storage_Tabpage.Size = new System.Drawing.Size(1707, 900);
-            this.Storage_Tabpage.TabIndex = 1;
-            this.Storage_Tabpage.Text = "المخازن";
-            this.Storage_Tabpage.UseVisualStyleBackColor = true;
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.groupBox1.Controls.Add(this.STNG_PasswordChange_Button);
+            this.groupBox1.Controls.Add(this.Old_Password_Textbox);
+            this.groupBox1.Controls.Add(this.ChangePassword_Label);
+            this.groupBox1.Controls.Add(this.RENew_Password_Textbox);
+            this.groupBox1.Controls.Add(this.New_Password_Textbox);
+            this.groupBox1.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.DarkRed;
+            this.groupBox1.Location = new System.Drawing.Point(7, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.groupBox1.Size = new System.Drawing.Size(1262, 306);
+            this.groupBox1.TabIndex = 65;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "إعدادات الدخول";
+            // 
+            // STNG_PasswordChange_Button
+            // 
+            this.STNG_PasswordChange_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.STNG_PasswordChange_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.STNG_PasswordChange_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.STNG_PasswordChange_Button.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.STNG_PasswordChange_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.STNG_PasswordChange_Button.Location = new System.Drawing.Point(8, 164);
+            this.STNG_PasswordChange_Button.Name = "STNG_PasswordChange_Button";
+            this.STNG_PasswordChange_Button.Size = new System.Drawing.Size(367, 44);
+            this.STNG_PasswordChange_Button.TabIndex = 64;
+            this.STNG_PasswordChange_Button.Text = "تغيير كلمة المرور";
+            this.STNG_PasswordChange_Button.UseVisualStyleBackColor = false;
+            // 
+            // Old_Password_Textbox
+            // 
+            this.Old_Password_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Old_Password_Textbox.Font = new System.Drawing.Font("Times New Roman", 13.8F);
+            this.Old_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
+            this.Old_Password_Textbox.IsPasswordTextbox = true;
+            this.Old_Password_Textbox.IsPlaceholder = true;
+            this.Old_Password_Textbox.Location = new System.Drawing.Point(8, 37);
+            this.Old_Password_Textbox.Name = "Old_Password_Textbox";
+            this.Old_Password_Textbox.Placeholder = "ادخل كلمة المرور القديمة";
+            this.Old_Password_Textbox.placeholderColor = System.Drawing.Color.Silver;
+            this.Old_Password_Textbox.placeholderFont = null;
+            this.Old_Password_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Old_Password_Textbox.SelectedItem = null;
+            this.Old_Password_Textbox.Size = new System.Drawing.Size(1241, 34);
+            this.Old_Password_Textbox.TabIndex = 1;
+            this.Old_Password_Textbox.Tag = "";
+            this.Old_Password_Textbox.Text = "ادخل كلمة المرور القديمة";
+            this.Old_Password_Textbox.Values = null;
+            this.Old_Password_Textbox.Visible_Password_Button = true;
+            // 
+            // ChangePassword_Label
+            // 
+            this.ChangePassword_Label.Font = new System.Drawing.Font("El Messiri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.ChangePassword_Label.ForeColor = System.Drawing.Color.DarkRed;
+            this.ChangePassword_Label.Location = new System.Drawing.Point(6, 239);
+            this.ChangePassword_Label.Name = "ChangePassword_Label";
+            this.ChangePassword_Label.Size = new System.Drawing.Size(1248, 60);
+            this.ChangePassword_Label.TabIndex = 63;
+            this.ChangePassword_Label.Text = "كلمة المرور غير مطابقة";
+            this.ChangePassword_Label.Visible = false;
+            // 
+            // RENew_Password_Textbox
+            // 
+            this.RENew_Password_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RENew_Password_Textbox.Font = new System.Drawing.Font("Times New Roman", 13.8F);
+            this.RENew_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
+            this.RENew_Password_Textbox.IsPasswordTextbox = true;
+            this.RENew_Password_Textbox.IsPlaceholder = true;
+            this.RENew_Password_Textbox.Location = new System.Drawing.Point(8, 123);
+            this.RENew_Password_Textbox.Name = "RENew_Password_Textbox";
+            this.RENew_Password_Textbox.Placeholder = "ادخل كلمة المرور الجديدة مرة أخري";
+            this.RENew_Password_Textbox.placeholderColor = System.Drawing.Color.Silver;
+            this.RENew_Password_Textbox.placeholderFont = null;
+            this.RENew_Password_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.RENew_Password_Textbox.SelectedItem = null;
+            this.RENew_Password_Textbox.Size = new System.Drawing.Size(1241, 34);
+            this.RENew_Password_Textbox.TabIndex = 3;
+            this.RENew_Password_Textbox.Tag = "";
+            this.RENew_Password_Textbox.Text = "ادخل كلمة المرور الجديدة مرة أخري";
+            this.RENew_Password_Textbox.Values = null;
+            this.RENew_Password_Textbox.Visible_Password_Button = true;
+            // 
+            // New_Password_Textbox
+            // 
+            this.New_Password_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.New_Password_Textbox.Font = new System.Drawing.Font("Times New Roman", 13.8F);
+            this.New_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
+            this.New_Password_Textbox.IsPasswordTextbox = true;
+            this.New_Password_Textbox.IsPlaceholder = true;
+            this.New_Password_Textbox.Location = new System.Drawing.Point(8, 83);
+            this.New_Password_Textbox.Name = "New_Password_Textbox";
+            this.New_Password_Textbox.Placeholder = "ادخل كلمة المرور الجديدة";
+            this.New_Password_Textbox.placeholderColor = System.Drawing.Color.Silver;
+            this.New_Password_Textbox.placeholderFont = null;
+            this.New_Password_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.New_Password_Textbox.SelectedItem = null;
+            this.New_Password_Textbox.Size = new System.Drawing.Size(1242, 34);
+            this.New_Password_Textbox.TabIndex = 2;
+            this.New_Password_Textbox.Tag = "";
+            this.New_Password_Textbox.Text = "ادخل كلمة المرور الجديدة";
+            this.New_Password_Textbox.Values = null;
+            this.New_Password_Textbox.Visible_Password_Button = true;
+            // 
+            // FNC_Tabpage
+            // 
+            this.FNC_Tabpage.Controls.Add(this.Wallets_Groupbox);
+            this.FNC_Tabpage.Location = new System.Drawing.Point(4, 5);
+            this.FNC_Tabpage.Name = "FNC_Tabpage";
+            this.FNC_Tabpage.Padding = new System.Windows.Forms.Padding(3);
+            this.FNC_Tabpage.Size = new System.Drawing.Size(1707, 900);
+            this.FNC_Tabpage.TabIndex = 1;
+            this.FNC_Tabpage.Text = "محافظ";
+            this.FNC_Tabpage.UseVisualStyleBackColor = true;
+            // 
+            // Wallets_Groupbox
+            // 
+            this.Wallets_Groupbox.Controls.Add(this.Wallet_credit_Textbox);
+            this.Wallets_Groupbox.Controls.Add(this.Wallet_credit_Adj_Label);
+            this.Wallets_Groupbox.Controls.Add(this.Wallet_name_Adj_Label);
+            this.Wallets_Groupbox.Controls.Add(this.Modify_Wallet_Button);
+            this.Wallets_Groupbox.Controls.Add(this.Del_Wallet_Button);
+            this.Wallets_Groupbox.Controls.Add(this.Wallet_Label);
+            this.Wallets_Groupbox.Controls.Add(this.Add_Wallet_Button);
+            this.Wallets_Groupbox.Controls.Add(this.Wallet_name_Textbox);
+            this.Wallets_Groupbox.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Wallets_Groupbox.ForeColor = System.Drawing.Color.DarkRed;
+            this.Wallets_Groupbox.Location = new System.Drawing.Point(7, 9);
+            this.Wallets_Groupbox.Name = "Wallets_Groupbox";
+            this.Wallets_Groupbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Wallets_Groupbox.Size = new System.Drawing.Size(1566, 256);
+            this.Wallets_Groupbox.TabIndex = 2;
+            this.Wallets_Groupbox.TabStop = false;
+            this.Wallets_Groupbox.Tag = this.Add_Wallet_Button;
+            this.Wallets_Groupbox.Text = "إضافة محافظ";
+            // 
+            // Wallet_credit_Textbox
+            // 
+            this.Wallet_credit_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Wallet_credit_Textbox.Font = new System.Drawing.Font("Times New Roman", 16F);
+            this.Wallet_credit_Textbox.ForeColor = System.Drawing.Color.Silver;
+            this.Wallet_credit_Textbox.IsPasswordTextbox = false;
+            this.Wallet_credit_Textbox.IsPlaceholder = true;
+            this.Wallet_credit_Textbox.Location = new System.Drawing.Point(285, 84);
+            this.Wallet_credit_Textbox.Name = "Wallet_credit_Textbox";
+            this.Wallet_credit_Textbox.Placeholder = "الرصيد";
+            this.Wallet_credit_Textbox.placeholderColor = System.Drawing.Color.Silver;
+            this.Wallet_credit_Textbox.placeholderFont = null;
+            this.Wallet_credit_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Wallet_credit_Textbox.SelectedItem = null;
+            this.Wallet_credit_Textbox.Size = new System.Drawing.Size(1148, 38);
+            this.Wallet_credit_Textbox.TabIndex = 74;
+            this.Wallet_credit_Textbox.Tag = "";
+            this.Wallet_credit_Textbox.Text = "الرصيد";
+            this.Wallet_credit_Textbox.Values = null;
+            this.Wallet_credit_Textbox.Visible_Password_Button = false;
+            this.Wallet_credit_Textbox.TextChanged += new System.EventHandler(this.TODO_id_Textbox_TextChanged);
+            // 
+            // Wallet_credit_Adj_Label
+            // 
+            this.Wallet_credit_Adj_Label.AutoSize = true;
+            this.Wallet_credit_Adj_Label.Font = new System.Drawing.Font("A Nasr", 12F);
+            this.Wallet_credit_Adj_Label.Location = new System.Drawing.Point(1464, 91);
+            this.Wallet_credit_Adj_Label.Name = "Wallet_credit_Adj_Label";
+            this.Wallet_credit_Adj_Label.Size = new System.Drawing.Size(49, 27);
+            this.Wallet_credit_Adj_Label.TabIndex = 61;
+            this.Wallet_credit_Adj_Label.Text = "الرصيد";
+            // 
+            // Wallet_name_Adj_Label
+            // 
+            this.Wallet_name_Adj_Label.AutoSize = true;
+            this.Wallet_name_Adj_Label.Font = new System.Drawing.Font("A Nasr", 12F);
+            this.Wallet_name_Adj_Label.Location = new System.Drawing.Point(1447, 39);
+            this.Wallet_name_Adj_Label.Name = "Wallet_name_Adj_Label";
+            this.Wallet_name_Adj_Label.Size = new System.Drawing.Size(91, 27);
+            this.Wallet_name_Adj_Label.TabIndex = 60;
+            this.Wallet_name_Adj_Label.Text = "اسم المحفظة";
+            // 
+            // Modify_Wallet_Button
+            // 
+            this.Modify_Wallet_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.Modify_Wallet_Button.FlatAppearance.BorderSize = 0;
+            this.Modify_Wallet_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Modify_Wallet_Button.Font = new System.Drawing.Font("El Messiri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Modify_Wallet_Button.ForeColor = System.Drawing.Color.Black;
+            this.Modify_Wallet_Button.Location = new System.Drawing.Point(784, 189);
+            this.Modify_Wallet_Button.Name = "Modify_Wallet_Button";
+            this.Modify_Wallet_Button.Size = new System.Drawing.Size(259, 53);
+            this.Modify_Wallet_Button.TabIndex = 55;
+            this.Modify_Wallet_Button.Text = "تعديل محافظ";
+            this.Modify_Wallet_Button.UseVisualStyleBackColor = false;
+            this.Modify_Wallet_Button.Click += new System.EventHandler(this.Wallet_Button_Click);
+            // 
+            // Del_Wallet_Button
+            // 
+            this.Del_Wallet_Button.BackColor = System.Drawing.Color.DarkRed;
+            this.Del_Wallet_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Del_Wallet_Button.Font = new System.Drawing.Font("El Messiri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Del_Wallet_Button.ForeColor = System.Drawing.Color.Black;
+            this.Del_Wallet_Button.Location = new System.Drawing.Point(414, 196);
+            this.Del_Wallet_Button.Name = "Del_Wallet_Button";
+            this.Del_Wallet_Button.Size = new System.Drawing.Size(221, 38);
+            this.Del_Wallet_Button.TabIndex = 54;
+            this.Del_Wallet_Button.Text = "حذف محافظ";
+            this.Del_Wallet_Button.UseVisualStyleBackColor = false;
+            this.Del_Wallet_Button.Click += new System.EventHandler(this.Wallet_Button_Click);
+            // 
+            // Wallet_Label
+            // 
+            this.Wallet_Label.Font = new System.Drawing.Font("El Messiri", 11.8F);
+            this.Wallet_Label.Location = new System.Drawing.Point(28, 143);
+            this.Wallet_Label.Name = "Wallet_Label";
+            this.Wallet_Label.Size = new System.Drawing.Size(1515, 41);
+            this.Wallet_Label.TabIndex = 41;
+            this.Wallet_Label.Text = "اختر نوع الصيانة";
+            this.Wallet_Label.Visible = false;
+            // 
+            // Add_Wallet_Button
+            // 
+            this.Add_Wallet_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.Add_Wallet_Button.FlatAppearance.BorderSize = 0;
+            this.Add_Wallet_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Add_Wallet_Button.Font = new System.Drawing.Font("El Messiri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add_Wallet_Button.ForeColor = System.Drawing.Color.Black;
+            this.Add_Wallet_Button.Location = new System.Drawing.Point(28, 189);
+            this.Add_Wallet_Button.Name = "Add_Wallet_Button";
+            this.Add_Wallet_Button.Size = new System.Drawing.Size(259, 53);
+            this.Add_Wallet_Button.TabIndex = 35;
+            this.Add_Wallet_Button.Text = "إضافة محافظ";
+            this.Add_Wallet_Button.UseVisualStyleBackColor = false;
+            this.Add_Wallet_Button.Click += new System.EventHandler(this.Wallet_Button_Click);
+            // 
+            // Wallet_name_Textbox
+            // 
+            this.Wallet_name_Textbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Wallet_name_Textbox.Font = new System.Drawing.Font("Times New Roman", 16F);
+            this.Wallet_name_Textbox.ForeColor = System.Drawing.Color.Silver;
+            this.Wallet_name_Textbox.IsPasswordTextbox = false;
+            this.Wallet_name_Textbox.IsPlaceholder = true;
+            this.Wallet_name_Textbox.Location = new System.Drawing.Point(285, 32);
+            this.Wallet_name_Textbox.Name = "Wallet_name_Textbox";
+            this.Wallet_name_Textbox.Placeholder = "اسم المحفظة";
+            this.Wallet_name_Textbox.placeholderColor = System.Drawing.Color.Silver;
+            this.Wallet_name_Textbox.placeholderFont = null;
+            this.Wallet_name_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Wallet_name_Textbox.SelectedItem = null;
+            this.Wallet_name_Textbox.Size = new System.Drawing.Size(1148, 38);
+            this.Wallet_name_Textbox.TabIndex = 1;
+            this.Wallet_name_Textbox.Tag = "";
+            this.Wallet_name_Textbox.Text = "اسم المحفظة";
+            this.Wallet_name_Textbox.Values = null;
+            this.Wallet_name_Textbox.Visible_Password_Button = false;
+            this.Wallet_name_Textbox.SelectedItemChanged += new System.EventHandler<System.EventArgs>(this.Wallet_name_Textbox_SelectedItemChanged);
             // 
             // TileButtons_Panel
             // 
             this.TileButtons_Panel.Controls.Add(this.SidePanel1);
             this.TileButtons_Panel.Controls.Add(this.General_TileButton);
-            this.TileButtons_Panel.Controls.Add(this.Permission_Tilebutton);
-            this.TileButtons_Panel.Controls.Add(this.Storages_TileButton);
+            this.TileButtons_Panel.Controls.Add(this.LoginTilebutton);
+            this.TileButtons_Panel.Controls.Add(this.Finances_TileButton);
             this.TileButtons_Panel.Controls.Add(this.HR_TileButton);
             this.TileButtons_Panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.TileButtons_Panel.Location = new System.Drawing.Point(0, 0);
@@ -474,13 +624,20 @@ namespace OpsMoi.User_Interfaces
             this.TileButtons_Panel.Size = new System.Drawing.Size(146, 950);
             this.TileButtons_Panel.TabIndex = 62;
             // 
+            // SidePanel1
+            // 
+            this.SidePanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.SidePanel1.Location = new System.Drawing.Point(0, 0);
+            this.SidePanel1.Name = "SidePanel1";
+            this.SidePanel1.Size = new System.Drawing.Size(12, 237);
+            this.SidePanel1.TabIndex = 46;
+            // 
             // General_TileButton
             // 
             this.General_TileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.General_TileButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.General_TileButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
             this.General_TileButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.General_TileButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.General_TileButton.Font = new System.Drawing.Font("A Nasr", 15F);
             this.General_TileButton.ForeColor = System.Drawing.Color.Black;
             this.General_TileButton.Image = null;
@@ -497,62 +654,50 @@ namespace OpsMoi.User_Interfaces
             this.General_TileButton.Tag = this.General_Tabpage;
             this.General_TileButton.Click += new System.EventHandler(this.TileButtons_Click);
             // 
-            // Permission_Tilebutton
+            // LoginTilebutton
             // 
-            this.Permission_Tilebutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Permission_Tilebutton.color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Permission_Tilebutton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.Permission_Tilebutton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Permission_Tilebutton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Permission_Tilebutton.Font = new System.Drawing.Font("A Nasr", 18.5F);
-            this.Permission_Tilebutton.ForeColor = System.Drawing.Color.Black;
-            this.Permission_Tilebutton.Image = null;
-            this.Permission_Tilebutton.ImagePosition = 0;
-            this.Permission_Tilebutton.ImageZoom = 0;
-            this.Permission_Tilebutton.LabelPosition = 135;
-            this.Permission_Tilebutton.LabelText = "تصاريح";
-            this.Permission_Tilebutton.Location = new System.Drawing.Point(0, 238);
-            this.Permission_Tilebutton.Margin = new System.Windows.Forms.Padding(8);
-            this.Permission_Tilebutton.Name = "Permission_Tilebutton";
-            this.Permission_Tilebutton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Permission_Tilebutton.Size = new System.Drawing.Size(146, 238);
-            this.Permission_Tilebutton.TabIndex = 49;
-            this.Permission_Tilebutton.Tag = this.permissions_Tabpage;
-            this.Permission_Tilebutton.Visible = false;
-            this.Permission_Tilebutton.Click += new System.EventHandler(this.TileButtons_Click);
+            this.LoginTilebutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.LoginTilebutton.color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.LoginTilebutton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.LoginTilebutton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LoginTilebutton.Font = new System.Drawing.Font("A Nasr", 18.5F);
+            this.LoginTilebutton.ForeColor = System.Drawing.Color.Black;
+            this.LoginTilebutton.Image = null;
+            this.LoginTilebutton.ImagePosition = 0;
+            this.LoginTilebutton.ImageZoom = 0;
+            this.LoginTilebutton.LabelPosition = 135;
+            this.LoginTilebutton.LabelText = "إعدادات الدخول";
+            this.LoginTilebutton.Location = new System.Drawing.Point(0, 238);
+            this.LoginTilebutton.Margin = new System.Windows.Forms.Padding(8);
+            this.LoginTilebutton.Name = "LoginTilebutton";
+            this.LoginTilebutton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LoginTilebutton.Size = new System.Drawing.Size(146, 238);
+            this.LoginTilebutton.TabIndex = 49;
+            this.LoginTilebutton.Tag = this.Login_Tabpage;
+            this.LoginTilebutton.Click += new System.EventHandler(this.TileButtons_Click);
             // 
-            // Storages_TileButton
+            // Finances_TileButton
             // 
-            this.Storages_TileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Storages_TileButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.Storages_TileButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.Storages_TileButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Storages_TileButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Storages_TileButton.Font = new System.Drawing.Font("A Nasr", 20F);
-            this.Storages_TileButton.ForeColor = System.Drawing.Color.Black;
-            this.Storages_TileButton.Image = null;
-            this.Storages_TileButton.ImagePosition = 0;
-            this.Storages_TileButton.ImageZoom = 0;
-            this.Storages_TileButton.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.Storages_TileButton.LabelPosition = 135;
-            this.Storages_TileButton.LabelText = "مخازن";
-            this.Storages_TileButton.Location = new System.Drawing.Point(0, 476);
-            this.Storages_TileButton.Margin = new System.Windows.Forms.Padding(6);
-            this.Storages_TileButton.Name = "Storages_TileButton";
-            this.Storages_TileButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Storages_TileButton.Size = new System.Drawing.Size(146, 237);
-            this.Storages_TileButton.TabIndex = 48;
-            this.Storages_TileButton.Tag = this.Storage_Tabpage;
-            this.Storages_TileButton.Visible = false;
-            this.Storages_TileButton.Click += new System.EventHandler(this.TileButtons_Click);
-            // 
-            // SidePanel1
-            // 
-            this.SidePanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
-            this.SidePanel1.Location = new System.Drawing.Point(0, 0);
-            this.SidePanel1.Name = "SidePanel1";
-            this.SidePanel1.Size = new System.Drawing.Size(12, 237);
-            this.SidePanel1.TabIndex = 46;
+            this.Finances_TileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.Finances_TileButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.Finances_TileButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.Finances_TileButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Finances_TileButton.Font = new System.Drawing.Font("A Nasr", 20F);
+            this.Finances_TileButton.ForeColor = System.Drawing.Color.Black;
+            this.Finances_TileButton.Image = null;
+            this.Finances_TileButton.ImagePosition = 0;
+            this.Finances_TileButton.ImageZoom = 0;
+            this.Finances_TileButton.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.Finances_TileButton.LabelPosition = 135;
+            this.Finances_TileButton.LabelText = "محافظ";
+            this.Finances_TileButton.Location = new System.Drawing.Point(0, 474);
+            this.Finances_TileButton.Margin = new System.Windows.Forms.Padding(6);
+            this.Finances_TileButton.Name = "Finances_TileButton";
+            this.Finances_TileButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Finances_TileButton.Size = new System.Drawing.Size(146, 237);
+            this.Finances_TileButton.TabIndex = 48;
+            this.Finances_TileButton.Tag = this.FNC_Tabpage;
+            this.Finances_TileButton.Click += new System.EventHandler(this.TileButtons_Click);
             // 
             // HR_TileButton
             // 
@@ -560,7 +705,6 @@ namespace OpsMoi.User_Interfaces
             this.HR_TileButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.HR_TileButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
             this.HR_TileButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.HR_TileButton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.HR_TileButton.Font = new System.Drawing.Font("A Nasr", 15F);
             this.HR_TileButton.ForeColor = System.Drawing.Color.Black;
             this.HR_TileButton.Image = null;
@@ -592,9 +736,13 @@ namespace OpsMoi.User_Interfaces
             this.GeneralSettings_Groupbox.PerformLayout();
             this.Settings_Tabcontnol.ResumeLayout(false);
             this.General_Tabpage.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.Login_Tabpage.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.FNC_Tabpage.ResumeLayout(false);
+            this.Wallets_Groupbox.ResumeLayout(false);
+            this.Wallets_Groupbox.PerformLayout();
             this.TileButtons_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -615,12 +763,12 @@ namespace OpsMoi.User_Interfaces
         private System.Windows.Forms.ColorDialog colorDialog1;
         private TransparentTabControl Settings_Tabcontnol;
         private System.Windows.Forms.TabPage HR_Tabpage;
-        private System.Windows.Forms.TabPage Storage_Tabpage;
+        private System.Windows.Forms.TabPage FNC_Tabpage;
         private System.Windows.Forms.TabPage General_Tabpage;
-        private System.Windows.Forms.TabPage permissions_Tabpage;
+        private System.Windows.Forms.TabPage Login_Tabpage;
         private System.Windows.Forms.Panel TileButtons_Panel;
-        private ns1.BunifuTileButton Permission_Tilebutton;
-        private ns1.BunifuTileButton Storages_TileButton;
+        private ns1.BunifuTileButton LoginTilebutton;
+        private ns1.BunifuTileButton Finances_TileButton;
         private ns1.BunifuTileButton General_TileButton;
         private System.Windows.Forms.Panel SidePanel1;
         private ns1.BunifuTileButton HR_TileButton;
@@ -638,5 +786,14 @@ namespace OpsMoi.User_Interfaces
         private System.Windows.Forms.Label ChangePassword_Label;
         private ModdedTextBox RENew_Password_Textbox;
         private ModdedTextBox New_Password_Textbox;
+        private System.Windows.Forms.GroupBox Wallets_Groupbox;
+        private ModdedTextBox Wallet_credit_Textbox;
+        private System.Windows.Forms.Label Wallet_credit_Adj_Label;
+        private System.Windows.Forms.Label Wallet_name_Adj_Label;
+        private System.Windows.Forms.Button Modify_Wallet_Button;
+        private System.Windows.Forms.Button Del_Wallet_Button;
+        private System.Windows.Forms.Label Wallet_Label;
+        private System.Windows.Forms.Button Add_Wallet_Button;
+        private ModdedTextBox Wallet_name_Textbox;
     }
 }

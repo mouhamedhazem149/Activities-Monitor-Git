@@ -5,6 +5,9 @@ namespace OpsMoi.Models
     public class Finances
     {
         public int id { get; set; }
+        
+        public int wallet { get; set; }
+        
         public string relatedentity { get; set; }
         public Utilities.Enums.financeType type { get; set; }
         public string category { get; set; }

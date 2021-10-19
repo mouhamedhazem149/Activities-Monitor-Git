@@ -75,6 +75,11 @@ namespace OpsMoi.Utilities
             showFinanceManager,
             loadFinanceItem
         }
+        public enum settingsArgument
+        {
+            none,
+            openWalletManager
+        }
         #endregion
        
         #region Settings

@@ -44,52 +44,57 @@ namespace OpsMoi.Utilities
             int ind = 0;
             if (ctrl.Controls.Count > 0) SetControlsFromModel(ctrl, oldModel);
             string Prop = Regex.IsMatch(ctrl.Name, controlsPattern) ? Regex.Match(ctrl.Name, controlsPattern).Groups[proprtyName].Value : "";
-            if (Dict.Keys.Contains(Prop) && ctrl.Visible)
-                switch (ctrl)
-                {
-                    case ModdedControls.ModdedTextBox txtbx:
-                        txtbx.Text = Dict[Prop].ToString();
-                        break;
-                    case Label lbl:
-                        lbl.Text = Dict[Prop].ToString();
-                        break;
-                    case ComboBox cmbobx:
-                        if (int.TryParse(Dict[Prop].ToString(), out ind))
-                        {
-                            if (cmbobx.ValueMember == "id") cmbobx.SelectedValue = (int)Dict[Prop];
-                            else cmbobx.SelectedIndex = (int)Dict[Prop];
-                        }
-                        else
-                        {
-                            int indo = cmbobx.FindStringExact(Dict[Prop].ToString());
-                            cmbobx.SelectedIndex = indo;
-                            cmbobx.Text = Dict[Prop].GetType().IsEnum ? (Dict[Prop] as Enum).GetDisplayName() : Dict[Prop].ToString();
-                        }
-                        break;
-                    case ObjectListView olv:
-                        Update_OLV((dynamic)Dict[Prop], olv);
-                        break;
-                    case ListView lv:
-                        Update_LV(Dict[Prop] as List<string>, lv);
-                        break;
-                    case CheckBox chkbx:
-                        chkbx.Checked = Dict[Prop].ToString() == "1";
-                        break;
-                    case RadioButton rdobtn:
-                        rdobtn.Checked = Dict[Prop].ToString() == "1";
-                        break;
-                    case DateTimePicker dtp:
-                        if ((Dict[Prop] as DateTime?).HasValue) { dtp.Checked = true; dtp.Value = (Dict[Prop] as DateTime?).Value; }
-                        else dtp.Checked = false;
-                        break;
-                    default:
-                        break;
-                }
-            ctrl.Update();
+            try
+            {
+                if (Dict.Keys.Contains(Prop))
+                    switch (ctrl)
+                    {
+                        case ModdedControls.ModdedTextBox txtbx:
+                            txtbx.Text = Dict[Prop].ToString();
+                            break;
+                        case Label lbl:
+                            lbl.Text = Dict[Prop].ToString();
+                            break;
+                        case ComboBox cmbobx:
+                            if (int.TryParse(Dict[Prop].ToString(), out ind))
+                            {
+                                if (cmbobx.ValueMember == "id") cmbobx.SelectedValue = (int)Dict[Prop];
+                                else cmbobx.SelectedIndex = (int)Dict[Prop];
+                            }
+                            else
+                            {
+                                int indo = cmbobx.FindStringExact(Dict[Prop].GetType().IsEnum ? (Dict[Prop] as Enum).GetDisplayName() : Dict[Prop].ToString());
+                                cmbobx.SelectedIndex = indo;
+                                cmbobx.Text = Dict[Prop].GetType().IsEnum ? (Dict[Prop] as Enum).GetDisplayName() : Dict[Prop].ToString();
+                            }
+                            break;
+                        case ObjectListView olv:
+                            Update_OLV((dynamic)Dict[Prop], olv);
+                            break;
+                        case ListView lv:
+                            Update_LV(Dict[Prop] as List<string>, lv);
+                            break;
+                        case CheckBox chkbx:
+                            chkbx.Checked = Dict[Prop].ToString() == "1";
+                            break;
+                        case RadioButton rdobtn:
+                            rdobtn.Checked = Dict[Prop].ToString() == "1";
+                            break;
+                        case DateTimePicker dtp:
+                            if ((Dict[Prop] as DateTime?).HasValue) { dtp.Checked = true; dtp.Value = (Dict[Prop] as DateTime?).Value; }
+                            else dtp.Checked = false;
+                            break;
+                        default:
+                            break;
+                    }
+            }
+            catch (Exception ex) { }
+            finally { ctrl.Update(); }
         }
 
         public static bool GroupboxCheck(GroupBox grpbox, string Title, Color color)
         {
+            if (grpbox == null) return true;
             if (HM_Manager.CheckIfContainEmptyEntries(grpbox) && (color == grpbox.ForeColor))
                 return false;
             return HM_Manager.CheckGroupboxTitle(grpbox, Title, color);
@@ -97,8 +102,8 @@ namespace OpsMoi.Utilities
 
         public static void FinalSteps(GroupBox grpbox, Label MsgLabel, string selectMsg, bool byPass)
         {
-            if (!byPass) HM_Manager.Reset_Textbox_Controls(grpbox);
-            HM_Manager.Success_addition(MsgLabel, selectMsg);
+            if (!byPass) if (grpbox != null) HM_Manager.Reset_Textbox_Controls(grpbox);
+           if (MsgLabel != null) HM_Manager.Success_addition(MsgLabel, selectMsg);
         }
     }
 }

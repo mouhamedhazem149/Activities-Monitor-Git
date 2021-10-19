@@ -132,9 +132,6 @@ namespace OpsMoi.User_Interfaces
             // 
             // AddTodo_Groupbox
             // 
-            this.AddTodo_Groupbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.AddTodo_Groupbox.Controls.Add(this.TODOs_DelChkPnt_Button);
             this.AddTodo_Groupbox.Controls.Add(this.TODOs_AddChkPnt_Button);
             this.AddTodo_Groupbox.Controls.Add(this.TODOs_chkpoint_list_Adj_Label);
@@ -169,7 +166,7 @@ namespace OpsMoi.User_Interfaces
             this.AddTodo_Groupbox.Location = new System.Drawing.Point(6, 6);
             this.AddTodo_Groupbox.Name = "AddTodo_Groupbox";
             this.AddTodo_Groupbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.AddTodo_Groupbox.Size = new System.Drawing.Size(1566, 893);
+            this.AddTodo_Groupbox.Size = new System.Drawing.Size(1566, 882);
             this.AddTodo_Groupbox.TabIndex = 1;
             this.AddTodo_Groupbox.TabStop = false;
             this.AddTodo_Groupbox.Tag = this.Add_TODO_Button;
@@ -184,7 +181,7 @@ namespace OpsMoi.User_Interfaces
             this.TODOs_DelChkPnt_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TODOs_DelChkPnt_Button.Font = new System.Drawing.Font("El Messiri", 10.8F);
             this.TODOs_DelChkPnt_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.TODOs_DelChkPnt_Button.Location = new System.Drawing.Point(1065, 749);
+            this.TODOs_DelChkPnt_Button.Location = new System.Drawing.Point(1065, 735);
             this.TODOs_DelChkPnt_Button.Name = "TODOs_DelChkPnt_Button";
             this.TODOs_DelChkPnt_Button.Size = new System.Drawing.Size(220, 35);
             this.TODOs_DelChkPnt_Button.TabIndex = 80;
@@ -199,7 +196,7 @@ namespace OpsMoi.User_Interfaces
             this.TODOs_AddChkPnt_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TODOs_AddChkPnt_Button.Font = new System.Drawing.Font("El Messiri", 10.8F);
             this.TODOs_AddChkPnt_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.TODOs_AddChkPnt_Button.Location = new System.Drawing.Point(839, 750);
+            this.TODOs_AddChkPnt_Button.Location = new System.Drawing.Point(839, 736);
             this.TODOs_AddChkPnt_Button.Name = "TODOs_AddChkPnt_Button";
             this.TODOs_AddChkPnt_Button.Size = new System.Drawing.Size(220, 35);
             this.TODOs_AddChkPnt_Button.TabIndex = 79;
@@ -211,7 +208,7 @@ namespace OpsMoi.User_Interfaces
             // 
             this.TODOs_chkpoint_list_Adj_Label.AutoSize = true;
             this.TODOs_chkpoint_list_Adj_Label.Font = new System.Drawing.Font("A Nasr", 15F);
-            this.TODOs_chkpoint_list_Adj_Label.Location = new System.Drawing.Point(1455, 389);
+            this.TODOs_chkpoint_list_Adj_Label.Location = new System.Drawing.Point(1455, 377);
             this.TODOs_chkpoint_list_Adj_Label.Name = "TODOs_chkpoint_list_Adj_Label";
             this.TODOs_chkpoint_list_Adj_Label.Size = new System.Drawing.Size(102, 33);
             this.TODOs_chkpoint_list_Adj_Label.TabIndex = 78;
@@ -234,7 +231,7 @@ namespace OpsMoi.User_Interfaces
             this.Todos_chkpoint_list_Objectlistview.Font = new System.Drawing.Font("El Messiri", 8.2F);
             this.Todos_chkpoint_list_Objectlistview.FullRowSelect = true;
             this.Todos_chkpoint_list_Objectlistview.HideSelection = false;
-            this.Todos_chkpoint_list_Objectlistview.Location = new System.Drawing.Point(839, 425);
+            this.Todos_chkpoint_list_Objectlistview.Location = new System.Drawing.Point(839, 413);
             this.Todos_chkpoint_list_Objectlistview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Todos_chkpoint_list_Objectlistview.Name = "Todos_chkpoint_list_Objectlistview";
             this.Todos_chkpoint_list_Objectlistview.RightToLeftLayout = true;
@@ -292,7 +289,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_start_date_Datetimepicker.CustomFormat = "dddd, dd-MMMM-yyyy -- hh:mm tt";
             this.TODO_start_date_Datetimepicker.Font = new System.Drawing.Font("Times New Roman", 13.8F);
             this.TODO_start_date_Datetimepicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.TODO_start_date_Datetimepicker.Location = new System.Drawing.Point(887, 249);
+            this.TODO_start_date_Datetimepicker.Location = new System.Drawing.Point(887, 237);
             this.TODO_start_date_Datetimepicker.Name = "TODO_start_date_Datetimepicker";
             this.TODO_start_date_Datetimepicker.Size = new System.Drawing.Size(513, 34);
             this.TODO_start_date_Datetimepicker.TabIndex = 75;
@@ -302,7 +299,7 @@ namespace OpsMoi.User_Interfaces
             // 
             this.TODO_start_date_Adj_Label.AutoSize = true;
             this.TODO_start_date_Adj_Label.Font = new System.Drawing.Font("A Nasr", 12F);
-            this.TODO_start_date_Adj_Label.Location = new System.Drawing.Point(1448, 255);
+            this.TODO_start_date_Adj_Label.Location = new System.Drawing.Point(1448, 243);
             this.TODO_start_date_Adj_Label.Name = "TODO_start_date_Adj_Label";
             this.TODO_start_date_Adj_Label.Size = new System.Drawing.Size(81, 27);
             this.TODO_start_date_Adj_Label.TabIndex = 76;
@@ -316,7 +313,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_id_Textbox.ForeColor = System.Drawing.Color.Silver;
             this.TODO_id_Textbox.IsPasswordTextbox = false;
             this.TODO_id_Textbox.IsPlaceholder = true;
-            this.TODO_id_Textbox.Location = new System.Drawing.Point(32, 48);
+            this.TODO_id_Textbox.Location = new System.Drawing.Point(32, 36);
             this.TODO_id_Textbox.Name = "TODO_id_Textbox";
             this.TODO_id_Textbox.Placeholder = "كود العملية (أدخل أرقام فقط)[في حالة التعديل او الحذف فقط]";
             this.TODO_id_Textbox.placeholderColor = System.Drawing.Color.Silver;
@@ -336,7 +333,7 @@ namespace OpsMoi.User_Interfaces
             // 
             this.TODO_todo_Adj_Label.AutoSize = true;
             this.TODO_todo_Adj_Label.Font = new System.Drawing.Font("A Nasr", 12F);
-            this.TODO_todo_Adj_Label.Location = new System.Drawing.Point(1441, 204);
+            this.TODO_todo_Adj_Label.Location = new System.Drawing.Point(1441, 192);
             this.TODO_todo_Adj_Label.Name = "TODO_todo_Adj_Label";
             this.TODO_todo_Adj_Label.Size = new System.Drawing.Size(107, 27);
             this.TODO_todo_Adj_Label.TabIndex = 73;
@@ -349,7 +346,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_todo_Textbox.ForeColor = System.Drawing.Color.Silver;
             this.TODO_todo_Textbox.IsPasswordTextbox = false;
             this.TODO_todo_Textbox.IsPlaceholder = true;
-            this.TODO_todo_Textbox.Location = new System.Drawing.Point(532, 198);
+            this.TODO_todo_Textbox.Location = new System.Drawing.Point(532, 186);
             this.TODO_todo_Textbox.Name = "TODO_todo_Textbox";
             this.TODO_todo_Textbox.Placeholder = "المهمة";
             this.TODO_todo_Textbox.placeholderColor = System.Drawing.Color.Silver;
@@ -366,7 +363,7 @@ namespace OpsMoi.User_Interfaces
             // TODO_duration_value_Label
             // 
             this.TODO_duration_value_Label.Font = new System.Drawing.Font("A Nasr", 12F);
-            this.TODO_duration_value_Label.Location = new System.Drawing.Point(32, 366);
+            this.TODO_duration_value_Label.Location = new System.Drawing.Point(32, 354);
             this.TODO_duration_value_Label.Name = "TODO_duration_value_Label";
             this.TODO_duration_value_Label.Size = new System.Drawing.Size(632, 27);
             this.TODO_duration_value_Label.TabIndex = 71;
@@ -375,7 +372,7 @@ namespace OpsMoi.User_Interfaces
             // 
             this.TODO_duration_Adj_Label.AutoSize = true;
             this.TODO_duration_Adj_Label.Font = new System.Drawing.Font("A Nasr", 12F);
-            this.TODO_duration_Adj_Label.Location = new System.Drawing.Point(670, 330);
+            this.TODO_duration_Adj_Label.Location = new System.Drawing.Point(670, 318);
             this.TODO_duration_Adj_Label.Name = "TODO_duration_Adj_Label";
             this.TODO_duration_Adj_Label.Size = new System.Drawing.Size(168, 27);
             this.TODO_duration_Adj_Label.TabIndex = 70;
@@ -388,7 +385,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_duration_Textbox.ForeColor = System.Drawing.Color.Silver;
             this.TODO_duration_Textbox.IsPasswordTextbox = false;
             this.TODO_duration_Textbox.IsPlaceholder = true;
-            this.TODO_duration_Textbox.Location = new System.Drawing.Point(32, 324);
+            this.TODO_duration_Textbox.Location = new System.Drawing.Point(32, 312);
             this.TODO_duration_Textbox.Name = "TODO_duration_Textbox";
             this.TODO_duration_Textbox.Placeholder = "الوقت المستغرق";
             this.TODO_duration_Textbox.placeholderColor = System.Drawing.Color.Silver;
@@ -411,7 +408,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_done_date_Datetimepicker.CustomFormat = "dddd, dd-MMMM-yyyy -- hh:mm tt";
             this.TODO_done_date_Datetimepicker.Font = new System.Drawing.Font("Times New Roman", 13.8F);
             this.TODO_done_date_Datetimepicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.TODO_done_date_Datetimepicker.Location = new System.Drawing.Point(854, 340);
+            this.TODO_done_date_Datetimepicker.Location = new System.Drawing.Point(854, 328);
             this.TODO_done_date_Datetimepicker.Name = "TODO_done_date_Datetimepicker";
             this.TODO_done_date_Datetimepicker.ShowCheckBox = true;
             this.TODO_done_date_Datetimepicker.Size = new System.Drawing.Size(546, 34);
@@ -422,7 +419,7 @@ namespace OpsMoi.User_Interfaces
             // 
             this.TODO_done_date_Adj_Label.AutoSize = true;
             this.TODO_done_date_Adj_Label.Font = new System.Drawing.Font("A Nasr", 12F);
-            this.TODO_done_date_Adj_Label.Location = new System.Drawing.Point(1448, 346);
+            this.TODO_done_date_Adj_Label.Location = new System.Drawing.Point(1448, 334);
             this.TODO_done_date_Adj_Label.Name = "TODO_done_date_Adj_Label";
             this.TODO_done_date_Adj_Label.Size = new System.Drawing.Size(81, 27);
             this.TODO_done_date_Adj_Label.TabIndex = 67;
@@ -434,7 +431,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_due_date_Datetimepicker.CustomFormat = "dddd, dd-MMMM-yyyy -- hh:mm tt";
             this.TODO_due_date_Datetimepicker.Font = new System.Drawing.Font("Times New Roman", 13.8F);
             this.TODO_due_date_Datetimepicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.TODO_due_date_Datetimepicker.Location = new System.Drawing.Point(887, 291);
+            this.TODO_due_date_Datetimepicker.Location = new System.Drawing.Point(887, 279);
             this.TODO_due_date_Datetimepicker.Name = "TODO_due_date_Datetimepicker";
             this.TODO_due_date_Datetimepicker.Size = new System.Drawing.Size(513, 34);
             this.TODO_due_date_Datetimepicker.TabIndex = 5;
@@ -443,7 +440,7 @@ namespace OpsMoi.User_Interfaces
             // 
             this.TODO_notes_Adj_Label.AutoSize = true;
             this.TODO_notes_Adj_Label.Font = new System.Drawing.Font("A Nasr", 15F);
-            this.TODO_notes_Adj_Label.Location = new System.Drawing.Point(750, 389);
+            this.TODO_notes_Adj_Label.Location = new System.Drawing.Point(750, 377);
             this.TODO_notes_Adj_Label.Name = "TODO_notes_Adj_Label";
             this.TODO_notes_Adj_Label.Size = new System.Drawing.Size(80, 33);
             this.TODO_notes_Adj_Label.TabIndex = 64;
@@ -453,7 +450,7 @@ namespace OpsMoi.User_Interfaces
             // 
             this.TODO_due_date_Adj_Label.AutoSize = true;
             this.TODO_due_date_Adj_Label.Font = new System.Drawing.Font("A Nasr", 12F);
-            this.TODO_due_date_Adj_Label.Location = new System.Drawing.Point(1448, 297);
+            this.TODO_due_date_Adj_Label.Location = new System.Drawing.Point(1448, 285);
             this.TODO_due_date_Adj_Label.Name = "TODO_due_date_Adj_Label";
             this.TODO_due_date_Adj_Label.Size = new System.Drawing.Size(94, 27);
             this.TODO_due_date_Adj_Label.TabIndex = 63;
@@ -463,7 +460,7 @@ namespace OpsMoi.User_Interfaces
             // 
             this.TODO_category_Adj_Label.AutoSize = true;
             this.TODO_category_Adj_Label.Font = new System.Drawing.Font("A Nasr", 12F);
-            this.TODO_category_Adj_Label.Location = new System.Drawing.Point(1459, 154);
+            this.TODO_category_Adj_Label.Location = new System.Drawing.Point(1459, 142);
             this.TODO_category_Adj_Label.Name = "TODO_category_Adj_Label";
             this.TODO_category_Adj_Label.Size = new System.Drawing.Size(63, 27);
             this.TODO_category_Adj_Label.TabIndex = 62;
@@ -473,7 +470,7 @@ namespace OpsMoi.User_Interfaces
             // 
             this.TODO_dueto_Adj_Label.AutoSize = true;
             this.TODO_dueto_Adj_Label.Font = new System.Drawing.Font("A Nasr", 12F);
-            this.TODO_dueto_Adj_Label.Location = new System.Drawing.Point(1439, 103);
+            this.TODO_dueto_Adj_Label.Location = new System.Drawing.Point(1439, 91);
             this.TODO_dueto_Adj_Label.Name = "TODO_dueto_Adj_Label";
             this.TODO_dueto_Adj_Label.Size = new System.Drawing.Size(103, 27);
             this.TODO_dueto_Adj_Label.TabIndex = 61;
@@ -483,7 +480,7 @@ namespace OpsMoi.User_Interfaces
             // 
             this.TODO_name_Adj_Label.AutoSize = true;
             this.TODO_name_Adj_Label.Font = new System.Drawing.Font("A Nasr", 12F);
-            this.TODO_name_Adj_Label.Location = new System.Drawing.Point(1447, 51);
+            this.TODO_name_Adj_Label.Location = new System.Drawing.Point(1447, 39);
             this.TODO_name_Adj_Label.Name = "TODO_name_Adj_Label";
             this.TODO_name_Adj_Label.Size = new System.Drawing.Size(75, 27);
             this.TODO_name_Adj_Label.TabIndex = 60;
@@ -496,7 +493,7 @@ namespace OpsMoi.User_Interfaces
             this.Modify_TODO_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Modify_TODO_Button.Font = new System.Drawing.Font("El Messiri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Modify_TODO_Button.ForeColor = System.Drawing.Color.Black;
-            this.Modify_TODO_Button.Location = new System.Drawing.Point(771, 833);
+            this.Modify_TODO_Button.Location = new System.Drawing.Point(771, 821);
             this.Modify_TODO_Button.Name = "Modify_TODO_Button";
             this.Modify_TODO_Button.Size = new System.Drawing.Size(259, 53);
             this.Modify_TODO_Button.TabIndex = 55;
@@ -510,7 +507,7 @@ namespace OpsMoi.User_Interfaces
             this.Del_TODO_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Del_TODO_Button.Font = new System.Drawing.Font("El Messiri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Del_TODO_Button.ForeColor = System.Drawing.Color.Black;
-            this.Del_TODO_Button.Location = new System.Drawing.Point(401, 840);
+            this.Del_TODO_Button.Location = new System.Drawing.Point(401, 828);
             this.Del_TODO_Button.Name = "Del_TODO_Button";
             this.Del_TODO_Button.Size = new System.Drawing.Size(221, 38);
             this.Del_TODO_Button.TabIndex = 54;
@@ -522,7 +519,7 @@ namespace OpsMoi.User_Interfaces
             // 
             this.id_Label.AutoSize = true;
             this.id_Label.Font = new System.Drawing.Font("El Messiri", 10.8F);
-            this.id_Label.Location = new System.Drawing.Point(32, 80);
+            this.id_Label.Location = new System.Drawing.Point(32, 68);
             this.id_Label.Name = "id_Label";
             this.id_Label.Size = new System.Drawing.Size(137, 29);
             this.id_Label.TabIndex = 52;
@@ -536,7 +533,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_category_Textbox.ForeColor = System.Drawing.Color.Silver;
             this.TODO_category_Textbox.IsPasswordTextbox = false;
             this.TODO_category_Textbox.IsPlaceholder = true;
-            this.TODO_category_Textbox.Location = new System.Drawing.Point(532, 147);
+            this.TODO_category_Textbox.Location = new System.Drawing.Point(532, 135);
             this.TODO_category_Textbox.Name = "TODO_category_Textbox";
             this.TODO_category_Textbox.Placeholder = "التصنيف";
             this.TODO_category_Textbox.placeholderColor = System.Drawing.Color.Silver;
@@ -553,7 +550,7 @@ namespace OpsMoi.User_Interfaces
             // AddTODO_Label
             // 
             this.AddTODO_Label.Font = new System.Drawing.Font("El Messiri", 11.8F);
-            this.AddTODO_Label.Location = new System.Drawing.Point(15, 787);
+            this.AddTODO_Label.Location = new System.Drawing.Point(15, 775);
             this.AddTODO_Label.Name = "AddTODO_Label";
             this.AddTODO_Label.Size = new System.Drawing.Size(1515, 41);
             this.AddTODO_Label.TabIndex = 41;
@@ -567,7 +564,7 @@ namespace OpsMoi.User_Interfaces
             this.Add_TODO_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Add_TODO_Button.Font = new System.Drawing.Font("El Messiri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Add_TODO_Button.ForeColor = System.Drawing.Color.Black;
-            this.Add_TODO_Button.Location = new System.Drawing.Point(15, 833);
+            this.Add_TODO_Button.Location = new System.Drawing.Point(15, 821);
             this.Add_TODO_Button.Name = "Add_TODO_Button";
             this.Add_TODO_Button.Size = new System.Drawing.Size(259, 53);
             this.Add_TODO_Button.TabIndex = 35;
@@ -581,7 +578,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_notes_Textbox.ForeColor = System.Drawing.Color.Silver;
             this.TODO_notes_Textbox.IsPasswordTextbox = false;
             this.TODO_notes_Textbox.IsPlaceholder = true;
-            this.TODO_notes_Textbox.Location = new System.Drawing.Point(6, 425);
+            this.TODO_notes_Textbox.Location = new System.Drawing.Point(6, 413);
             this.TODO_notes_Textbox.Multiline = true;
             this.TODO_notes_Textbox.Name = "TODO_notes_Textbox";
             this.TODO_notes_Textbox.Placeholder = "ملاحظات";
@@ -603,7 +600,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_dueto_Textbox.ForeColor = System.Drawing.Color.Silver;
             this.TODO_dueto_Textbox.IsPasswordTextbox = false;
             this.TODO_dueto_Textbox.IsPlaceholder = true;
-            this.TODO_dueto_Textbox.Location = new System.Drawing.Point(532, 96);
+            this.TODO_dueto_Textbox.Location = new System.Drawing.Point(532, 84);
             this.TODO_dueto_Textbox.Name = "TODO_dueto_Textbox";
             this.TODO_dueto_Textbox.Placeholder = "الجهة المطلوب لها";
             this.TODO_dueto_Textbox.placeholderColor = System.Drawing.Color.Silver;
@@ -624,7 +621,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_duefrom_Textbox.ForeColor = System.Drawing.Color.Silver;
             this.TODO_duefrom_Textbox.IsPasswordTextbox = false;
             this.TODO_duefrom_Textbox.IsPlaceholder = true;
-            this.TODO_duefrom_Textbox.Location = new System.Drawing.Point(532, 44);
+            this.TODO_duefrom_Textbox.Location = new System.Drawing.Point(532, 32);
             this.TODO_duefrom_Textbox.Name = "TODO_duefrom_Textbox";
             this.TODO_duefrom_Textbox.Placeholder = "مطلوب من";
             this.TODO_duefrom_Textbox.placeholderColor = System.Drawing.Color.Silver;
@@ -831,6 +828,7 @@ namespace OpsMoi.User_Interfaces
             this.Todo_Timeline_Control.AufsteigendSortieren = false;
             this.Todo_Timeline_Control.Depth = 0;
             this.Todo_Timeline_Control.Location = new System.Drawing.Point(13, 7);
+            this.Todo_Timeline_Control.MouseState = MaterialWinforms.MouseState.HOVER;
             this.Todo_Timeline_Control.Name = "Todo_Timeline_Control";
             this.Todo_Timeline_Control.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Todo_Timeline_Control.Size = new System.Drawing.Size(1450, 716);

@@ -56,6 +56,7 @@ namespace OpsMoi.User_Interfaces
             FinancialDuedate_Column.GroupKeyGetter = delegate (object rowObject) { return DateTime.Parse(((Finances)rowObject).due_date.ToString("d")); };
             FinancialDonedate_Column.GroupKeyToTitleConverter = FinancialDuedate_Column.GroupKeyToTitleConverter = delegate (object groupKey) { return ((DateTime)groupKey).ToString("dddd, dd MMMM,yyyy", System.Globalization.CultureInfo.GetCultureInfo("ar-EG")); };
             FinanceType_Column.AspectToStringConverter = delegate (object rowObject) { return (rowObject as Enum).GetDisplayName(); };
+            FinanceWallet_Column.AspectToStringConverter = delegate (object rowObject) { return Program.Wallets_List.Where(p => p.id == (rowObject as int?).Value).First().name; };
         }
         public void InitializeByResolution()
         {
@@ -126,7 +127,8 @@ namespace OpsMoi.User_Interfaces
                 group.Header = string.Format($"{tempHeader} :: عدد العمليات المالية : {count}  بإجمالي مطلوب : {totalDue.ToString("N2")} وإجمالي مدفوع : {totalPaid.ToString("N2")} بنسبة : {percent}");
                 group.Tag = count;
             }
-            e.Groups = e.Groups.OrderByDescending(p => (p.Tag as int?).Value).ToList();
+            if (e.Parameters.PrimarySortOrder == SortOrder.Descending) e.Groups = e.Groups.OrderByDescending(p => (p.Tag as int?).Value).ToList();
+            else e.Groups = e.Groups.OrderBy(p => (p.Tag as int?).Value).ToList();
         }
         private void TODOs_Objectlistview_AboutToCreateGroups(object sender, CreateGroupsEventArgs e)
         {
@@ -154,7 +156,8 @@ namespace OpsMoi.User_Interfaces
                 group.Header = string.Format($"{tempHeader} :: طول الملاحظات الملاحظات:{length}");
                 group.Tag = count;
             }
-            e.Groups = e.Groups.OrderByDescending(p => (p.Tag as int?).Value).ToList();
+            if (e.Parameters.PrimarySortOrder == SortOrder.Descending) e.Groups = e.Groups.OrderByDescending(p => (p.Tag as int?).Value).ToList();
+            else e.Groups = e.Groups.OrderBy(p => (p.Tag as int?).Value).ToList();
         }
 
         private void HR_Objectlistview_AboutToCreateGroups(object sender, CreateGroupsEventArgs e)
@@ -236,6 +239,17 @@ namespace OpsMoi.User_Interfaces
                         };
                         e.Control = cmboBx;
                         break;
+                    case "fnc_wlt_combobox":
+                        cmboBx = new ComboBox()
+                        {
+                            Bounds = e.CellBounds,
+                            DropDownStyle = ComboBoxStyle.DropDownList,
+                            AutoCompleteSource = AutoCompleteSource.CustomSource,
+                            FormattingEnabled = true
+                        };
+                        HM_Manager.Update_Combobox(cmboBx, Program.Wallets_List, "name", "id");
+                        e.Control = cmboBx;
+                        break;
                 }
         }
 
@@ -251,6 +265,9 @@ namespace OpsMoi.User_Interfaces
                         break;
                     case "enum":
                         e.NewValue = Enums.GetValueFromName(e.Value as Enum, e.NewValue.ToString());
+                        break;
+                    case "fnc_wlt_combobox":
+                        e.NewValue = ((ComboBox)e.Control).SelectedValue;
                         break;
                 }
         }
@@ -291,7 +308,7 @@ namespace OpsMoi.User_Interfaces
                         var old = Program.Finances_List.Where(p => p.id == selectesFncs.id).FirstOrDefault();
                         if (!selectesFncs.Equals(old))
                             Finances_Processor.HandleFNC(Enums.genericHandle_Type.تعديل, new GroupBox()
-                       , selectesFncs.relatedentity, selectesFncs.type, selectesFncs.category, selectesFncs.due, selectesFncs.paid, selectesFncs.due_date, selectesFncs.done_date.HasValue, selectesFncs.done_date.GetValueOrDefault(), selectesFncs.notes
+                       , selectesFncs.relatedentity, selectesFncs.type,selectesFncs.wallet ,selectesFncs.category, selectesFncs.due, selectesFncs.paid, selectesFncs.due_date, selectesFncs.done_date.HasValue, selectesFncs.done_date.GetValueOrDefault(), selectesFncs.notes
                        , Reports_OLV_Label, "", Color.White, old, true);
                     }
                     break;

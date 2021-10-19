@@ -63,6 +63,6 @@ namespace OpsMoi
         public static List<Notes> Notes_List => DBHelper.Load_Data<Notes>("notes", new List<string> { "*" });
         public static List<Settings> Settings_List => DBHelper.Load_Data<Settings>("settings", new List<string> { "*" });
         public static List<History> History_List => DBHelper.Load_Data<History>("history", new List<string> { "*" });
-
+        public static List<Wallet> Wallets_List => DBHelper.Load_Data<Wallet>("wallets", new List<string> { "*" });
     }
 }

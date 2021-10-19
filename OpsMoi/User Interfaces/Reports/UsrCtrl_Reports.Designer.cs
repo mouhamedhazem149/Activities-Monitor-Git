@@ -48,6 +48,7 @@
             this.Finances_Objectlistview = new BrightIdeasSoftware.ObjectListView();
             this.FinanceID_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.FinanceRelatedentity_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.FinanceWallet_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.FinanceType_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.FinanceCategory_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.FinanceDue_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -308,7 +309,7 @@
             this.financial_Tabpage.Location = new System.Drawing.Point(4, 5);
             this.financial_Tabpage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.financial_Tabpage.Name = "financial_Tabpage";
-            this.financial_Tabpage.Size = new System.Drawing.Size(1238, 835);
+            this.financial_Tabpage.Size = new System.Drawing.Size(1575, 761);
             this.financial_Tabpage.TabIndex = 2;
             this.financial_Tabpage.Text = "المالية";
             this.financial_Tabpage.UseVisualStyleBackColor = true;
@@ -317,6 +318,7 @@
             // 
             this.Finances_Objectlistview.AllColumns.Add(this.FinanceID_Column);
             this.Finances_Objectlistview.AllColumns.Add(this.FinanceRelatedentity_Column);
+            this.Finances_Objectlistview.AllColumns.Add(this.FinanceWallet_Column);
             this.Finances_Objectlistview.AllColumns.Add(this.FinanceType_Column);
             this.Finances_Objectlistview.AllColumns.Add(this.FinanceCategory_Column);
             this.Finances_Objectlistview.AllColumns.Add(this.FinanceDue_Column);
@@ -329,6 +331,7 @@
             this.Finances_Objectlistview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.FinanceID_Column,
             this.FinanceRelatedentity_Column,
+            this.FinanceWallet_Column,
             this.FinanceType_Column,
             this.FinanceCategory_Column,
             this.FinanceDue_Column,
@@ -348,7 +351,7 @@
             this.Finances_Objectlistview.Name = "Finances_Objectlistview";
             this.Finances_Objectlistview.RightToLeftLayout = true;
             this.Finances_Objectlistview.ShowCommandMenuOnRightClick = true;
-            this.Finances_Objectlistview.Size = new System.Drawing.Size(1238, 835);
+            this.Finances_Objectlistview.Size = new System.Drawing.Size(1575, 761);
             this.Finances_Objectlistview.SortGroupItemsByPrimaryColumn = false;
             this.Finances_Objectlistview.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.Finances_Objectlistview.SpaceBetweenGroups = 5;
@@ -385,6 +388,15 @@
             this.FinanceRelatedentity_Column.Text = "الاسم";
             this.FinanceRelatedentity_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.FinanceRelatedentity_Column.Width = 255;
+            // 
+            // FinanceWallet_Column
+            // 
+            this.FinanceWallet_Column.AspectName = "wallet";
+            this.FinanceWallet_Column.MinimumWidth = 150;
+            this.FinanceWallet_Column.Tag = "fnc_wlt_combobox";
+            this.FinanceWallet_Column.Text = "المحفظة";
+            this.FinanceWallet_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FinanceWallet_Column.Width = 150;
             // 
             // FinanceType_Column
             // 
@@ -467,7 +479,7 @@
             this.Notes_Tabpage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Notes_Tabpage.Name = "Notes_Tabpage";
             this.Notes_Tabpage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Notes_Tabpage.Size = new System.Drawing.Size(1238, 835);
+            this.Notes_Tabpage.Size = new System.Drawing.Size(1575, 761);
             this.Notes_Tabpage.TabIndex = 1;
             this.Notes_Tabpage.Text = "الملاحظات";
             this.Notes_Tabpage.UseVisualStyleBackColor = true;
@@ -485,7 +497,7 @@
             this.ReportNOT_Search_Textbox.placeholderColor = System.Drawing.Color.Silver;
             this.ReportNOT_Search_Textbox.placeholderFont = null;
             this.ReportNOT_Search_Textbox.SelectedItem = null;
-            this.ReportNOT_Search_Textbox.Size = new System.Drawing.Size(1232, 36);
+            this.ReportNOT_Search_Textbox.Size = new System.Drawing.Size(1569, 36);
             this.ReportNOT_Search_Textbox.TabIndex = 4;
             this.ReportNOT_Search_Textbox.Text = "كلمة البحث";
             this.ReportNOT_Search_Textbox.Values = null;
@@ -507,7 +519,7 @@
             this.Notes_Objectlistview.Font = new System.Drawing.Font("El Messiri", 10F);
             this.Notes_Objectlistview.FullRowSelect = true;
             this.Notes_Objectlistview.HideSelection = false;
-            this.Notes_Objectlistview.Location = new System.Drawing.Point(3, 106);
+            this.Notes_Objectlistview.Location = new System.Drawing.Point(3, 32);
             this.Notes_Objectlistview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Notes_Objectlistview.Name = "Notes_Objectlistview";
             this.Notes_Objectlistview.RightToLeftLayout = true;
@@ -515,7 +527,7 @@
             this.Notes_Objectlistview.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None;
             this.Notes_Objectlistview.ShowCommandMenuOnRightClick = true;
             this.Notes_Objectlistview.ShowFilterMenuOnRightClick = false;
-            this.Notes_Objectlistview.Size = new System.Drawing.Size(1232, 727);
+            this.Notes_Objectlistview.Size = new System.Drawing.Size(1569, 727);
             this.Notes_Objectlistview.SortGroupItemsByPrimaryColumn = false;
             this.Notes_Objectlistview.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.Notes_Objectlistview.SpaceBetweenGroups = 5;
@@ -555,7 +567,7 @@
             this.HR_Tabpage.Location = new System.Drawing.Point(4, 5);
             this.HR_Tabpage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HR_Tabpage.Name = "HR_Tabpage";
-            this.HR_Tabpage.Size = new System.Drawing.Size(1238, 835);
+            this.HR_Tabpage.Size = new System.Drawing.Size(1575, 761);
             this.HR_Tabpage.TabIndex = 3;
             this.HR_Tabpage.Text = "الموارد بشرية";
             this.HR_Tabpage.UseVisualStyleBackColor = true;
@@ -1080,5 +1092,6 @@
         private System.Windows.Forms.Panel Charts_Panel;
         private XanderUI.XUIButton PieChart_Button;
         private XanderUI.XUIButton ColumnChart_Column;
+        private BrightIdeasSoftware.OLVColumn FinanceWallet_Column;
     }
 }

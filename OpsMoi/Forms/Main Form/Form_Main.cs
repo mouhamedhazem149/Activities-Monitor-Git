@@ -62,7 +62,7 @@ namespace OpsMoi
         }
         public void Click_Note(Enums.noteArgument argument, string argLists) { Notes_TileButton_Click(prepareNotUsrCtrl(argument,argLists), EventArgs.Empty); }
         public void Click_Reports(Enums.report_tabState argument) => Reports_TileButton_Click(prepareRportUsrCtrl(argument), EventArgs.Empty);
-        public void Click_Settings(string argument, string eventArgs = "") => Settings_TileButton_Click(prepareSettingsUsrCtrl(argument, eventArgs), EventArgs.Empty);
+        public void Click_Settings(Enums.settingsArgument argument, string eventArgs = "") => Settings_TileButton_Click(prepareSettingsUsrCtrl(argument, eventArgs), EventArgs.Empty);
         //93,93,93 Main , 126,126,126 Second
         public void Change_Color(Color mClr, Color sClr)
         {
@@ -160,10 +160,10 @@ namespace OpsMoi
             foreach (TabPage pag in ActiveTabs_Tabcontrol.TabPages) pag.Dispose();
             UsrCtrl_Settings item;
             if (sender is UsrCtrl_Settings) item = sender as UsrCtrl_Settings;
-            else item = prepareSettingsUsrCtrl();
+            else item = prepareSettingsUsrCtrl(Enums.settingsArgument.none);
             EndAdd(item);
         }
-        private UsrCtrl_Settings prepareSettingsUsrCtrl(string LoadArg = "", string MethodArg = "") => new UsrCtrl_Settings(LoadArg, MethodArg);
+        private UsrCtrl_Settings prepareSettingsUsrCtrl(Enums.settingsArgument LoadArg, string MethodArg = "") => new UsrCtrl_Settings(LoadArg, MethodArg);
             
 
         void Tilebutton_Click_Handle<T>(BunifuTileButton btn) where T : Control, new()

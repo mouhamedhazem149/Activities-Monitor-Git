@@ -43,7 +43,7 @@ namespace OpsMoi.Utilities
         public static bool CheckTxtBoxDecimal(ModdedControls.ModdedTextBox txtbox, Label lbl)
         {
             decimal value = 0;
-            if (decimal.TryParse(txtbox.Text, out value) || txtbox.IsPlaceholder || txtbox.Text == "") { lbl.Visible = false; return true; }
+            if (decimal.TryParse(txtbox.Text, out value) || txtbox.IsPlaceholder) { lbl.Visible = false; return true; }
             else { Fail_addition(lbl, "تاكد من إدخال رقم مناسب "); txtbox.Text = ""; return false; }
         }
 

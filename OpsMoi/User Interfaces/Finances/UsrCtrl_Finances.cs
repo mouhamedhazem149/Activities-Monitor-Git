@@ -105,7 +105,7 @@ namespace OpsMoi
                 FNC_Button_Click("loadData", null);
         }
 
-        private void AddFNC_Groupbox_ForeColorChanged(object sender, EventArgs e) { HM_Manager.Reset_Textbox_Controls(sender as GroupBox); FNC_id_Textbox.Enabled = (sender as GroupBox).ForeColor == Enums.modColor;/* editControls.ForEach(ctrl => ctrl.Visible = */ }
+        private void AddFNC_Groupbox_ForeColorChanged(object sender, EventArgs e) { HM_Manager.Reset_Groupbox_Controls(sender as GroupBox); FNC_id_Textbox.Enabled = (sender as GroupBox).ForeColor == Enums.modColor;/* editControls.ForEach(ctrl => ctrl.Visible = */ }
 
         private void FNC_value_Textbox_TextChanged(object sender, EventArgs e) { HM_Manager.CheckTxtBoxDecimal(sender as ModdedControls.ModdedTextBox, FNC_Label); CheckValidWalletPaid(); }
 

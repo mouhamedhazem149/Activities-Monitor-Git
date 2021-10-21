@@ -108,7 +108,7 @@ namespace OpsMoi.User_Interfaces
                 HM_Manager.Success_addition(TODO_duration_value_Label, HM_Manager.MinutesToDuration(minutes));
         }
 
-        private void AddMaintenance_Groupbox_ForeColorChanged(object sender, EventArgs e) { HM_Manager.Reset_Textbox_Controls(sender as GroupBox); TODO_id_Textbox.Enabled = (sender as GroupBox).ForeColor == Enums.modColor;/*editControls.ForEach(ctrl => ctrl.Visible = TODO_id_Textbox.Enabled = (sender as GroupBox).ForeColor == Enums.modColor);*/ }
+        private void AddMaintenance_Groupbox_ForeColorChanged(object sender, EventArgs e) { HM_Manager.Reset_Groupbox_Controls(sender as GroupBox); TODO_id_Textbox.Enabled = (sender as GroupBox).ForeColor == Enums.modColor;/*editControls.ForEach(ctrl => ctrl.Visible = TODO_id_Textbox.Enabled = (sender as GroupBox).ForeColor == Enums.modColor);*/ }
 
         private void TODO_id_Textbox_SelectedItemChanged(object sender, EventArgs e)
         {

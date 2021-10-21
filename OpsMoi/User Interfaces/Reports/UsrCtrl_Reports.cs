@@ -327,23 +327,40 @@ namespace OpsMoi.User_Interfaces
 
         private void PieChart_Button_Click(object sender, EventArgs e)
         {
-            if (Reports_PieChart.Visible) Charts_Panel.Visible = Reports_PieChart.Visible = false;
+            if (Reports_PieChart.Visible) Charts_Panel.Visible =false;
             else
             {
-                Reports_Chart.Visible = false;
+                Reports_Chart.Visible = Reports_SplineChart.Visible = false;
                 if (pieGroupArgs != null) UpdatePie(pieGroupArgs);
                 Charts_Panel.Visible = Reports_PieChart.Visible = true;
+                Piechart_Spline_Button.BringToFront();
             }
         }
 
         private void ColumnChart_Column_Click(object sender, EventArgs e)
         {
-            if (Reports_Chart.Visible) Charts_Panel.Visible = Reports_Chart.Visible = false;
+            if (Reports_Chart.Visible) Charts_Panel.Visible = false;
             else
             {
-                Reports_PieChart.Visible = false;
+                Reports_PieChart.Visible = Reports_SplineChart.Visible = false;
                 Reports_Processor.UpdateLiveChart(Reports_Chart, _state, _From, _To, Span, Reports_Label);
                 Charts_Panel.Visible = Reports_Chart.Visible = true;
+                Piechart_Spline_Button.BringToFront();
+            }
+        }
+
+        private void Piechart_Spline_Button_Click(object sender, EventArgs e)
+        {
+            if (Reports_SplineChart.Visible) Reports_SplineChart.Visible = false;
+            else
+            {
+                Reports_SplineChart.Visible = false;
+                if (pieGroupArgs != null)
+                {
+                    UpdatePie(pieGroupArgs);
+                    Reports_Processor.UpdateLiveChart(Reports_Chart, _state, _From, _To, Span, Reports_Label, Reports_SplineChart, pieGroupArgs);
+                }
+                Reports_SplineChart.Visible = true;
             }
         }
     }

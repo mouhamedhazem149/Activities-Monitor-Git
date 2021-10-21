@@ -55,7 +55,7 @@ namespace OpsMoi.Utilities
         public static bool CheckIfContainEmptyEntries(GroupBox grpbx) => grpbx.Controls.OfType<ModdedControls.ModdedTextBox>()
             .Any(txtbx => txtbx.Visible && txtbx.Enabled && txtbx.Text.Length < 1);
 
-        public static void Reset_Textbox_Controls(Control groupbox)
+        public static void Reset_Groupbox_Controls(Control groupbox)
         {
             foreach (Control ctrl in groupbox.Controls)
             {
@@ -63,6 +63,7 @@ namespace OpsMoi.Utilities
                 {
                     if (ctrl is ModdedControls.ModdedTextBox && ctrl.Visible && ctrl.Enabled) { ctrl.Select(); (ctrl as ModdedControls.ModdedTextBox).Text = ""; (ctrl as ModdedControls.ModdedTextBox).SelectedItem = null; ctrl.Refresh(); }
                     else if (ctrl is ListView) (ctrl as ListView).Items.Clear();
+                    else if (ctrl is ObjectListView) (ctrl as ObjectListView).SetObjects(null);
                 }
                 catch (Exception) { Console.WriteLine($"{ctrl.Name}"); }
             }

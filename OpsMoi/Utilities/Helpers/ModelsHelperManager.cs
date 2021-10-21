@@ -19,12 +19,13 @@ namespace OpsMoi.Utilities
             specificMsg = specificMsg == "" ? "تمت العملية بنجاح" : specificMsg;
             try
             {
+                bool sameColor = grpbox.ForeColor == color;
                 if (GroupboxCheck(grpbox, Title, color) || bypassCheck)
                 {
                     tobeDone();
                     FinalSteps(grpbox, MsgLabel, specificMsg, bypassCheck); return true;
                 }
-                else { Reset_Textbox_Controls(grpbox); /*if (oldModel != null) SetControlsFromModel(grpbox, oldModel);*/ }
+                else { if (sameColor) HM_Manager.Fail_addition(MsgLabel, "برجاء تاكد من ملء جميع البيانات"); else Reset_Groupbox_Controls(grpbox); }
             }
             catch (Exception ex) { Fail_addition(MsgLabel); }
             return false;
@@ -102,7 +103,7 @@ namespace OpsMoi.Utilities
 
         public static void FinalSteps(GroupBox grpbox, Label MsgLabel, string selectMsg, bool byPass)
         {
-            if (!byPass) if (grpbox != null) HM_Manager.Reset_Textbox_Controls(grpbox);
+            if (!byPass) if (grpbox != null) HM_Manager.Reset_Groupbox_Controls(grpbox);
            if (MsgLabel != null) HM_Manager.Success_addition(MsgLabel, selectMsg);
         }
     }

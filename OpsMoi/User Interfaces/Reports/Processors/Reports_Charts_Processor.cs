@@ -13,23 +13,43 @@ namespace OpsMoi.User_Interfaces.Reports
     public static partial class Reports_Processor
     {
         public delegate int GetItemAtPoint(DateTime from, DateTime to);
-        public static void UpdateLiveChart(LiveCharts.WinForms.CartesianChart chart, Enums.report_tabState state, DateTime from, DateTime to, Enums.Span span, Label Msglabel)
+        private const string totalSpline = "الإجمالي";
+        public static void UpdateLiveChart(LiveCharts.WinForms.CartesianChart chart, Enums.report_tabState state, DateTime from, DateTime to, Enums.Span span, Label Msglabel, LiveCharts.WinForms.CartesianChart sPline = null, BrightIdeasSoftware.CreateGroupsEventArgs GroupsArgs = null)
         {
             if (from > to) { HM_Manager.Fail_addition(Msglabel, "برجاء ادخال تاريخ صالح"); return; }
             List<DateTime> dateList = getDateList(from, to, span);
-            PrepareChart(chart, dateList);
-            LiveCharts.SeriesCollection collect = new SeriesCollection();
+            PrepareChart(chart, dateList); if (sPline != null) PrepareChart(sPline, dateList);
+            SeriesCollection collect = new SeriesCollection();
+            SeriesCollection sPline_collect = new SeriesCollection();
+            Dictionary<string, double[]> grpValuesDictionary = new Dictionary<string, double[]>();
             switch (state)
             {
                 case Enums.report_tabState.مهام:
                     List<int> countValus = new List<int>(chart.AxisX.Count);
                     List<double> durationValus = new List<double>(chart.AxisX.Count);
+                    grpValuesDictionary.Add(totalSpline, new double[dateList.Count]); 
                     for (int x = 0; x < dateList.Count - 1; x++)
                     {
                         List<Models.Todos> temp = TodosList(dateList[x], dateList[x + 1]);
                         countValus.Add(temp.Count);
                         durationValus.Add(temp.Select(p => p.duration).Sum());
+                        if (GroupsArgs != null && sPline != null)
+                        {
+                            double tempCounter = 0; double tempor = 0;
+                            foreach (var grp in GroupsArgs.Groups)
+                            {
+                                if (grp.SortValue != null && !grpValuesDictionary.ContainsKey(grp.SortValue.ToString()))
+                                    grpValuesDictionary.Add(grp.SortValue == null ? "" : grp.SortValue.ToString(), new double[dateList.Count]);
+                                tempor = (double)GetGroupSorter(temp.Where(p => p.GetType().GetProperty(GroupsArgs.Parameters.GroupByColumn.AspectName).GetValue(p, null).ToString() == grp.SortValue.ToString()).ToList(), GroupsArgs);
+                                grpValuesDictionary[grp.SortValue.ToString()][x] = tempor;
+                                tempCounter += tempor;
+                            }
+                            grpValuesDictionary[totalSpline][x] = tempCounter;
+                        }
                     }
+                    if (GroupsArgs != null && sPline != null)
+                        foreach (var grpPair in grpValuesDictionary)
+                            sPline_collect.Add(new LineSeries() { Title = grpPair.Key, Values = new ChartValues<double>(grpPair.Value.ToList()) });
                     collect.Add(new LineSeries() { Title = "عدد المهام المطلوبة", Values = new ChartValues<int>(countValus) });
                     collect.Add(new LineSeries() { Title = "الفترة المستغرقة لأداء المهام", Values = new ChartValues<double>(durationValus) });
                     break;
@@ -42,6 +62,7 @@ namespace OpsMoi.User_Interfaces.Reports
                     List<int> transCount = new List<int>(chart.AxisX.Count);
                     List<double> values = new List<double>(chart.AxisX.Count);
                     List<int> totalCount = new List<int>(chart.AxisX.Count);
+                    grpValuesDictionary.Add(totalSpline, new double[dateList.Count]); 
                     for (int x = 0; x < dateList.Count - 1; x++)
                     {
                         List<Models.Finances> temp = FinancesList(dateList[x], dateList[x + 1]);
@@ -56,7 +77,23 @@ namespace OpsMoi.User_Interfaces.Reports
                         transCount.Add(transList.Count());
                         values.Add(incomeValues[x] - billsValues[x]);
                         totalCount.Add(temp.Count);
+                        if (GroupsArgs != null && sPline != null)
+                        {
+                            double tempCounter = 0; double tempor = 0;
+                            foreach (var grp in GroupsArgs.Groups)
+                            {
+                                if (grp.SortValue != null && !grpValuesDictionary.ContainsKey(grp.SortValue.ToString()))
+                                    grpValuesDictionary.Add(grp.SortValue == null ? "" : grp.SortValue.ToString(), new double[dateList.Count]);
+                                tempor = (double)GetGroupSorter(temp.Where(p => p.GetType().GetProperty(GroupsArgs.Parameters.GroupByColumn.AspectName).GetValue(p,null).ToString() == grp.SortValue.ToString()).ToList(), GroupsArgs);
+                                grpValuesDictionary[grp.SortValue.ToString()][x] = tempor;
+                                tempCounter += tempor;
+                            }
+                            grpValuesDictionary[totalSpline][x] = tempCounter;
+                        }
                     }
+                    if (GroupsArgs != null && sPline != null)
+                        foreach (var grpPair in grpValuesDictionary)
+                            sPline_collect.Add(new LineSeries() { Title = grpPair.Key, Values = new ChartValues<double>(grpPair.Value.ToList()) });
                     collect.Add(new LineSeries() { Title = "الدخل", Values = new ChartValues<double>(incomeValues) });
                     collect.Add(new LineSeries() { Title = "المصاريف", Values = new ChartValues<double>(billsValues) });
                     collect.Add(new LineSeries() { Title = "التحويلات الشخصية", Values = new ChartValues<double>(transValues) });
@@ -70,6 +107,7 @@ namespace OpsMoi.User_Interfaces.Reports
                     break;
             }
             chart.Series = collect;
+            sPline.Series = sPline_collect;
         }
         private static void PrepareChart(LiveCharts.WinForms.CartesianChart chart, List<DateTime> dateTimes)
         {
@@ -139,6 +177,17 @@ namespace OpsMoi.User_Interfaces.Reports
             SeriesCollection finalCollection = new SeriesCollection();
             collection.OrderByDescending(serDes => serDes.Values[0]).ToList().ForEach(series => finalCollection.Add(series));
             pieChart.Series = finalCollection;
+        }
+        private static decimal GetGroupSorter<T>(List<T> items,BrightIdeasSoftware.CreateGroupsEventArgs listviewGroupsSortsArgs)
+        {
+            switch (listviewGroupsSortsArgs.Parameters.PrimarySort.Tag.ToString())
+            {
+                case "decimal":
+                case "double":
+                    return items.Count > 0 ? items.Select(item => decimal.Parse(item.GetType().GetProperty(listviewGroupsSortsArgs.Parameters.PrimarySort.AspectName).GetValue(item, null).ToString())).Sum() : 0;
+                default:
+                    return items.Count;
+            }
         }
     }
 }

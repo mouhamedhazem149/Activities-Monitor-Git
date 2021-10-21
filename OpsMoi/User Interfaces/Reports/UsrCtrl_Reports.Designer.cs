@@ -89,6 +89,8 @@
             this.Reports_SaveChanges_Button = new System.Windows.Forms.Button();
             this.Reports_OLV_Label = new System.Windows.Forms.Label();
             this.Charts_Panel = new System.Windows.Forms.Panel();
+            this.Reports_SplineChart = new LiveCharts.WinForms.CartesianChart();
+            this.Piechart_Spline_Button = new XanderUI.XUIButton();
             this.PieChart_Button = new XanderUI.XUIButton();
             this.ColumnChart_Column = new XanderUI.XUIButton();
             this.Reports_Tabcontrol.SuspendLayout();
@@ -937,13 +939,46 @@
             // 
             // Charts_Panel
             // 
-            this.Charts_Panel.Controls.Add(this.Reports_Chart);
+            this.Charts_Panel.Controls.Add(this.Piechart_Spline_Button);
+            this.Charts_Panel.Controls.Add(this.Reports_SplineChart);
             this.Charts_Panel.Controls.Add(this.Reports_PieChart);
+            this.Charts_Panel.Controls.Add(this.Reports_Chart);
             this.Charts_Panel.Location = new System.Drawing.Point(151, 158);
             this.Charts_Panel.Name = "Charts_Panel";
             this.Charts_Panel.Size = new System.Drawing.Size(1580, 670);
             this.Charts_Panel.TabIndex = 68;
             this.Charts_Panel.Visible = false;
+            // 
+            // Reports_SplineChart
+            // 
+            this.Reports_SplineChart.Location = new System.Drawing.Point(-2, 80);
+            this.Reports_SplineChart.Name = "Reports_SplineChart";
+            this.Reports_SplineChart.Size = new System.Drawing.Size(1583, 512);
+            this.Reports_SplineChart.TabIndex = 73;
+            this.Reports_SplineChart.Text = "cartesianChart1";
+            this.Reports_SplineChart.Visible = false;
+            // 
+            // Piechart_Spline_Button
+            // 
+            this.Piechart_Spline_Button.BackgroundColor = System.Drawing.Color.White;
+            this.Piechart_Spline_Button.ButtonImage = ((System.Drawing.Image)(resources.GetObject("Piechart_Spline_Button.ButtonImage")));
+            this.Piechart_Spline_Button.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
+            this.Piechart_Spline_Button.ButtonText = "";
+            this.Piechart_Spline_Button.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.Piechart_Spline_Button.ClickTextColor = System.Drawing.Color.DodgerBlue;
+            this.Piechart_Spline_Button.CornerRadius = 5;
+            this.Piechart_Spline_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.Piechart_Spline_Button.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.Piechart_Spline_Button.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.Piechart_Spline_Button.HoverTextColor = System.Drawing.Color.DodgerBlue;
+            this.Piechart_Spline_Button.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
+            this.Piechart_Spline_Button.Location = new System.Drawing.Point(1500, 598);
+            this.Piechart_Spline_Button.Name = "Piechart_Spline_Button";
+            this.Piechart_Spline_Button.Size = new System.Drawing.Size(80, 70);
+            this.Piechart_Spline_Button.TabIndex = 72;
+            this.Piechart_Spline_Button.TextColor = System.Drawing.Color.Black;
+            this.Piechart_Spline_Button.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.Piechart_Spline_Button.Click += new System.EventHandler(this.Piechart_Spline_Button_Click);
             // 
             // PieChart_Button
             // 
@@ -1093,5 +1128,7 @@
         private XanderUI.XUIButton PieChart_Button;
         private XanderUI.XUIButton ColumnChart_Column;
         private BrightIdeasSoftware.OLVColumn FinanceWallet_Column;
+        private XanderUI.XUIButton Piechart_Spline_Button;
+        private LiveCharts.WinForms.CartesianChart Reports_SplineChart;
     }
 }

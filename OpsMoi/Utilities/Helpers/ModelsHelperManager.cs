@@ -19,7 +19,7 @@ namespace OpsMoi.Utilities
             specificMsg = specificMsg == "" ? "تمت العملية بنجاح" : specificMsg;
             try
             {
-                bool sameColor = grpbox.ForeColor == color;
+                bool sameColor = grpbox != null ? grpbox.ForeColor == color : true;
                 if (GroupboxCheck(grpbox, Title, color) || bypassCheck)
                 {
                     tobeDone();
@@ -37,7 +37,7 @@ namespace OpsMoi.Utilities
             grpbox.Controls.OfType<CheckBox>().ToList().ForEach(ctrl => HandleControl(ctrl, oldModel, objectDict));
             grpbox.Controls.OfType<RadioButton>().ToList().ForEach(ctrl => HandleControl(ctrl, oldModel, objectDict));
             grpbox.Controls.OfType<ComboBox>().ToList().ForEach(ctrl => HandleControl(ctrl, oldModel, objectDict));
-            foreach (Control ctrl in grpbox.Controls)
+            foreach (Control ctrl in grpbox.Controls.OfType<Control>().OrderBy(ctr => ctr.TabIndex))
                 HandleControl(ctrl, oldModel, objectDict);
         }
         private static void HandleControl(Control ctrl, object oldModel, Dictionary<string, object> Dict)

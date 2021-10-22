@@ -33,7 +33,7 @@ namespace OpsMoi.User_Interfaces.Finance
                         SpecificMsg = $"تمت الإضافة بنجاح. كود العملية المالية : {_id}";
                         Settings.Settings_Processor.HandleWallet(Enums.genericHandle_Type.تعديل, null, Wlt.name, Wlt.credit + (decimal)change,null, Title, color, Wlt,true);
                     if (type == Enums.financeType.تحويل_أرصدة)
-                        Settings.Settings_Processor.HandleWallet(Enums.genericHandle_Type.تعديل, null, relatedentity, Wlt.credit - (decimal)change, null, Title, color, Program.Wallets_List.Where(p => p.name == relatedentity).First(),true);
+                        Settings.Settings_Processor.HandleWallet(Enums.genericHandle_Type.تعديل, null, relatedentity, Program.Wallets_List.Where(p => p.name == relatedentity).First().credit - (decimal)change, null, Title, color, Program.Wallets_List.Where(p => p.name == relatedentity).First(),true);
                     };
                     break;
                 case Enums.genericHandle_Type.تعديل:
@@ -61,7 +61,7 @@ namespace OpsMoi.User_Interfaces.Finance
                             Wallet oldWlt = Program.Wallets_List.Where(p => p.id == oldModel.wallet).First();
                             Settings.Settings_Processor.HandleWallet(Enums.genericHandle_Type.تعديل, null, oldWlt.name, oldWlt.credit - (decimal)change, null, Title, color, oldWlt, true);
                             if (oldModel.type == Enums.financeType.تحويل_أرصدة)
-                                Settings.Settings_Processor.HandleWallet(Enums.genericHandle_Type.تعديل, null, oldModel.relatedentity, Wlt.credit + (decimal)change, null, Title, color, Program.Wallets_List.Where(p => p.name == oldModel.relatedentity).First(), true);
+                                Settings.Settings_Processor.HandleWallet(Enums.genericHandle_Type.تعديل, null, oldModel.relatedentity, Program.Wallets_List.Where(p => p.name == oldModel.relatedentity).First().credit + (decimal)change, null, Title, color, Program.Wallets_List.Where(p => p.name == oldModel.relatedentity).First(), true);
                         }
                     };
                     break;

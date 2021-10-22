@@ -77,6 +77,10 @@ namespace OpsMoi.User_Interfaces
         public void Sync()
         {
             Listviews_UPDATE();
+            if (Reports_PieChart.Visible)
+                UpdatePie(pieGroupArgs);
+            if (Reports_Chart.Visible || Reports_SplineChart.Visible)
+                Reports_Processor.UpdateLiveChart(Reports_Chart, _state, _From, _To, Span, Reports_Label, Reports_SplineChart, pieGroupArgs);
         }
         private void TileButtons_Click(object sender, EventArgs e) =>
             HM_Manager.TabButtonsClick(Reports_Tabcontrol, TileButtons_Panel, sender as BunifuTileButton, SidePanel1, delegate () { Sync(); });

@@ -73,7 +73,7 @@ namespace OpsMoi
             Del_FNC_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.حذف, Title = "تعديل عملية مالية", color = Enums.modColor };
         }
 
-        private void UpdateRelatedWallets() => HM_Manager.Update_Combobox(FNC_relatedentity_Combobox, Program.Wallets_List.Where(p => p != FNC_wallet_Combobox.SelectedValue).ToList(), "name", "id");
+        private void UpdateRelatedWallets() => HM_Manager.Update_Combobox(FNC_relatedentity_Combobox, Program.Wallets_List.Where(p => p.id != (FNC_wallet_Combobox.SelectedValue as int?).Value).ToList(), "name", "id");
         
         private void FNC_Button_Click(object sender, EventArgs e)
         {
@@ -117,7 +117,7 @@ namespace OpsMoi
 
         private void FNC_type_Combobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Enums.GetValueFromName<Enums.financeType>(FNC_type_Combobox.Text) == Enums.financeType.تحويل_أرصدة) { FNC_relatedentity_Textbox.Visible = false; FNC_relatedentity_Combobox.Visible = true; }
+            if (Enums.GetValueFromName<Enums.financeType>(FNC_type_Combobox.Text) == Enums.financeType.تحويل_أرصدة) { FNC_relatedentity_Textbox.Visible = false; FNC_relatedentity_Combobox.Visible = true; UpdateRelatedWallets(); }
             else { FNC_relatedentity_Textbox.Visible = true; FNC_relatedentity_Combobox.Visible = false; }
             CheckValidWalletPaid();
         }
@@ -146,7 +146,7 @@ namespace OpsMoi
 
         private void FNC_relatedwallet_Combobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (FNC_relatedentity_Combobox.Visible) { FNC_relatedentity_Textbox.Text = FNC_relatedentity_Combobox.Text; UpdateRelatedWallets(); }
+            if (FNC_relatedentity_Combobox.Visible) { FNC_relatedentity_Textbox.Text = FNC_relatedentity_Combobox.Text;}
         }
 
         private void Wlts_Objectlistview_DoubleClick(object sender, EventArgs e)

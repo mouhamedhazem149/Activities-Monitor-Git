@@ -240,7 +240,7 @@ namespace OpsMoi.User_Interfaces
             this.Todos_chkpoint_list_Objectlistview.Size = new System.Drawing.Size(721, 320);
             this.Todos_chkpoint_list_Objectlistview.SortGroupItemsByPrimaryColumn = false;
             this.Todos_chkpoint_list_Objectlistview.SpaceBetweenGroups = 5;
-            this.Todos_chkpoint_list_Objectlistview.TabIndex = 77;
+            this.Todos_chkpoint_list_Objectlistview.TabIndex = 10;
             this.Todos_chkpoint_list_Objectlistview.TintSortColumn = true;
             this.Todos_chkpoint_list_Objectlistview.UseCompatibleStateImageBehavior = false;
             this.Todos_chkpoint_list_Objectlistview.UseFilterIndicator = true;
@@ -292,7 +292,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_start_date_Datetimepicker.Location = new System.Drawing.Point(887, 237);
             this.TODO_start_date_Datetimepicker.Name = "TODO_start_date_Datetimepicker";
             this.TODO_start_date_Datetimepicker.Size = new System.Drawing.Size(513, 34);
-            this.TODO_start_date_Datetimepicker.TabIndex = 75;
+            this.TODO_start_date_Datetimepicker.TabIndex = 5;
             this.TODO_start_date_Datetimepicker.ValueChanged += new System.EventHandler(this.TODO_Datetimepicker_ValueChanged);
             // 
             // TODO_start_date_Adj_Label
@@ -434,7 +434,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_due_date_Datetimepicker.Location = new System.Drawing.Point(887, 279);
             this.TODO_due_date_Datetimepicker.Name = "TODO_due_date_Datetimepicker";
             this.TODO_due_date_Datetimepicker.Size = new System.Drawing.Size(513, 34);
-            this.TODO_due_date_Datetimepicker.TabIndex = 5;
+            this.TODO_due_date_Datetimepicker.TabIndex = 6;
             // 
             // TODO_notes_Adj_Label
             // 
@@ -587,7 +587,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_notes_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TODO_notes_Textbox.SelectedItem = null;
             this.TODO_notes_Textbox.Size = new System.Drawing.Size(827, 355);
-            this.TODO_notes_Textbox.TabIndex = 6;
+            this.TODO_notes_Textbox.TabIndex = 9;
             this.TODO_notes_Textbox.Tag = "";
             this.TODO_notes_Textbox.Text = "لا يوجد ملاحظات";
             this.TODO_notes_Textbox.Values = null;

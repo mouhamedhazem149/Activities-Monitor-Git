@@ -529,7 +529,7 @@ namespace OpsMoi
             this.FNC_relatedentity_Combobox.Location = new System.Drawing.Point(734, 36);
             this.FNC_relatedentity_Combobox.Name = "FNC_relatedentity_Combobox";
             this.FNC_relatedentity_Combobox.Size = new System.Drawing.Size(685, 47);
-            this.FNC_relatedentity_Combobox.TabIndex = 74;
+            this.FNC_relatedentity_Combobox.TabIndex = 3;
             this.FNC_relatedentity_Combobox.Visible = false;
             this.FNC_relatedentity_Combobox.SelectedIndexChanged += new System.EventHandler(this.FNC_relatedwallet_Combobox_SelectedIndexChanged);
             // 
@@ -542,7 +542,7 @@ namespace OpsMoi
             this.FNC_wallet_Combobox.Location = new System.Drawing.Point(734, 89);
             this.FNC_wallet_Combobox.Name = "FNC_wallet_Combobox";
             this.FNC_wallet_Combobox.Size = new System.Drawing.Size(685, 47);
-            this.FNC_wallet_Combobox.TabIndex = 72;
+            this.FNC_wallet_Combobox.TabIndex = 2;
             this.FNC_wallet_Combobox.SelectedIndexChanged += new System.EventHandler(this.FNC_wallet_Combobox_SelectedIndexChanged);
             // 
             // Name_Label
@@ -580,7 +580,7 @@ namespace OpsMoi
             this.FNC_paid_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.FNC_paid_Textbox.SelectedItem = null;
             this.FNC_paid_Textbox.Size = new System.Drawing.Size(891, 38);
-            this.FNC_paid_Textbox.TabIndex = 4;
+            this.FNC_paid_Textbox.TabIndex = 6;
             this.FNC_paid_Textbox.Tag = "";
             this.FNC_paid_Textbox.Text = "المبلغ المدفوع";
             this.FNC_paid_Textbox.Values = null;
@@ -598,7 +598,7 @@ namespace OpsMoi
             this.FNC_done_date_Datetimepicker.Name = "FNC_done_date_Datetimepicker";
             this.FNC_done_date_Datetimepicker.ShowCheckBox = true;
             this.FNC_done_date_Datetimepicker.Size = new System.Drawing.Size(548, 34);
-            this.FNC_done_date_Datetimepicker.TabIndex = 8;
+            this.FNC_done_date_Datetimepicker.TabIndex = 9;
             // 
             // FNC_done_date_Adj_Label
             // 
@@ -619,7 +619,7 @@ namespace OpsMoi
             this.FNC_due_date_Datetimepicker.Location = new System.Drawing.Point(871, 345);
             this.FNC_due_date_Datetimepicker.Name = "FNC_due_date_Datetimepicker";
             this.FNC_due_date_Datetimepicker.Size = new System.Drawing.Size(498, 34);
-            this.FNC_due_date_Datetimepicker.TabIndex = 6;
+            this.FNC_due_date_Datetimepicker.TabIndex = 8;
             // 
             // FNC_notes_Adj_Label
             // 
@@ -744,7 +744,7 @@ namespace OpsMoi
             this.FNC_type_Combobox.Location = new System.Drawing.Point(734, 142);
             this.FNC_type_Combobox.Name = "FNC_type_Combobox";
             this.FNC_type_Combobox.Size = new System.Drawing.Size(685, 47);
-            this.FNC_type_Combobox.TabIndex = 2;
+            this.FNC_type_Combobox.TabIndex = 1;
             this.FNC_type_Combobox.SelectedIndexChanged += new System.EventHandler(this.FNC_type_Combobox_SelectedIndexChanged);
             // 
             // FNC_due_Textbox
@@ -762,7 +762,7 @@ namespace OpsMoi
             this.FNC_due_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.FNC_due_Textbox.SelectedItem = null;
             this.FNC_due_Textbox.Size = new System.Drawing.Size(891, 38);
-            this.FNC_due_Textbox.TabIndex = 5;
+            this.FNC_due_Textbox.TabIndex = 7;
             this.FNC_due_Textbox.Tag = "";
             this.FNC_due_Textbox.Text = "القيمة المستحقة";
             this.FNC_due_Textbox.Values = null;
@@ -840,7 +840,7 @@ namespace OpsMoi
             this.FNC_category_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.FNC_category_Textbox.SelectedItem = null;
             this.FNC_category_Textbox.Size = new System.Drawing.Size(891, 38);
-            this.FNC_category_Textbox.TabIndex = 3;
+            this.FNC_category_Textbox.TabIndex = 5;
             this.FNC_category_Textbox.Tag = "";
             this.FNC_category_Textbox.Text = "التصنيف";
             this.FNC_category_Textbox.Values = null;
@@ -861,7 +861,7 @@ namespace OpsMoi
             this.FNC_relatedentity_Textbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.FNC_relatedentity_Textbox.SelectedItem = null;
             this.FNC_relatedentity_Textbox.Size = new System.Drawing.Size(891, 38);
-            this.FNC_relatedentity_Textbox.TabIndex = 1;
+            this.FNC_relatedentity_Textbox.TabIndex = 4;
             this.FNC_relatedentity_Textbox.Tag = "";
             this.FNC_relatedentity_Textbox.Text = "الجهة ذات الصلة";
             this.FNC_relatedentity_Textbox.Values = null;

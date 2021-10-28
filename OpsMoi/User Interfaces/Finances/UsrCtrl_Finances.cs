@@ -40,6 +40,14 @@ namespace OpsMoi
         }
         public DateTime Wlts_From { get { return WltsOps_From_Datetimepicker.Value; } }
         public DateTime Wlts_To { get { return WltsOps_To_Datetimepicker.Value; } }
+        public DateTime ReqFNC_From { get { return FNCreq_From_Datetimepicker.Value; } }
+        public DateTime ReqFNC_To { get { return FNCreq_To_Datetimepicker.Value; } }
+
+        private void LoadReqFNCs(DateTime From, DateTime To)
+        {
+            if (To < From) return;
+            HM_Manager.Update_OLV(User_Interfaces.Reports.Reports_Processor.FinancesList(From, To).Where(p => p.done_date.HasValue == false).ToList(), reqFNC_Objectlistview);
+        }
         private void LoadWltsOps(DateTime From, DateTime To)
         {
             if (To < From) return;
@@ -71,6 +79,12 @@ namespace OpsMoi
             Add_FNC_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.إضافة, Title = "إضافة عملية مالية", color = Enums.addColor };
             Modify_FNC_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.تعديل, Title = "تعديل عملية مالية", color = Enums.modColor };
             Del_FNC_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.حذف, Title = "تعديل عملية مالية", color = Enums.modColor };
+
+            TypFNC_Column.AspectToStringConverter = delegate (object rowObject) { return (rowObject as Enum).GetDisplayName(); };
+            finalFNC_Column.GroupKeyGetter = delegate (object rowObject) { return DateTime.Parse(((Finances)rowObject).due_date.ToString("d")); };
+            finalFNC_Column.GroupKeyToTitleConverter = delegate (object groupKey) { return ((DateTime)groupKey).ToString("dddd, dd MMMM,yyyy", System.Globalization.CultureInfo.GetCultureInfo("ar-EG")); };
+
+            AddFinance_Groupbox.ContextMenuStrip = Tabcontrol_contextMenuStrip;
         }
 
         private void UpdateRelatedWallets() => HM_Manager.Update_Combobox(FNC_relatedentity_Combobox, Program.Wallets_List.Where(p => p.id != (FNC_wallet_Combobox.SelectedValue as int?).Value).ToList(), "name", "id");
@@ -162,6 +176,8 @@ namespace OpsMoi
                 LoadWltsSearch();
                 LoadWltsOps(Wlts_From, Wlts_To);
             }
+            else if (FNC_TabControl.SelectedTab == Req_Tabpage)
+                LoadReqFNCs(ReqFNC_From, ReqFNC_To);
         }
 
         private void Wlts_Objectlistview_AboutToCreateGroups(object sender, BrightIdeasSoftware.CreateGroupsEventArgs e)
@@ -196,6 +212,23 @@ namespace OpsMoi
         {
             if (Wlts_Search_Objectlistview.SelectedObjects != null && Wlts_Search_Objectlistview.SelectedObjects.Count == 1)
                 Program.WorkingForm.Click_Settings(Enums.settingsArgument.openWalletManager, (Wlts_Search_Objectlistview.SelectedObject as Wallet).name);
+        }
+
+        private void FNCreq_SearchButton_Click(object sender, EventArgs e) => LoadReqFNCs(ReqFNC_From, ReqFNC_To);
+
+        private void reqFNC_Objectlistview_FormatRow(object sender, BrightIdeasSoftware.FormatRowEventArgs e) => e.Item.BackColor = Color.Pink;
+
+        private void reqFNC_Objectlistview_DoubleClick(object sender, EventArgs e) => Program.WorkingForm.Click_FNC(Enums.financeArgument.loadFinanceItem, (reqFNC_Objectlistview.SelectedObject as Finances).id);
+
+        private void pasteToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                if (Program.WorkingForm.clippedControl != null) HM_Manager.Copy(Program.WorkingForm.clippedControl, Tabcontrol_contextMenuStrip.SourceControl);
+        }
+        private void copyToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            { Program.WorkingForm.clippedControl = Tabcontrol_contextMenuStrip.SourceControl; pasteToolStripMenuItem.Enabled = true; }
         }
     }
 }

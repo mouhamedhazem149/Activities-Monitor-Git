@@ -51,6 +51,8 @@ namespace OpsMoi.User_Interfaces
             Add_NOT_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.إضافة, Title = "إضافة ملاحظات", color = Enums.addColor };
             Modify_NOT_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.تعديل, Title = "تعديل ملاحظات", color = Enums.modColor };
             Del_NOT_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.حذف, Title = "تعديل ملاحظات", color = Enums.modColor };
+
+            Note_Groupbox.ContextMenuStrip = Tabcontrol_contextMenuStrip;
         }
 
         private void NOTE_Button_Click(object sender, EventArgs e)
@@ -93,6 +95,17 @@ namespace OpsMoi.User_Interfaces
         {
             if (NOT_title_Textbox.Text != "")
                 NOTE_Button_Click("loadData", null);
+        }
+
+        private void pasteToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                if (Program.WorkingForm.clippedControl != null) HM_Manager.Copy(Program.WorkingForm.clippedControl, Tabcontrol_contextMenuStrip.SourceControl);
+        }
+        private void copyToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            { Program.WorkingForm.clippedControl = Tabcontrol_contextMenuStrip.SourceControl; pasteToolStripMenuItem.Enabled = true; }
         }
     }
 }

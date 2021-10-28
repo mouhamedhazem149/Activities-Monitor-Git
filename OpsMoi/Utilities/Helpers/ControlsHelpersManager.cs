@@ -15,11 +15,12 @@ namespace OpsMoi.Utilities
         public static void Update_OLV<T>(List<T> objects, ObjectListView Olv)
         {
             if (Olv.Objects != null && Olv.Objects.OfType<T>().Count() > 0) { Olv.SetObjects(null); }
-            Olv.Invoke((Action)delegate ()
-            {
-                Olv.SetObjects(objects.Where(p => p != null));
-                Olv.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            });
+            if (objects != null)
+                Olv.Invoke((Action)delegate ()
+                {
+                    Olv.SetObjects(objects.Where(p => p != null));
+                    Olv.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                });
         }
         public static void Update_LV(List<string> items, ListView lv)
         {
@@ -91,7 +92,7 @@ namespace OpsMoi.Utilities
             foreach (Control ctrl in parentControl.Controls)
                 ScaleControl(ctrl, customWidth, customHeight);
         }
-        private static void ScaleControl(Control ctrl,int customWidth, int customHeight)
+        private static void ScaleControl(Control ctrl, int customWidth, int customHeight)
         {
             ctrl.ClientSize = new Size(ctrl.ClientSize.Width / formWidth * customWidth, ctrl.ClientSize.Height / formHeight * customHeight);
             ctrl.Location = new Point(ctrl.Location.X / formWidth * customWidth, ctrl.Location.Y / formHeight * customHeight);
@@ -114,6 +115,64 @@ namespace OpsMoi.Utilities
             tabControl.SelectedTab = bunifuBtn.Tag as TabPage;
             bunifuPanel.Enabled = true;
             if (afterDone != null) afterDone();
+        }
+
+        public static void Copy(Control Src, Control To)
+        {
+            if (Src.GetType() != To.GetType()) return;
+            ctrlCpy(Src, To);
+            if (Src.Controls.Count > 0)
+                foreach (Control ctrl in Src.Controls.OfType<Control>().OrderBy(ctr => ctr.TabIndex))
+                {
+                    if (ctrl.Name.Length == 0) continue;
+                    Control toCtrl = To.Controls.Find(ctrl.Name, true).FirstOrDefault();
+                    if (toCtrl == null) continue;
+                    Copy(ctrl, toCtrl);
+                }
+        }
+        private static void ctrlCpy(Control Src, Control To)
+        {
+
+            if (Src.GetType() != To.GetType()) return;
+            else
+            {
+                switch (Src)
+                {
+                    case ModdedControls.ModdedTextBox txtbx:
+                        (To as ModdedControls.ModdedTextBox).Text = txtbx.Text;
+                        break;
+                    case ObjectListView olv:
+                        Update_OLV(olv.Objects != null ? olv.Objects.OfType<object>().ToList(): null, To as ObjectListView);
+                        break;
+                    case ListView lv:
+                        Update_LV(lv.Items.Count > 0 ? lv.Items.OfType<string>().ToList(): new List<string>() {"" }, To as ListView);
+                        break;
+                    case CheckBox chkbx:
+                        (To as CheckBox).Checked = chkbx.Checked;
+                        break;
+                    case RadioButton rdobtn:
+                        (To as RadioButton).Checked = rdobtn.Checked;
+                        break;
+                    case DateTimePicker dtp:
+                        (To as DateTimePicker).Checked = dtp.Checked;
+                        (To as DateTimePicker).Value = dtp.Value;
+                        break;
+                    default:
+                        To.Text = Src.Text;
+                        break;
+                }
+            }
+        }
+
+        public static T CtrlVariableDuplicate<T>(T ctrl) where T :Control, new()
+        {
+            T store = Activator.CreateInstance(ctrl.GetType()) as T;
+            store.Name = ctrl.Name;
+            ctrlCpy(ctrl, store);
+            if (ctrl.Controls.Count > 0)
+                foreach (Control child in ctrl.Controls.OfType<Control>().OrderBy(ctr => ctr.TabIndex))
+                    store.Controls.Add(CtrlVariableDuplicate(child));
+            return store;
         }
     }
 }

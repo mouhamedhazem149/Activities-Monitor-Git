@@ -30,6 +30,7 @@ namespace OpsMoi.User_Interfaces
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.todos_Tabcontrol = new TransparentTabControl();
             this.TODO_manageTab = new System.Windows.Forms.TabPage();
             this.AddTodo_Groupbox = new System.Windows.Forms.GroupBox();
@@ -91,6 +92,9 @@ namespace OpsMoi.User_Interfaces
             this.Timeline_TileButton = new ns1.BunifuTileButton();
             this.SidePanel1 = new System.Windows.Forms.Panel();
             this.TODOmanage_TileButton = new ns1.BunifuTileButton();
+            this.Tabcontrol_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.todos_Tabcontrol.SuspendLayout();
             this.TODO_manageTab.SuspendLayout();
             this.AddTodo_Groupbox.SuspendLayout();
@@ -102,6 +106,7 @@ namespace OpsMoi.User_Interfaces
             this.Timeline_Groupbox.SuspendLayout();
             this.Timeline_Panel.SuspendLayout();
             this.TileButtons_Panel.SuspendLayout();
+            this.Tabcontrol_contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // todos_Tabcontrol
@@ -987,6 +992,30 @@ namespace OpsMoi.User_Interfaces
             this.TODOmanage_TileButton.Tag = this.TODO_manageTab;
             this.TODOmanage_TileButton.Click += new System.EventHandler(this.TileButton_Click);
             // 
+            // Tabcontrol_contextMenuStrip
+            // 
+            this.Tabcontrol_contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.Tabcontrol_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem});
+            this.Tabcontrol_contextMenuStrip.Name = "Tabcontrol_contextMenuStrip";
+            this.Tabcontrol_contextMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Tabcontrol_contextMenuStrip.Size = new System.Drawing.Size(113, 52);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.copyToolStripMenuItem_MouseDown);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pasteToolStripMenuItem_MouseDown);
+            // 
             // UsrCtrl_Todo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1012,13 +1041,13 @@ namespace OpsMoi.User_Interfaces
             this.Timeline_Groupbox.PerformLayout();
             this.Timeline_Panel.ResumeLayout(false);
             this.TileButtons_Panel.ResumeLayout(false);
+            this.Tabcontrol_contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private TransparentTabControl todos_Tabcontrol;
-        private System.Windows.Forms.TabPage TODO_manageTab;
         private System.Windows.Forms.TabPage TODO_reqTab;
         private System.Windows.Forms.TabPage Timeline_Tab;
         private System.Windows.Forms.Panel TileButtons_Panel;
@@ -1026,7 +1055,46 @@ namespace OpsMoi.User_Interfaces
         private ns1.BunifuTileButton Timeline_TileButton;
         private System.Windows.Forms.Panel SidePanel1;
         private ns1.BunifuTileButton TODOmanage_TileButton;
+        private System.Windows.Forms.GroupBox TodoReq_Groupbox;
+        private System.Windows.Forms.Button TODO_SearchButton;
+        private System.Windows.Forms.Label TODO_To_Adj_Label;
+        private System.Windows.Forms.Label TODO_From_Adj_Label;
+        private System.Windows.Forms.DateTimePicker TODO_To_Datetimepicker;
+        private System.Windows.Forms.DateTimePicker TODO_From_Datetimepicker;
+        private BrightIdeasSoftware.ObjectListView reqTODO_Objectlistview;
+        private BrightIdeasSoftware.OLVColumn ReqTODO_Column;
+        private BrightIdeasSoftware.OLVColumn finalTODO_Column;
+        private BrightIdeasSoftware.OLVColumn categoryTODO_Column;
+        private System.Windows.Forms.GroupBox Timeline_Groupbox;
+        private System.Windows.Forms.Button Timeline_Button;
+        private System.Windows.Forms.Label Timeline_To_Adj_Label;
+        private System.Windows.Forms.Label Timeline_From_Adj_Label;
+        private System.Windows.Forms.DateTimePicker Timeline_To_DateTimePicker;
+        private System.Windows.Forms.DateTimePicker Timeline_From_DateTimePicker;
+        private MaterialWinforms.Controls.MaterialTimeline Todo_Timeline_Control;
+        private System.Windows.Forms.Label Comment_Label;
+        private System.Windows.Forms.Panel Timeline_Panel;
+        private System.Windows.Forms.TabPage TODO_manageTab;
         private System.Windows.Forms.GroupBox AddTodo_Groupbox;
+        private System.Windows.Forms.Button TODOs_DelChkPnt_Button;
+        private System.Windows.Forms.Button TODOs_AddChkPnt_Button;
+        private System.Windows.Forms.Label TODOs_chkpoint_list_Adj_Label;
+        private BrightIdeasSoftware.ObjectListView Todos_chkpoint_list_Objectlistview;
+        private BrightIdeasSoftware.OLVColumn ChkPnt_index_Column;
+        private BrightIdeasSoftware.OLVColumn ChkPnt_name_Column;
+        private BrightIdeasSoftware.OLVColumn ChkPnt_date_Column;
+        private System.Windows.Forms.DateTimePicker TODO_start_date_Datetimepicker;
+        private System.Windows.Forms.Label TODO_start_date_Adj_Label;
+        private ModdedTextBox TODO_id_Textbox;
+        private System.Windows.Forms.Label TODO_todo_Adj_Label;
+        private ModdedTextBox TODO_todo_Textbox;
+        private System.Windows.Forms.Label TODO_duration_value_Label;
+        private System.Windows.Forms.Label TODO_duration_Adj_Label;
+        private ModdedTextBox TODO_duration_Textbox;
+        private System.Windows.Forms.DateTimePicker TODO_done_date_Datetimepicker;
+        private System.Windows.Forms.Label TODO_done_date_Adj_Label;
+        private System.Windows.Forms.DateTimePicker TODO_due_date_Datetimepicker;
+        private System.Windows.Forms.Label TODO_notes_Adj_Label;
         private System.Windows.Forms.Label TODO_due_date_Adj_Label;
         private System.Windows.Forms.Label TODO_category_Adj_Label;
         private System.Windows.Forms.Label TODO_dueto_Adj_Label;
@@ -1040,43 +1108,8 @@ namespace OpsMoi.User_Interfaces
         private ModdedTextBox TODO_notes_Textbox;
         private ModdedTextBox TODO_dueto_Textbox;
         private ModdedTextBox TODO_duefrom_Textbox;
-        private System.Windows.Forms.DateTimePicker TODO_due_date_Datetimepicker;
-        private System.Windows.Forms.Label TODO_notes_Adj_Label;
-        private System.Windows.Forms.DateTimePicker TODO_done_date_Datetimepicker;
-        private System.Windows.Forms.Label TODO_done_date_Adj_Label;
-        private System.Windows.Forms.Label TODO_duration_value_Label;
-        private System.Windows.Forms.Label TODO_duration_Adj_Label;
-        private ModdedTextBox TODO_duration_Textbox;
-        private System.Windows.Forms.Label TODO_todo_Adj_Label;
-        private ModdedTextBox TODO_todo_Textbox;
-        private ModdedTextBox TODO_id_Textbox;
-        private System.Windows.Forms.DateTimePicker TODO_start_date_Datetimepicker;
-        private System.Windows.Forms.Label TODO_start_date_Adj_Label;
-        private System.Windows.Forms.GroupBox TodoReq_Groupbox;
-        private System.Windows.Forms.Button TODO_SearchButton;
-        private System.Windows.Forms.Label TODO_To_Adj_Label;
-        private System.Windows.Forms.Label TODO_From_Adj_Label;
-        private System.Windows.Forms.DateTimePicker TODO_To_Datetimepicker;
-        private System.Windows.Forms.DateTimePicker TODO_From_Datetimepicker;
-        private BrightIdeasSoftware.ObjectListView reqTODO_Objectlistview;
-        private BrightIdeasSoftware.OLVColumn ReqTODO_Column;
-        private BrightIdeasSoftware.OLVColumn finalTODO_Column;
-        private BrightIdeasSoftware.OLVColumn categoryTODO_Column;
-        private System.Windows.Forms.Label TODOs_chkpoint_list_Adj_Label;
-        private BrightIdeasSoftware.ObjectListView Todos_chkpoint_list_Objectlistview;
-        private BrightIdeasSoftware.OLVColumn ChkPnt_index_Column;
-        private BrightIdeasSoftware.OLVColumn ChkPnt_name_Column;
-        private BrightIdeasSoftware.OLVColumn ChkPnt_date_Column;
-        private System.Windows.Forms.Button TODOs_AddChkPnt_Button;
-        private System.Windows.Forms.Button TODOs_DelChkPnt_Button;
-        private System.Windows.Forms.GroupBox Timeline_Groupbox;
-        private System.Windows.Forms.Button Timeline_Button;
-        private System.Windows.Forms.Label Timeline_To_Adj_Label;
-        private System.Windows.Forms.Label Timeline_From_Adj_Label;
-        private System.Windows.Forms.DateTimePicker Timeline_To_DateTimePicker;
-        private System.Windows.Forms.DateTimePicker Timeline_From_DateTimePicker;
-        private MaterialWinforms.Controls.MaterialTimeline Todo_Timeline_Control;
-        private System.Windows.Forms.Label Comment_Label;
-        private System.Windows.Forms.Panel Timeline_Panel;
+        private System.Windows.Forms.ContextMenuStrip Tabcontrol_contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
     }
 }

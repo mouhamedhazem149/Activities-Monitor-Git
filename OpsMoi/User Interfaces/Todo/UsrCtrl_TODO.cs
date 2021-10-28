@@ -49,6 +49,8 @@ namespace OpsMoi.User_Interfaces
             Modify_TODO_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.تعديل, Title = "تعديل مهام", color = Enums.modColor };
             Del_TODO_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.حذف, Title = "تعديل مهام", color = Enums.modColor };
 
+            AddTodo_Groupbox.ContextMenuStrip = Tabcontrol_contextMenuStrip;
+
             finalTODO_Column.GroupKeyGetter = delegate (object rowObject)
             {
                 if (((Todos)rowObject).done_date.HasValue)
@@ -62,7 +64,6 @@ namespace OpsMoi.User_Interfaces
         public DateTime req_To { get { return TODO_To_Datetimepicker.Value; } }
         public DateTime timeline_From { get { return Timeline_From_DateTimePicker.Value; } }
         public DateTime timeline_To { get { return Timeline_To_DateTimePicker.Value; } }
-
 
         private List<Control> editControls { get { return new List<Control> { TODO_due_date_Datetimepicker,TODO_due_date_Adj_Label,TODO_done_date_Datetimepicker,TODO_done_date_Adj_Label,TODO_duration_Textbox,TODO_duration_Adj_Label,TODO_duration_value_Label }; } }
 
@@ -229,6 +230,18 @@ namespace OpsMoi.User_Interfaces
             Todo_Timeline_Control.SkinManager.ColorScheme = new MaterialWinforms.ColorScheme(MaterialWinforms.Primary.Amber500, MaterialWinforms.Primary.Amber700, MaterialWinforms.Primary.Amber100, MaterialWinforms.Accent.Amber200, MaterialWinforms.TextShade.WHITE);
             Todo_Timeline_Control.Visible = true;
             HM_Manager.Success_addition(Comment_Label, $"إجمالي عدد المهام {totalCount} بإجمالي فترة زمنية: {totalDuration}");
+        }
+
+        private void pasteToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                        if (Program.WorkingForm.clippedControl != null) HM_Manager.Copy(Program.WorkingForm.clippedControl, Tabcontrol_contextMenuStrip.SourceControl);
+        }
+
+        private void copyToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            { Program.WorkingForm.clippedControl = Tabcontrol_contextMenuStrip.SourceControl; pasteToolStripMenuItem.Enabled = true; }
         }
     }
 }

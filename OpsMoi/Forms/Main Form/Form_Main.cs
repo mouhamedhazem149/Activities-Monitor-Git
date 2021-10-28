@@ -27,21 +27,25 @@ namespace OpsMoi
                 case Enums.Resolution.A_1920x1080:
                     InitializeComponent();
                     break;
-                /*case Enums.Resolution.B_1366x768:
-                    InitializeComponent1366x768();
-                    break;
-                case Enums.Resolution.C_1280x1040:
-                    InitializeComponent1280x1040();
-                    break;*/
             }
         }
 
         public Color mainColor = Color.Transparent;
         public Color secColor = Color.Transparent;
         public static string tabPageName = "tabPage";
-        public static string todoPageName = "تبويب المهام رقم:";
-        public static string fncPageName = "تبويب المالية رقم:";
-        public static string notPageName = "تبويب الملاحظات رقم:";
+        public static string todoPageName = "تبويب المهام:";
+        public static string fncPageName = "تبويب المالية:";
+        public static string notPageName = "تبويب الملاحظات:";
+        private Control _clipboardControl = null;
+        public Control clippedControl
+        {
+            get => _clipboardControl;
+            set
+            {
+                _clipboardControl = HM_Manager.CtrlVariableDuplicate(value);
+                pasteToolStripMenuItem.Enabled = value != null;
+            }
+        }
 
         public void LoadUserInfo()
         {
@@ -82,7 +86,7 @@ namespace OpsMoi
             if (sender is UsrCtrl_Todo) item = sender as UsrCtrl_Todo;
             else item = sender is Enums.todoArgument ? prepareTodoUsrCtrl((sender as Enums.todoArgument?).Value) : prepareTodoUsrCtrl(Enums.todoArgument.none);
 
-            ActiveTabs_Tabcontrol.TabPages.Add($"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count + 1}",$"{todoPageName} {ActiveTabs_Tabcontrol.TabPages.OfType<TabPage>().Where(p => p.Text.Contains(todoPageName)).Count() + 1}" );
+            ActiveTabs_Tabcontrol.TabPages.Add($"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count + 1}",$"{todoPageName}"/* {ActiveTabs_Tabcontrol.TabPages.OfType<TabPage>().Where(p => p.Text.Contains(todoPageName)).Count() + 1}"*/ );
             ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].Controls.Add(item);
             item.Dock = DockStyle.Fill;
             ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].BackColor = secColor;
@@ -103,7 +107,7 @@ namespace OpsMoi
             UsrCtrl_Finances item;
             if (sender is UsrCtrl_Finances) item = sender as UsrCtrl_Finances;
             else item = sender is Enums.financeArgument ? prepareFNCUsrCtrl((sender as Enums.financeArgument?).Value) : prepareFNCUsrCtrl(Enums.financeArgument.none);
-            ActiveTabs_Tabcontrol.TabPages.Add($"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count + 1}", $"{fncPageName} {ActiveTabs_Tabcontrol.TabPages.OfType<TabPage>().Where(p => p.Text.Contains(fncPageName)).Count() + 1}");
+            ActiveTabs_Tabcontrol.TabPages.Add($"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count + 1}", $"{fncPageName}" /*{ActiveTabs_Tabcontrol.TabPages.OfType<TabPage>().Where(p => p.Text.Contains(fncPageName)).Count() + 1}"*/);
             ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].Controls.Add(item);
             item.Dock = DockStyle.Fill;
             ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].BackColor = secColor;
@@ -125,7 +129,7 @@ namespace OpsMoi
             if (sender is UsrCtrl_Notes) item = sender as UsrCtrl_Notes;
             else item = sender is Enums.noteArgument? prepareNotUsrCtrl((sender as Enums.noteArgument?).Value): prepareNotUsrCtrl(Enums.noteArgument.none);
 
-            ActiveTabs_Tabcontrol.TabPages.Add($"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count + 1}",$"{notPageName} {ActiveTabs_Tabcontrol.TabPages.OfType<TabPage>().Where(p => p.Text.Contains(notPageName)).Count() + 1}");
+            ActiveTabs_Tabcontrol.TabPages.Add($"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count + 1}",$"{notPageName}"/* {ActiveTabs_Tabcontrol.TabPages.OfType<TabPage>().Where(p => p.Text.Contains(notPageName)).Count() + 1}"*/);
             ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].Controls.Add(item);
             item.Dock = DockStyle.Fill;
             ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].BackColor = secColor;
@@ -194,5 +198,59 @@ namespace OpsMoi
         private void Minimize_ImageButton_Click(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
 
         private void ActiveTabs_Tabcontrol_DoubleClick(object sender, EventArgs e) { if (ActiveTabs_Tabcontrol.SelectedTab != null) ActiveTabs_Tabcontrol.TabPages.Remove(ActiveTabs_Tabcontrol.SelectedTab); }
+
+        private void ActiveTabs_Tabcontrol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ActiveTabs_Tabcontrol.SelectedTab.Controls.OfType<UsrCtrl_Finances>().Count() > 0) { PreapreToAdd(Finances_TileButton); TileButtons_Panel.Enabled = true; }
+            else if (ActiveTabs_Tabcontrol.SelectedTab.Controls.OfType<UsrCtrl_Todo>().Count() > 0) { PreapreToAdd(Todo_TileButton); TileButtons_Panel.Enabled = true; }
+            else if (ActiveTabs_Tabcontrol.SelectedTab.Controls.OfType<UsrCtrl_Notes>().Count() > 0) { PreapreToAdd(Notes_TileButton); TileButtons_Panel.Enabled = true; }
+        }
+
+        private void ActiveTabs_Tabcontrol_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                for (int i = 0; i < ActiveTabs_Tabcontrol.TabCount; ++i)
+                {
+                    Rectangle r = ActiveTabs_Tabcontrol.GetTabRect(i);
+                    if (r.Contains(e.Location) /* && it is the header that was clicked*/)
+                    {
+                        Tabcontrol_contextMenuStrip.Show(ActiveTabs_Tabcontrol, e.Location);
+                        break;
+                    }
+                }
+            }
+        }
+
+
+        private void pasteToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                for (int i = 0; i < ActiveTabs_Tabcontrol.TabCount; ++i)
+                {
+                    Rectangle r = ActiveTabs_Tabcontrol.GetTabRect(i);
+                    if (r.Contains(e.Location) /* && it is the header that was clicked*/)
+                    {
+                        if (clippedControl != null) HM_Manager.Copy(clippedControl, ActiveTabs_Tabcontrol.TabPages[i]);
+                        break;
+                    }
+                }
+            //if (clippedControl != null) HM_Manager.Copy(clippedControl, this tab page)
+        }
+
+        private void copyToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                for (int i = 0; i < ActiveTabs_Tabcontrol.TabCount; ++i)
+                {
+                    Rectangle r = ActiveTabs_Tabcontrol.GetTabRect(i);
+                    if (r.Contains(e.Location) /* && it is the header that was clicked*/)
+                    {
+                        clippedControl = ActiveTabs_Tabcontrol.TabPages[i];
+                        break;
+                    }
+                    clippedControl = null;
+                }
+        }
     }
 }

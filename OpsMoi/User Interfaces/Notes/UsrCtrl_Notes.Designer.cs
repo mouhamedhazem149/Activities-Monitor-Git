@@ -30,6 +30,7 @@ namespace OpsMoi.User_Interfaces
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.storage_Tabcontrol = new TransparentTabControl();
             this.add_Tabpage = new System.Windows.Forms.TabPage();
             this.Note_Groupbox = new System.Windows.Forms.GroupBox();
@@ -50,10 +51,14 @@ namespace OpsMoi.User_Interfaces
             this.WH_pricelist_TileButton = new ns1.BunifuTileButton();
             this.SidePanel1 = new System.Windows.Forms.Panel();
             this.NotesManager_TileButton = new ns1.BunifuTileButton();
+            this.Tabcontrol_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.storage_Tabcontrol.SuspendLayout();
             this.add_Tabpage.SuspendLayout();
             this.Note_Groupbox.SuspendLayout();
             this.TileButtons_Panel.SuspendLayout();
+            this.Tabcontrol_contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // storage_Tabcontrol
@@ -349,6 +354,30 @@ namespace OpsMoi.User_Interfaces
             this.NotesManager_TileButton.Tag = this.add_Tabpage;
             this.NotesManager_TileButton.Click += new System.EventHandler(this.TileButton_Click);
             // 
+            // Tabcontrol_contextMenuStrip
+            // 
+            this.Tabcontrol_contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.Tabcontrol_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem});
+            this.Tabcontrol_contextMenuStrip.Name = "Tabcontrol_contextMenuStrip";
+            this.Tabcontrol_contextMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Tabcontrol_contextMenuStrip.Size = new System.Drawing.Size(211, 80);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.copyToolStripMenuItem_MouseDown);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pasteToolStripMenuItem_MouseDown);
+            // 
             // UsrCtrl_Notes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -364,6 +393,7 @@ namespace OpsMoi.User_Interfaces
             this.Note_Groupbox.ResumeLayout(false);
             this.Note_Groupbox.PerformLayout();
             this.TileButtons_Panel.ResumeLayout(false);
+            this.Tabcontrol_contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -389,5 +419,8 @@ namespace OpsMoi.User_Interfaces
         private ns1.BunifuTileButton NotesManager_TileButton;
         private System.Windows.Forms.Button Decrypt_Button;
         private System.Windows.Forms.Button Encrypt_Button;
+        private System.Windows.Forms.ContextMenuStrip Tabcontrol_contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
     }
 }

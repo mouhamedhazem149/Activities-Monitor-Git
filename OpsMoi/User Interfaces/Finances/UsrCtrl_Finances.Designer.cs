@@ -32,10 +32,22 @@ namespace OpsMoi
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cityColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.SidePanel1 = new System.Windows.Forms.Panel();
             this.Req_MTN_TileButton = new ns1.BunifuTileButton();
             this.Req_Tabpage = new System.Windows.Forms.TabPage();
+            this.FNCReq_Groupbox = new System.Windows.Forms.GroupBox();
+            this.reqFNC_Objectlistview = new BrightIdeasSoftware.ObjectListView();
+            this.CatFNC_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.TypFNC_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.finalFNC_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.DueFNC_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.FNCreq_SearchButton = new System.Windows.Forms.Button();
+            this.FNC_To_Adj_Label = new System.Windows.Forms.Label();
+            this.FNC_From_Adj_Label = new System.Windows.Forms.Label();
+            this.FNCreq_To_Datetimepicker = new System.Windows.Forms.DateTimePicker();
+            this.FNCreq_From_Datetimepicker = new System.Windows.Forms.DateTimePicker();
             this.SearchOps_Wlt_TileButton = new ns1.BunifuTileButton();
             this.SearchOps_Wlt_Tabpage = new System.Windows.Forms.TabPage();
             this.WalletsSearch_Label = new System.Windows.Forms.Label();
@@ -87,6 +99,12 @@ namespace OpsMoi
             this.FNC_relatedentity_Textbox = new ModdedControls.ModdedTextBox();
             this.TileButtons_Panel = new System.Windows.Forms.Panel();
             this.FNC_TabControl = new TransparentTabControl();
+            this.Tabcontrol_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Req_Tabpage.SuspendLayout();
+            this.FNCReq_Groupbox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reqFNC_Objectlistview)).BeginInit();
             this.SearchOps_Wlt_Tabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Wlts_Search_Objectlistview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Wlts_Objectlistview)).BeginInit();
@@ -94,6 +112,7 @@ namespace OpsMoi
             this.AddFinance_Groupbox.SuspendLayout();
             this.TileButtons_Panel.SuspendLayout();
             this.FNC_TabControl.SuspendLayout();
+            this.Tabcontrol_contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // cityColumn
@@ -122,24 +141,170 @@ namespace OpsMoi
             this.Req_MTN_TileButton.ImagePosition = 0;
             this.Req_MTN_TileButton.ImageZoom = 0;
             this.Req_MTN_TileButton.LabelPosition = 216;
-            this.Req_MTN_TileButton.LabelText = "أوامر مطلوبة";
-            this.Req_MTN_TileButton.Location = new System.Drawing.Point(1, 634);
+            this.Req_MTN_TileButton.LabelText = "مصروفات مطلوبة";
+            this.Req_MTN_TileButton.Location = new System.Drawing.Point(1, 318);
             this.Req_MTN_TileButton.Margin = new System.Windows.Forms.Padding(56, 65, 56, 65);
             this.Req_MTN_TileButton.Name = "Req_MTN_TileButton";
             this.Req_MTN_TileButton.Size = new System.Drawing.Size(191, 316);
             this.Req_MTN_TileButton.TabIndex = 47;
             this.Req_MTN_TileButton.Tag = this.Req_Tabpage;
-            this.Req_MTN_TileButton.Visible = false;
             this.Req_MTN_TileButton.Click += new System.EventHandler(this.TileButton_Click);
             // 
             // Req_Tabpage
             // 
             this.Req_Tabpage.BackColor = System.Drawing.Color.Transparent;
+            this.Req_Tabpage.Controls.Add(this.FNCReq_Groupbox);
             this.Req_Tabpage.Location = new System.Drawing.Point(5, 4);
             this.Req_Tabpage.Name = "Req_Tabpage";
             this.Req_Tabpage.Size = new System.Drawing.Size(1601, 899);
             this.Req_Tabpage.TabIndex = 0;
-            this.Req_Tabpage.Text = "صيانات مطلوبة";
+            this.Req_Tabpage.Text = "عمليات مالية مطلوبة";
+            // 
+            // FNCReq_Groupbox
+            // 
+            this.FNCReq_Groupbox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.FNCReq_Groupbox.Controls.Add(this.reqFNC_Objectlistview);
+            this.FNCReq_Groupbox.Controls.Add(this.FNCreq_SearchButton);
+            this.FNCReq_Groupbox.Controls.Add(this.FNC_To_Adj_Label);
+            this.FNCReq_Groupbox.Controls.Add(this.FNC_From_Adj_Label);
+            this.FNCReq_Groupbox.Controls.Add(this.FNCreq_To_Datetimepicker);
+            this.FNCReq_Groupbox.Controls.Add(this.FNCreq_From_Datetimepicker);
+            this.FNCReq_Groupbox.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FNCReq_Groupbox.ForeColor = System.Drawing.Color.DarkRed;
+            this.FNCReq_Groupbox.Location = new System.Drawing.Point(11, 10);
+            this.FNCReq_Groupbox.Name = "FNCReq_Groupbox";
+            this.FNCReq_Groupbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.FNCReq_Groupbox.Size = new System.Drawing.Size(1503, 879);
+            this.FNCReq_Groupbox.TabIndex = 12;
+            this.FNCReq_Groupbox.TabStop = false;
+            this.FNCReq_Groupbox.Text = "العمليات المالية المطلوبة";
+            // 
+            // reqFNC_Objectlistview
+            // 
+            this.reqFNC_Objectlistview.AllColumns.Add(this.CatFNC_Column);
+            this.reqFNC_Objectlistview.AllColumns.Add(this.TypFNC_Column);
+            this.reqFNC_Objectlistview.AllColumns.Add(this.finalFNC_Column);
+            this.reqFNC_Objectlistview.AllColumns.Add(this.DueFNC_Column);
+            this.reqFNC_Objectlistview.CellEditUseWholeCell = false;
+            this.reqFNC_Objectlistview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.CatFNC_Column,
+            this.TypFNC_Column,
+            this.finalFNC_Column,
+            this.DueFNC_Column});
+            this.reqFNC_Objectlistview.Cursor = System.Windows.Forms.Cursors.Default;
+            this.reqFNC_Objectlistview.Font = new System.Drawing.Font("El Messiri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reqFNC_Objectlistview.FullRowSelect = true;
+            this.reqFNC_Objectlistview.HideSelection = false;
+            this.reqFNC_Objectlistview.Location = new System.Drawing.Point(6, 89);
+            this.reqFNC_Objectlistview.Name = "reqFNC_Objectlistview";
+            this.reqFNC_Objectlistview.RightToLeftLayout = true;
+            this.reqFNC_Objectlistview.SelectColumnsOnRightClick = false;
+            this.reqFNC_Objectlistview.SelectColumnsOnRightClickBehaviour = BrightIdeasSoftware.ObjectListView.ColumnSelectBehaviour.None;
+            this.reqFNC_Objectlistview.ShowCommandMenuOnRightClick = true;
+            this.reqFNC_Objectlistview.ShowItemCountOnGroups = true;
+            this.reqFNC_Objectlistview.Size = new System.Drawing.Size(1491, 778);
+            this.reqFNC_Objectlistview.Sorting = System.Windows.Forms.SortOrder.Descending;
+            this.reqFNC_Objectlistview.SpaceBetweenGroups = 3;
+            this.reqFNC_Objectlistview.TabIndex = 19;
+            this.reqFNC_Objectlistview.UseCompatibleStateImageBehavior = false;
+            this.reqFNC_Objectlistview.UseFiltering = true;
+            this.reqFNC_Objectlistview.UseHotControls = false;
+            this.reqFNC_Objectlistview.View = System.Windows.Forms.View.Details;
+            this.reqFNC_Objectlistview.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.reqFNC_Objectlistview_FormatRow);
+            this.reqFNC_Objectlistview.DoubleClick += new System.EventHandler(this.reqFNC_Objectlistview_DoubleClick);
+            // 
+            // CatFNC_Column
+            // 
+            this.CatFNC_Column.AspectName = "category";
+            this.CatFNC_Column.Hideable = false;
+            this.CatFNC_Column.MinimumWidth = 500;
+            this.CatFNC_Column.Text = "العملية المالية";
+            this.CatFNC_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CatFNC_Column.Width = 500;
+            // 
+            // TypFNC_Column
+            // 
+            this.TypFNC_Column.AspectName = "type";
+            this.TypFNC_Column.Hideable = false;
+            this.TypFNC_Column.MinimumWidth = 200;
+            this.TypFNC_Column.Text = "نوع العملية المالية";
+            this.TypFNC_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TypFNC_Column.Width = 200;
+            // 
+            // finalFNC_Column
+            // 
+            this.finalFNC_Column.AspectName = "due_date";
+            this.finalFNC_Column.AspectToStringFormat = "{0: dddd, dd MMMM yyyy}";
+            this.finalFNC_Column.Hideable = false;
+            this.finalFNC_Column.MinimumWidth = 250;
+            this.finalFNC_Column.Text = "تاريخ الاستحقاق";
+            this.finalFNC_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.finalFNC_Column.Width = 250;
+            // 
+            // DueFNC_Column
+            // 
+            this.DueFNC_Column.AspectName = "due";
+            this.DueFNC_Column.Hideable = false;
+            this.DueFNC_Column.MinimumWidth = 200;
+            this.DueFNC_Column.Text = "القيمة المطلوبة";
+            this.DueFNC_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DueFNC_Column.Width = 200;
+            // 
+            // FNCreq_SearchButton
+            // 
+            this.FNCreq_SearchButton.ForeColor = System.Drawing.Color.Black;
+            this.FNCreq_SearchButton.Location = new System.Drawing.Point(17, 35);
+            this.FNCreq_SearchButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.FNCreq_SearchButton.Name = "FNCreq_SearchButton";
+            this.FNCreq_SearchButton.Size = new System.Drawing.Size(146, 46);
+            this.FNCreq_SearchButton.TabIndex = 18;
+            this.FNCreq_SearchButton.Text = "بحث";
+            this.FNCreq_SearchButton.UseVisualStyleBackColor = true;
+            this.FNCreq_SearchButton.Click += new System.EventHandler(this.FNCreq_SearchButton_Click);
+            // 
+            // FNC_To_Adj_Label
+            // 
+            this.FNC_To_Adj_Label.AutoSize = true;
+            this.FNC_To_Adj_Label.Font = new System.Drawing.Font("El Messiri", 12F);
+            this.FNC_To_Adj_Label.Location = new System.Drawing.Point(555, 40);
+            this.FNC_To_Adj_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.FNC_To_Adj_Label.Name = "FNC_To_Adj_Label";
+            this.FNC_To_Adj_Label.Size = new System.Drawing.Size(43, 31);
+            this.FNC_To_Adj_Label.TabIndex = 17;
+            this.FNC_To_Adj_Label.Text = "إلى";
+            // 
+            // FNC_From_Adj_Label
+            // 
+            this.FNC_From_Adj_Label.AutoSize = true;
+            this.FNC_From_Adj_Label.Font = new System.Drawing.Font("El Messiri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FNC_From_Adj_Label.Location = new System.Drawing.Point(990, 40);
+            this.FNC_From_Adj_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.FNC_From_Adj_Label.Name = "FNC_From_Adj_Label";
+            this.FNC_From_Adj_Label.Size = new System.Drawing.Size(38, 31);
+            this.FNC_From_Adj_Label.TabIndex = 16;
+            this.FNC_From_Adj_Label.Text = "من";
+            // 
+            // FNCreq_To_Datetimepicker
+            // 
+            this.FNCreq_To_Datetimepicker.CalendarFont = new System.Drawing.Font("El Messiri", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FNCreq_To_Datetimepicker.Font = new System.Drawing.Font("El Messiri", 12F);
+            this.FNCreq_To_Datetimepicker.Location = new System.Drawing.Point(195, 36);
+            this.FNCreq_To_Datetimepicker.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.FNCreq_To_Datetimepicker.Name = "FNCreq_To_Datetimepicker";
+            this.FNCreq_To_Datetimepicker.Size = new System.Drawing.Size(355, 39);
+            this.FNCreq_To_Datetimepicker.TabIndex = 15;
+            this.FNCreq_To_Datetimepicker.Value = new System.DateTime(2025, 7, 2, 0, 0, 0, 0);
+            // 
+            // FNCreq_From_Datetimepicker
+            // 
+            this.FNCreq_From_Datetimepicker.CalendarFont = new System.Drawing.Font("El Messiri", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FNCreq_From_Datetimepicker.Font = new System.Drawing.Font("El Messiri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FNCreq_From_Datetimepicker.Location = new System.Drawing.Point(630, 36);
+            this.FNCreq_From_Datetimepicker.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.FNCreq_From_Datetimepicker.Name = "FNCreq_From_Datetimepicker";
+            this.FNCreq_From_Datetimepicker.Size = new System.Drawing.Size(355, 39);
+            this.FNCreq_From_Datetimepicker.TabIndex = 14;
+            this.FNCreq_From_Datetimepicker.Value = new System.DateTime(2018, 12, 31, 0, 0, 0, 0);
             // 
             // SearchOps_Wlt_TileButton
             // 
@@ -154,7 +319,7 @@ namespace OpsMoi
             this.SearchOps_Wlt_TileButton.ImageZoom = 0;
             this.SearchOps_Wlt_TileButton.LabelPosition = 180;
             this.SearchOps_Wlt_TileButton.LabelText = "العمليات المالية للمحافظ";
-            this.SearchOps_Wlt_TileButton.Location = new System.Drawing.Point(2, 318);
+            this.SearchOps_Wlt_TileButton.Location = new System.Drawing.Point(1, 634);
             this.SearchOps_Wlt_TileButton.Margin = new System.Windows.Forms.Padding(7);
             this.SearchOps_Wlt_TileButton.Name = "SearchOps_Wlt_TileButton";
             this.SearchOps_Wlt_TileButton.Size = new System.Drawing.Size(189, 316);
@@ -894,6 +1059,30 @@ namespace OpsMoi
             this.FNC_TabControl.TabIndex = 44;
             this.FNC_TabControl.SelectedIndexChanged += new System.EventHandler(this.FNC_TabControl_SelectedIndexChanged);
             // 
+            // Tabcontrol_contextMenuStrip
+            // 
+            this.Tabcontrol_contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.Tabcontrol_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem});
+            this.Tabcontrol_contextMenuStrip.Name = "Tabcontrol_contextMenuStrip";
+            this.Tabcontrol_contextMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Tabcontrol_contextMenuStrip.Size = new System.Drawing.Size(211, 80);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.copyToolStripMenuItem_MouseDown);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pasteToolStripMenuItem_MouseDown);
+            // 
             // UsrCtrl_Finances
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -903,6 +1092,10 @@ namespace OpsMoi
             this.Controls.Add(this.FNC_TabControl);
             this.Name = "UsrCtrl_Finances";
             this.Size = new System.Drawing.Size(1926, 950);
+            this.Req_Tabpage.ResumeLayout(false);
+            this.FNCReq_Groupbox.ResumeLayout(false);
+            this.FNCReq_Groupbox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reqFNC_Objectlistview)).EndInit();
             this.SearchOps_Wlt_Tabpage.ResumeLayout(false);
             this.SearchOps_Wlt_Tabpage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Wlts_Search_Objectlistview)).EndInit();
@@ -912,6 +1105,7 @@ namespace OpsMoi
             this.AddFinance_Groupbox.PerformLayout();
             this.TileButtons_Panel.ResumeLayout(false);
             this.FNC_TabControl.ResumeLayout(false);
+            this.Tabcontrol_contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -973,5 +1167,19 @@ namespace OpsMoi
         private BrightIdeasSoftware.OLVColumn Wlt_Name_Column;
         private BrightIdeasSoftware.OLVColumn Wlt_credit_Column;
         private Label WalletsSearch_Label;
+        private GroupBox FNCReq_Groupbox;
+        private Button FNCreq_SearchButton;
+        private Label FNC_To_Adj_Label;
+        private Label FNC_From_Adj_Label;
+        private DateTimePicker FNCreq_To_Datetimepicker;
+        private DateTimePicker FNCreq_From_Datetimepicker;
+        private BrightIdeasSoftware.ObjectListView reqFNC_Objectlistview;
+        private BrightIdeasSoftware.OLVColumn CatFNC_Column;
+        private BrightIdeasSoftware.OLVColumn TypFNC_Column;
+        private BrightIdeasSoftware.OLVColumn finalFNC_Column;
+        private BrightIdeasSoftware.OLVColumn DueFNC_Column;
+        private ContextMenuStrip Tabcontrol_contextMenuStrip;
+        private ToolStripMenuItem copyToolStripMenuItem;
+        private ToolStripMenuItem pasteToolStripMenuItem;
     }
 }

@@ -30,6 +30,7 @@
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.TileButtons_Panel = new System.Windows.Forms.Panel();
             this.xuiClock1 = new XanderUI.XUIClock();
@@ -56,6 +57,9 @@
             this.Shutdown_ImageButton = new ns1.BunifuImageButton();
             this.UserInterfaces_Panel = new System.Windows.Forms.Panel();
             this.ActiveTabs_Tabcontrol = new XanderUI.XUIFlatTab();
+            this.Tabcontrol_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TileButtons_Panel.SuspendLayout();
             this.Header_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Minimize_ImageButton)).BeginInit();
@@ -63,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ScreenShot_Button)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WebPage_ImageButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Shutdown_ImageButton)).BeginInit();
+            this.Tabcontrol_contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // TileButtons_Panel
@@ -473,7 +478,33 @@
             this.ActiveTabs_Tabcontrol.Size = new System.Drawing.Size(1685, 941);
             this.ActiveTabs_Tabcontrol.TabIndex = 82;
             this.ActiveTabs_Tabcontrol.Visible = false;
+            this.ActiveTabs_Tabcontrol.SelectedIndexChanged += new System.EventHandler(this.ActiveTabs_Tabcontrol_SelectedIndexChanged);
             this.ActiveTabs_Tabcontrol.DoubleClick += new System.EventHandler(this.ActiveTabs_Tabcontrol_DoubleClick);
+            this.ActiveTabs_Tabcontrol.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ActiveTabs_Tabcontrol_MouseUp);
+            // 
+            // Tabcontrol_contextMenuStrip
+            // 
+            this.Tabcontrol_contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.Tabcontrol_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem});
+            this.Tabcontrol_contextMenuStrip.Name = "Tabcontrol_contextMenuStrip";
+            this.Tabcontrol_contextMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Tabcontrol_contextMenuStrip.Size = new System.Drawing.Size(211, 80);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.copyToolStripMenuItem_MouseDown);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pasteToolStripMenuItem_MouseDown);
             // 
             // Form1
             // 
@@ -504,6 +535,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ScreenShot_Button)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WebPage_ImageButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Shutdown_ImageButton)).EndInit();
+            this.Tabcontrol_contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -534,5 +566,8 @@
         private System.Windows.Forms.Label CompanyName_Label;
         private ns1.BunifuImageButton Minimize_ImageButton;
         private XanderUI.XUIFlatTab ActiveTabs_Tabcontrol;
+        private System.Windows.Forms.ContextMenuStrip Tabcontrol_contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
     }
 }

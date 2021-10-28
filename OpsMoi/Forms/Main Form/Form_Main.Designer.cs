@@ -480,6 +480,7 @@
             this.ActiveTabs_Tabcontrol.Visible = false;
             this.ActiveTabs_Tabcontrol.SelectedIndexChanged += new System.EventHandler(this.ActiveTabs_Tabcontrol_SelectedIndexChanged);
             this.ActiveTabs_Tabcontrol.DoubleClick += new System.EventHandler(this.ActiveTabs_Tabcontrol_DoubleClick);
+            this.ActiveTabs_Tabcontrol.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ActiveTabs_Tabcontrol_KeyDown);
             this.ActiveTabs_Tabcontrol.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ActiveTabs_Tabcontrol_MouseUp);
             // 
             // Tabcontrol_contextMenuStrip
@@ -490,19 +491,19 @@
             this.pasteToolStripMenuItem});
             this.Tabcontrol_contextMenuStrip.Name = "Tabcontrol_contextMenuStrip";
             this.Tabcontrol_contextMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Tabcontrol_contextMenuStrip.Size = new System.Drawing.Size(211, 80);
+            this.Tabcontrol_contextMenuStrip.Size = new System.Drawing.Size(113, 52);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.copyToolStripMenuItem_MouseDown);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pasteToolStripMenuItem_MouseDown);
             // 

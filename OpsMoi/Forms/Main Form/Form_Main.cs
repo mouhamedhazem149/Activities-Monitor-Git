@@ -197,7 +197,39 @@ namespace OpsMoi
 
         private void Minimize_ImageButton_Click(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
 
-        private void ActiveTabs_Tabcontrol_DoubleClick(object sender, EventArgs e) { if (ActiveTabs_Tabcontrol.SelectedTab != null) ActiveTabs_Tabcontrol.TabPages.Remove(ActiveTabs_Tabcontrol.SelectedTab); }
+        private void ActiveTabs_Tabcontrol_DoubleClick(object sender, EventArgs e) => ActiveTabs_Tabcontrol_KeyDown(null, new KeyEventArgs(Keys.R));
+
+        private void ActiveTabs_Tabcontrol_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Delete:
+                    if (ActiveTabs_Tabcontrol.SelectedTab != null) ActiveTabs_Tabcontrol.TabPages.Remove(ActiveTabs_Tabcontrol.SelectedTab);
+                    break;
+                case Keys.R:
+                    if (ActiveTabs_Tabcontrol.SelectedTab != null)
+                    {
+                        var selected = ActiveTabs_Tabcontrol.SelectedTab;
+                        Rectangle rect = ActiveTabs_Tabcontrol.GetTabRect(ActiveTabs_Tabcontrol.TabPages.IndexOf(selected));
+                        ModdedControls.ModdedTextBox nameEdit = new ModdedControls.ModdedTextBox()
+                        {
+                            Bounds = new Rectangle(rect.X,ActiveTabs_Tabcontrol.Location.Y, rect.Width, rect.Height),
+                            Placeholder = "أدخل اسم التبويب",
+                            Font = ActiveTabs_Tabcontrol.Font,
+                            Text = ActiveTabs_Tabcontrol.SelectedTab.Text
+                        };
+                        ActiveTabs_Tabcontrol.Parent.Controls.Add(nameEdit);
+                        nameEdit.BringToFront();nameEdit.Focus();
+                        nameEdit.LostFocus += NameEdit_LostFocus;
+                    }
+                    break;
+            }
+        }
+        private void NameEdit_LostFocus(object sender, EventArgs e)
+        {
+            ActiveTabs_Tabcontrol.SelectedTab.Text = (sender as ModdedControls.ModdedTextBox).Text;
+            (sender as ModdedControls.ModdedTextBox).Dispose();
+        }
 
         private void ActiveTabs_Tabcontrol_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -252,5 +284,6 @@ namespace OpsMoi
                     clippedControl = null;
                 }
         }
+
     }
 }

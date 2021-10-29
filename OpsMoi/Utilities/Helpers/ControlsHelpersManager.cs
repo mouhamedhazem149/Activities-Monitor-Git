@@ -63,8 +63,8 @@ namespace OpsMoi.Utilities
                 try
                 {
                     if (ctrl is ModdedControls.ModdedTextBox && ctrl.Visible && ctrl.Enabled) { ctrl.Select(); (ctrl as ModdedControls.ModdedTextBox).Text = ""; (ctrl as ModdedControls.ModdedTextBox).SelectedItem = null; ctrl.Refresh(); }
+                    else if (ctrl is ObjectListView) (ctrl as ObjectListView).SetObjects(null);//اعمل لستة جديدة من نفس النوع بتاع الليست وخليها فاضية
                     else if (ctrl is ListView) (ctrl as ListView).Items.Clear();
-                    else if (ctrl is ObjectListView) (ctrl as ObjectListView).SetObjects(null);
                 }
                 catch (Exception) { Console.WriteLine($"{ctrl.Name}"); }
             }
@@ -168,6 +168,7 @@ namespace OpsMoi.Utilities
         {
             T store = Activator.CreateInstance(ctrl.GetType()) as T;
             store.Name = ctrl.Name;
+            store.CreateControl();
             ctrlCpy(ctrl, store);
             if (ctrl.Controls.Count > 0)
                 foreach (Control child in ctrl.Controls.OfType<Control>().OrderBy(ctr => ctr.TabIndex))

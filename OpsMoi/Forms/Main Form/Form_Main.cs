@@ -40,11 +40,7 @@ namespace OpsMoi
         public Control clippedControl
         {
             get => _clipboardControl;
-            set
-            {
-                _clipboardControl = HM_Manager.CtrlVariableDuplicate(value);
-                pasteToolStripMenuItem.Enabled = value != null;
-            }
+            set => _clipboardControl = HM_Manager.CtrlVariableDuplicate(value);
         }
 
         public void LoadUserInfo()
@@ -207,21 +203,22 @@ namespace OpsMoi
                     if (ActiveTabs_Tabcontrol.SelectedTab != null) ActiveTabs_Tabcontrol.TabPages.Remove(ActiveTabs_Tabcontrol.SelectedTab);
                     break;
                 case Keys.R:
-                    if (ActiveTabs_Tabcontrol.SelectedTab != null)
-                    {
-                        var selected = ActiveTabs_Tabcontrol.SelectedTab;
-                        Rectangle rect = ActiveTabs_Tabcontrol.GetTabRect(ActiveTabs_Tabcontrol.TabPages.IndexOf(selected));
-                        ModdedControls.ModdedTextBox nameEdit = new ModdedControls.ModdedTextBox()
+                    if (e.Modifiers == Keys.Control)
+                        if (ActiveTabs_Tabcontrol.SelectedTab != null)
                         {
-                            Bounds = new Rectangle(rect.X,ActiveTabs_Tabcontrol.Location.Y, rect.Width, rect.Height),
-                            Placeholder = "أدخل اسم التبويب",
-                            Font = ActiveTabs_Tabcontrol.Font,
-                            Text = ActiveTabs_Tabcontrol.SelectedTab.Text
-                        };
-                        ActiveTabs_Tabcontrol.Parent.Controls.Add(nameEdit);
-                        nameEdit.BringToFront();nameEdit.Focus();
-                        nameEdit.LostFocus += NameEdit_LostFocus;
-                    }
+                            var selected = ActiveTabs_Tabcontrol.SelectedTab;
+                            Rectangle rect = ActiveTabs_Tabcontrol.GetTabRect(ActiveTabs_Tabcontrol.TabPages.IndexOf(selected));
+                            ModdedControls.ModdedTextBox nameEdit = new ModdedControls.ModdedTextBox()
+                            {
+                                Bounds = new Rectangle(rect.X, ActiveTabs_Tabcontrol.Location.Y, rect.Width, rect.Height),
+                                Placeholder = "أدخل اسم التبويب",
+                                Font = ActiveTabs_Tabcontrol.Font,
+                                Text = ActiveTabs_Tabcontrol.SelectedTab.Text
+                            };
+                            ActiveTabs_Tabcontrol.Parent.Controls.Add(nameEdit);
+                            nameEdit.BringToFront(); nameEdit.Focus();
+                            nameEdit.LostFocus += NameEdit_LostFocus;
+                        }
                     break;
             }
         }
@@ -233,57 +230,10 @@ namespace OpsMoi
 
         private void ActiveTabs_Tabcontrol_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ActiveTabs_Tabcontrol.SelectedTab.Controls.OfType<UsrCtrl_Finances>().Count() > 0) { PreapreToAdd(Finances_TileButton); TileButtons_Panel.Enabled = true; }
-            else if (ActiveTabs_Tabcontrol.SelectedTab.Controls.OfType<UsrCtrl_Todo>().Count() > 0) { PreapreToAdd(Todo_TileButton); TileButtons_Panel.Enabled = true; }
-            else if (ActiveTabs_Tabcontrol.SelectedTab.Controls.OfType<UsrCtrl_Notes>().Count() > 0) { PreapreToAdd(Notes_TileButton); TileButtons_Panel.Enabled = true; }
+            if (ActiveTabs_Tabcontrol.SelectedTab != null)
+                if (ActiveTabs_Tabcontrol.SelectedTab.Controls.OfType<UsrCtrl_Finances>().Count() > 0) { PreapreToAdd(Finances_TileButton); TileButtons_Panel.Enabled = true; }
+                else if (ActiveTabs_Tabcontrol.SelectedTab.Controls.OfType<UsrCtrl_Todo>().Count() > 0) { PreapreToAdd(Todo_TileButton); TileButtons_Panel.Enabled = true; }
+                else if (ActiveTabs_Tabcontrol.SelectedTab.Controls.OfType<UsrCtrl_Notes>().Count() > 0) { PreapreToAdd(Notes_TileButton); TileButtons_Panel.Enabled = true; }
         }
-
-        private void ActiveTabs_Tabcontrol_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                for (int i = 0; i < ActiveTabs_Tabcontrol.TabCount; ++i)
-                {
-                    Rectangle r = ActiveTabs_Tabcontrol.GetTabRect(i);
-                    if (r.Contains(e.Location) /* && it is the header that was clicked*/)
-                    {
-                        Tabcontrol_contextMenuStrip.Show(ActiveTabs_Tabcontrol, e.Location);
-                        break;
-                    }
-                }
-            }
-        }
-
-
-        private void pasteToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-                for (int i = 0; i < ActiveTabs_Tabcontrol.TabCount; ++i)
-                {
-                    Rectangle r = ActiveTabs_Tabcontrol.GetTabRect(i);
-                    if (r.Contains(e.Location) /* && it is the header that was clicked*/)
-                    {
-                        if (clippedControl != null) HM_Manager.Copy(clippedControl, ActiveTabs_Tabcontrol.TabPages[i]);
-                        break;
-                    }
-                }
-            //if (clippedControl != null) HM_Manager.Copy(clippedControl, this tab page)
-        }
-
-        private void copyToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-                for (int i = 0; i < ActiveTabs_Tabcontrol.TabCount; ++i)
-                {
-                    Rectangle r = ActiveTabs_Tabcontrol.GetTabRect(i);
-                    if (r.Contains(e.Location) /* && it is the header that was clicked*/)
-                    {
-                        clippedControl = ActiveTabs_Tabcontrol.TabPages[i];
-                        break;
-                    }
-                    clippedControl = null;
-                }
-        }
-
     }
 }

@@ -391,6 +391,7 @@ namespace OpsMoi
             this.Wlts_Search_Objectlistview.UseFiltering = true;
             this.Wlts_Search_Objectlistview.UseHotControls = false;
             this.Wlts_Search_Objectlistview.View = System.Windows.Forms.View.Details;
+            this.Wlts_Search_Objectlistview.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.Wlts_Search_Objectlistview_FormatRow);
             this.Wlts_Search_Objectlistview.DoubleClick += new System.EventHandler(this.Wlts_Search_Objectlistview_DoubleClick);
             // 
             // Wlt_Id_Column
@@ -1067,19 +1068,19 @@ namespace OpsMoi
             this.pasteToolStripMenuItem});
             this.Tabcontrol_contextMenuStrip.Name = "Tabcontrol_contextMenuStrip";
             this.Tabcontrol_contextMenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Tabcontrol_contextMenuStrip.Size = new System.Drawing.Size(211, 80);
+            this.Tabcontrol_contextMenuStrip.Size = new System.Drawing.Size(113, 52);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.copyToolStripMenuItem_MouseDown);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pasteToolStripMenuItem_MouseDown);
             // 

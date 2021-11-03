@@ -230,5 +230,8 @@ namespace OpsMoi
             if (e.Button == MouseButtons.Left)
             { Program.WorkingForm.clippedControl = Tabcontrol_contextMenuStrip.SourceControl; pasteToolStripMenuItem.Enabled = true; }
         }
+
+        private void Wlts_Search_Objectlistview_FormatRow(object sender, BrightIdeasSoftware.FormatRowEventArgs e) => 
+            e.Item.BackColor = ControlPaint.Dark(Color.FromArgb(int.Parse("f8edeb", System.Globalization.NumberStyles.HexNumber)), (float)((e.Item.RowObject as Wallet).credit / Program.Wallets_List.Sum(p => p.credit) / 5));
     }
 }

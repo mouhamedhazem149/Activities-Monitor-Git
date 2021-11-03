@@ -48,7 +48,12 @@ namespace OpsMoi.Utilities
             if (Msglabel != null) Msglabel.Visible = false;
             try
             {
-                parentCtrl.Controls.OfType<ICustomControl>().ToList().ForEach(ctrl => ctrl.Sync());
+                List<Control> tempCtrls = parentCtrl.Controls.OfType<Control>().ToList();
+                while (tempCtrls != null && tempCtrls.Count > 0)
+                {
+                    tempCtrls.Where(p => p is ICustomControl).ToList().ForEach(p => (p as ICustomControl).Sync());
+                    tempCtrls = tempCtrls.Select(p => p.Controls.OfType<Control>().ToList()).SelectMany(ct => ct).ToList();
+                }
                 if (Msglabel != null) Success_addition(Msglabel, "تمت المزامنة بنجاح!");
             }
             catch (Exception) { Fail_addition(Msglabel, "حدث خطأ اثناء المزامنة!"); }

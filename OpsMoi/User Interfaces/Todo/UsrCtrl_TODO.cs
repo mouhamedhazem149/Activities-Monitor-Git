@@ -213,13 +213,13 @@ namespace OpsMoi.User_Interfaces
             Todo_Timeline_Control.Visible = false;
             foreach (var todo in Reports_Processor.TodosList(timeline_From, timeline_To))
             {
-                if (todo.done_date.HasValue) Todo_Timeline_Control.Entrys.Add(new MaterialWinforms.Controls.MaterialTimeLineEntry() { Title = todo.todo, AdditionalInfo = todo.category, Time = todo.done_date.Value, UserName = todo.dueto, Text = "" });
-                else Todo_Timeline_Control.Entrys.Add(new MaterialWinforms.Controls.MaterialTimeLineEntry() { Title = todo.todo, AdditionalInfo = todo.category, Time = todo.due_date, UserName = todo.dueto, Text = "غير مكتملة" });
+                if (todo.done_date.HasValue) Todo_Timeline_Control.Entrys.Add(new MaterialWinforms.Controls.MaterialTimeLineEntry() { Title = $"[{todo.id.ToString()}]  {todo.todo}", AdditionalInfo = todo.category, Time = todo.done_date.Value, UserName = todo.dueto, Text = "" });
+                else Todo_Timeline_Control.Entrys.Add(new MaterialWinforms.Controls.MaterialTimeLineEntry() { Title = $"[{todo.id.ToString()}]  {todo.todo}", AdditionalInfo = todo.category, Time = todo.due_date, UserName = todo.dueto, Text = "غير مكتملة" });
                 totalCount += 1; totalDuration += todo.duration;
                 if (todo.chkpoint_list != null && todo.chkpoint_list.Count > 0)
                     foreach (Checkpoint chk in todo.chkpoint_list)
                     {
-                        totalCount += 1; Todo_Timeline_Control.Entrys.Add(new MaterialWinforms.Controls.MaterialTimeLineEntry() { Title = todo.todo, AdditionalInfo = todo.category, Time = chk.Chk_Date, UserName = todo.dueto, Text = chk.ChkName });
+                        totalCount += 1; Todo_Timeline_Control.Entrys.Add(new MaterialWinforms.Controls.MaterialTimeLineEntry() { Title = $"[{todo.id.ToString()}]  {todo.todo}", AdditionalInfo = todo.category, Time = chk.Chk_Date, UserName = todo.dueto, Text = chk.ChkName });
                     }
                 /* if (todo.done_date.HasValue) timeLines.Add(new Timeline() { Category = todo.category, Title = todo.todo, date = todo.done_date.Value, Mission = "", DueTo = todo.dueto });
                  else timeLines.Add(new Timeline() { Category = todo.category, Title = todo.todo, date = todo.due_date, Mission = "غير مكتملة", DueTo = todo.dueto });
@@ -229,7 +229,7 @@ namespace OpsMoi.User_Interfaces
             }
             Todo_Timeline_Control.SkinManager.ColorScheme = new MaterialWinforms.ColorScheme(MaterialWinforms.Primary.Amber500, MaterialWinforms.Primary.Amber700, MaterialWinforms.Primary.Amber100, MaterialWinforms.Accent.Amber200, MaterialWinforms.TextShade.WHITE);
             Todo_Timeline_Control.Visible = true;
-            HM_Manager.Success_addition(Comment_Label, $"إجمالي عدد المهام {totalCount} بإجمالي فترة زمنية: {totalDuration}");
+            HM_Manager.Success_addition(Comment_Label, $"إجمالي عدد المهام {totalCount} بإجمالي فترة زمنية: {HM_Manager.MinutesToDuration(totalDuration)}");
         }
 
         private void pasteToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
@@ -242,6 +242,12 @@ namespace OpsMoi.User_Interfaces
         {
             if (e.Button == MouseButtons.Left)
             { Program.WorkingForm.clippedControl = Tabcontrol_contextMenuStrip.SourceControl; pasteToolStripMenuItem.Enabled = true; }
+        }
+
+        private void TODO_Textbox_cmnFlr_SelectedItemChanged(object sender, EventArgs e)
+        {
+            if ((sender as ModdedControls.ModdedTextBox).SelectedItem != "")
+                HM_Manager.SetControlsFromModel(AddTodo_Groupbox, HM_Manager.commonFiller(Program.Todos_List.Where(p => p.GetType().GetProperty(System.Text.RegularExpressions.Regex.Match((sender as ModdedControls.ModdedTextBox).Name, HM_Manager.controlsPattern).Groups[HM_Manager.proprtyName].Value).GetValue(p).ToString() == (sender as ModdedControls.ModdedTextBox).SelectedItem).ToList()));
         }
     }
 }

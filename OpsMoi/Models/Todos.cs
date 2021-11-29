@@ -13,13 +13,13 @@ namespace OpsMoi.Models
         public string todo { get; set; }
 
         public string addeddate { get; set; }
-        public DateTime added_date { get => DateTime.Parse(addeddate); set { addeddate = value.ToString("g"); } }
+        public DateTime added_date { get { return addeddate != null ? DateTime.Parse(addeddate) : DateTime.Now; } set { addeddate = value.ToString("g"); } }
 
         public string duedate { get; set; }
-        public DateTime due_date { get => DateTime.Parse(duedate); set { duedate = value.ToString("g"); } }
+        public DateTime due_date { get { return duedate != null ? DateTime.Parse(duedate) : DateTime.Now; } set { duedate = value.ToString("g"); } }
 
         public string startdate { get; set; }
-        public DateTime start_date { get => DateTime.Parse(startdate); set { startdate = value.ToString("g"); } }
+        public DateTime start_date { get { return startdate != null ? DateTime.Parse(startdate) : DateTime.Now; } set { startdate = value.ToString("g"); } }
         
         public string donedate { get; set; }
         public DateTime? done_date { get { if (donedate != null) return DateTime.Parse(donedate); else return null; } set {if (value != null) donedate = value.Value.ToString("g"); } }

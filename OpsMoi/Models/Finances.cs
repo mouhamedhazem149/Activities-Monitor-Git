@@ -16,7 +16,7 @@ namespace OpsMoi.Models
         public double paid { get; set; }
         
         public string duedate { get; set; }
-        public DateTime due_date { get => DateTime.Parse(duedate); set { duedate = value.ToString("g"); } }
+        public DateTime due_date { get { return duedate != null ? DateTime.Parse(duedate) : DateTime.Now; } set { duedate = value.ToString("g"); } }
         
         public string donedate { get; set; }
         public DateTime? done_date { get { if (donedate != null) return DateTime.Parse(donedate); else return null; } set { if (value != null) donedate = value.Value.ToString("g"); } }

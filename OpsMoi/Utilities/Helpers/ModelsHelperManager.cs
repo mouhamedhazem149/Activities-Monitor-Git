@@ -11,7 +11,7 @@ namespace OpsMoi.Utilities
     public static partial class HM_Manager
     {
         public delegate void Func();
-        const string proprtyName = "propertyName"; 
+        public const string proprtyName = "propertyName"; 
         public static string controlsPattern = $@"^[a-zA-Z]+_(?<{proprtyName}>[\w]+)_[a-zA-Z]+$";
         
         public static bool genericHandler(GroupBox grpbox, string Title, Color color, object oldModel, Label MsgLabel, Func tobeDone, ref string specificMsg, bool bypassCheck = false)
@@ -25,7 +25,7 @@ namespace OpsMoi.Utilities
                     tobeDone();
                     FinalSteps(grpbox, MsgLabel, specificMsg, bypassCheck); return true;
                 }
-                else { if (sameColor) HM_Manager.Fail_addition(MsgLabel, "برجاء تاكد من ملء جميع البيانات"); else Reset_Groupbox_Controls(grpbox); }
+                else { if (sameColor) Fail_addition(MsgLabel, "برجاء تاكد من ملء جميع البيانات"); else Reset_Groupbox_Controls(grpbox); }
             }
             catch (Exception ex) { Fail_addition(MsgLabel); }
             return false;
@@ -64,6 +64,7 @@ namespace OpsMoi.Utilities
                             }
                             else
                             {
+                                if (Dict[Prop] == null) break;
                                 int indo = cmbobx.FindStringExact(Dict[Prop].GetType().IsEnum ? (Dict[Prop] as Enum).GetDisplayName() : Dict[Prop].ToString());
                                 cmbobx.SelectedIndex = indo;
                                 cmbobx.Text = Dict[Prop].GetType().IsEnum ? (Dict[Prop] as Enum).GetDisplayName() : Dict[Prop].ToString();

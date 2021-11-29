@@ -364,6 +364,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_todo_Textbox.Text = "المهمة";
             this.TODO_todo_Textbox.Values = null;
             this.TODO_todo_Textbox.Visible_Password_Button = false;
+            this.TODO_todo_Textbox.SelectedItemChanged += new System.EventHandler<System.EventArgs>(this.TODO_Textbox_cmnFlr_SelectedItemChanged);
             // 
             // TODO_duration_value_Label
             // 
@@ -526,7 +527,7 @@ namespace OpsMoi.User_Interfaces
             this.id_Label.Font = new System.Drawing.Font("El Messiri", 10.8F);
             this.id_Label.Location = new System.Drawing.Point(32, 68);
             this.id_Label.Name = "id_Label";
-            this.id_Label.Size = new System.Drawing.Size(137, 29);
+            this.id_Label.Size = new System.Drawing.Size(130, 28);
             this.id_Label.TabIndex = 52;
             this.id_Label.Text = "أدخل أرقام فقط";
             this.id_Label.Visible = false;
@@ -551,6 +552,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_category_Textbox.Text = "التصنيف";
             this.TODO_category_Textbox.Values = null;
             this.TODO_category_Textbox.Visible_Password_Button = false;
+            this.TODO_category_Textbox.SelectedItemChanged += new System.EventHandler<System.EventArgs>(this.TODO_Textbox_cmnFlr_SelectedItemChanged);
             // 
             // AddTODO_Label
             // 
@@ -618,6 +620,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_dueto_Textbox.Text = "الجهة المطلوب لها";
             this.TODO_dueto_Textbox.Values = null;
             this.TODO_dueto_Textbox.Visible_Password_Button = false;
+            this.TODO_dueto_Textbox.SelectedItemChanged += new System.EventHandler<System.EventArgs>(this.TODO_Textbox_cmnFlr_SelectedItemChanged);
             // 
             // TODO_duefrom_Textbox
             // 
@@ -639,6 +642,7 @@ namespace OpsMoi.User_Interfaces
             this.TODO_duefrom_Textbox.Text = "مطلوب من";
             this.TODO_duefrom_Textbox.Values = null;
             this.TODO_duefrom_Textbox.Visible_Password_Button = false;
+            this.TODO_duefrom_Textbox.SelectedItemChanged += new System.EventHandler<System.EventArgs>(this.TODO_Textbox_cmnFlr_SelectedItemChanged);
             // 
             // TODO_reqTab
             // 

@@ -103,7 +103,8 @@ namespace OpsMoi.Utilities
         {
             سنوي,
             شهري,
-            يومي
+            يومي,
+            أخرى
         }
         public enum report_tabState
         {

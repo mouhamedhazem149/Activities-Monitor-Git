@@ -33,7 +33,7 @@ namespace OpsMoi
         }
         void InitialLoad()
         {
-            InitializeByResolution(); 
+            InitializeByResolution();
             HM_Manager.IControlInit(this, FNC_TabControl, TileButtons_Panel);
             FNC_type_Combobox.DataSource = Enum.GetValues(typeof(Enums.financeType)).OfType<Enums.financeType>().Select(enm => enm.GetDisplayName()).ToList();
             HM_Manager.Update_Combobox(FNC_wallet_Combobox, Program.Wallets_List, "name", "id");
@@ -88,7 +88,7 @@ namespace OpsMoi
         }
 
         private void UpdateRelatedWallets() => HM_Manager.Update_Combobox(FNC_relatedentity_Combobox, Program.Wallets_List.Where(p => p.id != (FNC_wallet_Combobox.SelectedValue as int?).Value).ToList(), "name", "id");
-        
+
         private void FNC_Button_Click(object sender, EventArgs e)
         {
             if (sender is Button)
@@ -96,13 +96,13 @@ namespace OpsMoi
                 double tempDue = double.TryParse(FNC_due_Textbox.Text, out tempDue) ? double.Parse(FNC_due_Textbox.Text) : 0;
                 double tempPaid = double.TryParse(FNC_paid_Textbox.Text, out tempPaid) ? double.Parse(FNC_paid_Textbox.Text) : 0;
                 Finances_Processor.HandleFNC(((sender as Button).Tag as settingsButtonTag_Item?).Value.handleType, AddFinance_Groupbox
-                    , FNC_relatedentity_Textbox.Text,Enums.GetValueFromName<Enums.financeType>(FNC_type_Combobox.Text) /*(Enums.financeType)Enum.Parse(typeof(Enums.financeType), FNC_type_Combobox.Text)*/,(FNC_wallet_Combobox.SelectedValue as int?).Value, FNC_category_Textbox.Text, tempDue, tempPaid, FNC_due_date_Datetimepicker.Value, FNC_done_date_Datetimepicker.Checked, FNC_done_date_Datetimepicker.Value, FNC_notes_Textbox.Text
+                    , FNC_relatedentity_Textbox.Text, Enums.GetValueFromName<Enums.financeType>(FNC_type_Combobox.Text) /*(Enums.financeType)Enum.Parse(typeof(Enums.financeType), FNC_type_Combobox.Text)*/, (FNC_wallet_Combobox.SelectedValue as int?).Value, FNC_category_Textbox.Text, tempDue, tempPaid, FNC_due_date_Datetimepicker.Value, FNC_done_date_Datetimepicker.Checked, FNC_done_date_Datetimepicker.Value, FNC_notes_Textbox.Text
                     , FNC_Label, ((sender as Button).Tag as settingsButtonTag_Item?).Value.Title, ((sender as Button).Tag as settingsButtonTag_Item?).Value.color
                     , Program.Finances_List.Where(item => item.id.ToString() == FNC_id_Textbox.Text).FirstOrDefault());
             }
             else
                 Finances_Processor.HandleFNC(Enums.genericHandle_Type.تحميل_البيانات, AddFinance_Groupbox
-                    , "", Enums.financeType.دخل,0, "", 0,0 ,DateTime.Now,false ,DateTime.Now, "", FNC_Label, (Modify_FNC_Button.Tag as settingsButtonTag_Item?).Value.Title, (Modify_FNC_Button.Tag as settingsButtonTag_Item?).Value.color
+                    , "", Enums.financeType.دخل, 0, "", 0, 0, DateTime.Now, false, DateTime.Now, "", FNC_Label, (Modify_FNC_Button.Tag as settingsButtonTag_Item?).Value.Title, (Modify_FNC_Button.Tag as settingsButtonTag_Item?).Value.color
                     , Program.Finances_List.Where(item => item.id.ToString() == FNC_id_Textbox.Text).FirstOrDefault());
             Sync();
         }
@@ -141,12 +141,12 @@ namespace OpsMoi
             if ((FNC_type_Combobox.Text == Enums.financeType.مدفوعات.GetDisplayName() || FNC_type_Combobox.Text == Enums.financeType.تحويل_أرصدة.GetDisplayName()))
                 if (decimal.TryParse(FNC_paid_Textbox.Text, out temp))
                     if (AddFinance_Groupbox.ForeColor == Enums.addColor)
-                    { 
+                    {
                         if (temp > Program.Wallets_List.Where(p => p.id == (FNC_wallet_Combobox.SelectedValue as int?).Value).First().credit)
                         {
                             FNC_paid_Textbox.Text = Program.Wallets_List.Where(p => p.id == (FNC_wallet_Combobox.SelectedValue as int?).Value).First().credit.ToString();
                             HM_Manager.Fail_addition(FNC_Label, "لا يمكن ان تكون القيمة المدفوعة اكبر من رصيد المحفظة");
-                        } 
+                        }
                     }
                     else
                     {
@@ -160,7 +160,7 @@ namespace OpsMoi
 
         private void FNC_relatedwallet_Combobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (FNC_relatedentity_Combobox.Visible) { FNC_relatedentity_Textbox.Text = FNC_relatedentity_Combobox.Text;}
+            if (FNC_relatedentity_Combobox.Visible) { FNC_relatedentity_Textbox.Text = FNC_relatedentity_Combobox.Text; }
         }
 
         private void Wlts_Objectlistview_DoubleClick(object sender, EventArgs e)
@@ -231,7 +231,13 @@ namespace OpsMoi
             { Program.WorkingForm.clippedControl = Tabcontrol_contextMenuStrip.SourceControl; pasteToolStripMenuItem.Enabled = true; }
         }
 
-        private void Wlts_Search_Objectlistview_FormatRow(object sender, BrightIdeasSoftware.FormatRowEventArgs e) => 
+        private void Wlts_Search_Objectlistview_FormatRow(object sender, BrightIdeasSoftware.FormatRowEventArgs e) =>
             e.Item.BackColor = ControlPaint.Dark(Color.FromArgb(int.Parse("f8edeb", System.Globalization.NumberStyles.HexNumber)), (float)((e.Item.RowObject as Wallet).credit / Program.Wallets_List.Sum(p => p.credit) / 5));
+
+        private void FNC_Textbox_cmnFlr_SelectedItemChanged(object sender, EventArgs e)
+        {
+            if ((sender as ModdedControls.ModdedTextBox).SelectedItem != "")
+                HM_Manager.SetControlsFromModel(AddFinance_Groupbox, HM_Manager.commonFiller(Program.Finances_List.Where(p => p.GetType().GetProperty(System.Text.RegularExpressions.Regex.Match((sender as ModdedControls.ModdedTextBox).Name, HM_Manager.controlsPattern).Groups[HM_Manager.proprtyName].Value).GetValue(p).ToString() == (sender as ModdedControls.ModdedTextBox).SelectedItem).ToList()));
+        }
     }
 }

@@ -751,6 +751,7 @@ namespace OpsMoi
             this.FNC_paid_Textbox.Text = "المبلغ المدفوع";
             this.FNC_paid_Textbox.Values = null;
             this.FNC_paid_Textbox.Visible_Password_Button = false;
+            this.FNC_paid_Textbox.SelectedItemChanged += new System.EventHandler<System.EventArgs>(this.FNC_Textbox_cmnFlr_SelectedItemChanged);
             this.FNC_paid_Textbox.TextChanged += new System.EventHandler(this.FNC_value_Textbox_TextChanged);
             // 
             // FNC_done_date_Datetimepicker
@@ -896,7 +897,7 @@ namespace OpsMoi
             this.id_Label.Font = new System.Drawing.Font("El Messiri", 10.8F);
             this.id_Label.Location = new System.Drawing.Point(31, 81);
             this.id_Label.Name = "id_Label";
-            this.id_Label.Size = new System.Drawing.Size(137, 29);
+            this.id_Label.Size = new System.Drawing.Size(130, 28);
             this.id_Label.TabIndex = 52;
             this.id_Label.Text = "أدخل أرقام فقط";
             this.id_Label.Visible = false;
@@ -933,6 +934,7 @@ namespace OpsMoi
             this.FNC_due_Textbox.Text = "القيمة المستحقة";
             this.FNC_due_Textbox.Values = null;
             this.FNC_due_Textbox.Visible_Password_Button = false;
+            this.FNC_due_Textbox.SelectedItemChanged += new System.EventHandler<System.EventArgs>(this.FNC_Textbox_cmnFlr_SelectedItemChanged);
             this.FNC_due_Textbox.TextChanged += new System.EventHandler(this.FNC_value_Textbox_TextChanged);
             // 
             // FNC_Label
@@ -1011,6 +1013,7 @@ namespace OpsMoi
             this.FNC_category_Textbox.Text = "التصنيف";
             this.FNC_category_Textbox.Values = null;
             this.FNC_category_Textbox.Visible_Password_Button = false;
+            this.FNC_category_Textbox.SelectedItemChanged += new System.EventHandler<System.EventArgs>(this.FNC_Textbox_cmnFlr_SelectedItemChanged);
             // 
             // FNC_relatedentity_Textbox
             // 
@@ -1032,6 +1035,7 @@ namespace OpsMoi
             this.FNC_relatedentity_Textbox.Text = "الجهة ذات الصلة";
             this.FNC_relatedentity_Textbox.Values = null;
             this.FNC_relatedentity_Textbox.Visible_Password_Button = false;
+            this.FNC_relatedentity_Textbox.SelectedItemChanged += new System.EventHandler<System.EventArgs>(this.FNC_Textbox_cmnFlr_SelectedItemChanged);
             // 
             // TileButtons_Panel
             // 

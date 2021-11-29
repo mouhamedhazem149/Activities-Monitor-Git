@@ -89,10 +89,11 @@
             this.Reports_SaveChanges_Button = new System.Windows.Forms.Button();
             this.Reports_OLV_Label = new System.Windows.Forms.Label();
             this.Charts_Panel = new System.Windows.Forms.Panel();
-            this.Reports_SplineChart = new LiveCharts.WinForms.CartesianChart();
             this.Piechart_Spline_Button = new XanderUI.XUIButton();
+            this.Reports_SplineChart = new LiveCharts.WinForms.CartesianChart();
             this.PieChart_Button = new XanderUI.XUIButton();
             this.ColumnChart_Column = new XanderUI.XUIButton();
+            this.Reports_Span_Updown = new System.Windows.Forms.NumericUpDown();
             this.Reports_Tabcontrol.SuspendLayout();
             this.Todos_Tabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Todos_Objectlistview)).BeginInit();
@@ -104,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.HR_Objectlistview)).BeginInit();
             this.TileButtons_Panel.SuspendLayout();
             this.Charts_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Reports_Span_Updown)).BeginInit();
             this.SuspendLayout();
             // 
             // Reports_Tabcontrol
@@ -751,11 +753,12 @@
             this.Reports_Span_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Reports_Span_Combobox.Font = new System.Drawing.Font("El Messiri", 11F);
             this.Reports_Span_Combobox.FormattingEnabled = true;
-            this.Reports_Span_Combobox.Location = new System.Drawing.Point(624, 7);
+            this.Reports_Span_Combobox.Location = new System.Drawing.Point(720, 7);
             this.Reports_Span_Combobox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Reports_Span_Combobox.Name = "Reports_Span_Combobox";
-            this.Reports_Span_Combobox.Size = new System.Drawing.Size(271, 36);
+            this.Reports_Span_Combobox.Size = new System.Drawing.Size(175, 36);
             this.Reports_Span_Combobox.TabIndex = 3;
+            this.Reports_Span_Combobox.SelectedIndexChanged += new System.EventHandler(this.Reports_Span_Combobox_SelectedIndexChanged);
             // 
             // Reports_Span_Adj_Label
             // 
@@ -789,7 +792,7 @@
             this.Reports_Label.ForeColor = System.Drawing.Color.Maroon;
             this.Reports_Label.Location = new System.Drawing.Point(272, 7);
             this.Reports_Label.Name = "Reports_Label";
-            this.Reports_Label.Size = new System.Drawing.Size(346, 36);
+            this.Reports_Label.Size = new System.Drawing.Size(288, 36);
             this.Reports_Label.TabIndex = 36;
             this.Reports_Label.Text = "label15";
             this.Reports_Label.Visible = false;
@@ -949,15 +952,6 @@
             this.Charts_Panel.TabIndex = 68;
             this.Charts_Panel.Visible = false;
             // 
-            // Reports_SplineChart
-            // 
-            this.Reports_SplineChart.Location = new System.Drawing.Point(-2, 80);
-            this.Reports_SplineChart.Name = "Reports_SplineChart";
-            this.Reports_SplineChart.Size = new System.Drawing.Size(1583, 512);
-            this.Reports_SplineChart.TabIndex = 73;
-            this.Reports_SplineChart.Text = "cartesianChart1";
-            this.Reports_SplineChart.Visible = false;
-            // 
             // Piechart_Spline_Button
             // 
             this.Piechart_Spline_Button.BackgroundColor = System.Drawing.Color.White;
@@ -979,6 +973,15 @@
             this.Piechart_Spline_Button.TextColor = System.Drawing.Color.Black;
             this.Piechart_Spline_Button.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.Piechart_Spline_Button.Click += new System.EventHandler(this.Piechart_Spline_Button_Click);
+            // 
+            // Reports_SplineChart
+            // 
+            this.Reports_SplineChart.Location = new System.Drawing.Point(-2, 80);
+            this.Reports_SplineChart.Name = "Reports_SplineChart";
+            this.Reports_SplineChart.Size = new System.Drawing.Size(1583, 512);
+            this.Reports_SplineChart.TabIndex = 73;
+            this.Reports_SplineChart.Text = "cartesianChart1";
+            this.Reports_SplineChart.Visible = false;
             // 
             // PieChart_Button
             // 
@@ -1024,11 +1027,39 @@
             this.ColumnChart_Column.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.ColumnChart_Column.Click += new System.EventHandler(this.ColumnChart_Column_Click);
             // 
+            // Reports_Span_Updown
+            // 
+            this.Reports_Span_Updown.Font = new System.Drawing.Font("El Messiri", 11F);
+            this.Reports_Span_Updown.Location = new System.Drawing.Point(594, 7);
+            this.Reports_Span_Updown.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.Reports_Span_Updown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.Reports_Span_Updown.Name = "Reports_Span_Updown";
+            this.Reports_Span_Updown.Size = new System.Drawing.Size(120, 36);
+            this.Reports_Span_Updown.TabIndex = 73;
+            this.Reports_Span_Updown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Reports_Span_Updown.ThousandsSeparator = true;
+            this.Reports_Span_Updown.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.Reports_Span_Updown.Value = new decimal(new int[] {
+            68,
+            0,
+            0,
+            65536});
+            this.Reports_Span_Updown.Visible = false;
+            // 
             // UsrCtrl_Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.Reports_Span_Updown);
             this.Controls.Add(this.Charts_Panel);
             this.Controls.Add(this.Reports_From_Datetimepicker);
             this.Controls.Add(this.Reports_OLV_Label);
@@ -1062,6 +1093,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.HR_Objectlistview)).EndInit();
             this.TileButtons_Panel.ResumeLayout(false);
             this.Charts_Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Reports_Span_Updown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1130,5 +1162,6 @@
         private BrightIdeasSoftware.OLVColumn FinanceWallet_Column;
         private XanderUI.XUIButton Piechart_Spline_Button;
         private LiveCharts.WinForms.CartesianChart Reports_SplineChart;
+        private System.Windows.Forms.NumericUpDown Reports_Span_Updown;
     }
 }

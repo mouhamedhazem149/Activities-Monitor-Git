@@ -14,10 +14,10 @@ namespace OpsMoi.User_Interfaces.Reports
     {
         public delegate int GetItemAtPoint(DateTime from, DateTime to);
         private const string totalSpline = "الإجمالي";
-        public static void UpdateLiveChart(LiveCharts.WinForms.CartesianChart chart, Enums.report_tabState state, DateTime from, DateTime to, Enums.Span span, Label Msglabel, LiveCharts.WinForms.CartesianChart sPline = null, BrightIdeasSoftware.CreateGroupsEventArgs GroupsArgs = null)
+        public static void UpdateLiveChart(LiveCharts.WinForms.CartesianChart chart, Enums.report_tabState state, DateTime from, DateTime to, Enums.Span span,int DSpan,Label Msglabel, LiveCharts.WinForms.CartesianChart sPline = null, BrightIdeasSoftware.CreateGroupsEventArgs GroupsArgs = null)
         {
             if (from > to) { HM_Manager.Fail_addition(Msglabel, "برجاء ادخال تاريخ صالح"); return; }
-            List<DateTime> dateList = getDateList(from, to, span);
+            List<DateTime> dateList = getDateList(from, to, span,DSpan);
             PrepareChart(chart, dateList); if (sPline != null) PrepareChart(sPline, dateList);
             SeriesCollection collect = new SeriesCollection();
             SeriesCollection sPline_collect = new SeriesCollection();
@@ -107,7 +107,8 @@ namespace OpsMoi.User_Interfaces.Reports
                     break;
             }
             chart.Series = collect;
-            sPline.Series = sPline_collect;
+            if (GroupsArgs != null && sPline != null) 
+                sPline.Series = sPline_collect;
         }
         private static void PrepareChart(LiveCharts.WinForms.CartesianChart chart, List<DateTime> dateTimes)
         {
@@ -136,7 +137,7 @@ namespace OpsMoi.User_Interfaces.Reports
             chart.DefaultLegend.FontSize = 12;
             chart.Visible = true;
         }
-        private static List<DateTime> getDateList(DateTime from, DateTime to, Enums.Span Span)
+        private static List<DateTime> getDateList(DateTime from, DateTime to, Enums.Span Span,int Rng)
         {
             switch (Span)
             {
@@ -146,6 +147,8 @@ namespace OpsMoi.User_Interfaces.Reports
                     return Enumerable.Range(0,(int)((to.Subtract(from).TotalDays / 30) + 2)).Select(p => new DateTime(from.AddMonths(p).Year, from.AddMonths(p).Month, 1)).ToList();
                 case Enums.Span.يومي:
                     return Enumerable.Range(0, (int)(to.Subtract(from).TotalDays  + 2)).Select(p => new DateTime(from.AddDays(p).Year, from.AddDays(p).Month, from.AddDays(p).Day)).ToList();
+                case Enums.Span.أخرى:
+                    return Enumerable.Range(0, (int)((to.Subtract(from).TotalDays / Rng) + 2)).Select(p => from.AddDays(p * Rng)).ToList();
                 default: return null;
             }
         }

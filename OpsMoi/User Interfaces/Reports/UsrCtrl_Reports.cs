@@ -71,6 +71,7 @@ namespace OpsMoi.User_Interfaces
         private CreateGroupsEventArgs pieGroupArgs = null;
         private Enums.report_tabState _state;
         public Enums.Span Span { get { Enums.Span _span; Enum.TryParse(Reports_Span_Combobox.Text.ToString(), out _span); return _span; } }
+        public int dSpan => (int)Reports_Span_Updown.Value;
         public DateTime _From { get { return Reports_From_Datetimepicker.Value; } }
         public DateTime _To { get { return Reports_To_Datetimepicker.Value; } }
         private void Statistics_Item_Changed(object sender, EventArgs e) => Sync();
@@ -80,7 +81,7 @@ namespace OpsMoi.User_Interfaces
             if (Reports_PieChart.Visible)
                 UpdatePie(pieGroupArgs);
             if (Reports_Chart.Visible || Reports_SplineChart.Visible)
-                Reports_Processor.UpdateLiveChart(Reports_Chart, _state, _From, _To, Span, Reports_Label, Reports_SplineChart, pieGroupArgs);
+                Reports_Processor.UpdateLiveChart(Reports_Chart, _state, _From, _To, Span,dSpan ,Reports_Label, Reports_SplineChart, pieGroupArgs);
         }
         private void TileButtons_Click(object sender, EventArgs e) =>
             HM_Manager.TabButtonsClick(Reports_Tabcontrol, TileButtons_Panel, sender as BunifuTileButton, SidePanel1, delegate () { Sync(); });
@@ -347,7 +348,7 @@ namespace OpsMoi.User_Interfaces
             else
             {
                 Reports_PieChart.Visible = Reports_SplineChart.Visible = false;
-                Reports_Processor.UpdateLiveChart(Reports_Chart, _state, _From, _To, Span, Reports_Label);
+                Reports_Processor.UpdateLiveChart(Reports_Chart, _state, _From, _To, Span,dSpan, Reports_Label);
                 Charts_Panel.Visible = Reports_Chart.Visible = true;
                 Piechart_Spline_Button.BringToFront();
             }
@@ -362,10 +363,12 @@ namespace OpsMoi.User_Interfaces
                 if (pieGroupArgs != null)
                 {
                     UpdatePie(pieGroupArgs);
-                    Reports_Processor.UpdateLiveChart(Reports_Chart, _state, _From, _To, Span, Reports_Label, Reports_SplineChart, pieGroupArgs);
+                    Reports_Processor.UpdateLiveChart(Reports_Chart, _state, _From, _To, Span, dSpan, Reports_Label, Reports_SplineChart, pieGroupArgs);
                 }
                 Reports_SplineChart.Visible = true;
             }
         }
+
+        private void Reports_Span_Combobox_SelectedIndexChanged(object sender, EventArgs e) => Reports_Span_Updown.Visible = Span == Enums.Span.أخرى;
     }
 }

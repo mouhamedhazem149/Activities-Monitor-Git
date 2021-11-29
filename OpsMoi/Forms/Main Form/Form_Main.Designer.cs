@@ -56,6 +56,7 @@
             this.Shutdown_ImageButton = new ns1.BunifuImageButton();
             this.UserInterfaces_Panel = new System.Windows.Forms.Panel();
             this.ActiveTabs_Tabcontrol = new XanderUI.XUIFlatTab();
+            this.Shortcut_ImageButton = new ns1.BunifuImageButton();
             this.TileButtons_Panel.SuspendLayout();
             this.Header_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Minimize_ImageButton)).BeginInit();
@@ -63,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ScreenShot_Button)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WebPage_ImageButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Shutdown_ImageButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Shortcut_ImageButton)).BeginInit();
             this.SuspendLayout();
             // 
             // TileButtons_Panel
@@ -239,6 +241,7 @@
             // Header_Panel
             // 
             this.Header_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.Header_Panel.Controls.Add(this.Shortcut_ImageButton);
             this.Header_Panel.Controls.Add(this.Minimize_ImageButton);
             this.Header_Panel.Controls.Add(this.CompanyName_Label);
             this.Header_Panel.Controls.Add(this.Refresh_Button);
@@ -264,10 +267,10 @@
             this.Minimize_ImageButton.BackColor = System.Drawing.Color.Transparent;
             this.Minimize_ImageButton.Image = ((System.Drawing.Image)(resources.GetObject("Minimize_ImageButton.Image")));
             this.Minimize_ImageButton.ImageActive = null;
-            this.Minimize_ImageButton.Location = new System.Drawing.Point(168, 29);
+            this.Minimize_ImageButton.Location = new System.Drawing.Point(92, 33);
             this.Minimize_ImageButton.Margin = new System.Windows.Forms.Padding(2);
             this.Minimize_ImageButton.Name = "Minimize_ImageButton";
-            this.Minimize_ImageButton.Size = new System.Drawing.Size(71, 71);
+            this.Minimize_ImageButton.Size = new System.Drawing.Size(71, 62);
             this.Minimize_ImageButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Minimize_ImageButton.TabIndex = 30;
             this.Minimize_ImageButton.TabStop = false;
@@ -337,7 +340,7 @@
             this.User_Branch_Label.BackColor = System.Drawing.Color.Transparent;
             this.User_Branch_Label.Font = new System.Drawing.Font("Alameen", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.User_Branch_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
-            this.User_Branch_Label.Location = new System.Drawing.Point(681, 57);
+            this.User_Branch_Label.Location = new System.Drawing.Point(690, 57);
             this.User_Branch_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.User_Branch_Label.Name = "User_Branch_Label";
             this.User_Branch_Label.Size = new System.Drawing.Size(126, 34);
@@ -353,7 +356,7 @@
             this.label11.Location = new System.Drawing.Point(1088, 79);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(130, 52);
+            this.label11.Size = new System.Drawing.Size(129, 52);
             this.label11.TabIndex = 22;
             this.label11.Text = "Essa";
             this.label11.Visible = false;
@@ -362,7 +365,7 @@
             // 
             this.User_Name_Label.BackColor = System.Drawing.Color.Transparent;
             this.User_Name_Label.Font = new System.Drawing.Font("El Messiri", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.User_Name_Label.Location = new System.Drawing.Point(243, 86);
+            this.User_Name_Label.Location = new System.Drawing.Point(267, 86);
             this.User_Name_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.User_Name_Label.Name = "User_Name_Label";
             this.User_Name_Label.Size = new System.Drawing.Size(552, 52);
@@ -378,7 +381,7 @@
             this.label12.Location = new System.Drawing.Point(1212, 79);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(365, 52);
+            this.label12.Size = new System.Drawing.Size(364, 52);
             this.label12.TabIndex = 21;
             this.label12.Text = "Airconditioning";
             this.label12.Visible = false;
@@ -388,13 +391,14 @@
             this.WebPage_ImageButton.BackColor = System.Drawing.Color.Transparent;
             this.WebPage_ImageButton.Image = global::OpsMoi.Properties.Resources.global;
             this.WebPage_ImageButton.ImageActive = null;
-            this.WebPage_ImageButton.Location = new System.Drawing.Point(92, 29);
+            this.WebPage_ImageButton.Location = new System.Drawing.Point(267, 33);
             this.WebPage_ImageButton.Margin = new System.Windows.Forms.Padding(2);
             this.WebPage_ImageButton.Name = "WebPage_ImageButton";
             this.WebPage_ImageButton.Size = new System.Drawing.Size(71, 71);
             this.WebPage_ImageButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.WebPage_ImageButton.TabIndex = 1;
             this.WebPage_ImageButton.TabStop = false;
+            this.WebPage_ImageButton.Visible = false;
             this.WebPage_ImageButton.Zoom = 10;
             this.WebPage_ImageButton.Click += new System.EventHandler(this.FacebookLink_ImageButton_Click);
             // 
@@ -407,7 +411,7 @@
             this.label10.Location = new System.Drawing.Point(1147, 9);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(198, 81);
+            this.label10.Size = new System.Drawing.Size(191, 79);
             this.label10.TabIndex = 20;
             this.label10.Text = "للتكييف";
             this.label10.Visible = false;
@@ -421,7 +425,7 @@
             this.label9.Location = new System.Drawing.Point(1349, 5);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(158, 81);
+            this.label9.Size = new System.Drawing.Size(153, 79);
             this.label9.TabIndex = 19;
             this.label9.Text = "عيسى";
             this.label9.Visible = false;
@@ -477,6 +481,20 @@
             this.ActiveTabs_Tabcontrol.DoubleClick += new System.EventHandler(this.ActiveTabs_Tabcontrol_DoubleClick);
             this.ActiveTabs_Tabcontrol.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ActiveTabs_Tabcontrol_KeyDown);
             // 
+            // Shortcut_ImageButton
+            // 
+            this.Shortcut_ImageButton.BackColor = System.Drawing.Color.Transparent;
+            this.Shortcut_ImageButton.Image = global::OpsMoi.Properties.Resources.shortcut;
+            this.Shortcut_ImageButton.ImageActive = null;
+            this.Shortcut_ImageButton.Location = new System.Drawing.Point(166, 5);
+            this.Shortcut_ImageButton.Margin = new System.Windows.Forms.Padding(2);
+            this.Shortcut_ImageButton.Name = "Shortcut_ImageButton";
+            this.Shortcut_ImageButton.Size = new System.Drawing.Size(61, 57);
+            this.Shortcut_ImageButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Shortcut_ImageButton.TabIndex = 31;
+            this.Shortcut_ImageButton.TabStop = false;
+            this.Shortcut_ImageButton.Zoom = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -506,6 +524,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ScreenShot_Button)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WebPage_ImageButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Shutdown_ImageButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Shortcut_ImageButton)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -536,5 +555,6 @@
         private System.Windows.Forms.Label CompanyName_Label;
         private ns1.BunifuImageButton Minimize_ImageButton;
         private XanderUI.XUIFlatTab ActiveTabs_Tabcontrol;
+        private ns1.BunifuImageButton Shortcut_ImageButton;
     }
 }

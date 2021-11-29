@@ -135,6 +135,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
     <Reference Include="XanderUI">
@@ -182,6 +183,12 @@
     <Compile Include="Models\Wallet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User Interfaces\Shortcuts\UsrCtrl_Shortcut.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Shortcuts\UsrCtrl_Shortcut.Designer.cs">
+      <DependentUpon>UsrCtrl_Shortcut.cs</DependentUpon>
+    </Compile>
     <Compile Include="User Interfaces\Todo\Todo_Processor.cs" />
     <Compile Include="User Interfaces\Todo\UsrCtrl_TODO.cs">
       <SubType>UserControl</SubType>
@@ -264,6 +271,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="User Interfaces\Shortcuts\UsrCtrl_Shortcut.resx">
+      <DependentUpon>UsrCtrl_Shortcut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User Interfaces\Todo\UsrCtrl_TODO.resx">
       <DependentUpon>UsrCtrl_TODO.cs</DependentUpon>
     </EmbeddedResource>
@@ -364,6 +374,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="avatar.ico" />
+    <None Include="Resources\shortcut.png" />
     <None Include="Resources\piechart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -200,7 +200,9 @@ namespace OpsMoi
             switch (e.KeyCode)
             {
                 case Keys.Delete:
-                    if (ActiveTabs_Tabcontrol.SelectedTab != null) ActiveTabs_Tabcontrol.TabPages.Remove(ActiveTabs_Tabcontrol.SelectedTab);
+                    if (ActiveTabs_Tabcontrol.SelectedTab != null)
+                        if (MessageBox.Show("سيتم حذف التبويب الحالي. تأكيد ؟","إخطار",MessageBoxButtons.OKCancel) == DialogResult.OK)
+                            ActiveTabs_Tabcontrol.TabPages.Remove(ActiveTabs_Tabcontrol.SelectedTab);
                     break;
                 case Keys.R:
                     if (e.Modifiers == Keys.Control)

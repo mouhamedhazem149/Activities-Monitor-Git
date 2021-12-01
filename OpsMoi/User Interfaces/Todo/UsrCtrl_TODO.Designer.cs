@@ -254,6 +254,7 @@ namespace OpsMoi.User_Interfaces
             this.Todos_chkpoint_list_Objectlistview.View = System.Windows.Forms.View.Details;
             this.Todos_chkpoint_list_Objectlistview.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.Todos_chkpoint_list_Objectlistview_CellEditFinishing);
             this.Todos_chkpoint_list_Objectlistview.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.Todos_chkpoint_list_Objectlistview_CellEditStarting);
+            this.Todos_chkpoint_list_Objectlistview.ItemsChanged += new System.EventHandler<BrightIdeasSoftware.ItemsChangedEventArgs>(this.Todos_chkpoint_list_Objectlistview_ItemsChanged);
             this.Todos_chkpoint_list_Objectlistview.SelectionChanged += new System.EventHandler(this.Todos_chkpoint_list_Objectlistview_SelectionChanged);
             // 
             // ChkPnt_index_Column

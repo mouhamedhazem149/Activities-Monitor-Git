@@ -20,7 +20,9 @@ namespace OpsMoi.User_Interfaces.Finance
             
             Wallet Wlt = Program.Wallets_List.Where(p => p.id == wallet).FirstOrDefault();
             double change = type == Enums.financeType.دخل ? paid : -1 * paid;
-            
+            double Old_change = 0;
+            if (oldModel != null) Old_change = oldModel.type == Enums.financeType.دخل ? oldModel.paid : -1 * oldModel.paid;
+
             Finances _fncNew = new Finances() { id = id, relatedentity = relatedentity,type = type,category= category,wallet = wallet,due = due,paid = paid,due_date = due_date,done_date = done_date, notes = notes };
             int _id = id;
             string SpecificMsg = "تمت العملية بنجاح";
@@ -43,9 +45,9 @@ namespace OpsMoi.User_Interfaces.Finance
                         SpecificMsg = $"تم التعديل بنجاح. كود العملية المالية : {_id}";
                         Settings.Settings_Processor.HandleWallet(Enums.genericHandle_Type.تعديل, null, Wlt.name, Wlt.credit + (decimal)change, null, Title, color, Wlt,true);
                         Wallet oldWlt = Program.Wallets_List.Where(p => p.id == oldModel.wallet).First();
-                        Settings.Settings_Processor.HandleWallet(Enums.genericHandle_Type.تعديل, null, oldWlt.name, oldWlt.credit - (decimal)change, null, Title, color, oldWlt,true);
+                        Settings.Settings_Processor.HandleWallet(Enums.genericHandle_Type.تعديل, null, oldWlt.name, oldWlt.credit - (decimal)Old_change, null, Title, color, oldWlt, true);
                         if (oldModel.type == Enums.financeType.تحويل_أرصدة)
-                            Settings.Settings_Processor.HandleWallet(Enums.genericHandle_Type.تعديل, null, oldModel.relatedentity, Program.Wallets_List.Where(p => p.name == oldModel.relatedentity).First().credit + (decimal)change, null, Title, color, Program.Wallets_List.Where(p => p.name == oldModel.relatedentity).First(),true);
+                            Settings.Settings_Processor.HandleWallet(Enums.genericHandle_Type.تعديل, null, oldModel.relatedentity, Program.Wallets_List.Where(p => p.name == oldModel.relatedentity).First().credit + (decimal)Old_change, null, Title, color, Program.Wallets_List.Where(p => p.name == oldModel.relatedentity).First(),true);
                         if (type == Enums.financeType.تحويل_أرصدة)
                             Settings.Settings_Processor.HandleWallet(Enums.genericHandle_Type.تعديل, null, relatedentity, Program.Wallets_List.Where(p => p.name == relatedentity).First().credit - (decimal)change, null, Title, color, Program.Wallets_List.Where(p => p.name == relatedentity).First(),true);
                     };

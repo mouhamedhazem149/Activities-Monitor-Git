@@ -11,7 +11,7 @@ using OpsMoi.Utilities;
 
 namespace OpsMoi.User_Interfaces
 {
-    public partial class UsrCtrl_Todo : UserControl,ICustomControl
+    public partial class UsrCtrl_Todo : UserControl, ICustomControl
     {
         public UsrCtrl_Todo() => InitialLoad();
         public UsrCtrl_Todo(Enums.todoArgument Arg, int? e_ID)
@@ -59,13 +59,13 @@ namespace OpsMoi.User_Interfaces
             };
             finalTODO_Column.GroupKeyToTitleConverter = delegate (object groupKey) { return ((DateTime)groupKey).ToString("dddd, dd MMMM,yyyy", System.Globalization.CultureInfo.GetCultureInfo("ar-EG")); };
         }
-        
+
         public DateTime req_From { get { return TODO_From_Datetimepicker.Value; } }
         public DateTime req_To { get { return TODO_To_Datetimepicker.Value; } }
         public DateTime timeline_From { get { return Timeline_From_DateTimePicker.Value; } }
         public DateTime timeline_To { get { return Timeline_To_DateTimePicker.Value; } }
 
-        private List<Control> editControls { get { return new List<Control> { TODO_due_date_Datetimepicker,TODO_due_date_Adj_Label,TODO_done_date_Datetimepicker,TODO_done_date_Adj_Label,TODO_duration_Textbox,TODO_duration_Adj_Label,TODO_duration_value_Label }; } }
+        private List<Control> editControls { get { return new List<Control> { TODO_due_date_Datetimepicker, TODO_due_date_Adj_Label, TODO_done_date_Datetimepicker, TODO_done_date_Adj_Label, TODO_duration_Textbox, TODO_duration_Adj_Label, TODO_duration_value_Label }; } }
 
         public void Sync()
         {
@@ -104,7 +104,7 @@ namespace OpsMoi.User_Interfaces
 
         private void TODO_duration_Textbox_TextChanged(object sender, EventArgs e)
         {
-            double minutes = double.TryParse(TODO_duration_Textbox.Text, out minutes) ? double.Parse(TODO_duration_Textbox.Text): 0;
+            double minutes = double.TryParse(TODO_duration_Textbox.Text, out minutes) ? double.Parse(TODO_duration_Textbox.Text) : 0;
             if (HM_Manager.CheckTxtBoxDecimal(TODO_duration_Textbox, TODO_duration_value_Label))
                 HM_Manager.Success_addition(TODO_duration_value_Label, HM_Manager.MinutesToDuration(minutes));
         }
@@ -164,7 +164,7 @@ namespace OpsMoi.User_Interfaces
 
         private void TODOs_AddChkPnt_Button_Click(object sender, EventArgs e)
         {
-            List<Checkpoint> temp_Checks = Todos_chkpoint_list_Objectlistview.Objects != null ? Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().ToList(): new List<Checkpoint>();
+            List<Checkpoint> temp_Checks = Todos_chkpoint_list_Objectlistview.Objects != null ? Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().ToList() : new List<Checkpoint>();
             temp_Checks.Add(new Checkpoint()
             {
                 index = temp_Checks.Count > 0 ? temp_Checks.Select(p => p.index).Max() + 1 : 1,
@@ -175,7 +175,7 @@ namespace OpsMoi.User_Interfaces
 
         private void TODO_Datetimepicker_ValueChanged(object sender, EventArgs e)
         {
-            if (TODO_done_date_Datetimepicker.Checked && TODO_done_date_Datetimepicker.Value > TODO_start_date_Datetimepicker.Value) 
+            if (TODO_done_date_Datetimepicker.Checked && TODO_done_date_Datetimepicker.Value > TODO_start_date_Datetimepicker.Value)
                 TODO_duration_Textbox.Text = Math.Ceiling(TODO_done_date_Datetimepicker.Value.Subtract(TODO_start_date_Datetimepicker.Value).TotalMinutes).ToString();
             if (TODO_done_date_Datetimepicker.Checked && Todos_chkpoint_list_Objectlistview.Objects != null && Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().Any(chk => chk.Chk_Date > TODO_done_date_Datetimepicker.Value))
             {
@@ -185,7 +185,7 @@ namespace OpsMoi.User_Interfaces
             else HM_Manager.Success_addition(AddTODO_Label, "");
         }
 
-        private void Todos_chkpoint_list_Objectlistview_SelectionChanged(object sender, EventArgs e) => TODOs_DelChkPnt_Button.Enabled = Todos_chkpoint_list_Objectlistview.SelectedObjects != null;
+        private void Todos_chkpoint_list_Objectlistview_SelectionChanged(object sender, EventArgs e) => TODOs_DelChkPnt_Button.Enabled = Todos_chkpoint_list_Objectlistview.SelectedObjects != null && Todos_chkpoint_list_Objectlistview.SelectedObjects.Count > 0;
 
         private void TODOs_DelChkPnt_Button_Click(object sender, EventArgs e)
         {
@@ -235,7 +235,7 @@ namespace OpsMoi.User_Interfaces
         private void pasteToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-                        if (Program.WorkingForm.clippedControl != null) HM_Manager.Copy(Program.WorkingForm.clippedControl, Tabcontrol_contextMenuStrip.SourceControl);
+                if (Program.WorkingForm.clippedControl != null) HM_Manager.Copy(Program.WorkingForm.clippedControl, Tabcontrol_contextMenuStrip.SourceControl);
         }
 
         private void copyToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)
@@ -249,5 +249,7 @@ namespace OpsMoi.User_Interfaces
             if ((sender as ModdedControls.ModdedTextBox).SelectedItem != "")
                 HM_Manager.SetControlsFromModel(AddTodo_Groupbox, HM_Manager.commonFiller(Program.Todos_List.Where(p => p.GetType().GetProperty(System.Text.RegularExpressions.Regex.Match((sender as ModdedControls.ModdedTextBox).Name, HM_Manager.controlsPattern).Groups[HM_Manager.proprtyName].Value).GetValue(p).ToString() == (sender as ModdedControls.ModdedTextBox).SelectedItem).ToList()));
         }
+
+        private void Todos_chkpoint_list_Objectlistview_ItemsChanged(object sender, BrightIdeasSoftware.ItemsChangedEventArgs e) => TODOs_DelChkPnt_Button.Enabled = (Todos_chkpoint_list_Objectlistview.Items.Count > 0 && Todos_chkpoint_list_Objectlistview.SelectedObjects != null && Todos_chkpoint_list_Objectlistview.SelectedObjects.Count > 0);
     }
 }

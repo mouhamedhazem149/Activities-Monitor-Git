@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props" Condition="Exists('..\..\..\..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54ABFFC1-9979-47F9-9591-F53F9367FABD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DailyCompanionV2</RootNamespace>
+    <AssemblyName>DailyCompanionV2</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>avatar.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>..\..\..\..\packages\_DLLs\Bunifu_UI_v1.52.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Costura, Version=5.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Costura.Fody.5.7.0\lib\netstandard1.0\Costura.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialWinforms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\MaterialWinForms.1.0.0\lib\net40\MaterialWinforms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ModdedControls">
+      <HintPath>..\..\HelperUtilities\ModdedControls\bin\Debug\ModdedControls.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectListView">
+      <HintPath>..\..\..\..\packages\ObjectListView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SQL_DBHelper">
+      <HintPath>..\..\HelperUtilities\SQL_DBHelper\bin\Debug\SQL_DBHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.115.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\lib\net46\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Diagnostics.DiagnosticSource.4.3.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracing, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Diagnostics.Tracing.4.3.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Linq.Expressions.4.3.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Net.Http.4.3.0\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="XanderUI">
+      <HintPath>..\..\..\..\packages\_DLLs\XanderUI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\FirstTime Form\FirstTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FirstTime Form\FirstTime.Designer.cs">
+      <DependentUpon>FirstTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FirstTime Form\FirstTimeEmail_Helper.cs" />
+    <Compile Include="Forms\FirstTime Form\FirstTime_Handler.cs" />
+    <Compile Include="Forms\Login Form\Forgetpassword Email Body Helper.cs" />
+    <Compile Include="Forms\Login Form\LogInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Login Form\LogInForm.Designer.cs">
+      <DependentUpon>LogInForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Login Form\LoginForm_Handler.cs" />
+    <Compile Include="Forms\Main Form\Form_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main Form\Form_Main.Designer.cs">
+      <DependentUpon>Form_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main Form\MainForm_Handler.cs" />
+    <Compile Include="Forms\Splash Form\SplashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Splash Form\SplashForm.Designer.cs">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Checkpoint.cs" />
+    <Compile Include="Models\Finances.cs" />
+    <Compile Include="Models\History.cs" />
+    <Compile Include="Models\ICustomControl.cs" />
+    <Compile Include="Models\Notes.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\Process.cs" />
+    <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\Shortcut.cs" />
+    <Compile Include="Models\Timeline.cs" />
+    <Compile Include="Models\Todos.cs" />
+    <Compile Include="Models\Wallet.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User Interfaces\Dashboard\Dashboard_ChartProcessor.cs" />
+    <Compile Include="User Interfaces\Dashboard\Dashboard_Processor.cs" />
+    <Compile Include="User Interfaces\Dashboard\UsrCtrl_Dashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Dashboard\UsrCtrl_Dashboard.Designer.cs">
+      <DependentUpon>UsrCtrl_Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interfaces\Dashboard\UsrCtrl_Dashboard_AuxPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Finances\Finances_Processor.cs" />
+    <Compile Include="User Interfaces\Finances\UsrCtrl_Finances_AuxPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Finances\UsrCtrl_Finances.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Finances\UsrCtrl_Finances.Designer.cs">
+      <DependentUpon>UsrCtrl_Finances.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interfaces\Finances\UsrCtrl_Finances_SidePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Notes\Notes_Processor.cs" />
+    <Compile Include="User Interfaces\Notes\UsrCtrl_Notes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Notes\UsrCtrl_Notes.Designer.cs">
+      <DependentUpon>UsrCtrl_Notes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interfaces\Notes\UsrCtrl_Notes_SidePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Reports\Processors\Reports_Charts_Processor.cs" />
+    <Compile Include="User Interfaces\Reports\Processors\Reports_Processor.cs" />
+    <Compile Include="User Interfaces\Reports\UsrCtrl_Reports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Reports\UsrCtrl_Reports.Designer.cs">
+      <DependentUpon>UsrCtrl_Reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interfaces\Reports\UsrCtrl_Reports_AuxPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Settings\Processors\modelsProcessor.cs" />
+    <Compile Include="User Interfaces\Settings\Processors\Settings_Processor.cs" />
+    <Compile Include="User Interfaces\Settings\Settings_AdvancedMethods.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Settings\Structs\settingsButtonTag_Item.cs" />
+    <Compile Include="User Interfaces\Settings\UsrCtrl_Settings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Settings\UsrCtrl_Settings.Designer.cs">
+      <DependentUpon>UsrCtrl_Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interfaces\Notifications\UsrCtrl_Notification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Notifications\UsrCtrl_Notification.Designer.cs">
+      <DependentUpon>UsrCtrl_Notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interfaces\Shortcuts\UsrCtrl_Shortcut.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Shortcuts\UsrCtrl_Shortcut.Designer.cs">
+      <DependentUpon>UsrCtrl_Shortcut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interfaces\Todo\Todo_Processor.cs" />
+    <Compile Include="User Interfaces\Todo\UsrCtrl_TODO.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Todo\UsrCtrl_TODO.Designer.cs">
+      <DependentUpon>UsrCtrl_TODO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Interfaces\Todo\UsrCtrl_TODO_AuxPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Interfaces\Todo\UsrCtrl_TODO_SidePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utilities\Enums.cs" />
+    <Compile Include="Utilities\Helpers\BackupHelperManager.cs" />
+    <Compile Include="Utilities\Helpers\ConfigurationHelperManager.cs" />
+    <Compile Include="Utilities\Helpers\ControlsHelpersManager.cs" />
+    <Compile Include="Utilities\Helpers\DBHelper.cs" />
+    <Compile Include="Utilities\Helpers\EmailHelperManager.cs" />
+    <Compile Include="Utilities\Helpers\EncryptionHelperManager.cs" />
+    <Compile Include="Utilities\Helpers\HelperMethodsManager.cs" />
+    <Compile Include="Utilities\Helpers\HistoryHelperManager.cs" />
+    <Compile Include="Utilities\Helpers\ModelsHelperManager.cs" />
+    <Compile Include="Utilities\Helpers\TimeHelperManager.cs" />
+    <EmbeddedResource Include="Forms\FirstTime Form\FirstTime.resx">
+      <DependentUpon>FirstTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login Form\LogInForm.resx">
+      <DependentUpon>LogInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main Form\Form_Main.resx">
+      <DependentUpon>Form_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Splash Form\SplashForm.resx">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="User Interfaces\Dashboard\UsrCtrl_Dashboard.resx">
+      <DependentUpon>UsrCtrl_Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interfaces\Finances\UsrCtrl_Finances.resx">
+      <DependentUpon>UsrCtrl_Finances.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interfaces\Notes\UsrCtrl_Notes.resx">
+      <DependentUpon>UsrCtrl_Notes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interfaces\Reports\UsrCtrl_Reports.resx">
+      <DependentUpon>UsrCtrl_Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interfaces\Settings\UsrCtrl_Settings.resx">
+      <DependentUpon>UsrCtrl_Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interfaces\Notifications\UsrCtrl_Notification.resx">
+      <DependentUpon>UsrCtrl_Notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interfaces\Shortcuts\UsrCtrl_Shortcut.resx">
+      <DependentUpon>UsrCtrl_Shortcut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Interfaces\Todo\UsrCtrl_TODO.resx">
+      <DependentUpon>UsrCtrl_TODO.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="opsmoidb.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="avatar.ico" />
+    <None Include="Resources\history.png" />
+    <None Include="Resources\expand.png" />
+    <None Include="Resources\notification.png" />
+    <None Include="Resources\due-money.png" />
+    <None Include="Resources\wallet.png" />
+    <None Include="Resources\timeline.png" />
+    <None Include="Resources\requirements.png" />
+    <None Include="Resources\bin.png" />
+    <None Include="Resources\todos.png" />
+    <None Include="Resources\sync-icon.png" />
+    <None Include="Resources\spline.png" />
+    <None Include="Resources\shutdown.png" />
+    <None Include="Resources\shortcut.png" />
+    <None Include="Resources\settings.png" />
+    <None Include="Resources\screenshot.png" />
+    <None Include="Resources\reports.png" />
+    <None Include="Resources\piechart.png" />
+    <None Include="Resources\notes.png" />
+    <None Include="Resources\minimize.png" />
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\global.png" />
+    <None Include="Resources\finances.png" />
+    <None Include="Resources\dashboard.png" />
+    <None Include="Resources\columnchart.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\..\..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+    <Error Condition="!Exists('..\..\..\..\packages\Fody.6.5.5\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\packages\Fody.6.5.5\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\..\..\..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props'))" />
+    <Error Condition="!Exists('..\..\..\..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets'))" />
+  </Target>
+  <Import Project="..\..\..\..\packages\Fody.6.5.5\build\Fody.targets" Condition="Exists('..\..\..\..\packages\Fody.6.5.5\build\Fody.targets')" />
+  <Import Project="..\..\..\..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets" Condition="Exists('..\..\..\..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" />
+</Project>

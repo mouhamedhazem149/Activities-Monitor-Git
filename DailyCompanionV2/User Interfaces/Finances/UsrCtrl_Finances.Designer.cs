@@ -34,18 +34,18 @@ namespace DailyCompanionV2
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsrCtrl_Finances));
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Node3");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("مهام مقترحة", new System.Windows.Forms.TreeNode[] {
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Node4");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("مهام مطلوبة", new System.Windows.Forms.TreeNode[] {
-            treeNode11});
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Node5");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Node6");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("خيارات سابقة", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14});
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("مهام شبيهة");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node3");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("مهام مقترحة", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node4");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("مهام مطلوبة", new System.Windows.Forms.TreeNode[] {
+            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Node6");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("خيارات سابقة", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("مهام شبيهة");
             this.cityColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.FNCReq_Groupbox = new System.Windows.Forms.GroupBox();
             this.reqFNC_Objectlistview = new BrightIdeasSoftware.ObjectListView();
@@ -69,6 +69,15 @@ namespace DailyCompanionV2
             this.FinancePaid_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.FinancialDonedate_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.AddFinance_Groupbox = new System.Windows.Forms.GroupBox();
+            this.Aux_Panel = new System.Windows.Forms.Panel();
+            this.aux_TablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.FNC_AuxTo_Adj_Label = new System.Windows.Forms.Label();
+            this.FNC_AuxFrom_Adj_Label = new System.Windows.Forms.Label();
+            this.FNC_Aux_SearchButton = new System.Windows.Forms.Button();
+            this.AuxComment_Label = new System.Windows.Forms.Label();
+            this.auxContent_Panel = new System.Windows.Forms.Panel();
+            this.FNCWallets_Groupbox = new System.Windows.Forms.GroupBox();
+            this.Wallets_TablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.all_TablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.FNC_notes_Adj_Label = new System.Windows.Forms.Label();
             this.FNC_notes_Textbox = new ModdedControls.ModdedTextBox();
@@ -97,15 +106,6 @@ namespace DailyCompanionV2
             this.relatedIdntity_Panel = new System.Windows.Forms.Panel();
             this.FNC_relatedentity_Textbox = new ModdedControls.ModdedTextBox();
             this.FNC_relatedentity_Combobox = new System.Windows.Forms.ComboBox();
-            this.Aux_Panel = new System.Windows.Forms.Panel();
-            this.aux_TablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.FNC_AuxTo_Adj_Label = new System.Windows.Forms.Label();
-            this.FNC_AuxFrom_Adj_Label = new System.Windows.Forms.Label();
-            this.FNC_Aux_SearchButton = new System.Windows.Forms.Button();
-            this.AuxComment_Label = new System.Windows.Forms.Label();
-            this.auxContent_Panel = new System.Windows.Forms.Panel();
-            this.FNCWallets_Groupbox = new System.Windows.Forms.GroupBox();
-            this.Wallets_TablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.UsrCtrl_TgleBtn = new CustomControls.RJControls.RJToggleButton();
             this.Tabcontrol_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,15 +120,15 @@ namespace DailyCompanionV2
             ((System.ComponentModel.ISupportInitialize)(this.Wlts_Search_Objectlistview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Wlts_Objectlistview)).BeginInit();
             this.AddFinance_Groupbox.SuspendLayout();
-            this.all_TablePanel.SuspendLayout();
-            this.DTPicker_contextMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Del_FNC_Button)).BeginInit();
-            this.relatedIdntity_Panel.SuspendLayout();
             this.Aux_Panel.SuspendLayout();
             this.aux_TablePanel.SuspendLayout();
             this.auxContent_Panel.SuspendLayout();
             this.FNCWallets_Groupbox.SuspendLayout();
             this.Wallets_TablePanel.SuspendLayout();
+            this.all_TablePanel.SuspendLayout();
+            this.DTPicker_contextMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Del_FNC_Button)).BeginInit();
+            this.relatedIdntity_Panel.SuspendLayout();
             this.Tabcontrol_contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Main_SplitContainer)).BeginInit();
             this.Main_SplitContainer.Panel1.SuspendLayout();
@@ -472,6 +472,205 @@ namespace DailyCompanionV2
             this.AddFinance_Groupbox.TabStop = false;
             this.AddFinance_Groupbox.Tag = this.Add_FNC_Button;
             this.AddFinance_Groupbox.Text = "إضافة عملية مالية";
+            // 
+            // Aux_Panel
+            // 
+            this.Aux_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Aux_Panel.Controls.Add(this.aux_TablePanel);
+            this.Aux_Panel.Location = new System.Drawing.Point(9, 228);
+            this.Aux_Panel.Name = "Aux_Panel";
+            this.Aux_Panel.Size = new System.Drawing.Size(1364, 621);
+            this.Aux_Panel.TabIndex = 85;
+            this.Aux_Panel.Visible = false;
+            this.Aux_Panel.Leave += new System.EventHandler(this.Aux_Panel_Leave);
+            // 
+            // aux_TablePanel
+            // 
+            this.aux_TablePanel.ColumnCount = 33;
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
+            this.aux_TablePanel.Controls.Add(this.FNC_AuxFrom_Datetimepicker, 3, 1);
+            this.aux_TablePanel.Controls.Add(this.FNC_AuxTo_Datetimepicker, 15, 1);
+            this.aux_TablePanel.Controls.Add(this.FNC_AuxTo_Adj_Label, 14, 1);
+            this.aux_TablePanel.Controls.Add(this.FNC_AuxFrom_Adj_Label, 2, 1);
+            this.aux_TablePanel.Controls.Add(this.FNC_Aux_SearchButton, 27, 1);
+            this.aux_TablePanel.Controls.Add(this.AuxComment_Label, 3, 4);
+            this.aux_TablePanel.Controls.Add(this.auxContent_Panel, 0, 7);
+            this.aux_TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.aux_TablePanel.Location = new System.Drawing.Point(0, 0);
+            this.aux_TablePanel.Name = "aux_TablePanel";
+            this.aux_TablePanel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.aux_TablePanel.RowCount = 32;
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.4600919F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.400679F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.4600919F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.400679F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.4600919F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
+            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.aux_TablePanel.Size = new System.Drawing.Size(1360, 617);
+            this.aux_TablePanel.TabIndex = 21;
+            // 
+            // FNC_AuxTo_Adj_Label
+            // 
+            this.FNC_AuxTo_Adj_Label.AutoSize = true;
+            this.FNC_AuxTo_Adj_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FNC_AuxTo_Adj_Label.Font = new System.Drawing.Font("El Messiri", 10.5F);
+            this.FNC_AuxTo_Adj_Label.ForeColor = System.Drawing.Color.DarkRed;
+            this.FNC_AuxTo_Adj_Label.Location = new System.Drawing.Point(747, 2);
+            this.FNC_AuxTo_Adj_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.FNC_AuxTo_Adj_Label.Name = "FNC_AuxTo_Adj_Label";
+            this.aux_TablePanel.SetRowSpan(this.FNC_AuxTo_Adj_Label, 2);
+            this.FNC_AuxTo_Adj_Label.Size = new System.Drawing.Size(37, 40);
+            this.FNC_AuxTo_Adj_Label.TabIndex = 17;
+            this.FNC_AuxTo_Adj_Label.Text = "إلى";
+            this.FNC_AuxTo_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // FNC_AuxFrom_Adj_Label
+            // 
+            this.FNC_AuxFrom_Adj_Label.AutoSize = true;
+            this.FNC_AuxFrom_Adj_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FNC_AuxFrom_Adj_Label.Font = new System.Drawing.Font("El Messiri", 10.5F);
+            this.FNC_AuxFrom_Adj_Label.ForeColor = System.Drawing.Color.DarkRed;
+            this.FNC_AuxFrom_Adj_Label.Location = new System.Drawing.Point(1239, 2);
+            this.FNC_AuxFrom_Adj_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.FNC_AuxFrom_Adj_Label.Name = "FNC_AuxFrom_Adj_Label";
+            this.aux_TablePanel.SetRowSpan(this.FNC_AuxFrom_Adj_Label, 2);
+            this.FNC_AuxFrom_Adj_Label.Size = new System.Drawing.Size(37, 40);
+            this.FNC_AuxFrom_Adj_Label.TabIndex = 16;
+            this.FNC_AuxFrom_Adj_Label.Text = "من";
+            this.FNC_AuxFrom_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // FNC_Aux_SearchButton
+            // 
+            this.aux_TablePanel.SetColumnSpan(this.FNC_Aux_SearchButton, 4);
+            this.FNC_Aux_SearchButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FNC_Aux_SearchButton.Font = new System.Drawing.Font("El Messiri", 12F);
+            this.FNC_Aux_SearchButton.ForeColor = System.Drawing.Color.DarkRed;
+            this.FNC_Aux_SearchButton.Location = new System.Drawing.Point(91, 5);
+            this.FNC_Aux_SearchButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.FNC_Aux_SearchButton.Name = "FNC_Aux_SearchButton";
+            this.aux_TablePanel.SetRowSpan(this.FNC_Aux_SearchButton, 2);
+            this.FNC_Aux_SearchButton.Size = new System.Drawing.Size(160, 34);
+            this.FNC_Aux_SearchButton.TabIndex = 18;
+            this.FNC_Aux_SearchButton.Text = "بحث";
+            this.FNC_Aux_SearchButton.UseVisualStyleBackColor = true;
+            this.FNC_Aux_SearchButton.Click += new System.EventHandler(this.FNC_Aux_SearchButton_Click);
+            // 
+            // AuxComment_Label
+            // 
+            this.aux_TablePanel.SetColumnSpan(this.AuxComment_Label, 28);
+            this.AuxComment_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AuxComment_Label.Font = new System.Drawing.Font("Cairo", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AuxComment_Label.ForeColor = System.Drawing.Color.DarkRed;
+            this.AuxComment_Label.Location = new System.Drawing.Point(92, 44);
+            this.AuxComment_Label.Name = "AuxComment_Label";
+            this.AuxComment_Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.aux_TablePanel.SetRowSpan(this.AuxComment_Label, 2);
+            this.AuxComment_Label.Size = new System.Drawing.Size(1142, 40);
+            this.AuxComment_Label.TabIndex = 20;
+            this.AuxComment_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // auxContent_Panel
+            // 
+            this.aux_TablePanel.SetColumnSpan(this.auxContent_Panel, 33);
+            this.auxContent_Panel.Controls.Add(this.FNCReq_Groupbox);
+            this.auxContent_Panel.Controls.Add(this.FNCWallets_Groupbox);
+            this.auxContent_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.auxContent_Panel.Location = new System.Drawing.Point(3, 89);
+            this.auxContent_Panel.Name = "auxContent_Panel";
+            this.aux_TablePanel.SetRowSpan(this.auxContent_Panel, 25);
+            this.auxContent_Panel.Size = new System.Drawing.Size(1354, 525);
+            this.auxContent_Panel.TabIndex = 21;
+            // 
+            // FNCWallets_Groupbox
+            // 
+            this.FNCWallets_Groupbox.Controls.Add(this.Wallets_TablePanel);
+            this.FNCWallets_Groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FNCWallets_Groupbox.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FNCWallets_Groupbox.ForeColor = System.Drawing.Color.DarkRed;
+            this.FNCWallets_Groupbox.Location = new System.Drawing.Point(0, 0);
+            this.FNCWallets_Groupbox.Name = "FNCWallets_Groupbox";
+            this.FNCWallets_Groupbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.FNCWallets_Groupbox.Size = new System.Drawing.Size(1354, 525);
+            this.FNCWallets_Groupbox.TabIndex = 22;
+            this.FNCWallets_Groupbox.TabStop = false;
+            this.FNCWallets_Groupbox.Text = "العمليات المالية للمحافظ";
+            // 
+            // Wallets_TablePanel
+            // 
+            this.Wallets_TablePanel.ColumnCount = 2;
+            this.Wallets_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.Wallets_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.Wallets_TablePanel.Controls.Add(this.Wlts_Objectlistview, 0, 1);
+            this.Wallets_TablePanel.Controls.Add(this.Wlts_Search_Objectlistview, 0, 0);
+            this.Wallets_TablePanel.Controls.Add(this.WalletsSearch_Label, 1, 0);
+            this.Wallets_TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Wallets_TablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.Wallets_TablePanel.Location = new System.Drawing.Point(3, 39);
+            this.Wallets_TablePanel.Name = "Wallets_TablePanel";
+            this.Wallets_TablePanel.RowCount = 2;
+            this.Wallets_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.Wallets_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65F));
+            this.Wallets_TablePanel.Size = new System.Drawing.Size(1348, 483);
+            this.Wallets_TablePanel.TabIndex = 45;
             // 
             // all_TablePanel
             // 
@@ -1057,205 +1256,6 @@ namespace DailyCompanionV2
             this.FNC_relatedentity_Combobox.Visible = false;
             this.FNC_relatedentity_Combobox.SelectedIndexChanged += new System.EventHandler(this.FNC_relatedwallet_Combobox_SelectedIndexChanged);
             // 
-            // Aux_Panel
-            // 
-            this.Aux_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Aux_Panel.Controls.Add(this.aux_TablePanel);
-            this.Aux_Panel.Location = new System.Drawing.Point(9, 228);
-            this.Aux_Panel.Name = "Aux_Panel";
-            this.Aux_Panel.Size = new System.Drawing.Size(1364, 621);
-            this.Aux_Panel.TabIndex = 85;
-            this.Aux_Panel.Visible = false;
-            this.Aux_Panel.Leave += new System.EventHandler(this.Aux_Panel_Leave);
-            // 
-            // aux_TablePanel
-            // 
-            this.aux_TablePanel.ColumnCount = 33;
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.030302F));
-            this.aux_TablePanel.Controls.Add(this.FNC_AuxFrom_Datetimepicker, 3, 1);
-            this.aux_TablePanel.Controls.Add(this.FNC_AuxTo_Datetimepicker, 15, 1);
-            this.aux_TablePanel.Controls.Add(this.FNC_AuxTo_Adj_Label, 14, 1);
-            this.aux_TablePanel.Controls.Add(this.FNC_AuxFrom_Adj_Label, 2, 1);
-            this.aux_TablePanel.Controls.Add(this.FNC_Aux_SearchButton, 27, 1);
-            this.aux_TablePanel.Controls.Add(this.AuxComment_Label, 3, 4);
-            this.aux_TablePanel.Controls.Add(this.auxContent_Panel, 0, 7);
-            this.aux_TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.aux_TablePanel.Location = new System.Drawing.Point(0, 0);
-            this.aux_TablePanel.Name = "aux_TablePanel";
-            this.aux_TablePanel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.aux_TablePanel.RowCount = 32;
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.4600919F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.400679F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.4600919F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.400679F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.4600919F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.40068F));
-            this.aux_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.aux_TablePanel.Size = new System.Drawing.Size(1360, 617);
-            this.aux_TablePanel.TabIndex = 21;
-            // 
-            // FNC_AuxTo_Adj_Label
-            // 
-            this.FNC_AuxTo_Adj_Label.AutoSize = true;
-            this.FNC_AuxTo_Adj_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FNC_AuxTo_Adj_Label.Font = new System.Drawing.Font("El Messiri", 10.5F);
-            this.FNC_AuxTo_Adj_Label.ForeColor = System.Drawing.Color.DarkRed;
-            this.FNC_AuxTo_Adj_Label.Location = new System.Drawing.Point(747, 2);
-            this.FNC_AuxTo_Adj_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.FNC_AuxTo_Adj_Label.Name = "FNC_AuxTo_Adj_Label";
-            this.aux_TablePanel.SetRowSpan(this.FNC_AuxTo_Adj_Label, 2);
-            this.FNC_AuxTo_Adj_Label.Size = new System.Drawing.Size(37, 40);
-            this.FNC_AuxTo_Adj_Label.TabIndex = 17;
-            this.FNC_AuxTo_Adj_Label.Text = "إلى";
-            this.FNC_AuxTo_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // FNC_AuxFrom_Adj_Label
-            // 
-            this.FNC_AuxFrom_Adj_Label.AutoSize = true;
-            this.FNC_AuxFrom_Adj_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FNC_AuxFrom_Adj_Label.Font = new System.Drawing.Font("El Messiri", 10.5F);
-            this.FNC_AuxFrom_Adj_Label.ForeColor = System.Drawing.Color.DarkRed;
-            this.FNC_AuxFrom_Adj_Label.Location = new System.Drawing.Point(1239, 2);
-            this.FNC_AuxFrom_Adj_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.FNC_AuxFrom_Adj_Label.Name = "FNC_AuxFrom_Adj_Label";
-            this.aux_TablePanel.SetRowSpan(this.FNC_AuxFrom_Adj_Label, 2);
-            this.FNC_AuxFrom_Adj_Label.Size = new System.Drawing.Size(37, 40);
-            this.FNC_AuxFrom_Adj_Label.TabIndex = 16;
-            this.FNC_AuxFrom_Adj_Label.Text = "من";
-            this.FNC_AuxFrom_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // FNC_Aux_SearchButton
-            // 
-            this.aux_TablePanel.SetColumnSpan(this.FNC_Aux_SearchButton, 4);
-            this.FNC_Aux_SearchButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FNC_Aux_SearchButton.Font = new System.Drawing.Font("El Messiri", 12F);
-            this.FNC_Aux_SearchButton.ForeColor = System.Drawing.Color.DarkRed;
-            this.FNC_Aux_SearchButton.Location = new System.Drawing.Point(91, 5);
-            this.FNC_Aux_SearchButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.FNC_Aux_SearchButton.Name = "FNC_Aux_SearchButton";
-            this.aux_TablePanel.SetRowSpan(this.FNC_Aux_SearchButton, 2);
-            this.FNC_Aux_SearchButton.Size = new System.Drawing.Size(160, 34);
-            this.FNC_Aux_SearchButton.TabIndex = 18;
-            this.FNC_Aux_SearchButton.Text = "بحث";
-            this.FNC_Aux_SearchButton.UseVisualStyleBackColor = true;
-            this.FNC_Aux_SearchButton.Click += new System.EventHandler(this.FNC_Aux_SearchButton_Click);
-            // 
-            // AuxComment_Label
-            // 
-            this.aux_TablePanel.SetColumnSpan(this.AuxComment_Label, 28);
-            this.AuxComment_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AuxComment_Label.Font = new System.Drawing.Font("Cairo", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AuxComment_Label.ForeColor = System.Drawing.Color.DarkRed;
-            this.AuxComment_Label.Location = new System.Drawing.Point(92, 44);
-            this.AuxComment_Label.Name = "AuxComment_Label";
-            this.AuxComment_Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.aux_TablePanel.SetRowSpan(this.AuxComment_Label, 2);
-            this.AuxComment_Label.Size = new System.Drawing.Size(1142, 40);
-            this.AuxComment_Label.TabIndex = 20;
-            this.AuxComment_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // auxContent_Panel
-            // 
-            this.aux_TablePanel.SetColumnSpan(this.auxContent_Panel, 33);
-            this.auxContent_Panel.Controls.Add(this.FNCReq_Groupbox);
-            this.auxContent_Panel.Controls.Add(this.FNCWallets_Groupbox);
-            this.auxContent_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.auxContent_Panel.Location = new System.Drawing.Point(3, 89);
-            this.auxContent_Panel.Name = "auxContent_Panel";
-            this.aux_TablePanel.SetRowSpan(this.auxContent_Panel, 25);
-            this.auxContent_Panel.Size = new System.Drawing.Size(1354, 525);
-            this.auxContent_Panel.TabIndex = 21;
-            // 
-            // FNCWallets_Groupbox
-            // 
-            this.FNCWallets_Groupbox.Controls.Add(this.Wallets_TablePanel);
-            this.FNCWallets_Groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FNCWallets_Groupbox.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FNCWallets_Groupbox.ForeColor = System.Drawing.Color.DarkRed;
-            this.FNCWallets_Groupbox.Location = new System.Drawing.Point(0, 0);
-            this.FNCWallets_Groupbox.Name = "FNCWallets_Groupbox";
-            this.FNCWallets_Groupbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.FNCWallets_Groupbox.Size = new System.Drawing.Size(1354, 525);
-            this.FNCWallets_Groupbox.TabIndex = 22;
-            this.FNCWallets_Groupbox.TabStop = false;
-            this.FNCWallets_Groupbox.Text = "العمليات المالية للمحافظ";
-            // 
-            // Wallets_TablePanel
-            // 
-            this.Wallets_TablePanel.ColumnCount = 2;
-            this.Wallets_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.Wallets_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.Wallets_TablePanel.Controls.Add(this.Wlts_Objectlistview, 0, 1);
-            this.Wallets_TablePanel.Controls.Add(this.Wlts_Search_Objectlistview, 0, 0);
-            this.Wallets_TablePanel.Controls.Add(this.WalletsSearch_Label, 1, 0);
-            this.Wallets_TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Wallets_TablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.Wallets_TablePanel.Location = new System.Drawing.Point(3, 39);
-            this.Wallets_TablePanel.Name = "Wallets_TablePanel";
-            this.Wallets_TablePanel.RowCount = 2;
-            this.Wallets_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.Wallets_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65F));
-            this.Wallets_TablePanel.Size = new System.Drawing.Size(1348, 483);
-            this.Wallets_TablePanel.TabIndex = 45;
-            // 
             // UsrCtrl_TgleBtn
             // 
             this.UsrCtrl_TgleBtn.BackColor = System.Drawing.Color.Transparent;
@@ -1323,11 +1323,11 @@ namespace DailyCompanionV2
             // ReqFNC_Button
             // 
             this.ReqFNC_Button.BackColor = System.Drawing.Color.Transparent;
-            this.ReqFNC_Button.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ReqFNC_Button.Dock = System.Windows.Forms.DockStyle.Left;
             this.ReqFNC_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.ReqFNC_Button.Image = ((System.Drawing.Image)(resources.GetObject("ReqFNC_Button.Image")));
+            this.ReqFNC_Button.Image = global::DailyCompanionV2.Properties.Resources.due_money;
             this.ReqFNC_Button.ImageActive = null;
-            this.ReqFNC_Button.Location = new System.Drawing.Point(1235, 0);
+            this.ReqFNC_Button.Location = new System.Drawing.Point(70, 0);
             this.ReqFNC_Button.Name = "ReqFNC_Button";
             this.ReqFNC_Button.Size = new System.Drawing.Size(70, 75);
             this.ReqFNC_Button.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1339,11 +1339,11 @@ namespace DailyCompanionV2
             // FNC_Wallets_Button
             // 
             this.FNC_Wallets_Button.BackColor = System.Drawing.Color.Transparent;
-            this.FNC_Wallets_Button.Dock = System.Windows.Forms.DockStyle.Right;
+            this.FNC_Wallets_Button.Dock = System.Windows.Forms.DockStyle.Left;
             this.FNC_Wallets_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.FNC_Wallets_Button.Image = ((System.Drawing.Image)(resources.GetObject("FNC_Wallets_Button.Image")));
             this.FNC_Wallets_Button.ImageActive = null;
-            this.FNC_Wallets_Button.Location = new System.Drawing.Point(1305, 0);
+            this.FNC_Wallets_Button.Location = new System.Drawing.Point(0, 0);
             this.FNC_Wallets_Button.Name = "FNC_Wallets_Button";
             this.FNC_Wallets_Button.Size = new System.Drawing.Size(70, 75);
             this.FNC_Wallets_Button.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1368,27 +1368,27 @@ namespace DailyCompanionV2
             this.sidePanel_Treeview.Font = new System.Drawing.Font("Cairo SemiBold", 9.8F, System.Drawing.FontStyle.Bold);
             this.sidePanel_Treeview.Location = new System.Drawing.Point(0, 0);
             this.sidePanel_Treeview.Name = "sidePanel_Treeview";
-            treeNode9.Name = "Node3";
-            treeNode9.Text = "Node3";
-            treeNode10.Name = "Node0";
-            treeNode10.Text = "مهام مقترحة";
-            treeNode11.Name = "Node4";
-            treeNode11.Text = "Node4";
-            treeNode12.Name = "Node1";
-            treeNode12.Text = "مهام مطلوبة";
-            treeNode13.Name = "Node5";
-            treeNode13.Text = "Node5";
-            treeNode14.Name = "Node6";
-            treeNode14.Text = "Node6";
-            treeNode15.Name = "Node2";
-            treeNode15.Text = "خيارات سابقة";
-            treeNode16.Name = "Node7";
-            treeNode16.Text = "مهام شبيهة";
+            treeNode1.Name = "Node3";
+            treeNode1.Text = "Node3";
+            treeNode2.Name = "Node0";
+            treeNode2.Text = "مهام مقترحة";
+            treeNode3.Name = "Node4";
+            treeNode3.Text = "Node4";
+            treeNode4.Name = "Node1";
+            treeNode4.Text = "مهام مطلوبة";
+            treeNode5.Name = "Node5";
+            treeNode5.Text = "Node5";
+            treeNode6.Name = "Node6";
+            treeNode6.Text = "Node6";
+            treeNode7.Name = "Node2";
+            treeNode7.Text = "خيارات سابقة";
+            treeNode8.Name = "Node7";
+            treeNode8.Text = "مهام شبيهة";
             this.sidePanel_Treeview.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode12,
-            treeNode15,
-            treeNode16});
+            treeNode2,
+            treeNode4,
+            treeNode7,
+            treeNode8});
             this.sidePanel_Treeview.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.sidePanel_Treeview.RightToLeftLayout = true;
             this.sidePanel_Treeview.Size = new System.Drawing.Size(300, 930);
@@ -1409,18 +1409,18 @@ namespace DailyCompanionV2
             ((System.ComponentModel.ISupportInitialize)(this.Wlts_Search_Objectlistview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Wlts_Objectlistview)).EndInit();
             this.AddFinance_Groupbox.ResumeLayout(false);
-            this.all_TablePanel.ResumeLayout(false);
-            this.all_TablePanel.PerformLayout();
-            this.DTPicker_contextMenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Del_FNC_Button)).EndInit();
-            this.relatedIdntity_Panel.ResumeLayout(false);
-            this.relatedIdntity_Panel.PerformLayout();
             this.Aux_Panel.ResumeLayout(false);
             this.aux_TablePanel.ResumeLayout(false);
             this.aux_TablePanel.PerformLayout();
             this.auxContent_Panel.ResumeLayout(false);
             this.FNCWallets_Groupbox.ResumeLayout(false);
             this.Wallets_TablePanel.ResumeLayout(false);
+            this.all_TablePanel.ResumeLayout(false);
+            this.all_TablePanel.PerformLayout();
+            this.DTPicker_contextMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Del_FNC_Button)).EndInit();
+            this.relatedIdntity_Panel.ResumeLayout(false);
+            this.relatedIdntity_Panel.PerformLayout();
             this.Tabcontrol_contextMenuStrip.ResumeLayout(false);
             this.Main_SplitContainer.Panel1.ResumeLayout(false);
             this.Main_SplitContainer.Panel2.ResumeLayout(false);

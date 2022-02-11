@@ -43,6 +43,7 @@ namespace DailyCompanionV2.User_Interfaces
                                 Reports_Processor.UpdateLiveChart(Reports_Chart, _state, _From, _To, Span, dSpan, Reports_Label, Reports_SplineChart, pieGroupArgs);
                             }
                             Reports_SplineChart.Visible = true;
+                            Reports_SplineChart.BringToFront();
                         }
                         break;
                 }

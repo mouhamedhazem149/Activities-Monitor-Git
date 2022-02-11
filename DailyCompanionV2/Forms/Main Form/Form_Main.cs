@@ -17,10 +17,10 @@ namespace DailyCompanionV2
         {
             Program.WorkingForm = this;
             InitializeByResolution(); LoadUserInfo();
-            
+
             Change_Color(Color.FromArgb(int.Parse(ConfigurationManager.AppSettings["primaryColor"].Split(',')[0]), int.Parse(ConfigurationManager.AppSettings["primaryColor"].Split(',')[1]), int.Parse(ConfigurationManager.AppSettings["primaryColor"].Split(',')[2])), Color.FromArgb(int.Parse(ConfigurationManager.AppSettings["secondaryColor"].Split(',')[0]), int.Parse(ConfigurationManager.AppSettings["secondaryColor"].Split(',')[1]), int.Parse(ConfigurationManager.AppSettings["secondaryColor"].Split(',')[2])));
             Notify_Sync(); notifCtState = Enums.addedCtrls.inactive;
-            Dashboard_TileButton_Click(Dashboard_TileButton, EventArgs.Empty);
+            State = Enums.mainformState.dashboard;
         }
         void InitializeByResolution()
         {
@@ -93,25 +93,94 @@ namespace DailyCompanionV2
             get => _state;
             set
             {
-                switch (State)
+                if (value != Enums.mainformState.settings) CleanState(); 
+                switch (value)
                 {
                     case Enums.mainformState.dashboard:
+                        ActiveTabs_Tabcontrol.Visible = false;
+                        UserInterfaces_Panel.Visible = true;
+                        Buttons_Panel.Enabled = false;
+                        UsrCtrl_Dashboard dsBoard = UserInterfaces_Panel.Controls.OfType<UsrCtrl_Dashboard>().FirstOrDefault();
+                        if (dsBoard != null)
+                        {
+                            (dsBoard as Models.ICustomControl).Sync();
+                            UserInterfaces_Panel.Controls.OfType<UsrCtrl_Dashboard>().First().BringToFront();
+                        }
+                        else
+                            dsBoard = new UsrCtrl_Dashboard();
+                        EndAdd(dsBoard);
+                        Dashboard_Button.BackColor = secColor;
+                        _state = value; 
                         break;
+
+                    case Enums.mainformState.settings:
+                        switch (MessageBox.Show("سيتم حذف جميع التبويبات الحالية. هل تريد الاستمرار ؟", "تحذير", MessageBoxButtons.YesNoCancel))
+                        {
+                            case DialogResult.Yes:
+                                foreach (TabPage pag in ActiveTabs_Tabcontrol.TabPages) pag.Dispose();
+                                goto case DialogResult.No;
+                            case DialogResult.No:
+                                CleanState(); 
+                                Buttons_Panel.Enabled = false;
+                                ActiveTabs_Tabcontrol.Visible = false;
+                                UserInterfaces_Panel.Visible = true;
+                                UsrCtrl_Settings settingsCtrl = UserInterfaces_Panel.Controls.OfType<UsrCtrl_Settings>().FirstOrDefault();
+                                if (settingsCtrl != null)
+                                {
+                                    (settingsCtrl as Models.ICustomControl).Sync();
+                                    UserInterfaces_Panel.Controls.OfType<UsrCtrl_Settings>().First().BringToFront();
+                                }
+                                else
+                                {
+                                    Buttons_Panel.Enabled = false;
+                                    settingsCtrl = new UsrCtrl_Settings();
+                                }
+                                EndAdd(settingsCtrl);
+                                Settings_Button.BackColor = secColor;
+                                _state = value; 
+                                break;
+                            case DialogResult.Cancel:
+                                break;
+                        }
+                        break;
+
                     case Enums.mainformState.todo:
+                        Buttons_Panel.Enabled = false;
+                        if (tempControl == null || !(tempControl is UsrCtrl_Todo))
+                            tempControl = prepareTodoUsrCtrl(Enums.todoArgument.none);
+                        TabPage_Handle(todoPageName, ref tempControl);
+                        _state = value; 
                         break;
                     case Enums.mainformState.finance:
+                        Buttons_Panel.Enabled = false;
+                        if (tempControl == null || !(tempControl is UsrCtrl_Finances))
+                            tempControl = prepareFNCUsrCtrl(Enums.financeArgument.none);
+                        TabPage_Handle(fncPageName, ref tempControl);
+                        _state = value; 
                         break;
                     case Enums.mainformState.note:
+                        Buttons_Panel.Enabled = false;
+                        if (tempControl == null || !(tempControl is UsrCtrl_Notes))
+                            tempControl = prepareNotUsrCtrl(Enums.noteArgument.none);
+                        TabPage_Handle(notPageName, ref tempControl);
+                        _state = value; 
                         break;
                     case Enums.mainformState.reports:
-                        break;
-                    case Enums.mainformState.settings:
+                        Buttons_Panel.Enabled = false;
+                        if (tempControl == null || !(tempControl is UsrCtrl_Reports))
+                            tempControl = prepareRportUsrCtrl(Enums.report_tabState.مهام);
+                        TabPage_Handle(rprtPageName, ref tempControl);
+                        _state = value; 
                         break;
                     default:
                         break;
                 }
-                _state = value;
             }
+        }
+        void CleanState()
+        {
+            Dashboard_Button.BackColor = Settings_Button.BackColor = ControlPaint.Dark(mainColor, 0.01F);
+            UserInterfaces_Panel.Controls.Cast<Control>().ToList().ForEach(p => p.Visible = false);
         }
         public Color mainColor = Color.Transparent;
         public Color secColor = Color.Transparent;
@@ -135,94 +204,61 @@ namespace DailyCompanionV2
             if (Program.mainSettings == null) Environment.Exit(0);
         }
 
-        public void Click_TODO(Enums.todoArgument Arg, int? ID) 
-        { 
-            if (ID.HasValue) Todo_TileButton_Click(prepareTodoUsrCtrl(Arg, ID.Value), EventArgs.Empty); 
-            else Todo_TileButton_Click(prepareTodoUsrCtrl(Arg, null), EventArgs.Empty);
-        }
-        public void Click_FNC(Enums.financeArgument argument, int? ID)
-        {
-            if (ID.HasValue) Finances_TileButton_Click(prepareFNCUsrCtrl(argument, ID.Value), EventArgs.Empty);
-            else Finances_TileButton_Click(prepareFNCUsrCtrl(argument, null), EventArgs.Empty);
-        }
-        public void Click_Note(Enums.noteArgument argument, string argLists) => Notes_TileButton_Click(prepareNotUsrCtrl(argument, argLists), EventArgs.Empty);
-        public void Click_Note(Enums.noteArgument argument, int argLists) => Notes_TileButton_Click(prepareNotUsrCtrl(argument, argLists), EventArgs.Empty);
-        public void Click_Reports(Enums.report_tabState argument) => Reports_TileButton_Click(prepareRportUsrCtrl(argument), EventArgs.Empty);
-        public void Click_Settings(Enums.settingsState argument, string eventArgs = "") => Settings_TileButton_Click(prepareSettingsUsrCtrl(argument, eventArgs), EventArgs.Empty);
+        UserControl tempControl = null;
         //93,93,93 Main , 126,126,126 Second
         public void Change_Color(Color mClr, Color sClr)
         {
             HM_Manager.UpdateConfiguration(new List<Tuple<string, string>> { new Tuple<string, string>("primaryColor", $"{mClr.R},{mClr.G},{mClr.B}"), new Tuple<string, string>("secondaryColor", $"{sClr.R},{sClr.G},{sClr.B}") });
             mainColor = mClr; secColor = sClr;
-            MainForm_Handler.ChangeColor(mClr, sClr, new List<Control>() { Header_Panel,Main_SplitContainer }, new List<Control>() { TileButtons_Panel }, new List<Control>() { SidePanel1, UserInterfaces_Panel,ActiveTabs_Tabcontrol }, TileButtons_Panel.Controls.OfType<ns1.BunifuTileButton>().ToList());
+            MainForm_Handler.ChangeColor(mClr, sClr, new List<Control>() { Header_Panel,Main_SplitContainer }, new List<Control>() { Buttons_Panel }, new List<Control>() {  UserInterfaces_Panel,ActiveTabs_Tabcontrol });
         }
         private void Shutdown_ImageButton_Click(object sender, EventArgs e) => Program.WorkingForm.Close();
 
-        private void Dashboard_TileButton_Click(object sender, EventArgs e) => Tilebutton_Click_Handle<UsrCtrl_Dashboard>(Dashboard_TileButton);
-
-        private void Todo_TileButton_Click(object sender, EventArgs e)
-        {
-            UsrCtrl_Todo item = sender is UsrCtrl_Todo ? sender as UsrCtrl_Todo : sender is Enums.todoArgument
-                       ? prepareTodoUsrCtrl((sender as Enums.todoArgument?).Value)
-                       : prepareTodoUsrCtrl(Enums.todoArgument.none);
-            Tilebutton_Click_Handle(Todo_TileButton, todoPageName, item);
-        }
+        private void Dashboard_Button_Click(object sender, EventArgs e) => State = Enums.mainformState.dashboard;
+        
+        private void Todo_Button_Click(object sender, EventArgs e) => State = Enums.mainformState.todo;
         private UsrCtrl_Todo prepareTodoUsrCtrl(Enums.todoArgument Arg, int? e_ID = null) => new UsrCtrl_Todo(Arg, e_ID);
-
-        private void Finances_TileButton_Click(object sender, EventArgs e)
+        public void Click_TODO(Enums.todoArgument Arg, int? ID)
         {
-            UsrCtrl_Finances item = sender is UsrCtrl_Finances ? sender as UsrCtrl_Finances : sender is Enums.financeArgument
-                     ? prepareFNCUsrCtrl((sender as Enums.financeArgument?).Value)
-                     : prepareFNCUsrCtrl(Enums.financeArgument.none);
-            Tilebutton_Click_Handle(Finances_TileButton, fncPageName, item);
+            if (ID.HasValue) tempControl = prepareTodoUsrCtrl(Arg, ID.Value);
+            else tempControl = prepareTodoUsrCtrl(Arg, null);
+            State = Enums.mainformState.todo;
         }
+
+        private void Finances_Button_Click(object sender, EventArgs e) => State = Enums.mainformState.finance;
         private UsrCtrl_Finances prepareFNCUsrCtrl(Enums.financeArgument LoadArg, int? e_ID = null) => new UsrCtrl_Finances(LoadArg, e_ID);
-
-        private void Notes_TileButton_Click(object sender, EventArgs e)
+        public void Click_FNC(Enums.financeArgument argument, int? ID)
         {
-            UsrCtrl_Notes item = sender is UsrCtrl_Notes ? sender as UsrCtrl_Notes : sender is Enums.noteArgument
-                   ? prepareNotUsrCtrl((sender as Enums.noteArgument?).Value)
-                   : prepareNotUsrCtrl(Enums.noteArgument.none);
-            Tilebutton_Click_Handle(Notes_TileButton, notPageName, item);
+            if (ID.HasValue) Finances_Button_Click(prepareFNCUsrCtrl(argument, ID.Value), EventArgs.Empty);
+            else Finances_Button_Click(prepareFNCUsrCtrl(argument, null), EventArgs.Empty);
+            State = Enums.mainformState.finance;
         }
+        
+        private void Notes_Button_Click(object sender, EventArgs e)=> State = Enums.mainformState.note;
         private UsrCtrl_Notes prepareNotUsrCtrl(Enums.noteArgument LoadArg, string MethodArg = null) => new UsrCtrl_Notes(LoadArg, MethodArg);
         private UsrCtrl_Notes prepareNotUsrCtrl(Enums.noteArgument LoadArg, int MethodArg) => new UsrCtrl_Notes(LoadArg, MethodArg);
-
-        private void Reports_TileButton_Click(object sender, EventArgs e)
-        {
-            UsrCtrl_Reports item = sender is UsrCtrl_Reports ? sender as UsrCtrl_Reports : sender is Enums.report_tabState
-                   ? prepareRportUsrCtrl((sender as Enums.report_tabState?).Value)
-                   : prepareRportUsrCtrl(Enums.report_tabState.مهام);
-            Tilebutton_Click_Handle(Reports_TileButton, rprtPageName, item);
-        }
+        public void Click_Note(Enums.noteArgument argument, string argLists) { tempControl = prepareNotUsrCtrl(argument, argLists); State = Enums.mainformState.note; }
+        public void Click_Note(Enums.noteArgument argument, int argLists) { tempControl = prepareNotUsrCtrl(argument, argLists); State = Enums.mainformState.note; }
+        
+        private void Reports_Button_Click(object sender, EventArgs e) => State = Enums.mainformState.reports;
         private UsrCtrl_Reports prepareRportUsrCtrl(Enums.report_tabState LoadArg) => new UsrCtrl_Reports(LoadArg);
-
-        private void Settings_TileButton_Click(object sender, EventArgs e)
+        public void Click_Reports(Enums.report_tabState argument)
         {
-           // Tilebutton_Click_Handle<UsrCtrl_Settings>(Settings_TileButton);
-            PreapreToAdd(Settings_TileButton);
-            ActiveTabs_Tabcontrol.Visible = false;
-            foreach (Control ctrl in UserInterfaces_Panel.Controls)  ctrl.Dispose();
-            foreach (TabPage pag in ActiveTabs_Tabcontrol.TabPages) pag.Dispose();
-            UsrCtrl_Settings item;
-            if (sender is UsrCtrl_Settings) item = sender as UsrCtrl_Settings;
-            else item = prepareSettingsUsrCtrl(Enums.settingsState.none);
-            EndAdd(item);
+            tempControl = prepareRportUsrCtrl(argument);
+            State = Enums.mainformState.reports;
         }
-        private UsrCtrl_Settings prepareSettingsUsrCtrl(Enums.settingsState LoadArg, string MethodArg = "") => new UsrCtrl_Settings(LoadArg, MethodArg);
-            
-
-        void Tilebutton_Click_Handle<T>(BunifuTileButton btn) where T : Control, new()
+       
+        private void Settings_Button_Click(object sender, EventArgs e) => State = Enums.mainformState.settings;
+        public void Click_Settings(Enums.settingsState argument, string eventArgs = "")
         {
-            PreapreToAdd(btn);
-            ActiveTabs_Tabcontrol.Visible = false;
-            foreach (Control ctrl in UserInterfaces_Panel.Controls) ctrl.Dispose();
-            T item = new T(); EndAdd(item);
+            State = Enums.mainformState.settings;
+            UsrCtrl_Settings settings = UserInterfaces_Panel.Controls.OfType<UsrCtrl_Settings>().First();
+            settings.SetState(argument, eventArgs);
         }
-        void Tilebutton_Click_Handle(BunifuTileButton tileBtn,string pgName,UserControl item)
+        
+        void TabPage_Handle(string pgName,ref UserControl item)
         {
-            PreapreToAdd(tileBtn);
-            foreach (Control ctrl in UserInterfaces_Panel.Controls) ctrl.Dispose();
+            UserInterfaces_Panel.Visible = false;
             ActiveTabs_Tabcontrol.TabPages.Add($"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count + 1}", $"{pgName}");
             ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].Controls.Add(item);
             item.Dock = DockStyle.Fill;
@@ -230,16 +266,11 @@ namespace DailyCompanionV2
             ActiveTabs_Tabcontrol.PageColor = ActiveTabs_Tabcontrol.HeaderBackgroundColor = ActiveTabs_Tabcontrol.BorderColor = secColor;
             ActiveTabs_Tabcontrol.Visible = true;
             ActiveTabs_Tabcontrol.SelectedIndex = ActiveTabs_Tabcontrol.TabCount - 1;
-            TileButtons_Panel.Enabled = true;
+            item = null;
+            Buttons_Panel.Enabled = true;
         }
-        void PreapreToAdd(BunifuTileButton btn)
-        {
-            if (btn == null) return;
-            SidePanel1.Height = btn.Height; SidePanel1.Top = btn.Top;
-            TileButtons_Panel.Enabled = false;
-            SidePanel1.BringToFront();
-        }
-        void EndAdd(Control item) { TileButtons_Panel.Enabled = true; UserInterfaces_Panel.Controls.Add(item); item.BringToFront(); }
+
+        void EndAdd(Control item) { Buttons_Panel.Enabled = true; item.Visible = true; UserInterfaces_Panel.Controls.Add(item); item.BringToFront(); }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e) 
         {
             if (MessageBox.Show("هل تريد الخروج من البرنامج ؟", "خروج من البرنامج", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
@@ -288,10 +319,10 @@ namespace DailyCompanionV2
         }
         private void ActiveTabs_Tabcontrol_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ActiveTabs_Tabcontrol.SelectedTab != null)
+           /* if (ActiveTabs_Tabcontrol.SelectedTab != null)
                 if (ActiveTabs_Tabcontrol.SelectedTab.Controls.OfType<UsrCtrl_Finances>().Count() > 0) { PreapreToAdd(Finances_TileButton); TileButtons_Panel.Enabled = true; }
                 else if (ActiveTabs_Tabcontrol.SelectedTab.Controls.OfType<UsrCtrl_Todo>().Count() > 0) { PreapreToAdd(Todo_TileButton); TileButtons_Panel.Enabled = true; }
-                else if (ActiveTabs_Tabcontrol.SelectedTab.Controls.OfType<UsrCtrl_Notes>().Count() > 0) { PreapreToAdd(Notes_TileButton); TileButtons_Panel.Enabled = true; }
+                else if (ActiveTabs_Tabcontrol.SelectedTab.Controls.OfType<UsrCtrl_Notes>().Count() > 0) { PreapreToAdd(Notes_TileButton); TileButtons_Panel.Enabled = true; }*/
         }
 
         private void Shortcut_ImageButton_Click(object sender, EventArgs e) => 
@@ -317,5 +348,12 @@ namespace DailyCompanionV2
             }
             base.WndProc(ref m);
         }
+
+        private void Tabs_Button_Click(object sender, EventArgs e)
+        {
+            TabButtons_Panel.Visible = !TabButtons_Panel.Visible;
+            Tabs_Button.BackColor = TabButtons_Panel.Visible ? secColor : mainColor;
+        }
+
     }
 }

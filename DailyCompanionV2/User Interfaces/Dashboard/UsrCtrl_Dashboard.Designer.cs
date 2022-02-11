@@ -61,7 +61,9 @@ namespace DailyCompanionV2
             this.DS_NT_total_Adj_Label = new System.Windows.Forms.Label();
             this.dashboard_Panel = new System.Windows.Forms.Panel();
             this.charts_TablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.TD_Chart_TablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.TD_PieChart = new LiveCharts.WinForms.PieChart();
+            this.TD_CartiseanChart = new LiveCharts.WinForms.CartesianChart();
             this.FNC_CartiseanChart = new LiveCharts.WinForms.CartesianChart();
             this.DS_TablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.DB_FN_Groupbox = new System.Windows.Forms.GroupBox();
@@ -83,6 +85,7 @@ namespace DailyCompanionV2
             this.DB_NT_Groupbox.SuspendLayout();
             this.dashboard_Panel.SuspendLayout();
             this.charts_TablePanel.SuspendLayout();
+            this.TD_Chart_TablePanel.SuspendLayout();
             this.DS_TablePanel.SuspendLayout();
             this.DB_FN_Groupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -107,10 +110,10 @@ namespace DailyCompanionV2
             this.DB_TD_Groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DB_TD_Groupbox.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DB_TD_Groupbox.ForeColor = System.Drawing.Color.DarkRed;
-            this.DB_TD_Groupbox.Location = new System.Drawing.Point(1120, 3);
+            this.DB_TD_Groupbox.Location = new System.Drawing.Point(1113, 3);
             this.DB_TD_Groupbox.Name = "DB_TD_Groupbox";
             this.DB_TD_Groupbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.DB_TD_Groupbox.Size = new System.Drawing.Size(552, 486);
+            this.DB_TD_Groupbox.Size = new System.Drawing.Size(549, 424);
             this.DB_TD_Groupbox.TabIndex = 10;
             this.DB_TD_Groupbox.TabStop = false;
             this.DB_TD_Groupbox.Text = "المهام";
@@ -120,20 +123,20 @@ namespace DailyCompanionV2
             this.DS_TD_required_Label.Dock = System.Windows.Forms.DockStyle.Top;
             this.DS_TD_required_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.DS_TD_required_Label.ForeColor = System.Drawing.Color.Firebrick;
-            this.DS_TD_required_Label.Location = new System.Drawing.Point(3, 414);
+            this.DS_TD_required_Label.Location = new System.Drawing.Point(3, 354);
             this.DS_TD_required_Label.Name = "DS_TD_required_Label";
-            this.DS_TD_required_Label.Size = new System.Drawing.Size(546, 65);
+            this.DS_TD_required_Label.Size = new System.Drawing.Size(543, 65);
             this.DS_TD_required_Label.TabIndex = 29;
             this.DS_TD_required_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DS_TD_required_Adj_Label
             // 
             this.DS_TD_required_Adj_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_TD_required_Adj_Label.Font = new System.Drawing.Font("A Nasr", 15F);
+            this.DS_TD_required_Adj_Label.Font = new System.Drawing.Font("A Nasr", 16F);
             this.DS_TD_required_Adj_Label.ForeColor = System.Drawing.Color.Firebrick;
-            this.DS_TD_required_Adj_Label.Location = new System.Drawing.Point(3, 369);
+            this.DS_TD_required_Adj_Label.Location = new System.Drawing.Point(3, 324);
             this.DS_TD_required_Adj_Label.Name = "DS_TD_required_Adj_Label";
-            this.DS_TD_required_Adj_Label.Size = new System.Drawing.Size(546, 45);
+            this.DS_TD_required_Adj_Label.Size = new System.Drawing.Size(543, 30);
             this.DS_TD_required_Adj_Label.TabIndex = 28;
             this.DS_TD_required_Adj_Label.Text = "المطلوب";
             this.DS_TD_required_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -143,20 +146,20 @@ namespace DailyCompanionV2
             this.DS_TD_average_Label.Dock = System.Windows.Forms.DockStyle.Top;
             this.DS_TD_average_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.DS_TD_average_Label.ForeColor = System.Drawing.Color.Firebrick;
-            this.DS_TD_average_Label.Location = new System.Drawing.Point(3, 304);
+            this.DS_TD_average_Label.Location = new System.Drawing.Point(3, 259);
             this.DS_TD_average_Label.Name = "DS_TD_average_Label";
-            this.DS_TD_average_Label.Size = new System.Drawing.Size(546, 65);
+            this.DS_TD_average_Label.Size = new System.Drawing.Size(543, 65);
             this.DS_TD_average_Label.TabIndex = 27;
             this.DS_TD_average_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DS_TD_average_Adj_Label
             // 
             this.DS_TD_average_Adj_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_TD_average_Adj_Label.Font = new System.Drawing.Font("A Nasr", 15F);
+            this.DS_TD_average_Adj_Label.Font = new System.Drawing.Font("A Nasr", 16F);
             this.DS_TD_average_Adj_Label.ForeColor = System.Drawing.Color.Firebrick;
-            this.DS_TD_average_Adj_Label.Location = new System.Drawing.Point(3, 259);
+            this.DS_TD_average_Adj_Label.Location = new System.Drawing.Point(3, 229);
             this.DS_TD_average_Adj_Label.Name = "DS_TD_average_Adj_Label";
-            this.DS_TD_average_Adj_Label.Size = new System.Drawing.Size(546, 45);
+            this.DS_TD_average_Adj_Label.Size = new System.Drawing.Size(543, 30);
             this.DS_TD_average_Adj_Label.TabIndex = 26;
             this.DS_TD_average_Adj_Label.Text = "المتوسط";
             this.DS_TD_average_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -166,20 +169,20 @@ namespace DailyCompanionV2
             this.DS_TD_month_Label.Dock = System.Windows.Forms.DockStyle.Top;
             this.DS_TD_month_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.DS_TD_month_Label.ForeColor = System.Drawing.Color.Firebrick;
-            this.DS_TD_month_Label.Location = new System.Drawing.Point(3, 194);
+            this.DS_TD_month_Label.Location = new System.Drawing.Point(3, 164);
             this.DS_TD_month_Label.Name = "DS_TD_month_Label";
-            this.DS_TD_month_Label.Size = new System.Drawing.Size(546, 65);
+            this.DS_TD_month_Label.Size = new System.Drawing.Size(543, 65);
             this.DS_TD_month_Label.TabIndex = 25;
             this.DS_TD_month_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DS_TD_month_Adj_Label
             // 
             this.DS_TD_month_Adj_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_TD_month_Adj_Label.Font = new System.Drawing.Font("A Nasr", 15F);
+            this.DS_TD_month_Adj_Label.Font = new System.Drawing.Font("A Nasr", 16F);
             this.DS_TD_month_Adj_Label.ForeColor = System.Drawing.Color.Firebrick;
-            this.DS_TD_month_Adj_Label.Location = new System.Drawing.Point(3, 149);
+            this.DS_TD_month_Adj_Label.Location = new System.Drawing.Point(3, 134);
             this.DS_TD_month_Adj_Label.Name = "DS_TD_month_Adj_Label";
-            this.DS_TD_month_Adj_Label.Size = new System.Drawing.Size(546, 45);
+            this.DS_TD_month_Adj_Label.Size = new System.Drawing.Size(543, 30);
             this.DS_TD_month_Adj_Label.TabIndex = 24;
             this.DS_TD_month_Adj_Label.Text = "هذا الشهر";
             this.DS_TD_month_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -189,20 +192,20 @@ namespace DailyCompanionV2
             this.DS_TD_Total_Label.Dock = System.Windows.Forms.DockStyle.Top;
             this.DS_TD_Total_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.DS_TD_Total_Label.ForeColor = System.Drawing.Color.Firebrick;
-            this.DS_TD_Total_Label.Location = new System.Drawing.Point(3, 84);
+            this.DS_TD_Total_Label.Location = new System.Drawing.Point(3, 69);
             this.DS_TD_Total_Label.Name = "DS_TD_Total_Label";
-            this.DS_TD_Total_Label.Size = new System.Drawing.Size(546, 65);
+            this.DS_TD_Total_Label.Size = new System.Drawing.Size(543, 65);
             this.DS_TD_Total_Label.TabIndex = 23;
             this.DS_TD_Total_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DS_TD_total_Adj_Label
             // 
             this.DS_TD_total_Adj_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_TD_total_Adj_Label.Font = new System.Drawing.Font("A Nasr", 15F);
+            this.DS_TD_total_Adj_Label.Font = new System.Drawing.Font("A Nasr", 16F);
             this.DS_TD_total_Adj_Label.ForeColor = System.Drawing.Color.Firebrick;
             this.DS_TD_total_Adj_Label.Location = new System.Drawing.Point(3, 39);
             this.DS_TD_total_Adj_Label.Name = "DS_TD_total_Adj_Label";
-            this.DS_TD_total_Adj_Label.Size = new System.Drawing.Size(546, 45);
+            this.DS_TD_total_Adj_Label.Size = new System.Drawing.Size(543, 30);
             this.DS_TD_total_Adj_Label.TabIndex = 17;
             this.DS_TD_total_Adj_Label.Text = "الإجمالي";
             this.DS_TD_total_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -497,7 +500,7 @@ namespace DailyCompanionV2
             this.DB_NT_Groupbox.Location = new System.Drawing.Point(3, 3);
             this.DB_NT_Groupbox.Name = "DB_NT_Groupbox";
             this.DB_NT_Groupbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.DB_NT_Groupbox.Size = new System.Drawing.Size(553, 486);
+            this.DB_NT_Groupbox.Size = new System.Drawing.Size(549, 424);
             this.DB_NT_Groupbox.TabIndex = 12;
             this.DB_NT_Groupbox.TabStop = false;
             this.DB_NT_Groupbox.Text = "الملاحظات";
@@ -506,21 +509,21 @@ namespace DailyCompanionV2
             // 
             this.DS_NT_average_Label.Dock = System.Windows.Forms.DockStyle.Top;
             this.DS_NT_average_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
-            this.DS_NT_average_Label.ForeColor = System.Drawing.Color.ForestGreen;
+            this.DS_NT_average_Label.ForeColor = System.Drawing.Color.Green;
             this.DS_NT_average_Label.Location = new System.Drawing.Point(3, 194);
             this.DS_NT_average_Label.Name = "DS_NT_average_Label";
-            this.DS_NT_average_Label.Size = new System.Drawing.Size(547, 65);
+            this.DS_NT_average_Label.Size = new System.Drawing.Size(543, 65);
             this.DS_NT_average_Label.TabIndex = 33;
             this.DS_NT_average_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DS_NT_average_Adj_Label
             // 
             this.DS_NT_average_Adj_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_NT_average_Adj_Label.Font = new System.Drawing.Font("A Nasr", 15F);
-            this.DS_NT_average_Adj_Label.ForeColor = System.Drawing.Color.ForestGreen;
+            this.DS_NT_average_Adj_Label.Font = new System.Drawing.Font("A Nasr", 16F);
+            this.DS_NT_average_Adj_Label.ForeColor = System.Drawing.Color.Green;
             this.DS_NT_average_Adj_Label.Location = new System.Drawing.Point(3, 149);
             this.DS_NT_average_Adj_Label.Name = "DS_NT_average_Adj_Label";
-            this.DS_NT_average_Adj_Label.Size = new System.Drawing.Size(547, 45);
+            this.DS_NT_average_Adj_Label.Size = new System.Drawing.Size(543, 45);
             this.DS_NT_average_Adj_Label.TabIndex = 32;
             this.DS_NT_average_Adj_Label.Text = "المتوسط";
             this.DS_NT_average_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -529,21 +532,21 @@ namespace DailyCompanionV2
             // 
             this.DS_NT_total_Label.Dock = System.Windows.Forms.DockStyle.Top;
             this.DS_NT_total_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
-            this.DS_NT_total_Label.ForeColor = System.Drawing.Color.ForestGreen;
+            this.DS_NT_total_Label.ForeColor = System.Drawing.Color.Green;
             this.DS_NT_total_Label.Location = new System.Drawing.Point(3, 84);
             this.DS_NT_total_Label.Name = "DS_NT_total_Label";
-            this.DS_NT_total_Label.Size = new System.Drawing.Size(547, 65);
+            this.DS_NT_total_Label.Size = new System.Drawing.Size(543, 65);
             this.DS_NT_total_Label.TabIndex = 29;
             this.DS_NT_total_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DS_NT_total_Adj_Label
             // 
             this.DS_NT_total_Adj_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_NT_total_Adj_Label.Font = new System.Drawing.Font("A Nasr", 15F);
-            this.DS_NT_total_Adj_Label.ForeColor = System.Drawing.Color.ForestGreen;
+            this.DS_NT_total_Adj_Label.Font = new System.Drawing.Font("A Nasr", 16F);
+            this.DS_NT_total_Adj_Label.ForeColor = System.Drawing.Color.Green;
             this.DS_NT_total_Adj_Label.Location = new System.Drawing.Point(3, 39);
             this.DS_NT_total_Adj_Label.Name = "DS_NT_total_Adj_Label";
-            this.DS_NT_total_Adj_Label.Size = new System.Drawing.Size(547, 45);
+            this.DS_NT_total_Adj_Label.Size = new System.Drawing.Size(543, 45);
             this.DS_NT_total_Adj_Label.TabIndex = 28;
             this.DS_NT_total_Adj_Label.Text = "الإجمالي";
             this.DS_NT_total_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -556,33 +559,57 @@ namespace DailyCompanionV2
             this.dashboard_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dashboard_Panel.Location = new System.Drawing.Point(0, 0);
             this.dashboard_Panel.Name = "dashboard_Panel";
-            this.dashboard_Panel.Size = new System.Drawing.Size(1675, 851);
+            this.dashboard_Panel.Size = new System.Drawing.Size(1665, 860);
             this.dashboard_Panel.TabIndex = 53;
             // 
             // charts_TablePanel
             // 
             this.charts_TablePanel.ColumnCount = 2;
-            this.charts_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.charts_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.charts_TablePanel.Controls.Add(this.TD_PieChart, 0, 0);
+            this.charts_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.charts_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.charts_TablePanel.Controls.Add(this.TD_Chart_TablePanel, 0, 0);
             this.charts_TablePanel.Controls.Add(this.FNC_CartiseanChart, 1, 0);
             this.charts_TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.charts_TablePanel.Location = new System.Drawing.Point(0, 492);
+            this.charts_TablePanel.Location = new System.Drawing.Point(0, 430);
             this.charts_TablePanel.Name = "charts_TablePanel";
             this.charts_TablePanel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.charts_TablePanel.RowCount = 1;
             this.charts_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.charts_TablePanel.Size = new System.Drawing.Size(1675, 359);
+            this.charts_TablePanel.Size = new System.Drawing.Size(1665, 430);
             this.charts_TablePanel.TabIndex = 13;
+            // 
+            // TD_Chart_TablePanel
+            // 
+            this.TD_Chart_TablePanel.ColumnCount = 1;
+            this.TD_Chart_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TD_Chart_TablePanel.Controls.Add(this.TD_PieChart, 0, 0);
+            this.TD_Chart_TablePanel.Controls.Add(this.TD_CartiseanChart, 0, 1);
+            this.TD_Chart_TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TD_Chart_TablePanel.Location = new System.Drawing.Point(836, 3);
+            this.TD_Chart_TablePanel.Name = "TD_Chart_TablePanel";
+            this.TD_Chart_TablePanel.RowCount = 2;
+            this.TD_Chart_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.TD_Chart_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.TD_Chart_TablePanel.Size = new System.Drawing.Size(826, 424);
+            this.TD_Chart_TablePanel.TabIndex = 30;
             // 
             // TD_PieChart
             // 
             this.TD_PieChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TD_PieChart.Location = new System.Drawing.Point(925, 3);
+            this.TD_PieChart.Location = new System.Drawing.Point(3, 3);
             this.TD_PieChart.Name = "TD_PieChart";
-            this.TD_PieChart.Size = new System.Drawing.Size(747, 353);
+            this.TD_PieChart.Size = new System.Drawing.Size(820, 163);
             this.TD_PieChart.TabIndex = 12;
             this.TD_PieChart.Text = "pieChart1";
+            // 
+            // TD_CartiseanChart
+            // 
+            this.TD_CartiseanChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TD_CartiseanChart.Location = new System.Drawing.Point(3, 172);
+            this.TD_CartiseanChart.Name = "TD_CartiseanChart";
+            this.TD_CartiseanChart.Size = new System.Drawing.Size(820, 249);
+            this.TD_CartiseanChart.TabIndex = 34;
+            this.TD_CartiseanChart.Text = "cartesianChart1";
             // 
             // FNC_CartiseanChart
             // 
@@ -590,7 +617,7 @@ namespace DailyCompanionV2
             this.FNC_CartiseanChart.Location = new System.Drawing.Point(3, 3);
             this.FNC_CartiseanChart.Name = "FNC_CartiseanChart";
             this.FNC_CartiseanChart.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.FNC_CartiseanChart.Size = new System.Drawing.Size(916, 353);
+            this.FNC_CartiseanChart.Size = new System.Drawing.Size(827, 424);
             this.FNC_CartiseanChart.TabIndex = 13;
             this.FNC_CartiseanChart.Text = "cartesianChart1";
             // 
@@ -610,7 +637,7 @@ namespace DailyCompanionV2
             this.DS_TablePanel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.DS_TablePanel.RowCount = 1;
             this.DS_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.DS_TablePanel.Size = new System.Drawing.Size(1675, 492);
+            this.DS_TablePanel.Size = new System.Drawing.Size(1665, 430);
             this.DS_TablePanel.TabIndex = 11;
             // 
             // DB_FN_Groupbox
@@ -627,10 +654,10 @@ namespace DailyCompanionV2
             this.DB_FN_Groupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DB_FN_Groupbox.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DB_FN_Groupbox.ForeColor = System.Drawing.Color.Blue;
-            this.DB_FN_Groupbox.Location = new System.Drawing.Point(562, 3);
+            this.DB_FN_Groupbox.Location = new System.Drawing.Point(558, 3);
             this.DB_FN_Groupbox.Name = "DB_FN_Groupbox";
             this.DB_FN_Groupbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.DB_FN_Groupbox.Size = new System.Drawing.Size(552, 486);
+            this.DB_FN_Groupbox.Size = new System.Drawing.Size(549, 424);
             this.DB_FN_Groupbox.TabIndex = 13;
             this.DB_FN_Groupbox.TabStop = false;
             this.DB_FN_Groupbox.Text = "العمليات المالية";
@@ -638,22 +665,22 @@ namespace DailyCompanionV2
             // DS_FN_required_Label
             // 
             this.DS_FN_required_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_FN_required_Label.Font = new System.Drawing.Font("Cairo", 8.3F);
+            this.DS_FN_required_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.DS_FN_required_Label.ForeColor = System.Drawing.Color.Navy;
-            this.DS_FN_required_Label.Location = new System.Drawing.Point(3, 414);
+            this.DS_FN_required_Label.Location = new System.Drawing.Point(3, 354);
             this.DS_FN_required_Label.Name = "DS_FN_required_Label";
-            this.DS_FN_required_Label.Size = new System.Drawing.Size(546, 65);
+            this.DS_FN_required_Label.Size = new System.Drawing.Size(543, 65);
             this.DS_FN_required_Label.TabIndex = 29;
             this.DS_FN_required_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DS_FN_required_Adj_Label
             // 
             this.DS_FN_required_Adj_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_FN_required_Adj_Label.Font = new System.Drawing.Font("A Nasr", 15F);
+            this.DS_FN_required_Adj_Label.Font = new System.Drawing.Font("A Nasr", 16F);
             this.DS_FN_required_Adj_Label.ForeColor = System.Drawing.Color.Navy;
-            this.DS_FN_required_Adj_Label.Location = new System.Drawing.Point(3, 369);
+            this.DS_FN_required_Adj_Label.Location = new System.Drawing.Point(3, 324);
             this.DS_FN_required_Adj_Label.Name = "DS_FN_required_Adj_Label";
-            this.DS_FN_required_Adj_Label.Size = new System.Drawing.Size(546, 45);
+            this.DS_FN_required_Adj_Label.Size = new System.Drawing.Size(543, 30);
             this.DS_FN_required_Adj_Label.TabIndex = 28;
             this.DS_FN_required_Adj_Label.Text = "المطلوب";
             this.DS_FN_required_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -661,22 +688,22 @@ namespace DailyCompanionV2
             // DS_FN_average_Label
             // 
             this.DS_FN_average_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_FN_average_Label.Font = new System.Drawing.Font("Cairo", 8.3F);
+            this.DS_FN_average_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.DS_FN_average_Label.ForeColor = System.Drawing.Color.Navy;
-            this.DS_FN_average_Label.Location = new System.Drawing.Point(3, 304);
+            this.DS_FN_average_Label.Location = new System.Drawing.Point(3, 259);
             this.DS_FN_average_Label.Name = "DS_FN_average_Label";
-            this.DS_FN_average_Label.Size = new System.Drawing.Size(546, 65);
+            this.DS_FN_average_Label.Size = new System.Drawing.Size(543, 65);
             this.DS_FN_average_Label.TabIndex = 27;
             this.DS_FN_average_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DS_FN_average_Adj_Label
             // 
             this.DS_FN_average_Adj_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_FN_average_Adj_Label.Font = new System.Drawing.Font("A Nasr", 15F);
+            this.DS_FN_average_Adj_Label.Font = new System.Drawing.Font("A Nasr", 16F);
             this.DS_FN_average_Adj_Label.ForeColor = System.Drawing.Color.Navy;
-            this.DS_FN_average_Adj_Label.Location = new System.Drawing.Point(3, 259);
+            this.DS_FN_average_Adj_Label.Location = new System.Drawing.Point(3, 229);
             this.DS_FN_average_Adj_Label.Name = "DS_FN_average_Adj_Label";
-            this.DS_FN_average_Adj_Label.Size = new System.Drawing.Size(546, 45);
+            this.DS_FN_average_Adj_Label.Size = new System.Drawing.Size(543, 30);
             this.DS_FN_average_Adj_Label.TabIndex = 26;
             this.DS_FN_average_Adj_Label.Text = "المتوسط";
             this.DS_FN_average_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -684,22 +711,22 @@ namespace DailyCompanionV2
             // DS_FN_month_Label
             // 
             this.DS_FN_month_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_FN_month_Label.Font = new System.Drawing.Font("Cairo", 8.3F);
+            this.DS_FN_month_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.DS_FN_month_Label.ForeColor = System.Drawing.Color.Navy;
-            this.DS_FN_month_Label.Location = new System.Drawing.Point(3, 194);
+            this.DS_FN_month_Label.Location = new System.Drawing.Point(3, 164);
             this.DS_FN_month_Label.Name = "DS_FN_month_Label";
-            this.DS_FN_month_Label.Size = new System.Drawing.Size(546, 65);
+            this.DS_FN_month_Label.Size = new System.Drawing.Size(543, 65);
             this.DS_FN_month_Label.TabIndex = 25;
             this.DS_FN_month_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DS_FN_month_Adj_Label
             // 
             this.DS_FN_month_Adj_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_FN_month_Adj_Label.Font = new System.Drawing.Font("A Nasr", 15F);
+            this.DS_FN_month_Adj_Label.Font = new System.Drawing.Font("A Nasr", 16F);
             this.DS_FN_month_Adj_Label.ForeColor = System.Drawing.Color.Navy;
-            this.DS_FN_month_Adj_Label.Location = new System.Drawing.Point(3, 149);
+            this.DS_FN_month_Adj_Label.Location = new System.Drawing.Point(3, 134);
             this.DS_FN_month_Adj_Label.Name = "DS_FN_month_Adj_Label";
-            this.DS_FN_month_Adj_Label.Size = new System.Drawing.Size(546, 45);
+            this.DS_FN_month_Adj_Label.Size = new System.Drawing.Size(543, 30);
             this.DS_FN_month_Adj_Label.TabIndex = 24;
             this.DS_FN_month_Adj_Label.Text = "هذا الشهر";
             this.DS_FN_month_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -707,22 +734,22 @@ namespace DailyCompanionV2
             // DS_FN_Total_Label
             // 
             this.DS_FN_Total_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_FN_Total_Label.Font = new System.Drawing.Font("Cairo", 8.3F);
+            this.DS_FN_Total_Label.Font = new System.Drawing.Font("Cairo", 9.3F);
             this.DS_FN_Total_Label.ForeColor = System.Drawing.Color.Navy;
-            this.DS_FN_Total_Label.Location = new System.Drawing.Point(3, 84);
+            this.DS_FN_Total_Label.Location = new System.Drawing.Point(3, 69);
             this.DS_FN_Total_Label.Name = "DS_FN_Total_Label";
-            this.DS_FN_Total_Label.Size = new System.Drawing.Size(546, 65);
+            this.DS_FN_Total_Label.Size = new System.Drawing.Size(543, 65);
             this.DS_FN_Total_Label.TabIndex = 23;
             this.DS_FN_Total_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DS_FN_total_Adj_Label
             // 
             this.DS_FN_total_Adj_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DS_FN_total_Adj_Label.Font = new System.Drawing.Font("A Nasr", 15F);
+            this.DS_FN_total_Adj_Label.Font = new System.Drawing.Font("A Nasr", 16F);
             this.DS_FN_total_Adj_Label.ForeColor = System.Drawing.Color.Navy;
             this.DS_FN_total_Adj_Label.Location = new System.Drawing.Point(3, 39);
             this.DS_FN_total_Adj_Label.Name = "DS_FN_total_Adj_Label";
-            this.DS_FN_total_Adj_Label.Size = new System.Drawing.Size(546, 45);
+            this.DS_FN_total_Adj_Label.Size = new System.Drawing.Size(543, 30);
             this.DS_FN_total_Adj_Label.TabIndex = 17;
             this.DS_FN_total_Adj_Label.Text = "الإجمالي";
             this.DS_FN_total_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -730,7 +757,7 @@ namespace DailyCompanionV2
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Location = new System.Drawing.Point(5, 5);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -742,8 +769,8 @@ namespace DailyCompanionV2
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.DSB_History_Button);
-            this.splitContainer1.Size = new System.Drawing.Size(1675, 930);
-            this.splitContainer1.SplitterDistance = 851;
+            this.splitContainer1.Size = new System.Drawing.Size(1665, 920);
+            this.splitContainer1.SplitterDistance = 860;
             this.splitContainer1.TabIndex = 0;
             // 
             // Aux_Panel
@@ -765,7 +792,7 @@ namespace DailyCompanionV2
             this.DSB_History_Button.ImageActive = null;
             this.DSB_History_Button.Location = new System.Drawing.Point(0, 0);
             this.DSB_History_Button.Name = "DSB_History_Button";
-            this.DSB_History_Button.Size = new System.Drawing.Size(70, 75);
+            this.DSB_History_Button.Size = new System.Drawing.Size(70, 56);
             this.DSB_History_Button.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.DSB_History_Button.TabIndex = 76;
             this.DSB_History_Button.TabStop = false;
@@ -778,7 +805,9 @@ namespace DailyCompanionV2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.splitContainer1);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UsrCtrl_Dashboard";
+            this.Padding = new System.Windows.Forms.Padding(5);
             this.Size = new System.Drawing.Size(1675, 930);
             this.DB_TD_Groupbox.ResumeLayout(false);
             this.History_Groupbox.ResumeLayout(false);
@@ -787,6 +816,7 @@ namespace DailyCompanionV2
             this.DB_NT_Groupbox.ResumeLayout(false);
             this.dashboard_Panel.ResumeLayout(false);
             this.charts_TablePanel.ResumeLayout(false);
+            this.TD_Chart_TablePanel.ResumeLayout(false);
             this.DS_TablePanel.ResumeLayout(false);
             this.DB_FN_Groupbox.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -831,7 +861,6 @@ namespace DailyCompanionV2
         private Label DS_NT_total_Label;
         private Label DS_NT_total_Adj_Label;
         private TableLayoutPanel charts_TablePanel;
-        private LiveCharts.WinForms.PieChart TD_PieChart;
         private LiveCharts.WinForms.CartesianChart FNC_CartiseanChart;
         private GroupBox DB_FN_Groupbox;
         private Label DS_FN_required_Label;
@@ -846,5 +875,8 @@ namespace DailyCompanionV2
         private TableLayoutPanel HistoryAux_TablePanel;
         private Label AuxComment_Label;
         private Button History_Clear_Button;
+        private TableLayoutPanel TD_Chart_TablePanel;
+        private LiveCharts.WinForms.PieChart TD_PieChart;
+        private LiveCharts.WinForms.CartesianChart TD_CartiseanChart;
     }
 }

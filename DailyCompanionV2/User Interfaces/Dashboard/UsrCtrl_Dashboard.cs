@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using ns1;
 using DailyCompanionV2.Models;
 using DailyCompanionV2.User_Interfaces.Dashboard;
 using DailyCompanionV2.Utilities;
@@ -22,12 +21,12 @@ namespace DailyCompanionV2
             DS_TD_Total_Label.Tag = Enums.DashboardField.الإجمالي_مهام;
             DS_TD_required_Label.Tag = Enums.DashboardField.مطلوب_مهام;
             DS_TD_month_Label.Tag = Enums.DashboardField.إجمالي_الشهر_مهام;
-            DS_TD_average_Label.Tag = Enums.DashboardField.مطلوب_مهام;
+            DS_TD_average_Label.Tag = Enums.DashboardField.متوسط_مهام;
 
             DS_FN_Total_Label.Tag = Enums.DashboardField.الإجمالي_مالية;
             DS_FN_required_Label.Tag = Enums.DashboardField.مطلوب_مالية;
             DS_FN_month_Label.Tag = Enums.DashboardField.إجمالي_الشهر_مالية;
-            DS_FN_average_Label.Tag = Enums.DashboardField.مطلوب_مالية;
+            DS_FN_average_Label.Tag = Enums.DashboardField.متوسط_مالية;
 
             DS_NT_total_Label.Tag = Enums.DashboardField.الإجمالي_ملاحظات;
             DS_NT_average_Label.Tag = Enums.DashboardField.متوسط_ملاحظات;
@@ -36,22 +35,15 @@ namespace DailyCompanionV2
         {
             AdjustListview();
             LoadDashboardElements();
-            Dashboard_Processor.UpdatePieChart(TD_PieChart);
             Dashboard_Processor.Update_DS_FNC_Chart(FNC_CartiseanChart);
+            Dashboard_Processor.Update_TD_Charts(TD_CartiseanChart,TD_PieChart);
         }
-        public void InitializeByResolution()
-        {
-            switch (Program.currentResolution)
-            {
-                case Enums.Resolution.A_1920x1080:
-                    InitializeComponent();
-                    break;
-            }
-        }
-        
+        public void InitializeByResolution() => InitializeComponent();
         private async void LoadDashboardElements()
         {
+            START:
             await Dashboard_Processor.LoadDashboardElements();
+            if (Dashboard_Processor.Dashboard_Elements.Keys.Count < Enum.GetNames(typeof(Enums.DashboardField)).Length) goto START;
             List<Control> firstCtrl = new List<Control> { this };
             var children = GetChildren(firstCtrl[0]);
             while (firstCtrl.Count > 0)
@@ -78,14 +70,6 @@ namespace DailyCompanionV2
             Date_Column.GroupKeyGetter = delegate (object rowObject) { History history = (History)rowObject; return new DateTime(history.datetime.Year, history.datetime.Month, history.datetime.Day); };
             Date_Column.GroupKeyToTitleConverter = delegate (object groupKey) { return ((DateTime)groupKey).ToString("dddd, dd MMMM,yyyy"); };
         }
-
-        private void DB_ShwTodo_Button_Click(object sender, EventArgs e) => Dashboard_Processor.Show_TODO_Button();
-        private void DB_AddTodo_Button_Click(object sender, EventArgs e) => Dashboard_Processor.Add_TODO_Button();
-        private void DB_AddFnc_Button_Click(object sender, EventArgs e) => Dashboard_Processor.Add_FNC_Button();
-        private void DB_ShwFnc_Button_Click(object sender, EventArgs e) => Dashboard_Processor.Show_FNC_Button();
-        private void DB_AddNot_Button_Click(object sender, EventArgs e) => Dashboard_Processor.Add_NOT_Button();
-        private void DB_ShwNot_Button_Click(object sender, EventArgs e) => Dashboard_Processor.Show_NOT_Button();
-
         private void History_Clear_Button_Click(object sender, EventArgs e)
         {
             int historyCount = Program.History_List.Count;

@@ -13,10 +13,9 @@ namespace DailyCompanionV2.User_Interfaces
     public partial class UsrCtrl_Settings : UserControl, ICustomControl
     {
         public UsrCtrl_Settings() => InitialLoad();
-        public UsrCtrl_Settings(Enums.settingsState Arg, string MethodArg)
+        public void SetState(Enums.settingsState Arg, string MethodArg)
         {
-            InitialLoad();
-            State = Arg; 
+            State = Arg;
             switch (Arg)
             {
                 case Enums.settingsState.finance:

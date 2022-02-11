@@ -11,22 +11,28 @@ namespace DailyCompanionV2.User_Interfaces
     public partial class UsrCtrl_Todo : UserControl, ICustomControl
     {
         public UsrCtrl_Todo() => InitialLoad();
-        public UsrCtrl_Todo(Enums.todoArgument Arg, int? e_ID)
+        public UsrCtrl_Todo(Enums.todoArgument Arg,int? e_ID)
         {
             InitialLoad();
             switch (Arg)
             {
                 case Enums.todoArgument.loadTodoItem:
                     if (e_ID.HasValue)
-                    { State = Enums.usrctrlState.mod; TODO_id_Textbox.SelectedItem = TODO_id_Textbox.Text = e_ID.Value.ToString(); }
+                        Set_ID(e_ID.Value); 
                     break;
                 case Enums.todoArgument.showTodoManager:
-                    { State = Enums.usrctrlState.add; Aux_state = Enums.todoAuxState.none; }
+                    State = Enums.usrctrlState.add; 
                     break;
                 default:
                     break;
             }
         }
+        public void Set_ID(int e_ID)
+        {
+            State = Enums.usrctrlState.mod;
+            TODO_id_Textbox.SelectedItem = TODO_id_Textbox.Text = e_ID.ToString();
+        }
+        public void Set_State(Enums.usrctrlState Arg) => State = Arg;
         void InitialLoad()
         {
             InitializeByResolution();
@@ -93,6 +99,7 @@ namespace DailyCompanionV2.User_Interfaces
                             break;
                         }
                 }
+                Aux_state = Enums.todoAuxState.none;
                 _state = value;
             }
         }
@@ -165,9 +172,10 @@ namespace DailyCompanionV2.User_Interfaces
         }
         private void TODO_Datetimepicker_ValueChanged(object sender, EventArgs e)
         {
-            if (TODO_done_date_Datetimepicker.Checked && TODO_done_date_Datetimepicker.Value > TODO_start_date_Datetimepicker.Value)
-                TODO_duration_Textbox.Text = Math.Ceiling(TODO_done_date_Datetimepicker.Value.AddSeconds(-1 * TODO_done_date_Datetimepicker.Value.Second).Subtract(TODO_start_date_Datetimepicker.Value.AddSeconds(-1 * TODO_start_date_Datetimepicker.Value.Second)).TotalMinutes).ToString();
-            if (TODO_done_date_Datetimepicker.Checked && Todos_chkpoint_list_Objectlistview.Objects != null && Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().Any(chk => chk.Chk_Date > TODO_done_date_Datetimepicker.Value))
+            DateTime donDate = TODO_done_date_Datetimepicker.Value; DateTime starDate = TODO_start_date_Datetimepicker.Value;
+            if (TODO_done_date_Datetimepicker.Checked && donDate > starDate)
+                TODO_duration_Textbox.Text = Math.Ceiling(new DateTime(donDate.Year,donDate.Month,donDate.Day,donDate.Hour,donDate.Minute,1).Subtract(new DateTime(starDate.Year, starDate.Month, starDate.Day, starDate.Hour, starDate.Minute, 1)).TotalMinutes).ToString();
+            if (TODO_done_date_Datetimepicker.Checked && Todos_chkpoint_list_Objectlistview.Objects != null && Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().Any(chk => chk.Chk_Date > donDate))
             {
                 HM_Manager.Fail_addition(AddTODO_Label, "لا يمكن أن يكون تاريخ النقطة الفاصلة أكبر من تاريخ الإنهاء");
                 TODO_done_date_Datetimepicker.Value = Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().Max(p => p.Chk_Date);

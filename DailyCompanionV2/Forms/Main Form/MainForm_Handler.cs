@@ -24,7 +24,7 @@ namespace DailyCompanionV2.Forms
             clicked = !clicked;
             if (clicked)
             {
-                var myConstructor = Utilities.HM_Manager.CreateConstructor(typeof(T), parameters.Select(parmeter => parmeter.GetType()).ToArray());
+                var myConstructor = HM_Manager.CreateConstructor(typeof(T), parameters.Select(parmeter => parmeter.GetType()).ToArray());
                 var myControl = myConstructor(parameters);
                 (myControl as Control).Location = new Point(ImageButton.Location.X, (myControl as Control).Location.Y); UserInterfaces_Panel.Controls.Add((myControl as Control));
                 ImageButton.BackColor = Color.FromArgb(UserInterfaces_Panel.BackColor.R + 30, UserInterfaces_Panel.BackColor.G + 30, UserInterfaces_Panel.BackColor.B + 30);
@@ -38,12 +38,12 @@ namespace DailyCompanionV2.Forms
             }
         }
 
-        public static void ChangeColor(Color new_mainColor, Color new_secColor, List<Control> mainPanels, List<Control> mainAuxPanels, List<Control> secPanels, List<ns1.BunifuTileButton> ColorAndActivecolor)
+        public static void ChangeColor(Color new_mainColor, Color new_secColor, List<Control> mainPanels, List<Control> mainAuxPanels, List<Control> secPanels)
         {
             foreach (Control ctrl in mainPanels) ctrl.BackColor = new_mainColor;
             foreach (Control ctrl in mainAuxPanels) ctrl.BackColor = ControlPaint.Dark(new_mainColor, 0.01F);
+            foreach(Button ctrl in mainAuxPanels.OfType<Button>()) { ctrl.FlatAppearance.MouseDownBackColor = ctrl.FlatAppearance.MouseOverBackColor = ControlPaint.Light(new_mainColor, 0.01F); }
             foreach (Control ctrl in secPanels) ctrl.BackColor = new_secColor;
-            foreach (ns1.BunifuTileButton button in ColorAndActivecolor) { button.color = ControlPaint.Dark(new_mainColor, 0.01F); button.colorActive = new_secColor; }
         }
     }
 }

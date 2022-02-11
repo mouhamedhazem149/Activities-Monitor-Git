@@ -1217,8 +1217,8 @@ namespace DailyCompanionV2.User_Interfaces
             // 
             // Main_SplitContainer.Panel1
             // 
-            this.Main_SplitContainer.Panel1.Controls.Add(this.Aux_Panel);
             this.Main_SplitContainer.Panel1.Controls.Add(this.AddTodo_Groupbox);
+            this.Main_SplitContainer.Panel1.Controls.Add(this.Aux_Panel);
             this.Main_SplitContainer.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Main_SplitContainer.Panel1MinSize = 1;
             // 

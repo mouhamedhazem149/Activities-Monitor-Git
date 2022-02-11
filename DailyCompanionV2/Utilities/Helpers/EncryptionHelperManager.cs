@@ -38,11 +38,9 @@ namespace DailyCompanionV2.Utilities
                             using (StreamWriter sw = new StreamWriter(cs))
                             {
                                 var sfs = strEncrypt(plainText);
-                                Console.WriteLine($"Length:: {sfs.Length} sfs:: {sfs}");
                                 sw.Write(sfs);
                             }
                             encrypted = ms.ToArray();
-                            Console.WriteLine($"Length:: {encrypted.Length} encrypted:: {string.Join(" ", encrypted.Select(byt => byt.ToString()))}");
                         }
                     }
                 }
@@ -71,7 +69,6 @@ namespace DailyCompanionV2.Utilities
             try
             {
                 byte[] toDecrypt = cipherText;
-                Console.WriteLine($"Length:: {toDecrypt.Length} toDecrypt:: {string.Join(" ", toDecrypt.Select(byt => byt.ToString()))}");
                 byte[] Key = null; byte[] IV = null; string plaintext = null;
                 if (KeyIV == null)
                 {

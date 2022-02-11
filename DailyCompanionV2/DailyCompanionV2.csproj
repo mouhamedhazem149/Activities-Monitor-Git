@@ -38,6 +38,9 @@
   <PropertyGroup>
     <ApplicationIcon>avatar.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.52">
       <HintPath>..\..\..\..\packages\_DLLs\Bunifu_UI_v1.52.dll</HintPath>
@@ -439,6 +442,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="avatar.ico" />
+    <None Include="Resources\encryption.png" />
+    <None Include="Resources\decryption.png" />
+    <None Include="Resources\addtab.png" />
     <None Include="Resources\history.png" />
     <None Include="Resources\expand.png" />
     <None Include="Resources\notification.png" />

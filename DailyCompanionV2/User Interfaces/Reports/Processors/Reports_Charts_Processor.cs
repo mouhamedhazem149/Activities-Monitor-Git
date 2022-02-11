@@ -28,9 +28,11 @@ namespace DailyCompanionV2.User_Interfaces.Reports
                     List<int> countValus = new List<int>(chart.AxisX.Count);
                     List<double> durationValus = new List<double>(chart.AxisX.Count);
                     grpValuesDictionary.Add(totalSpline, new double[dateList.Count]); 
-                    for (int x = 0; x < dateList.Count - 1; x++)
+                    for (int x = 0; x < dateList.Count; x++)
                     {
-                        List<Models.Todos> temp = TodosList(dateList[x], dateList[x + 1]);
+                        List<Models.Todos> temp = x == dateList.Count - 1
+                            ? TodosList(dateList[x], dateList[x])
+                            : TodosList(dateList[x], dateList[x + 1]);
                         countValus.Add(temp.Count);
                         durationValus.Add(temp.Select(p => p.duration).Sum());
                         if (GroupsArgs != null && sPline != null)
@@ -65,7 +67,9 @@ namespace DailyCompanionV2.User_Interfaces.Reports
                     grpValuesDictionary.Add(totalSpline, new double[dateList.Count]); 
                     for (int x = 0; x < dateList.Count - 1; x++)
                     {
-                        List<Models.Finances> temp = FinancesList(dateList[x], dateList[x + 1]);
+                        List<Models.Finances> temp = x == dateList.Count - 1
+                            ? FinancesList(dateList[x], dateList[x])
+                            : FinancesList(dateList[x], dateList[x + 1]);
                         var incmList = temp.Where(item => item.type == Enums.financeType.دخل);
                         incomeValues.Add(incmList.Select(p => p.paid).Sum());
                         incomeCount.Add(incmList.Count());

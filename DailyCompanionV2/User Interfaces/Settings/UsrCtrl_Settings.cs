@@ -43,7 +43,6 @@ namespace DailyCompanionV2.User_Interfaces
             Shrtcuts_Objectlistview.CanExpandGetter = delegate (object rowObject) { return ((rowObject as Models.Shortcut).childrenShrtcuts != null && (rowObject as Models.Shortcut).childrenShrtcuts.Count > 0); };
             Shrtcuts_Objectlistview.ChildrenGetter = delegate (object rowObject) { return ((Models.Shortcut)rowObject).childrenShrtcuts; };
 
-            Notif_nextDate_Column.AspectToStringConverter = delegate (object rowObject) { return ((DateTime?)rowObject).HasValue ? ((DateTime?)rowObject).Value.ToString("dddd, dd-MMMM-yyyy -- hh:mm tt") : "تم الانتهاء من هذا التنبيه"; };
             Notif_done_Column.AspectToStringConverter = delegate (object rowObject) { return ((bool)rowObject) ? "منتهي" : "غير منتهي"; };
             Notif_repeatInt_Column.AspectToStringConverter = delegate (object rowObject) { return ((int)rowObject) == 0 ? "دائم": ((int?)rowObject).Value.ToString(); };
             Notif_Complete_Column.AspectToStringConverter = delegate (object rowObject) { return ((bool)rowObject) ? "مكتمل" : "غير مكتمل"; };
@@ -454,7 +453,10 @@ namespace DailyCompanionV2.User_Interfaces
             }
         }
 
-        private void Notificatons_Objectlistview_ButtonClick(object sender, BrightIdeasSoftware.CellClickEventArgs e) => 
+        private void Notificatons_Objectlistview_ButtonClick(object sender, BrightIdeasSoftware.CellClickEventArgs e)
+        {
             ((Notification)e.Item.RowObject).done_date = DateTime.Now;
+            Notificatons_Objectlistview.RefreshObject(e.Item.RowObject);
+        }
     }
 }

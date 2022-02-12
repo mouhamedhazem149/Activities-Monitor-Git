@@ -35,6 +35,8 @@ namespace DailyCompanionV2
         {
             int count = Program.Notifications_List.Where(p => !p.done).Count();
             Notification_Label.Text = count.ToString();
+            if (notifCtState == Enums.addedCtrls.inactive)
+                notification_Panel.BackColor = count > 0 ? Color.DarkRed : Color.Green;
         }
         private Enums.addedCtrls _notifCtState = Enums.addedCtrls.inactive;
         public Enums.addedCtrls notifCtState

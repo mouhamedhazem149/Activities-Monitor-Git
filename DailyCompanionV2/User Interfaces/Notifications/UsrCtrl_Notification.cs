@@ -39,7 +39,7 @@ namespace DailyCompanionV2.User_Interfaces
                     $"\n {notify.frequency.GetDisplayName()} {notify.freqDInt} " +
                     $"\n {notify.repeat.GetDisplayName()} {notify.repeatInt} " +
                     $"\n آخر تاريخ تنبيه :: {notify.lastDate} " +
-                    $"\n تاريخ التنبيه القادم :: {notify.nextDate.Value}"
+                    $"\n تاريخ التنبيه القادم :: {notify.STRnextDate}"
                 });
             }
 
@@ -58,7 +58,7 @@ namespace DailyCompanionV2.User_Interfaces
                     $"\n {notify.frequency.GetDisplayName()} {notify.freqDInt} " +
                     $"\n {notify.repeat.GetDisplayName()} {notify.repeatInt} " +
                     $"\n آخر تاريخ تنبيه :: {notify.lastDate} " +
-                    $"\n تاريخ التنبيه القادم :: {notify.nextDate.Value}"
+                    $"\n تاريخ التنبيه القادم :: {notify.STRnextDate}"
                 });
             }
         }

@@ -23,9 +23,13 @@ namespace DailyCompanionV2.Models
         {
             get
             {
+                string tempCat = "";
                 if (parent != null)
-                    return $"[{parent.category}] [{parent.name}]";
-                else return "";
+                {
+                    if (!string.IsNullOrEmpty(parent.category)) tempCat += $"[{parent.category}]";
+                    if (!string.IsNullOrEmpty(parent.name)) tempCat += $"[{parent.name}]";
+                }
+                return tempCat;
             }
         }// التصنيف بتاعها ,, ممكن تخليه بس اسم بيرنت +كاتيجوري بيرنت
 

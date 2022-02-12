@@ -1717,7 +1717,7 @@ namespace DailyCompanionV2.User_Interfaces
             // 
             // Notif_nextDate_Column
             // 
-            this.Notif_nextDate_Column.AspectName = "nextDate";
+            this.Notif_nextDate_Column.AspectName = "STRnextDate";
             this.Notif_nextDate_Column.CellEditUseWholeCell = true;
             this.Notif_nextDate_Column.IsEditable = false;
             this.Notif_nextDate_Column.MinimumWidth = 180;

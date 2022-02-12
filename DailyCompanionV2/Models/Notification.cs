@@ -55,13 +55,12 @@ namespace DailyCompanionV2.Models
             }
         }
         public int repeatInt { get; set; } = 0;
-        public bool done => !done_date.HasValue ? false : lastDate > done_date ? false : true;
+        public bool done => DateTime.Now >= notif_Date ? !done_date.HasValue ? false : lastDate > done_date ? false : true : true;
         //(int)Math.Floor(DateTime.Now.Subtract(notif_Date).TotalDays / freqDInt) > (int)Math.Floor(done_date.Value.Subtract(notif_Date).TotalDays / freqDInt) ? 0 : 1;
         // lastDate > done_date
         public string donedate { get; set; }
         public DateTime? done_date { get { if (donedate != null) return DateTime.Parse(donedate); else return null; } set { if (value != null) donedate = value.Value.ToString("g"); } }
-        public bool completed =>
-            repeat != Utilities.Enums.notifRepeat.دائم && DateTime.Now.Subtract(notif_Date).TotalDays / freqDInt > repeatInt;
+        public bool completed =>repeat != Utilities.Enums.notifRepeat.دائم && DateTime.Now.Subtract(notif_Date).TotalDays / freqDInt > repeatInt && done;
 
         public DateTime lastDate
         {
@@ -102,6 +101,7 @@ namespace DailyCompanionV2.Models
                 }
             }
         }
+        public string STRnextDate => nextDate.HasValue ? nextDate.Value.ToString("g") : "تم الانتهاء من هذا التنبيه";
         public string btn => "تم";
         public bool Equals(Notification obj) =>
             id == obj.id && title == obj.title && description == obj.description && category == obj.category && notifDate == obj.notifDate && frequency == obj.frequency && freqDInt == obj.freqDInt && repeat == obj.repeat && repeatInt == obj.repeatInt && done_date == obj.done_date;

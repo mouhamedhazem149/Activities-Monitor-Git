@@ -49,6 +49,7 @@ namespace DailyCompanionV2.Utilities
             if (Msglabel != null) Msglabel.Visible = false;
             try
             {
+                Program.WorkingForm.Notify_Sync();
                 GetAllControls(parentCtrl, typeof(ICustomControl)).ToList().ForEach(p => (p as ICustomControl).Sync());
                 if (Msglabel != null) Success_addition(Msglabel, "تمت المزامنة بنجاح!");
             }

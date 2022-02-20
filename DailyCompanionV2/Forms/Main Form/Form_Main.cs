@@ -13,14 +13,16 @@ namespace DailyCompanionV2
 {
     public partial class Form1 : Form
     {
+        System.Threading.Timer notificationTimer;
         public Form1()
         {
             Program.WorkingForm = this;
-            InitializeByResolution(); LoadUserInfo();
-
+            InitializeByResolution(); 
+            LoadUserInfo();
             Change_Color(Color.FromArgb(int.Parse(ConfigurationManager.AppSettings["primaryColor"].Split(',')[0]), int.Parse(ConfigurationManager.AppSettings["primaryColor"].Split(',')[1]), int.Parse(ConfigurationManager.AppSettings["primaryColor"].Split(',')[2])), Color.FromArgb(int.Parse(ConfigurationManager.AppSettings["secondaryColor"].Split(',')[0]), int.Parse(ConfigurationManager.AppSettings["secondaryColor"].Split(',')[1]), int.Parse(ConfigurationManager.AppSettings["secondaryColor"].Split(',')[2])));
-            Notify_Sync(); notifCtState = Enums.addedCtrls.inactive;
             State = Enums.mainformState.dashboard;
+            notificationTimer = new System.Threading.Timer(e => Notify_Sync(), null, TimeSpan.Zero, TimeSpan.FromMinutes(int.Parse(ConfigurationManager.AppSettings["notificationRefresh"].ToString())));
+            notifCtState = Enums.addedCtrls.inactive;
         }
         void InitializeByResolution()
         {
@@ -31,10 +33,11 @@ namespace DailyCompanionV2
                     break;
             }
         }
+
         public void Notify_Sync()
         {
             int count = Program.Notifications_List.Where(p => !p.done).Count();
-            Notification_Label.Text = count.ToString();
+            HM_Manager.SetText(count.ToString(), Notification_Label);
             if (notifCtState == Enums.addedCtrls.inactive)
                 notification_Panel.BackColor = count > 0 ? Color.DarkRed : Color.Green;
         }
@@ -95,10 +98,10 @@ namespace DailyCompanionV2
             get => _state;
             set
             {
-                if (value != Enums.mainformState.settings) CleanState(); 
                 switch (value)
                 {
                     case Enums.mainformState.dashboard:
+                        CleanState(); 
                         ActiveTabs_Tabcontrol.Visible = false;
                         UserInterfaces_Panel.Visible = true;
                         Buttons_Panel.Enabled = false;
@@ -145,34 +148,14 @@ namespace DailyCompanionV2
                                 break;
                         }
                         break;
-
-                    case Enums.mainformState.todo:
-                        Buttons_Panel.Enabled = false;
-                        if (tempControl == null || !(tempControl is UsrCtrl_Todo))
-                            tempControl = prepareTodoUsrCtrl(Enums.todoArgument.none);
-                        TabPage_Handle(todoPageName, ref tempControl);
-                        _state = value; 
-                        break;
-                    case Enums.mainformState.finance:
-                        Buttons_Panel.Enabled = false;
-                        if (tempControl == null || !(tempControl is UsrCtrl_Finances))
-                            tempControl = prepareFNCUsrCtrl(Enums.financeArgument.none);
-                        TabPage_Handle(fncPageName, ref tempControl);
-                        _state = value; 
-                        break;
-                    case Enums.mainformState.note:
-                        Buttons_Panel.Enabled = false;
-                        if (tempControl == null || !(tempControl is UsrCtrl_Notes))
-                            tempControl = prepareNotUsrCtrl(Enums.noteArgument.none);
-                        TabPage_Handle(notPageName, ref tempControl);
-                        _state = value; 
-                        break;
-                    case Enums.mainformState.reports:
-                        Buttons_Panel.Enabled = false;
-                        if (tempControl == null || !(tempControl is UsrCtrl_Reports))
-                            tempControl = prepareRportUsrCtrl(Enums.report_tabState.مهام);
-                        TabPage_Handle(rprtPageName, ref tempControl);
-                        _state = value; 
+                    case Enums.mainformState.addtab:
+                        if (ActiveTabs_Tabcontrol.TabCount > 0 || (tempControl != null && tempTabName != ""))
+                        {
+                            CleanState();
+                            Buttons_Panel.Enabled = UserInterfaces_Panel.Visible = false;
+                            TabPage_Handle(ref tempTabName, ref tempControl);
+                            _state = value; Buttons_Panel.Enabled = ActiveTabs_Tabcontrol.Visible = true;
+                        }
                         break;
                     default:
                         break;
@@ -206,7 +189,7 @@ namespace DailyCompanionV2
             if (Program.mainSettings == null) Environment.Exit(0);
         }
 
-        UserControl tempControl = null;
+        UserControl tempControl = null;string tempTabName = "";
         //93,93,93 Main , 126,126,126 Second
         public void Change_Color(Color mClr, Color sClr)
         {
@@ -218,36 +201,49 @@ namespace DailyCompanionV2
 
         private void Dashboard_Button_Click(object sender, EventArgs e) => State = Enums.mainformState.dashboard;
         
-        private void Todo_Button_Click(object sender, EventArgs e) => State = Enums.mainformState.todo;
+        private void Todo_Button_Click(object sender, EventArgs e) => Click_TODO(null,null);
         private UsrCtrl_Todo prepareTodoUsrCtrl(Enums.todoArgument Arg, int? e_ID = null) => new UsrCtrl_Todo(Arg, e_ID);
-        public void Click_TODO(Enums.todoArgument Arg, int? ID)
+        public void Click_TODO(Enums.todoArgument? Arg, int? ID)
         {
-            if (ID.HasValue) tempControl = prepareTodoUsrCtrl(Arg, ID.Value);
-            else tempControl = prepareTodoUsrCtrl(Arg, null);
-            State = Enums.mainformState.todo;
+            if (ID.HasValue) tempControl = prepareTodoUsrCtrl(Arg.Value, ID.Value);
+            else if (Arg.HasValue) tempControl = prepareTodoUsrCtrl(Arg.Value, null);
+            else   tempControl = prepareTodoUsrCtrl(Enums.todoArgument.none);
+            tempTabName = todoPageName;
+            State = Enums.mainformState.addtab;
         }
 
-        private void Finances_Button_Click(object sender, EventArgs e) => State = Enums.mainformState.finance;
+        private void Finances_Button_Click(object sender, EventArgs e) => Click_FNC(null, null);
         private UsrCtrl_Finances prepareFNCUsrCtrl(Enums.financeArgument LoadArg, int? e_ID = null) => new UsrCtrl_Finances(LoadArg, e_ID);
-        public void Click_FNC(Enums.financeArgument argument, int? ID)
+        public void Click_FNC(Enums.financeArgument? argument, int? ID)
         {
-            if (ID.HasValue) Finances_Button_Click(prepareFNCUsrCtrl(argument, ID.Value), EventArgs.Empty);
-            else Finances_Button_Click(prepareFNCUsrCtrl(argument, null), EventArgs.Empty);
-            State = Enums.mainformState.finance;
+            if (ID.HasValue) tempControl = prepareFNCUsrCtrl(argument.Value, ID.Value);
+            else if (argument.HasValue) tempControl = prepareFNCUsrCtrl(argument.Value, null);
+            else tempControl = prepareFNCUsrCtrl(Enums.financeArgument.none);
+            tempTabName = fncPageName;
+            State = Enums.mainformState.addtab;
         }
         
-        private void Notes_Button_Click(object sender, EventArgs e)=> State = Enums.mainformState.note;
-        private UsrCtrl_Notes prepareNotUsrCtrl(Enums.noteArgument LoadArg, string MethodArg = null) => new UsrCtrl_Notes(LoadArg, MethodArg);
-        private UsrCtrl_Notes prepareNotUsrCtrl(Enums.noteArgument LoadArg, int MethodArg) => new UsrCtrl_Notes(LoadArg, MethodArg);
-        public void Click_Note(Enums.noteArgument argument, string argLists) { tempControl = prepareNotUsrCtrl(argument, argLists); State = Enums.mainformState.note; }
-        public void Click_Note(Enums.noteArgument argument, int argLists) { tempControl = prepareNotUsrCtrl(argument, argLists); State = Enums.mainformState.note; }
-        
-        private void Reports_Button_Click(object sender, EventArgs e) => State = Enums.mainformState.reports;
-        private UsrCtrl_Reports prepareRportUsrCtrl(Enums.report_tabState LoadArg) => new UsrCtrl_Reports(LoadArg);
-        public void Click_Reports(Enums.report_tabState argument)
+        private void Notes_Button_Click(object sender, EventArgs e)=> Click_Note(null,null);
+        private UsrCtrl_Notes prepareNotUsrCtrl(Enums.noteArgument LoadArg, object MethodArg) => MethodArg is string
+            ? new UsrCtrl_Notes(LoadArg, MethodArg as string)
+            : (MethodArg is int?) ? new UsrCtrl_Notes(LoadArg, (MethodArg as int?).Value) : new UsrCtrl_Notes();
+        public void Click_Note(Enums.noteArgument? argument, object argLists) 
         {
-            tempControl = prepareRportUsrCtrl(argument);
-            State = Enums.mainformState.reports;
+            if (argLists != null) tempControl = prepareNotUsrCtrl(argument.Value, argLists);
+            else if (argument.HasValue) tempControl = prepareNotUsrCtrl(argument.Value, null);
+            else tempControl = prepareNotUsrCtrl(Enums.noteArgument.none,null);
+            tempTabName = notPageName;
+            State = Enums.mainformState.addtab;
+        }
+        //public void Click_Note(Enums.noteArgument argument, int argLists) { tempControl = prepareNotUsrCtrl(argument, argLists); State = Enums.mainformState.note; }
+
+        private void Reports_Button_Click(object sender, EventArgs e) => Click_Reports(null);
+        private UsrCtrl_Reports prepareRportUsrCtrl(Enums.report_tabState LoadArg) => new UsrCtrl_Reports(LoadArg);
+        public void Click_Reports(Enums.report_tabState? argument)
+        {
+            tempControl = argument.HasValue ? prepareRportUsrCtrl(argument.Value): prepareRportUsrCtrl(Enums.report_tabState.مهام);
+            tempTabName = rprtPageName;
+            State = Enums.mainformState.addtab;
         }
        
         private void Settings_Button_Click(object sender, EventArgs e) => State = Enums.mainformState.settings;
@@ -258,18 +254,20 @@ namespace DailyCompanionV2
             settings.SetState(argument, eventArgs);
         }
         
-        void TabPage_Handle(string pgName,ref UserControl item)
+        void TabPage_Handle(ref string pgName,ref UserControl item)
         {
-            UserInterfaces_Panel.Visible = false;
-            ActiveTabs_Tabcontrol.TabPages.Add($"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count + 1}", $"{pgName}");
-            ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].Controls.Add(item);
-            item.Dock = DockStyle.Fill;
-            ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].BackColor = secColor;
-            ActiveTabs_Tabcontrol.PageColor = ActiveTabs_Tabcontrol.HeaderBackgroundColor = ActiveTabs_Tabcontrol.BorderColor = secColor;
-            ActiveTabs_Tabcontrol.Visible = true;
-            ActiveTabs_Tabcontrol.SelectedIndex = ActiveTabs_Tabcontrol.TabCount - 1;
-            item = null;
-            Buttons_Panel.Enabled = true;
+            if (pgName != "" && item != null)
+            {
+                UserInterfaces_Panel.Visible = false;
+                ActiveTabs_Tabcontrol.TabPages.Add($"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count + 1}", $"{pgName}");
+                ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].Controls.Add(item);
+                item.Dock = DockStyle.Fill;
+                ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].BackColor = secColor;
+                ActiveTabs_Tabcontrol.PageColor = ActiveTabs_Tabcontrol.HeaderBackgroundColor = ActiveTabs_Tabcontrol.BorderColor = secColor;
+                ActiveTabs_Tabcontrol.Visible = true;
+                ActiveTabs_Tabcontrol.SelectedIndex = ActiveTabs_Tabcontrol.TabCount - 1;
+                item = null; pgName = "";
+            }
         }
 
         void EndAdd(Control item) { Buttons_Panel.Enabled = true; item.Visible = true; UserInterfaces_Panel.Controls.Add(item); item.BringToFront(); }
@@ -350,11 +348,11 @@ namespace DailyCompanionV2
             }
             base.WndProc(ref m);
         }
-
         private void Tabs_Button_Click(object sender, EventArgs e)
         {
             TabButtons_Panel.Visible = !TabButtons_Panel.Visible;
             Tabs_Button.BackColor = TabButtons_Panel.Visible ? secColor : mainColor;
+            State = Enums.mainformState.addtab;
         }
 
     }

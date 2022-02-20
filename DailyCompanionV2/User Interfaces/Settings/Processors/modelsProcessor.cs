@@ -133,7 +133,7 @@ namespace DailyCompanionV2.User_Interfaces.Settings
             }
             return HM_Manager.genericHandler(grpbox, Title, color, oldModel, MsgLabel, tobeDone, ref SpecificMsg, byPass);
         }
-        public static bool HandleNotification(Enums.genericHandle_Type handleType, GroupBox grpbox, string title, string description, string category, DateTime notif_Date,Enums.notifFrequency notifFrequency, double freq_DInt,Enums.notifRepeat notifRepeat ,int repeatInt,DateTime? doneDate ,Label MsgLabel, string Title, Color color, Notification oldModel, bool byPass = false)
+        public static bool HandleNotification(Enums.genericHandle_Type handleType, GroupBox grpbox, string title, string description, string category, DateTime notif_Date,Enums.notifFrequency notifFrequency, decimal freq_DInt,Enums.notifRepeat notifRepeat ,int repeatInt,DateTime? doneDate ,Label MsgLabel, string Title, Color color, Notification oldModel, bool byPass = false)
         {
             HM_Manager.Func tobeDone = null;
             int id = oldModel != null ? oldModel.id : 0;

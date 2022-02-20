@@ -19,7 +19,7 @@ namespace DailyCompanionV2.Models
                 switch (value)
                 {
                     case Utilities.Enums.notifFrequency.سنوي:
-                        freqDInt = 365.25;
+                        freqDInt = 365.25M;
                         break;
                     case Utilities.Enums.notifFrequency.شهري:
                         freqDInt = 30;
@@ -34,7 +34,7 @@ namespace DailyCompanionV2.Models
                 _frequency = value;
             }
         }
-        public double freqDInt { get; set; }
+        public decimal freqDInt { get; set; }
         
         private Utilities.Enums.notifRepeat _repeat;
         public Utilities.Enums.notifRepeat repeat
@@ -59,14 +59,14 @@ namespace DailyCompanionV2.Models
         //(int)Math.Floor(DateTime.Now.Subtract(notif_Date).TotalDays / freqDInt) > (int)Math.Floor(done_date.Value.Subtract(notif_Date).TotalDays / freqDInt) ? 0 : 1;
         // lastDate > done_date
         public string donedate { get; set; }
-        public DateTime? done_date { get { if (donedate != null) return DateTime.Parse(donedate); else return null; } set { if (value != null) donedate = value.Value.ToString("g"); } }
-        public bool completed =>repeat != Utilities.Enums.notifRepeat.دائم && DateTime.Now.Subtract(notif_Date).TotalDays / freqDInt > repeatInt && done;
+        public DateTime? done_date { get { if (donedate != null) return DateTime.Parse(donedate); else return null; } set { if (value != null) donedate = value.Value.ToString("g"); else donedate = null; } }
+        public bool completed =>repeat != Utilities.Enums.notifRepeat.دائم && DateTime.Now.Subtract(notif_Date).TotalDays / (double)freqDInt > repeatInt && done;
 
         public DateTime lastDate
         {
             get
             {
-                int counter = completed ? repeatInt : freqDInt != 0 ? (int)Math.Floor(DateTime.Now.Subtract(notif_Date).TotalDays / freqDInt) : 0;
+                int counter = completed ? repeatInt : freqDInt != 0 ? (int)Math.Floor(DateTime.Now.Subtract(notif_Date).TotalDays / (double)freqDInt) : 0;
                 switch (frequency)
                 {
                     case Utilities.Enums.notifFrequency.سنوي:
@@ -76,7 +76,7 @@ namespace DailyCompanionV2.Models
                     case Utilities.Enums.notifFrequency.أسبوعي:
                     case Utilities.Enums.notifFrequency.يومي:
                     case Utilities.Enums.notifFrequency.آخر:
-                        return notif_Date.AddDays(freqDInt * counter);
+                        return notif_Date.AddDays((double)freqDInt * counter);
                     default: return DateTime.Now;
                 }
             }
@@ -86,7 +86,7 @@ namespace DailyCompanionV2.Models
             get
             {
                 if (completed) return null;
-                        int counter = freqDInt != 0 ? (int)Math.Ceiling(DateTime.Now.Subtract(notif_Date).TotalDays / freqDInt) : 0;
+                        int counter = freqDInt != 0 ? (int)Math.Ceiling(DateTime.Now.Subtract(notif_Date).TotalDays / (double)freqDInt) : 0;
                 switch (frequency)
                 {
                     case Utilities.Enums.notifFrequency.سنوي:
@@ -96,7 +96,7 @@ namespace DailyCompanionV2.Models
                     case Utilities.Enums.notifFrequency.أسبوعي:
                     case Utilities.Enums.notifFrequency.يومي:
                     case Utilities.Enums.notifFrequency.آخر:
-                        return notif_Date.AddDays(freqDInt * counter);
+                        return notif_Date.AddDays((double)freqDInt * counter);
                     default: return null;
                 }
             }

@@ -222,6 +222,7 @@ namespace DailyCompanionV2.User_Interfaces
             recentTDOcount_UpDown.Value = int.Parse(System.Configuration.ConfigurationManager.AppSettings["recentTODOcount"].ToString());
             recentFNCcount_UpDown.Value = int.Parse(System.Configuration.ConfigurationManager.AppSettings["recentFNCcount"].ToString());
             recentNOTcount_UpDown.Value = int.Parse(System.Configuration.ConfigurationManager.AppSettings["recentNOTEcount"].ToString());
+            notificationRefresh_UpDown.Value = int.Parse(System.Configuration.ConfigurationManager.AppSettings["notificationRefresh"].ToString()); 
         }
         private void PickColor_Button_Click(object sender, EventArgs e)
         {
@@ -246,6 +247,8 @@ namespace DailyCompanionV2.User_Interfaces
             HM_Manager.UpdateConfiguration(new List<Tuple<string, string>>() { new Tuple<string, string>("recentFNCcount", recentFNCcount_UpDown.Value.ToString()) });
         private void recentNOTcount_UpDown_ValueChanged(object sender, EventArgs e) =>
             HM_Manager.UpdateConfiguration(new List<Tuple<string, string>>() { new Tuple<string, string>("recentNOTEcount", recentNOTcount_UpDown.Value.ToString()) });
+        private void notificationRefresh_UpDown_ValueChanged(object sender, EventArgs e) =>
+            HM_Manager.UpdateConfiguration(new List<Tuple<string, string>>() { new Tuple<string, string>("notificationRefresh", notificationRefresh_UpDown.Value.ToString()) });
         private void UsrCtrl_TgleBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (HM_Manager.CheckIfContainWrittenEntries(Wallets_Groupbox))
@@ -266,6 +269,8 @@ namespace DailyCompanionV2.User_Interfaces
                 if (tempSht.childrenShrtcuts != null)
                     tempSht.childrenShrtcuts.Add(new Shortcut() { parent = tempSht, name = "", shortcut = "", process = tempSht.process });
                 else tempSht.childrenShrtcuts = new List<Shortcut>() { new Shortcut() { parent = tempSht, name = "", shortcut = "", process = tempSht.process } };
+                
+                Shrtcuts_Objectlistview.RefreshObject(tempSht);
             }
             else Shrtcuts_Objectlistview.AddObject(new Shortcut() { name = "", shortcut = "" });
         }
@@ -315,36 +320,8 @@ namespace DailyCompanionV2.User_Interfaces
         private void Shrtcuts_Objectlistview_ItemsChanged(object sender, BrightIdeasSoftware.ItemsChangedEventArgs e) =>
             Del_Shortcut_Button.Enabled = (Shrtcuts_Objectlistview.Items.Count > 0 && Shrtcuts_Objectlistview.SelectedObjects != null && Shrtcuts_Objectlistview.SelectedObjects.Count > 0);
 
-        private void Shrtcuts_Objectlistview_CellEditStarting(object sender, BrightIdeasSoftware.CellEditEventArgs e)
-        {
-            if (e.Column.Tag != null)
-                switch (e.Column.Tag.ToString())
-                {
-                    case "process_combobox":
-                        ComboBox cmboBx = new ComboBox()
-                        {
-                            Bounds = e.CellBounds,
-                            DropDownStyle = ComboBoxStyle.DropDownList,
-                            AutoCompleteSource = AutoCompleteSource.CustomSource,
-                            FormattingEnabled = true
-                        };
-                        HM_Manager.Update_Combobox(cmboBx, Program.Processs_List, "name", "id");
-                        e.Control = cmboBx;
-                        break;
-                }
-        }
-        private void Shrtcuts_Objectlistview_CellEditFinishing(object sender, BrightIdeasSoftware.CellEditEventArgs e)
-        {
-            if (e.Column.Tag != null)
-                switch (e.Column.Tag.ToString())
-                {
-                    case "process_combobox":
-                        ((Shortcut)e.RowObject).process = (int)e.NewValue;
-                        break;
-                }
-        }
 
-        private void Notificatons_Objectlistview_CellEditStarting(object sender, BrightIdeasSoftware.CellEditEventArgs e)
+        private void Objectlistview_CellEditStarting(object sender, BrightIdeasSoftware.CellEditEventArgs e)
         {
             if (e.Column == Notif_freqDInt_Column && ((Notification)e.RowObject).frequency != Enums.notifFrequency.آخر) { e.Cancel = true; return; }
             if (e.Column == Notif_repeatInt_Column && ((Notification)e.RowObject).repeat != Enums.notifRepeat.محدد) { e.NewValue = null; e.Cancel = true; return; }
@@ -357,7 +334,8 @@ namespace DailyCompanionV2.User_Interfaces
                             Bounds = e.CellBounds,
                             Minimum = decimal.MinValue,
                             Maximum = decimal.MaxValue,
-                            Value = decimal.Parse(e.Value.ToString())
+                            Value = decimal.Parse(e.Value.ToString()),
+                            DecimalPlaces = 5
                         };
                         e.Control = nud;
                         break;
@@ -373,6 +351,19 @@ namespace DailyCompanionV2.User_Interfaces
                         };
                         e.Control = dtpThis;
                         break;
+                    case "date_nullable":
+                        dtpThis = new DateTimePicker()
+                        {
+                            Bounds = e.CellBounds,
+                            Value = e.Value is DateTime ? (e.Value as DateTime?).Value : DateTime.Now,
+                            Checked = e.Value is DateTime,
+                            CustomFormat = "dddd, dd-MMMM-yyyy -- hh:mm tt",
+                            Format = DateTimePickerFormat.Custom,
+                            ShowCheckBox = true,
+                            ShowUpDown = true
+                        };
+                        e.Control = dtpThis;
+                        break;
                     case "enum":
                         ComboBox cmboBx = new ComboBox()
                         {
@@ -384,9 +375,23 @@ namespace DailyCompanionV2.User_Interfaces
                         };
                         e.Control = cmboBx;
                         break;
+                    case "process_combobox":
+                        cmboBx = new ComboBox()
+                        {
+                            Bounds = e.CellBounds,
+                            DropDownStyle = ComboBoxStyle.DropDownList,
+                            AutoCompleteSource = AutoCompleteSource.CustomSource,
+                            FormattingEnabled = true
+                        };
+                        HM_Manager.Update_Combobox(cmboBx, Program.Processs_List, "name", "id");
+                        e.Control = cmboBx;
+                        break;
                 }
+
+            e.Control.Location = e.CellBounds.Location;
+            e.Control.Size = e.CellBounds.Size;
         }
-        private void Notificatons_Objectlistview_CellEditFinishing(object sender, BrightIdeasSoftware.CellEditEventArgs e)
+        private void Objectlistview_CellEditFinishing(object sender, BrightIdeasSoftware.CellEditEventArgs e)
         {
             if (e.Column == Notif_freqDInt_Column && ((Notification)e.RowObject).frequency != Enums.notifFrequency.آخر) { e.Cancel = true; return; }
             if (e.Column == Notif_repeatInt_Column && ((Notification)e.RowObject).repeat != Enums.notifRepeat.محدد) { e.NewValue = null; e.Cancel = true; return; }
@@ -395,6 +400,17 @@ namespace DailyCompanionV2.User_Interfaces
                 {
                     case "enum":
                         e.NewValue = Enums.GetValueFromName(e.Value as Enum, e.NewValue.ToString());
+                        break;
+                    case "date_nullable":
+                        if (((DateTimePicker)e.Control).Checked == false)
+                            e.NewValue = null;
+                        else e.NewValue = (e.NewValue as DateTime?).Value;
+                        break;
+                    case "decimal":
+                        ((Notification)e.RowObject).freqDInt = (decimal)e.NewValue;
+                        break;
+                    case "process_combobox":
+                        ((Shortcut)e.RowObject).process = (int)e.NewValue;
                         break;
                 }
         }

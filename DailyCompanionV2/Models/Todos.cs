@@ -22,7 +22,7 @@ namespace DailyCompanionV2.Models
         public DateTime start_date { get { return startdate != null ? DateTime.Parse(startdate) : DateTime.Now; } set { startdate = value.ToString("g"); } }
         
         public string donedate { get; set; }
-        public DateTime? done_date { get { if (donedate != null) return DateTime.Parse(donedate); else return null; } set {if (value != null) donedate = value.Value.ToString("g"); } }
+        public DateTime? done_date { get { if (donedate != null) return DateTime.Parse(donedate); else return null; } set {if (value != null) donedate = value.Value.ToString("g"); else donedate = null; } }
         public string str_done_date
         {
             get { if (done_date.HasValue) return done_date.Value.ToString("dddd, dd-MMMM-yyyy :: hh-mm tt"); else return Utilities.HM_Manager.dateNotFinished; }

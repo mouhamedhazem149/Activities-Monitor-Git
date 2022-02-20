@@ -28,6 +28,17 @@ namespace DailyCompanionV2.Utilities
             foreach (string item in items)
                 lv.Items.Add(item);
         }
+        delegate void SetTextCallback(string text, Label lbl);
+        public static void SetText(string text, Label lbl)
+        {
+            if (lbl.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                lbl.Invoke(d, new object[] { text, lbl });
+            }
+            else
+                lbl.Text = text;
+        }
         public static void Update_Combobox<T>(ComboBox cmbobx, List<T> dataSource, string displayMember = "", string valueMember = "")
         {
             cmbobx.DataSource = null; cmbobx.Items.Clear(); cmbobx.DataSource = dataSource;

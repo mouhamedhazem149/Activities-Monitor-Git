@@ -272,6 +272,9 @@ namespace DailyCompanionV2.User_Interfaces
                         e.Control = cmboBx;
                         break;
                 }
+
+            e.Control.Location = e.CellBounds.Location;
+            e.Control.Size = e.CellBounds.Size;
         }
         private void Objectlistview_CellEditFinishing(object sender, CellEditEventArgs e)
         {

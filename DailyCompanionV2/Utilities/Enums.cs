@@ -17,11 +17,8 @@ namespace DailyCompanionV2.Utilities
         public enum mainformState
         {
             dashboard,
-            todo,
-            finance,
-            note,
-            reports,
-            settings
+            settings,
+            addtab
         }
         public enum usrctrlState
         {
@@ -74,24 +71,6 @@ namespace DailyCompanionV2.Utilities
             history,
             none
         }
-        /*public enum DashboardField
-        {
-            إجمالي_عدد_المهام_المطلوبة,
-            عدد_المهام_المطلوبة_هذا_الشهر,
-            متوسط_عدد_المهام_الشهر,
-            إجمالي_المدة_المستغرقة,
-            إجمالي_المدة_المستغرقة_هذا_الشهر,
-            متوسط_المدة_المستغرقة_الشهر,
-            إجمالي_عدد_العمليات_المالية_,
-            عدد_العمليات_المالية_هذا_الشهر,
-            متوسط_عدد_العمليات_المالية__الشهر,
-            إجمالي_قيمة_العمليات_المالية,
-            قيمة_العمليات_المالية_هذا_الشهر,
-            متوسط_قيمة_العمليات_المالية_الشهر,
-            إجمالي_عدد_الملاحظات,
-            إجمالي_طول_الملاحظات,
-            متوسط_طول_الملاحظات
-        }*/
         #endregion
 
         #region General

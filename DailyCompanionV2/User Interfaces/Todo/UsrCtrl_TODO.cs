@@ -105,13 +105,13 @@ namespace DailyCompanionV2.User_Interfaces
         }
         private void TODO_Button_Click(object sender, EventArgs e)
         {
-            if (sender is Button)
+            if (sender is Button || sender is ns1.BunifuImageButton)
             {
                 double tempDuration = double.TryParse(TODO_duration_Textbox.Text, out tempDuration) ? double.Parse(TODO_duration_Textbox.Text) : 0;
                 Todos old = Program.Todos_List.Where(item => item.id.ToString() == TODO_id_Textbox.Text).FirstOrDefault();
-                Todo_Processor.HandleTODO(((sender as Button).Tag as settingsButtonTag_Item?).Value.handleType, AddTodo_Groupbox
+                Todo_Processor.HandleTODO(((sender as Control).Tag as settingsButtonTag_Item?).Value.handleType, AddTodo_Groupbox
                     , TODO_duefrom_Textbox.Text, TODO_dueto_Textbox.Text, TODO_todo_Textbox.Text, TODO_category_Textbox.Text, TODO_start_date_Datetimepicker.Value, TODO_due_date_Datetimepicker.Value, TODO_done_date_Datetimepicker.Checked, TODO_done_date_Datetimepicker.Value, old != null ? old.added_date : DateTime.Now, tempDuration, TODO_notes_Textbox.Text, Todos_chkpoint_list_Objectlistview.Objects != null ? Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().ToList() : new List<Checkpoint>()
-                    , AddTODO_Label, ((sender as Button).Tag as settingsButtonTag_Item?).Value.Title, ((sender as Button).Tag as settingsButtonTag_Item?).Value.color
+                    , AddTODO_Label, ((sender as Control).Tag as settingsButtonTag_Item?).Value.Title, ((sender as Control).Tag as settingsButtonTag_Item?).Value.color
                     , old);
             }
             else

@@ -1,7 +1,6 @@
 ﻿using DailyCompanionV2.Models;
 using DailyCompanionV2.Utilities;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -29,7 +28,7 @@ namespace DailyCompanionV2.User_Interfaces
             notifications_Treeview.Nodes.Add(requiredNotification,"التنبيهات المطلوبة");
             foreach (Notification notify in RequiredNotify)
             {
-                notifications_Treeview.Nodes[requiredNotification].Nodes.Add(new TreeNode($"{notify.title} :: اخر تاريخ للتنبيه : {notify.lastDate.ToString("g")}")
+                notifications_Treeview.Nodes[requiredNotification].Nodes.Add(new TreeNode($"{notify.title} :: اخر تاريخ للتنبيه : {notify.STRlastDate}")
                 {
                     Tag = notify,
                     ToolTipText =
@@ -38,12 +37,13 @@ namespace DailyCompanionV2.User_Interfaces
                     $"\n بداية التنبيه : {notify.notif_Date} " +
                     $"\n {notify.frequency.GetDisplayName()} {notify.freqDInt} " +
                     $"\n {notify.repeat.GetDisplayName()} {notify.repeatInt} " +
-                    $"\n آخر تاريخ تنبيه :: {notify.lastDate} " +
+                    $"\n آخر تاريخ تنبيه :: {notify.STRlastDate} " +
                     $"\n تاريخ التنبيه القادم :: {notify.STRnextDate}"
                 });
             }
+            notifications_Treeview.Nodes[requiredNotification].Expand();
 
-            var UpcomingNotify = Program.Notifications_List.Where(p => !p.completed && p.done);
+            var UpcomingNotify = Program.Notifications_List.Where(p => !p.completed);
             notifications_Treeview.Nodes.Add(upcomingNotification, "التنبيهات القادمة");
             foreach (Notification notify in UpcomingNotify)
             {
@@ -57,7 +57,7 @@ namespace DailyCompanionV2.User_Interfaces
                     $"\n بداية التنبيه : {notify.notif_Date} " +
                     $"\n {notify.frequency.GetDisplayName()} {notify.freqDInt} " +
                     $"\n {notify.repeat.GetDisplayName()} {notify.repeatInt} " +
-                    $"\n آخر تاريخ تنبيه :: {notify.lastDate} " +
+                    $"\n آخر تاريخ تنبيه :: {notify.STRlastDate} " +
                     $"\n تاريخ التنبيه القادم :: {notify.STRnextDate}"
                 });
             }

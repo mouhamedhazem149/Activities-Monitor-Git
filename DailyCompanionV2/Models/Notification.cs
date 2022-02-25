@@ -54,19 +54,29 @@ namespace DailyCompanionV2.Models
                 _repeat = value;
             }
         }
-        public int repeatInt { get; set; } = 0;
-        public bool done => DateTime.Now >= notif_Date ? !done_date.HasValue ? false : lastDate > done_date ? false : true : true;
-        //(int)Math.Floor(DateTime.Now.Subtract(notif_Date).TotalDays / freqDInt) > (int)Math.Floor(done_date.Value.Subtract(notif_Date).TotalDays / freqDInt) ? 0 : 1;
-        // lastDate > done_date
+        private int _repeatInt = 0;
+        public int repeatInt
+        {
+            get => _repeatInt; 
+            set
+            {
+                if (value == 0)
+                    _repeat = Utilities.Enums.notifRepeat.دائم;
+                _repeatInt = value;
+            }
+        }
+        public bool done => DateTime.Now >= notif_Date ? !done_date.HasValue ? false : lastDate.Value > done_date ? false : true : true;
+        // هل تم اخر مرة
         public string donedate { get; set; }
         public DateTime? done_date { get { if (donedate != null) return DateTime.Parse(donedate); else return null; } set { if (value != null) donedate = value.Value.ToString("g"); else donedate = null; } }
-        public bool completed =>repeat != Utilities.Enums.notifRepeat.دائم && DateTime.Now.Subtract(notif_Date).TotalDays / (double)freqDInt > repeatInt && done;
-
-        public DateTime lastDate
+        public bool completed => DateTime.Now >= notif_Date && repeat != Utilities.Enums.notifRepeat.دائم && DateTime.Now >= finalDate;
+        // هل مش هينبه بعد كده
+        public DateTime? lastDate
         {
             get
             {
-                int counter = completed ? repeatInt : freqDInt != 0 ? (int)Math.Floor(DateTime.Now.Subtract(notif_Date).TotalDays / (double)freqDInt) : 0;
+                if (DateTime.Now < notif_Date) return null;
+                int counter = completed ? repeatInt - 1 : freqDInt != 0 ? (int)Math.Floor(DateTime.Now.Subtract(notif_Date).TotalDays / (double)freqDInt) : 0;
                 switch (frequency)
                 {
                     case Utilities.Enums.notifFrequency.سنوي:
@@ -81,6 +91,7 @@ namespace DailyCompanionV2.Models
                 }
             }
         }
+        public string STRlastDate => lastDate.HasValue ? lastDate.Value.ToString("g") : "لم يحن موعد التنبيه بعد";
         public DateTime? nextDate
         {
             get
@@ -102,6 +113,31 @@ namespace DailyCompanionV2.Models
             }
         }
         public string STRnextDate => nextDate.HasValue ? nextDate.Value.ToString("g") : "تم الانتهاء من هذا التنبيه";
+        public DateTime? finalDate
+        {
+            get
+            {
+                switch (repeat)
+                {
+                    case Utilities.Enums.notifRepeat.دائم:
+                        return null;
+                    case Utilities.Enums.notifRepeat.محدد:
+                        switch (frequency)
+                        {
+                            case Utilities.Enums.notifFrequency.سنوي:
+                                return notif_Date.AddYears(repeatInt - 1);
+                            case Utilities.Enums.notifFrequency.شهري:
+                                return notif_Date.AddMonths(repeatInt - 1);
+                            case Utilities.Enums.notifFrequency.أسبوعي:
+                            case Utilities.Enums.notifFrequency.يومي:
+                            case Utilities.Enums.notifFrequency.آخر:
+                                return notif_Date.AddDays((double)freqDInt * (repeatInt - 1));
+                            default: return DateTime.Now;
+                        }
+                    default: return null;
+                }
+            }
+        }
         public string btn => "تم";
         public bool Equals(Notification obj) =>
             id == obj.id && title == obj.title && description == obj.description && category == obj.category && notifDate == obj.notifDate && frequency == obj.frequency && freqDInt == obj.freqDInt && repeat == obj.repeat && repeatInt == obj.repeatInt && done_date == obj.done_date;

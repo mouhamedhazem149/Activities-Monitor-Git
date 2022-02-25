@@ -105,7 +105,7 @@ namespace DailyCompanionV2.Utilities
             foreach (var property in typeof(T).GetProperties(BindingFlags.Instance | BindingFlags.Public))
             {
                 var distinct = fillerList.Select(item => item.GetType().GetProperty(property.Name).GetValue(item)).Distinct();
-                if (distinct.Count() == 1)
+                if (distinct.Count() == 1 && property.SetMethod != null)
                     common.GetType().GetProperty(property.Name).SetValue(common, distinct.First());
             }
             return common;

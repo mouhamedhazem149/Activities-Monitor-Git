@@ -32,49 +32,49 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Buttons_Panel = new System.Windows.Forms.Panel();
-            this.TabButtons_Panel = new System.Windows.Forms.Panel();
-            this.xuiClock1 = new XanderUI.XUIClock();
-            this.Header_Panel = new System.Windows.Forms.Panel();
-            this.header_TablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.CompanyName_Label = new System.Windows.Forms.Label();
-            this.Screenshot_Label = new System.Windows.Forms.Label();
-            this.User_welcome_Label = new System.Windows.Forms.Label();
-            this.User_Name_Label = new System.Windows.Forms.Label();
-            this.notification_Panel = new System.Windows.Forms.Panel();
-            this.Notification_Label = new System.Windows.Forms.Label();
-            this.UserInterfaces_Panel = new System.Windows.Forms.Panel();
-            this.ActiveTabs_Tabcontrol = new XanderUI.XUIFlatTab();
-            this.Main_SplitContainer = new System.Windows.Forms.SplitContainer();
             this.Settings_Button = new System.Windows.Forms.Button();
+            this.TabButtons_Panel = new System.Windows.Forms.Panel();
             this.RPRT_Button = new System.Windows.Forms.Button();
             this.NOTE_Button = new System.Windows.Forms.Button();
             this.FNC_Button = new System.Windows.Forms.Button();
             this.TODO_Button = new System.Windows.Forms.Button();
             this.Tabs_Button = new System.Windows.Forms.Button();
             this.Dashboard_Button = new System.Windows.Forms.Button();
+            this.xuiClock1 = new XanderUI.XUIClock();
+            this.Header_Panel = new System.Windows.Forms.Panel();
+            this.header_TablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.CompanyName_Label = new System.Windows.Forms.Label();
             this.Shutdown_ImageButton = new ns1.BunifuImageButton();
             this.Minimize_ImageButton = new ns1.BunifuImageButton();
             this.Shortcut_ImageButton = new ns1.BunifuImageButton();
             this.Refresh_Button = new ns1.BunifuImageButton();
             this.ScreenShot_Button = new ns1.BunifuImageButton();
+            this.Screenshot_Label = new System.Windows.Forms.Label();
+            this.User_welcome_Label = new System.Windows.Forms.Label();
+            this.User_Name_Label = new System.Windows.Forms.Label();
+            this.notification_Panel = new System.Windows.Forms.Panel();
+            this.Notification_Label = new System.Windows.Forms.Label();
             this.Notification_ImageButton = new ns1.BunifuImageButton();
             this.WebPage_ImageButton = new ns1.BunifuImageButton();
+            this.UserInterfaces_Panel = new System.Windows.Forms.Panel();
+            this.ActiveTabs_Tabcontrol = new XanderUI.XUIFlatTab();
+            this.Main_SplitContainer = new System.Windows.Forms.SplitContainer();
             this.Buttons_Panel.SuspendLayout();
             this.TabButtons_Panel.SuspendLayout();
             this.Header_Panel.SuspendLayout();
             this.header_TablePanel.SuspendLayout();
-            this.notification_Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Main_SplitContainer)).BeginInit();
-            this.Main_SplitContainer.Panel1.SuspendLayout();
-            this.Main_SplitContainer.Panel2.SuspendLayout();
-            this.Main_SplitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Shutdown_ImageButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Minimize_ImageButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Shortcut_ImageButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Refresh_Button)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScreenShot_Button)).BeginInit();
+            this.notification_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Notification_ImageButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WebPage_ImageButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Main_SplitContainer)).BeginInit();
+            this.Main_SplitContainer.Panel1.SuspendLayout();
+            this.Main_SplitContainer.Panel2.SuspendLayout();
+            this.Main_SplitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // Buttons_Panel
@@ -91,280 +91,6 @@
             this.Buttons_Panel.Name = "Buttons_Panel";
             this.Buttons_Panel.Size = new System.Drawing.Size(235, 1080);
             this.Buttons_Panel.TabIndex = 0;
-            // 
-            // TabButtons_Panel
-            // 
-            this.TabButtons_Panel.Controls.Add(this.RPRT_Button);
-            this.TabButtons_Panel.Controls.Add(this.NOTE_Button);
-            this.TabButtons_Panel.Controls.Add(this.FNC_Button);
-            this.TabButtons_Panel.Controls.Add(this.TODO_Button);
-            this.TabButtons_Panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TabButtons_Panel.Location = new System.Drawing.Point(0, 376);
-            this.TabButtons_Panel.Name = "TabButtons_Panel";
-            this.TabButtons_Panel.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.TabButtons_Panel.Size = new System.Drawing.Size(235, 361);
-            this.TabButtons_Panel.TabIndex = 31;
-            this.TabButtons_Panel.Visible = false;
-            // 
-            // xuiClock1
-            // 
-            this.xuiClock1.CircleThickness = 6;
-            this.xuiClock1.DisplayFormat = XanderUI.XUIClock.HourFormat.TwelveHour;
-            this.xuiClock1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.xuiClock1.FilledHourColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(190)))), ((int)(((byte)(155)))));
-            this.xuiClock1.FilledMinuteColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(70)))));
-            this.xuiClock1.FilledSecondColor = System.Drawing.Color.DarkOrchid;
-            this.xuiClock1.Font = new System.Drawing.Font("Impact", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xuiClock1.HexagonColor = System.Drawing.Color.Transparent;
-            this.xuiClock1.Location = new System.Drawing.Point(0, 0);
-            this.xuiClock1.Margin = new System.Windows.Forms.Padding(2);
-            this.xuiClock1.Name = "xuiClock1";
-            this.xuiClock1.ShowAmPm = true;
-            this.xuiClock1.ShowHexagon = true;
-            this.xuiClock1.ShowMinutesCircle = true;
-            this.xuiClock1.ShowSecondsCircle = true;
-            this.xuiClock1.Size = new System.Drawing.Size(235, 156);
-            this.xuiClock1.TabIndex = 24;
-            this.xuiClock1.Text = "xuiClock1";
-            this.xuiClock1.UnfilledHourColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(70)))), ((int)(((byte)(85)))));
-            this.xuiClock1.UnfilledMinuteColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(70)))));
-            this.xuiClock1.UnfilledSecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(70)))));
-            // 
-            // Header_Panel
-            // 
-            this.Header_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
-            this.Header_Panel.Controls.Add(this.header_TablePanel);
-            this.Header_Panel.Controls.Add(this.WebPage_ImageButton);
-            this.Header_Panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Header_Panel.Location = new System.Drawing.Point(0, 0);
-            this.Header_Panel.Margin = new System.Windows.Forms.Padding(2);
-            this.Header_Panel.Name = "Header_Panel";
-            this.Header_Panel.Size = new System.Drawing.Size(1684, 139);
-            this.Header_Panel.TabIndex = 1;
-            // 
-            // header_TablePanel
-            // 
-            this.header_TablePanel.ColumnCount = 50;
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.Controls.Add(this.CompanyName_Label, 0, 0);
-            this.header_TablePanel.Controls.Add(this.Shutdown_ImageButton, 49, 0);
-            this.header_TablePanel.Controls.Add(this.Minimize_ImageButton, 47, 0);
-            this.header_TablePanel.Controls.Add(this.Shortcut_ImageButton, 45, 5);
-            this.header_TablePanel.Controls.Add(this.Refresh_Button, 16, 0);
-            this.header_TablePanel.Controls.Add(this.ScreenShot_Button, 18, 0);
-            this.header_TablePanel.Controls.Add(this.Screenshot_Label, 16, 6);
-            this.header_TablePanel.Controls.Add(this.User_welcome_Label, 26, 4);
-            this.header_TablePanel.Controls.Add(this.User_Name_Label, 26, 6);
-            this.header_TablePanel.Controls.Add(this.notification_Panel, 43, 5);
-            this.header_TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.header_TablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.header_TablePanel.Location = new System.Drawing.Point(0, 0);
-            this.header_TablePanel.Name = "header_TablePanel";
-            this.header_TablePanel.RowCount = 8;
-            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.header_TablePanel.Size = new System.Drawing.Size(1684, 139);
-            this.header_TablePanel.TabIndex = 32;
-            // 
-            // CompanyName_Label
-            // 
-            this.CompanyName_Label.BackColor = System.Drawing.Color.Transparent;
-            this.header_TablePanel.SetColumnSpan(this.CompanyName_Label, 15);
-            this.CompanyName_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CompanyName_Label.Font = new System.Drawing.Font("Cairo", 40F, System.Drawing.FontStyle.Bold);
-            this.CompanyName_Label.ForeColor = System.Drawing.Color.Navy;
-            this.CompanyName_Label.Location = new System.Drawing.Point(1191, 0);
-            this.CompanyName_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.CompanyName_Label.Name = "CompanyName_Label";
-            this.header_TablePanel.SetRowSpan(this.CompanyName_Label, 8);
-            this.CompanyName_Label.Size = new System.Drawing.Size(491, 139);
-            this.CompanyName_Label.TabIndex = 29;
-            this.CompanyName_Label.Text = "اسم الشركة";
-            this.CompanyName_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Screenshot_Label
-            // 
-            this.Screenshot_Label.BackColor = System.Drawing.Color.Transparent;
-            this.header_TablePanel.SetColumnSpan(this.Screenshot_Label, 10);
-            this.Screenshot_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Screenshot_Label.Font = new System.Drawing.Font("Alameen", 12.8F, System.Drawing.FontStyle.Bold);
-            this.Screenshot_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
-            this.Screenshot_Label.Location = new System.Drawing.Point(828, 102);
-            this.Screenshot_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Screenshot_Label.Name = "Screenshot_Label";
-            this.header_TablePanel.SetRowSpan(this.Screenshot_Label, 2);
-            this.Screenshot_Label.Size = new System.Drawing.Size(326, 37);
-            this.Screenshot_Label.TabIndex = 25;
-            this.Screenshot_Label.Text = "تم حفظ لقطة الشاشة بنجاح";
-            this.Screenshot_Label.Visible = false;
-            // 
-            // User_welcome_Label
-            // 
-            this.User_welcome_Label.BackColor = System.Drawing.Color.Transparent;
-            this.header_TablePanel.SetColumnSpan(this.User_welcome_Label, 8);
-            this.User_welcome_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.User_welcome_Label.Font = new System.Drawing.Font("Alameen", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.User_welcome_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
-            this.User_welcome_Label.Location = new System.Drawing.Point(564, 68);
-            this.User_welcome_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.User_welcome_Label.Name = "User_welcome_Label";
-            this.header_TablePanel.SetRowSpan(this.User_welcome_Label, 2);
-            this.User_welcome_Label.Size = new System.Drawing.Size(260, 34);
-            this.User_welcome_Label.TabIndex = 16;
-            this.User_welcome_Label.Text = "مرحبا بك :)";
-            // 
-            // User_Name_Label
-            // 
-            this.User_Name_Label.BackColor = System.Drawing.Color.Transparent;
-            this.header_TablePanel.SetColumnSpan(this.User_Name_Label, 15);
-            this.User_Name_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.User_Name_Label.Font = new System.Drawing.Font("El Messiri", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.User_Name_Label.Location = new System.Drawing.Point(333, 102);
-            this.User_Name_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.User_Name_Label.Name = "User_Name_Label";
-            this.header_TablePanel.SetRowSpan(this.User_Name_Label, 2);
-            this.User_Name_Label.Size = new System.Drawing.Size(491, 37);
-            this.User_Name_Label.TabIndex = 15;
-            this.User_Name_Label.Text = "اسم المستخدم";
-            // 
-            // notification_Panel
-            // 
-            this.header_TablePanel.SetColumnSpan(this.notification_Panel, 2);
-            this.notification_Panel.Controls.Add(this.Notification_Label);
-            this.notification_Panel.Controls.Add(this.Notification_ImageButton);
-            this.notification_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.notification_Panel.Location = new System.Drawing.Point(202, 88);
-            this.notification_Panel.Name = "notification_Panel";
-            this.header_TablePanel.SetRowSpan(this.notification_Panel, 3);
-            this.notification_Panel.Size = new System.Drawing.Size(60, 48);
-            this.notification_Panel.TabIndex = 33;
-            // 
-            // Notification_Label
-            // 
-            this.Notification_Label.AutoSize = true;
-            this.Notification_Label.BackColor = System.Drawing.Color.Transparent;
-            this.Notification_Label.Font = new System.Drawing.Font("Alef", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Notification_Label.ForeColor = System.Drawing.Color.White;
-            this.Notification_Label.Location = new System.Drawing.Point(0, -1);
-            this.Notification_Label.Name = "Notification_Label";
-            this.Notification_Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Notification_Label.Size = new System.Drawing.Size(14, 18);
-            this.Notification_Label.TabIndex = 33;
-            this.Notification_Label.Text = "5";
-            this.Notification_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // UserInterfaces_Panel
-            // 
-            this.UserInterfaces_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(126)))), ((int)(((byte)(126)))));
-            this.UserInterfaces_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UserInterfaces_Panel.ForeColor = System.Drawing.Color.Black;
-            this.UserInterfaces_Panel.Location = new System.Drawing.Point(0, 139);
-            this.UserInterfaces_Panel.Margin = new System.Windows.Forms.Padding(2);
-            this.UserInterfaces_Panel.Name = "UserInterfaces_Panel";
-            this.UserInterfaces_Panel.Size = new System.Drawing.Size(1684, 941);
-            this.UserInterfaces_Panel.TabIndex = 7;
-            this.UserInterfaces_Panel.TabStop = true;
-            // 
-            // ActiveTabs_Tabcontrol
-            // 
-            this.ActiveTabs_Tabcontrol.ActiveHeaderColor = System.Drawing.Color.White;
-            this.ActiveTabs_Tabcontrol.ActiveTextColor = System.Drawing.Color.Black;
-            this.ActiveTabs_Tabcontrol.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.ActiveTabs_Tabcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ActiveTabs_Tabcontrol.Font = new System.Drawing.Font("Cairo Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.ActiveTabs_Tabcontrol.HeaderBackgroundColor = System.Drawing.Color.White;
-            this.ActiveTabs_Tabcontrol.InActiveHeaderColor = System.Drawing.Color.Silver;
-            this.ActiveTabs_Tabcontrol.InActiveTextColor = System.Drawing.Color.DimGray;
-            this.ActiveTabs_Tabcontrol.ItemSize = new System.Drawing.Size(240, 16);
-            this.ActiveTabs_Tabcontrol.Location = new System.Drawing.Point(0, 139);
-            this.ActiveTabs_Tabcontrol.Name = "ActiveTabs_Tabcontrol";
-            this.ActiveTabs_Tabcontrol.OnlyTopLine = true;
-            this.ActiveTabs_Tabcontrol.PageColor = System.Drawing.Color.LightGray;
-            this.ActiveTabs_Tabcontrol.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ActiveTabs_Tabcontrol.SelectedIndex = 0;
-            this.ActiveTabs_Tabcontrol.Size = new System.Drawing.Size(1684, 941);
-            this.ActiveTabs_Tabcontrol.TabIndex = 82;
-            this.ActiveTabs_Tabcontrol.Visible = false;
-            this.ActiveTabs_Tabcontrol.SelectedIndexChanged += new System.EventHandler(this.ActiveTabs_Tabcontrol_SelectedIndexChanged);
-            this.ActiveTabs_Tabcontrol.DoubleClick += new System.EventHandler(this.ActiveTabs_Tabcontrol_DoubleClick);
-            this.ActiveTabs_Tabcontrol.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ActiveTabs_Tabcontrol_KeyDown);
-            // 
-            // Main_SplitContainer
-            // 
-            this.Main_SplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Main_SplitContainer.Location = new System.Drawing.Point(0, 0);
-            this.Main_SplitContainer.Name = "Main_SplitContainer";
-            // 
-            // Main_SplitContainer.Panel1
-            // 
-            this.Main_SplitContainer.Panel1.Controls.Add(this.Buttons_Panel);
-            this.Main_SplitContainer.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            // 
-            // Main_SplitContainer.Panel2
-            // 
-            this.Main_SplitContainer.Panel2.Controls.Add(this.ActiveTabs_Tabcontrol);
-            this.Main_SplitContainer.Panel2.Controls.Add(this.UserInterfaces_Panel);
-            this.Main_SplitContainer.Panel2.Controls.Add(this.Header_Panel);
-            this.Main_SplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Main_SplitContainer.Size = new System.Drawing.Size(1920, 1080);
-            this.Main_SplitContainer.SplitterDistance = 235;
-            this.Main_SplitContainer.SplitterWidth = 1;
-            this.Main_SplitContainer.TabIndex = 32;
             // 
             // Settings_Button
             // 
@@ -385,6 +111,20 @@
             this.Settings_Button.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Settings_Button.UseVisualStyleBackColor = false;
             this.Settings_Button.Click += new System.EventHandler(this.Settings_Button_Click);
+            // 
+            // TabButtons_Panel
+            // 
+            this.TabButtons_Panel.Controls.Add(this.RPRT_Button);
+            this.TabButtons_Panel.Controls.Add(this.NOTE_Button);
+            this.TabButtons_Panel.Controls.Add(this.FNC_Button);
+            this.TabButtons_Panel.Controls.Add(this.TODO_Button);
+            this.TabButtons_Panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TabButtons_Panel.Location = new System.Drawing.Point(0, 376);
+            this.TabButtons_Panel.Name = "TabButtons_Panel";
+            this.TabButtons_Panel.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.TabButtons_Panel.Size = new System.Drawing.Size(235, 361);
+            this.TabButtons_Panel.TabIndex = 31;
+            this.TabButtons_Panel.Visible = false;
             // 
             // RPRT_Button
             // 
@@ -496,6 +236,137 @@
             this.Dashboard_Button.UseVisualStyleBackColor = false;
             this.Dashboard_Button.Click += new System.EventHandler(this.Dashboard_Button_Click);
             // 
+            // xuiClock1
+            // 
+            this.xuiClock1.CircleThickness = 6;
+            this.xuiClock1.DisplayFormat = XanderUI.XUIClock.HourFormat.TwelveHour;
+            this.xuiClock1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.xuiClock1.FilledHourColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(190)))), ((int)(((byte)(155)))));
+            this.xuiClock1.FilledMinuteColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(70)))));
+            this.xuiClock1.FilledSecondColor = System.Drawing.Color.DarkOrchid;
+            this.xuiClock1.Font = new System.Drawing.Font("Impact", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xuiClock1.HexagonColor = System.Drawing.Color.Transparent;
+            this.xuiClock1.Location = new System.Drawing.Point(0, 0);
+            this.xuiClock1.Margin = new System.Windows.Forms.Padding(2);
+            this.xuiClock1.Name = "xuiClock1";
+            this.xuiClock1.ShowAmPm = true;
+            this.xuiClock1.ShowHexagon = true;
+            this.xuiClock1.ShowMinutesCircle = true;
+            this.xuiClock1.ShowSecondsCircle = true;
+            this.xuiClock1.Size = new System.Drawing.Size(235, 156);
+            this.xuiClock1.TabIndex = 24;
+            this.xuiClock1.Text = "xuiClock1";
+            this.xuiClock1.UnfilledHourColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(70)))), ((int)(((byte)(85)))));
+            this.xuiClock1.UnfilledMinuteColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(70)))));
+            this.xuiClock1.UnfilledSecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(70)))));
+            // 
+            // Header_Panel
+            // 
+            this.Header_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(93)))), ((int)(((byte)(93)))));
+            this.Header_Panel.Controls.Add(this.header_TablePanel);
+            this.Header_Panel.Controls.Add(this.WebPage_ImageButton);
+            this.Header_Panel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Header_Panel.Location = new System.Drawing.Point(0, 0);
+            this.Header_Panel.Margin = new System.Windows.Forms.Padding(2);
+            this.Header_Panel.Name = "Header_Panel";
+            this.Header_Panel.Size = new System.Drawing.Size(1684, 139);
+            this.Header_Panel.TabIndex = 1;
+            // 
+            // header_TablePanel
+            // 
+            this.header_TablePanel.ColumnCount = 50;
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.header_TablePanel.Controls.Add(this.CompanyName_Label, 0, 0);
+            this.header_TablePanel.Controls.Add(this.Shutdown_ImageButton, 49, 0);
+            this.header_TablePanel.Controls.Add(this.Minimize_ImageButton, 47, 0);
+            this.header_TablePanel.Controls.Add(this.Shortcut_ImageButton, 44, 5);
+            this.header_TablePanel.Controls.Add(this.Refresh_Button, 16, 0);
+            this.header_TablePanel.Controls.Add(this.ScreenShot_Button, 18, 0);
+            this.header_TablePanel.Controls.Add(this.Screenshot_Label, 16, 6);
+            this.header_TablePanel.Controls.Add(this.User_welcome_Label, 26, 4);
+            this.header_TablePanel.Controls.Add(this.User_Name_Label, 26, 6);
+            this.header_TablePanel.Controls.Add(this.notification_Panel, 42, 5);
+            this.header_TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.header_TablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.header_TablePanel.Location = new System.Drawing.Point(0, 0);
+            this.header_TablePanel.Name = "header_TablePanel";
+            this.header_TablePanel.RowCount = 8;
+            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.header_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.header_TablePanel.Size = new System.Drawing.Size(1684, 139);
+            this.header_TablePanel.TabIndex = 32;
+            // 
+            // CompanyName_Label
+            // 
+            this.CompanyName_Label.BackColor = System.Drawing.Color.Transparent;
+            this.header_TablePanel.SetColumnSpan(this.CompanyName_Label, 15);
+            this.CompanyName_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CompanyName_Label.Font = new System.Drawing.Font("Cairo", 40F, System.Drawing.FontStyle.Bold);
+            this.CompanyName_Label.ForeColor = System.Drawing.Color.Navy;
+            this.CompanyName_Label.Location = new System.Drawing.Point(1191, 0);
+            this.CompanyName_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CompanyName_Label.Name = "CompanyName_Label";
+            this.header_TablePanel.SetRowSpan(this.CompanyName_Label, 8);
+            this.CompanyName_Label.Size = new System.Drawing.Size(491, 139);
+            this.CompanyName_Label.TabIndex = 29;
+            this.CompanyName_Label.Text = "اسم الشركة";
+            this.CompanyName_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Shutdown_ImageButton
             // 
             this.Shutdown_ImageButton.BackColor = System.Drawing.Color.Transparent;
@@ -538,7 +409,7 @@
             this.Shortcut_ImageButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Shortcut_ImageButton.Image = global::DailyCompanionV2.Properties.Resources.shortcut;
             this.Shortcut_ImageButton.ImageActive = null;
-            this.Shortcut_ImageButton.Location = new System.Drawing.Point(135, 87);
+            this.Shortcut_ImageButton.Location = new System.Drawing.Point(168, 87);
             this.Shortcut_ImageButton.Margin = new System.Windows.Forms.Padding(2);
             this.Shortcut_ImageButton.Name = "Shortcut_ImageButton";
             this.header_TablePanel.SetRowSpan(this.Shortcut_ImageButton, 3);
@@ -585,6 +456,77 @@
             this.ScreenShot_Button.Zoom = 10;
             this.ScreenShot_Button.Click += new System.EventHandler(this.ScreenShot_Button_Click);
             // 
+            // Screenshot_Label
+            // 
+            this.Screenshot_Label.BackColor = System.Drawing.Color.Transparent;
+            this.header_TablePanel.SetColumnSpan(this.Screenshot_Label, 10);
+            this.Screenshot_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Screenshot_Label.Font = new System.Drawing.Font("Alameen", 12.8F, System.Drawing.FontStyle.Bold);
+            this.Screenshot_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.Screenshot_Label.Location = new System.Drawing.Point(828, 102);
+            this.Screenshot_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Screenshot_Label.Name = "Screenshot_Label";
+            this.header_TablePanel.SetRowSpan(this.Screenshot_Label, 2);
+            this.Screenshot_Label.Size = new System.Drawing.Size(326, 37);
+            this.Screenshot_Label.TabIndex = 25;
+            this.Screenshot_Label.Text = "تم حفظ لقطة الشاشة بنجاح";
+            this.Screenshot_Label.Visible = false;
+            // 
+            // User_welcome_Label
+            // 
+            this.User_welcome_Label.BackColor = System.Drawing.Color.Transparent;
+            this.header_TablePanel.SetColumnSpan(this.User_welcome_Label, 8);
+            this.User_welcome_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.User_welcome_Label.Font = new System.Drawing.Font("Alameen", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.User_welcome_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.User_welcome_Label.Location = new System.Drawing.Point(564, 68);
+            this.User_welcome_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.User_welcome_Label.Name = "User_welcome_Label";
+            this.header_TablePanel.SetRowSpan(this.User_welcome_Label, 2);
+            this.User_welcome_Label.Size = new System.Drawing.Size(260, 34);
+            this.User_welcome_Label.TabIndex = 16;
+            this.User_welcome_Label.Text = "مرحبا بك :)";
+            // 
+            // User_Name_Label
+            // 
+            this.User_Name_Label.BackColor = System.Drawing.Color.Transparent;
+            this.header_TablePanel.SetColumnSpan(this.User_Name_Label, 15);
+            this.User_Name_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.User_Name_Label.Font = new System.Drawing.Font("El Messiri", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.User_Name_Label.Location = new System.Drawing.Point(333, 102);
+            this.User_Name_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.User_Name_Label.Name = "User_Name_Label";
+            this.header_TablePanel.SetRowSpan(this.User_Name_Label, 2);
+            this.User_Name_Label.Size = new System.Drawing.Size(491, 37);
+            this.User_Name_Label.TabIndex = 15;
+            this.User_Name_Label.Text = "اسم المستخدم";
+            // 
+            // notification_Panel
+            // 
+            this.header_TablePanel.SetColumnSpan(this.notification_Panel, 2);
+            this.notification_Panel.Controls.Add(this.Notification_Label);
+            this.notification_Panel.Controls.Add(this.Notification_ImageButton);
+            this.notification_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.notification_Panel.Location = new System.Drawing.Point(235, 88);
+            this.notification_Panel.Name = "notification_Panel";
+            this.header_TablePanel.SetRowSpan(this.notification_Panel, 3);
+            this.notification_Panel.Size = new System.Drawing.Size(60, 48);
+            this.notification_Panel.TabIndex = 33;
+            // 
+            // Notification_Label
+            // 
+            this.Notification_Label.AutoSize = true;
+            this.Notification_Label.BackColor = System.Drawing.Color.Transparent;
+            this.Notification_Label.Font = new System.Drawing.Font("Alef", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Notification_Label.ForeColor = System.Drawing.Color.White;
+            this.Notification_Label.Location = new System.Drawing.Point(0, -1);
+            this.Notification_Label.Name = "Notification_Label";
+            this.Notification_Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Notification_Label.Size = new System.Drawing.Size(14, 18);
+            this.Notification_Label.TabIndex = 33;
+            this.Notification_Label.Text = "5";
+            this.Notification_Label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Notification_ImageButton
             // 
             this.Notification_ImageButton.BackColor = System.Drawing.Color.Transparent;
@@ -617,6 +559,64 @@
             this.WebPage_ImageButton.Zoom = 10;
             this.WebPage_ImageButton.Click += new System.EventHandler(this.FacebookLink_ImageButton_Click);
             // 
+            // UserInterfaces_Panel
+            // 
+            this.UserInterfaces_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(126)))), ((int)(((byte)(126)))));
+            this.UserInterfaces_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserInterfaces_Panel.ForeColor = System.Drawing.Color.Black;
+            this.UserInterfaces_Panel.Location = new System.Drawing.Point(0, 139);
+            this.UserInterfaces_Panel.Margin = new System.Windows.Forms.Padding(2);
+            this.UserInterfaces_Panel.Name = "UserInterfaces_Panel";
+            this.UserInterfaces_Panel.Size = new System.Drawing.Size(1684, 941);
+            this.UserInterfaces_Panel.TabIndex = 7;
+            this.UserInterfaces_Panel.TabStop = true;
+            // 
+            // ActiveTabs_Tabcontrol
+            // 
+            this.ActiveTabs_Tabcontrol.ActiveHeaderColor = System.Drawing.Color.White;
+            this.ActiveTabs_Tabcontrol.ActiveTextColor = System.Drawing.Color.Black;
+            this.ActiveTabs_Tabcontrol.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.ActiveTabs_Tabcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ActiveTabs_Tabcontrol.Font = new System.Drawing.Font("Cairo Medium", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.ActiveTabs_Tabcontrol.HeaderBackgroundColor = System.Drawing.Color.White;
+            this.ActiveTabs_Tabcontrol.InActiveHeaderColor = System.Drawing.Color.Silver;
+            this.ActiveTabs_Tabcontrol.InActiveTextColor = System.Drawing.Color.DimGray;
+            this.ActiveTabs_Tabcontrol.ItemSize = new System.Drawing.Size(240, 16);
+            this.ActiveTabs_Tabcontrol.Location = new System.Drawing.Point(0, 139);
+            this.ActiveTabs_Tabcontrol.Name = "ActiveTabs_Tabcontrol";
+            this.ActiveTabs_Tabcontrol.OnlyTopLine = true;
+            this.ActiveTabs_Tabcontrol.PageColor = System.Drawing.Color.LightGray;
+            this.ActiveTabs_Tabcontrol.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ActiveTabs_Tabcontrol.SelectedIndex = 0;
+            this.ActiveTabs_Tabcontrol.Size = new System.Drawing.Size(1684, 941);
+            this.ActiveTabs_Tabcontrol.TabIndex = 82;
+            this.ActiveTabs_Tabcontrol.Visible = false;
+            this.ActiveTabs_Tabcontrol.SelectedIndexChanged += new System.EventHandler(this.ActiveTabs_Tabcontrol_SelectedIndexChanged);
+            this.ActiveTabs_Tabcontrol.DoubleClick += new System.EventHandler(this.ActiveTabs_Tabcontrol_DoubleClick);
+            this.ActiveTabs_Tabcontrol.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ActiveTabs_Tabcontrol_KeyDown);
+            // 
+            // Main_SplitContainer
+            // 
+            this.Main_SplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Main_SplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.Main_SplitContainer.Name = "Main_SplitContainer";
+            // 
+            // Main_SplitContainer.Panel1
+            // 
+            this.Main_SplitContainer.Panel1.Controls.Add(this.Buttons_Panel);
+            this.Main_SplitContainer.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            // 
+            // Main_SplitContainer.Panel2
+            // 
+            this.Main_SplitContainer.Panel2.Controls.Add(this.ActiveTabs_Tabcontrol);
+            this.Main_SplitContainer.Panel2.Controls.Add(this.UserInterfaces_Panel);
+            this.Main_SplitContainer.Panel2.Controls.Add(this.Header_Panel);
+            this.Main_SplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Main_SplitContainer.Size = new System.Drawing.Size(1920, 1080);
+            this.Main_SplitContainer.SplitterDistance = 235;
+            this.Main_SplitContainer.SplitterWidth = 1;
+            this.Main_SplitContainer.TabIndex = 32;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -639,19 +639,19 @@
             this.TabButtons_Panel.ResumeLayout(false);
             this.Header_Panel.ResumeLayout(false);
             this.header_TablePanel.ResumeLayout(false);
-            this.notification_Panel.ResumeLayout(false);
-            this.notification_Panel.PerformLayout();
-            this.Main_SplitContainer.Panel1.ResumeLayout(false);
-            this.Main_SplitContainer.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Main_SplitContainer)).EndInit();
-            this.Main_SplitContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Shutdown_ImageButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Minimize_ImageButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Shortcut_ImageButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Refresh_Button)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScreenShot_Button)).EndInit();
+            this.notification_Panel.ResumeLayout(false);
+            this.notification_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Notification_ImageButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WebPage_ImageButton)).EndInit();
+            this.Main_SplitContainer.Panel1.ResumeLayout(false);
+            this.Main_SplitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Main_SplitContainer)).EndInit();
+            this.Main_SplitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

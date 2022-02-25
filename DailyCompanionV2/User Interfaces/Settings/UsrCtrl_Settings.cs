@@ -453,7 +453,15 @@ namespace DailyCompanionV2.User_Interfaces
             switch (((Notification)e.Model).completed)
             {
                 case true:
-                    e.Item.BackColor = Color.DarkGreen;
+                    switch (((Notification)e.Model).done)
+                    {
+                        case true:
+                            e.Item.BackColor = Color.DarkGreen;
+                            break;
+                        case false:
+                            e.Item.BackColor = Color.LightPink;
+                            break;
+                    }
                     break;
                 case false:
                     switch (((Notification)e.Model).done)
@@ -462,7 +470,7 @@ namespace DailyCompanionV2.User_Interfaces
                             e.Item.BackColor = Color.LightGreen;
                             break;
                         case false:
-                            e.Item.BackColor = Color.Red;
+                            e.Item.BackColor = Color.DarkRed;
                             break;
                     }
                     break;

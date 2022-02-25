@@ -104,10 +104,10 @@ namespace DailyCompanionV2.User_Interfaces
         }
         private void NOTE_Button_Click(object sender, EventArgs e)
         {
-            if (sender is Button)
+            if (sender is Button || sender is ns1.BunifuImageButton)
             {
-                Notes_Processor.Handle_Note(((sender as Button).Tag as settingsButtonTag_Item?).Value.handleType, Note_Groupbox
-                    , NOT_title_Textbox.Text, NOT_strNote_Textbox.Text, Not_Label, ((sender as Button).Tag as settingsButtonTag_Item?).Value.Title, ((sender as Button).Tag as settingsButtonTag_Item?).Value.color
+                Notes_Processor.Handle_Note(((sender as Control).Tag as settingsButtonTag_Item?).Value.handleType, Note_Groupbox
+                    , NOT_title_Textbox.Text, NOT_strNote_Textbox.Text, Not_Label, ((sender as Control).Tag as settingsButtonTag_Item?).Value.Title, ((sender as Control).Tag as settingsButtonTag_Item?).Value.color
                     , Program.Notes_List.Where(item => item.title == NOT_title_Textbox.Text).FirstOrDefault());
             }
             else

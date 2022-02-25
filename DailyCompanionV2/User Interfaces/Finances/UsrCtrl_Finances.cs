@@ -96,13 +96,13 @@ namespace DailyCompanionV2
         private void UpdateRelatedWallets() => HM_Manager.Update_Combobox(FNC_relatedentity_Combobox, Program.Wallets_List.Where(p => p.id != (FNC_wallet_Combobox.SelectedValue as int?).Value).ToList(), "name", "id");
         private void FNC_Button_Click(object sender, EventArgs e)
         {
-            if (sender is Button)
+            if (sender is Button || sender is ns1.BunifuImageButton)
             {
                 double tempDue = double.TryParse(FNC_due_Textbox.Text, out tempDue) ? double.Parse(FNC_due_Textbox.Text) : 0;
                 double tempPaid = double.TryParse(FNC_paid_Textbox.Text, out tempPaid) ? double.Parse(FNC_paid_Textbox.Text) : 0;
-                Finances_Processor.HandleFNC(((sender as Button).Tag as settingsButtonTag_Item?).Value.handleType, AddFinance_Groupbox
+                Finances_Processor.HandleFNC(((sender as Control).Tag as settingsButtonTag_Item?).Value.handleType, AddFinance_Groupbox
                     , FNC_relatedentity_Textbox.Text, Enums.GetValueFromName<Enums.financeType>(FNC_type_Combobox.Text) /*(Enums.financeType)Enum.Parse(typeof(Enums.financeType), FNC_type_Combobox.Text)*/, (FNC_wallet_Combobox.SelectedValue as int?).Value, FNC_category_Textbox.Text, tempDue, tempPaid, FNC_due_date_Datetimepicker.Value, FNC_done_date_Datetimepicker.Checked, FNC_done_date_Datetimepicker.Value, FNC_notes_Textbox.Text
-                    , FNC_Label, ((sender as Button).Tag as settingsButtonTag_Item?).Value.Title, ((sender as Button).Tag as settingsButtonTag_Item?).Value.color
+                    , FNC_Label, ((sender as Control).Tag as settingsButtonTag_Item?).Value.Title, ((sender as Control).Tag as settingsButtonTag_Item?).Value.color
                     , Program.Finances_List.Where(item => item.id.ToString() == FNC_id_Textbox.Text).FirstOrDefault());
             }
             else

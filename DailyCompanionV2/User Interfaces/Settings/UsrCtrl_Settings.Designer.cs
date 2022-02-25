@@ -1733,8 +1733,7 @@ namespace DailyCompanionV2.User_Interfaces
             // 
             // Notif_lastDate_Column
             // 
-            this.Notif_lastDate_Column.AspectName = "lastDate";
-            this.Notif_lastDate_Column.AspectToStringFormat = "{0:dddd, dd-MMMM-yyyy -- hh:mm tt}";
+            this.Notif_lastDate_Column.AspectName = "STRlastDate";
             this.Notif_lastDate_Column.CellEditUseWholeCell = true;
             this.Notif_lastDate_Column.IsEditable = false;
             this.Notif_lastDate_Column.MinimumWidth = 180;

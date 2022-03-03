@@ -34,7 +34,13 @@ namespace DailyCompanionV2.User_Interfaces
             this.shortcut_MenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Shortcut_Label = new System.Windows.Forms.Label();
+            this.node_MenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.expandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expandAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.shortcut_MenuStrip.SuspendLayout();
+            this.node_MenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // shrtcuts_Treeview
@@ -49,8 +55,8 @@ namespace DailyCompanionV2.User_Interfaces
             this.shrtcuts_Treeview.ShowNodeToolTips = true;
             this.shrtcuts_Treeview.Size = new System.Drawing.Size(550, 380);
             this.shrtcuts_Treeview.TabIndex = 0;
-            this.shrtcuts_Treeview.MouseClick += new System.Windows.Forms.MouseEventHandler(this.shrtcuts_Treeview_MouseClick);
-            this.shrtcuts_Treeview.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.shrtcuts_Treeview_MouseDoubleClick);
+            this.shrtcuts_Treeview.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.shrtcuts_Treeview_NodeMouseClick);
+            this.shrtcuts_Treeview.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.shrtcuts_Treeview_NodeMouseDoubleClick);
             // 
             // shortcut_MenuStrip
             // 
@@ -63,7 +69,7 @@ namespace DailyCompanionV2.User_Interfaces
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -79,6 +85,43 @@ namespace DailyCompanionV2.User_Interfaces
             this.Shortcut_Label.Text = "label1";
             this.Shortcut_Label.Visible = false;
             // 
+            // node_MenuStrip
+            // 
+            this.node_MenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.node_MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.expandToolStripMenuItem,
+            this.expandAllToolStripMenuItem});
+            this.node_MenuStrip.Name = "node_MenuStrip";
+            this.node_MenuStrip.Size = new System.Drawing.Size(150, 82);
+            // 
+            // expandToolStripMenuItem
+            // 
+            this.expandToolStripMenuItem.Name = "expandToolStripMenuItem";
+            this.expandToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.expandToolStripMenuItem.Text = "Expand";
+            this.expandToolStripMenuItem.Click += new System.EventHandler(this.expandToolStripMenuItem_Click);
+            // 
+            // expandAllToolStripMenuItem
+            // 
+            this.expandAllToolStripMenuItem.Name = "expandAllToolStripMenuItem";
+            this.expandAllToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.expandAllToolStripMenuItem.Text = "Expand All";
+            this.expandAllToolStripMenuItem.Click += new System.EventHandler(this.expandAllToolStripMenuItem_Click);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(207, 6);
+            // 
             // UsrCtrl_Shortcut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -89,6 +132,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.Name = "UsrCtrl_Shortcut";
             this.Size = new System.Drawing.Size(550, 380);
             this.shortcut_MenuStrip.ResumeLayout(false);
+            this.node_MenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -99,5 +143,10 @@ namespace DailyCompanionV2.User_Interfaces
         private System.Windows.Forms.ContextMenuStrip shortcut_MenuStrip;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.Label Shortcut_Label;
+        private System.Windows.Forms.ContextMenuStrip node_MenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem expandToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem expandAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

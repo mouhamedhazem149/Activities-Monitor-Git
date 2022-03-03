@@ -4,10 +4,11 @@ using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using ns1;
 using DailyCompanionV2.Forms;
 using DailyCompanionV2.User_Interfaces;
 using DailyCompanionV2.Utilities;
+using Microsoft.Toolkit.Uwp.Notifications;
+using Microsoft.WindowsAPICodePack.Taskbar;
 
 namespace DailyCompanionV2
 {
@@ -21,8 +22,6 @@ namespace DailyCompanionV2
             LoadUserInfo();
             Change_Color(Color.FromArgb(int.Parse(ConfigurationManager.AppSettings["primaryColor"].Split(',')[0]), int.Parse(ConfigurationManager.AppSettings["primaryColor"].Split(',')[1]), int.Parse(ConfigurationManager.AppSettings["primaryColor"].Split(',')[2])), Color.FromArgb(int.Parse(ConfigurationManager.AppSettings["secondaryColor"].Split(',')[0]), int.Parse(ConfigurationManager.AppSettings["secondaryColor"].Split(',')[1]), int.Parse(ConfigurationManager.AppSettings["secondaryColor"].Split(',')[2])));
             State = Enums.mainformState.dashboard;
-            notificationTimer = new System.Threading.Timer(e => Notify_Sync(), null, TimeSpan.Zero, TimeSpan.FromMinutes(int.Parse(ConfigurationManager.AppSettings["notificationRefresh"].ToString())));
-            notifCtState = Enums.addedCtrls.inactive;
         }
         void InitializeByResolution()
         {
@@ -33,13 +32,48 @@ namespace DailyCompanionV2
                     break;
             }
         }
+        public void SetTaskbarOverlay(string Text, Font customFont, Brush customBackColor, Brush customTextColor)
+        {
+            RectangleF rectF = new RectangleF(0, 0, 20, 20);
+            Bitmap bitmap = new Bitmap(20, 20, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            Graphics g = Graphics.FromImage(bitmap);
+            g.FillRectangle(customBackColor, rectF);
+            g.DrawString(Text, new Font(customFont.FontFamily, 12F, customFont.Style), customTextColor, rectF, new StringFormat()
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            });
 
+            IntPtr Hicon = bitmap.GetHicon();
+            Icon taskIcon = Icon.FromHandle(Hicon);
+            
+            try { TaskbarManager.Instance.SetOverlayIcon(taskIcon, Text + "تنبيهات"); }
+            catch (Exception ex) { }
+        }
+        public void SendNotification(string title, string description)
+        {
+            new ToastContentBuilder()
+                .AddText(title)
+                .AddText(description)
+                .Show();
+        }
+        public void UpdateNotificationTimer(Enums.addedCtrls? notifState = Enums.addedCtrls.inactive)
+        {
+            notificationTimer = new System.Threading.Timer(arg => Notify_Sync(), null, TimeSpan.Zero, TimeSpan.FromMinutes(int.Parse(ConfigurationManager.AppSettings["notificationRefresh"].ToString())));
+            if (notifState != null) notifCtState = notifState.Value;
+        }
         public void Notify_Sync()
         {
             int count = Program.Notifications_List.Where(p => !p.done).Count();
-            HM_Manager.SetText(count.ToString(), Notification_Label);
             if (notifCtState == Enums.addedCtrls.inactive)
                 notification_Panel.BackColor = count > 0 ? Color.DarkRed : Color.Green;
+
+            SetTaskbarOverlay(count.ToString(), Notification_Label.Font, new SolidBrush(notification_Panel.BackColor), new SolidBrush(Notification_Label.ForeColor));
+            if (Boolean.Parse(ConfigurationManager.AppSettings["sendNotification"])) 
+                if (count > 0 && Notification_Label.Text != count.ToString())
+                SendNotification(ProductName, $"عدد التنبيهات المطلوبة : {count}");
+            
+            HM_Manager.SetText(count.ToString(), Notification_Label);
         }
         private Enums.addedCtrls _notifCtState = Enums.addedCtrls.inactive;
         public Enums.addedCtrls notifCtState
@@ -109,7 +143,9 @@ namespace DailyCompanionV2
                         if (dsBoard != null)
                         {
                             (dsBoard as Models.ICustomControl).Sync();
-                            UserInterfaces_Panel.Controls.OfType<UsrCtrl_Dashboard>().First().BringToFront();
+                            var dashboard = UserInterfaces_Panel.Controls.OfType<UsrCtrl_Dashboard>().First();
+                            dashboard.BringToFront();
+                            dashboard.Sync();
                         }
                         else
                             dsBoard = new UsrCtrl_Dashboard();
@@ -133,7 +169,9 @@ namespace DailyCompanionV2
                                 if (settingsCtrl != null)
                                 {
                                     (settingsCtrl as Models.ICustomControl).Sync();
-                                    UserInterfaces_Panel.Controls.OfType<UsrCtrl_Settings>().First().BringToFront();
+                                    var settings = UserInterfaces_Panel.Controls.OfType<UsrCtrl_Settings>().First();
+                                    settings.BringToFront();
+                                    settings.Sync();
                                 }
                                 else
                                 {
@@ -354,6 +392,6 @@ namespace DailyCompanionV2
             Tabs_Button.BackColor = TabButtons_Panel.Visible ? secColor : mainColor;
             State = Enums.mainformState.addtab;
         }
-
+        private void Form1_Shown(object sender, EventArgs e) => UpdateNotificationTimer();
     }
 }

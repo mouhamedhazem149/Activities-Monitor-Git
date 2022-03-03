@@ -36,6 +36,7 @@ namespace DailyCompanionV2.User_Interfaces
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsrCtrl_Settings));
             this.GeneralSettings_Groupbox = new System.Windows.Forms.GroupBox();
             this.GeneralSettings_TablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.sendNotification_Label = new System.Windows.Forms.Label();
             this.notificationRefresh_UpDown = new System.Windows.Forms.NumericUpDown();
             this.notificationRefresh_Label = new System.Windows.Forms.Label();
             this.recentNOTcount_UpDown = new System.Windows.Forms.NumericUpDown();
@@ -125,6 +126,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.Notif_Complete_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.Notif_donedate_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.Notificaiton_Button = new System.Windows.Forms.Button();
+            this.sendNotification_Checkbox = new System.Windows.Forms.CheckBox();
             this.GeneralSettings_Groupbox.SuspendLayout();
             this.GeneralSettings_TablePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.notificationRefresh_UpDown)).BeginInit();
@@ -161,7 +163,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.GeneralSettings_Groupbox.Location = new System.Drawing.Point(5, 5);
             this.GeneralSettings_Groupbox.Name = "GeneralSettings_Groupbox";
             this.GeneralSettings_Groupbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.GeneralSettings_Groupbox.Size = new System.Drawing.Size(1609, 283);
+            this.GeneralSettings_Groupbox.Size = new System.Drawing.Size(1609, 319);
             this.GeneralSettings_Groupbox.TabIndex = 4;
             this.GeneralSettings_Groupbox.TabStop = false;
             this.GeneralSettings_Groupbox.Text = "إعدادات البرنامج";
@@ -234,6 +236,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.GeneralSettings_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.538462F));
             this.GeneralSettings_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.538462F));
             this.GeneralSettings_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.538462F));
+            this.GeneralSettings_TablePanel.Controls.Add(this.sendNotification_Label, 0, 5);
             this.GeneralSettings_TablePanel.Controls.Add(this.notificationRefresh_UpDown, 17, 4);
             this.GeneralSettings_TablePanel.Controls.Add(this.notificationRefresh_Label, 0, 4);
             this.GeneralSettings_TablePanel.Controls.Add(this.recentNOTcount_UpDown, 17, 3);
@@ -244,25 +247,38 @@ namespace DailyCompanionV2.User_Interfaces
             this.GeneralSettings_TablePanel.Controls.Add(this.Settings_Label, 0, 0);
             this.GeneralSettings_TablePanel.Controls.Add(this.PickColor_Button, 17, 0);
             this.GeneralSettings_TablePanel.Controls.Add(this.recentFNCcount_UpDown, 17, 2);
+            this.GeneralSettings_TablePanel.Controls.Add(this.sendNotification_Checkbox, 17, 5);
             this.GeneralSettings_TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GeneralSettings_TablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.GeneralSettings_TablePanel.Location = new System.Drawing.Point(3, 39);
             this.GeneralSettings_TablePanel.Margin = new System.Windows.Forms.Padding(0);
             this.GeneralSettings_TablePanel.Name = "GeneralSettings_TablePanel";
-            this.GeneralSettings_TablePanel.RowCount = 5;
-            this.GeneralSettings_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.GeneralSettings_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.GeneralSettings_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.GeneralSettings_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.GeneralSettings_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.GeneralSettings_TablePanel.Size = new System.Drawing.Size(1603, 241);
+            this.GeneralSettings_TablePanel.RowCount = 6;
+            this.GeneralSettings_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.GeneralSettings_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.GeneralSettings_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.GeneralSettings_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.GeneralSettings_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.GeneralSettings_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.GeneralSettings_TablePanel.Size = new System.Drawing.Size(1603, 277);
             this.GeneralSettings_TablePanel.TabIndex = 10;
+            // 
+            // sendNotification_Label
+            // 
+            this.GeneralSettings_TablePanel.SetColumnSpan(this.sendNotification_Label, 15);
+            this.sendNotification_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sendNotification_Label.ForeColor = System.Drawing.Color.Black;
+            this.sendNotification_Label.Location = new System.Drawing.Point(1246, 230);
+            this.sendNotification_Label.Name = "sendNotification_Label";
+            this.sendNotification_Label.Size = new System.Drawing.Size(354, 47);
+            this.sendNotification_Label.TabIndex = 15;
+            this.sendNotification_Label.Text = "إرسال إشعارات للنظام";
             // 
             // notificationRefresh_UpDown
             // 
             this.GeneralSettings_TablePanel.SetColumnSpan(this.notificationRefresh_UpDown, 5);
             this.notificationRefresh_UpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.notificationRefresh_UpDown.Location = new System.Drawing.Point(1078, 195);
+            this.notificationRefresh_UpDown.Location = new System.Drawing.Point(1078, 187);
             this.notificationRefresh_UpDown.Name = "notificationRefresh_UpDown";
             this.notificationRefresh_UpDown.Size = new System.Drawing.Size(114, 43);
             this.notificationRefresh_UpDown.TabIndex = 13;
@@ -273,17 +289,17 @@ namespace DailyCompanionV2.User_Interfaces
             this.GeneralSettings_TablePanel.SetColumnSpan(this.notificationRefresh_Label, 15);
             this.notificationRefresh_Label.Dock = System.Windows.Forms.DockStyle.Fill;
             this.notificationRefresh_Label.ForeColor = System.Drawing.Color.Black;
-            this.notificationRefresh_Label.Location = new System.Drawing.Point(1246, 192);
+            this.notificationRefresh_Label.Location = new System.Drawing.Point(1246, 184);
             this.notificationRefresh_Label.Name = "notificationRefresh_Label";
-            this.notificationRefresh_Label.Size = new System.Drawing.Size(354, 49);
+            this.notificationRefresh_Label.Size = new System.Drawing.Size(354, 46);
             this.notificationRefresh_Label.TabIndex = 14;
-            this.notificationRefresh_Label.Text = "أقصى عدد للملاحظات الأخيرة";
+            this.notificationRefresh_Label.Text = "معدل تحديث الإشعارات";
             // 
             // recentNOTcount_UpDown
             // 
             this.GeneralSettings_TablePanel.SetColumnSpan(this.recentNOTcount_UpDown, 5);
             this.recentNOTcount_UpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.recentNOTcount_UpDown.Location = new System.Drawing.Point(1078, 147);
+            this.recentNOTcount_UpDown.Location = new System.Drawing.Point(1078, 141);
             this.recentNOTcount_UpDown.Name = "recentNOTcount_UpDown";
             this.recentNOTcount_UpDown.Size = new System.Drawing.Size(114, 43);
             this.recentNOTcount_UpDown.TabIndex = 5;
@@ -293,7 +309,7 @@ namespace DailyCompanionV2.User_Interfaces
             // 
             this.GeneralSettings_TablePanel.SetColumnSpan(this.recentTDOcount_UpDown, 5);
             this.recentTDOcount_UpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.recentTDOcount_UpDown.Location = new System.Drawing.Point(1078, 51);
+            this.recentTDOcount_UpDown.Location = new System.Drawing.Point(1078, 49);
             this.recentTDOcount_UpDown.Name = "recentTDOcount_UpDown";
             this.recentTDOcount_UpDown.Size = new System.Drawing.Size(114, 43);
             this.recentTDOcount_UpDown.TabIndex = 4;
@@ -304,9 +320,9 @@ namespace DailyCompanionV2.User_Interfaces
             this.GeneralSettings_TablePanel.SetColumnSpan(this.recentNOTcount_Label, 15);
             this.recentNOTcount_Label.Dock = System.Windows.Forms.DockStyle.Fill;
             this.recentNOTcount_Label.ForeColor = System.Drawing.Color.Black;
-            this.recentNOTcount_Label.Location = new System.Drawing.Point(1246, 144);
+            this.recentNOTcount_Label.Location = new System.Drawing.Point(1246, 138);
             this.recentNOTcount_Label.Name = "recentNOTcount_Label";
-            this.recentNOTcount_Label.Size = new System.Drawing.Size(354, 48);
+            this.recentNOTcount_Label.Size = new System.Drawing.Size(354, 46);
             this.recentNOTcount_Label.TabIndex = 12;
             this.recentNOTcount_Label.Text = "أقصى عدد للملاحظات الأخيرة";
             // 
@@ -315,9 +331,9 @@ namespace DailyCompanionV2.User_Interfaces
             this.GeneralSettings_TablePanel.SetColumnSpan(this.recentFNCcount_Label, 15);
             this.recentFNCcount_Label.Dock = System.Windows.Forms.DockStyle.Fill;
             this.recentFNCcount_Label.ForeColor = System.Drawing.Color.Black;
-            this.recentFNCcount_Label.Location = new System.Drawing.Point(1246, 96);
+            this.recentFNCcount_Label.Location = new System.Drawing.Point(1246, 92);
             this.recentFNCcount_Label.Name = "recentFNCcount_Label";
-            this.recentFNCcount_Label.Size = new System.Drawing.Size(354, 48);
+            this.recentFNCcount_Label.Size = new System.Drawing.Size(354, 46);
             this.recentFNCcount_Label.TabIndex = 11;
             this.recentFNCcount_Label.Text = "أقصى عدد للعمليات المالية الأخيرة";
             // 
@@ -326,9 +342,9 @@ namespace DailyCompanionV2.User_Interfaces
             this.GeneralSettings_TablePanel.SetColumnSpan(this.recentTDOcount_Label, 15);
             this.recentTDOcount_Label.Dock = System.Windows.Forms.DockStyle.Fill;
             this.recentTDOcount_Label.ForeColor = System.Drawing.Color.Black;
-            this.recentTDOcount_Label.Location = new System.Drawing.Point(1246, 48);
+            this.recentTDOcount_Label.Location = new System.Drawing.Point(1246, 46);
             this.recentTDOcount_Label.Name = "recentTDOcount_Label";
-            this.recentTDOcount_Label.Size = new System.Drawing.Size(354, 48);
+            this.recentTDOcount_Label.Size = new System.Drawing.Size(354, 46);
             this.recentTDOcount_Label.TabIndex = 10;
             this.recentTDOcount_Label.Text = "أقصى عدد للمهام الأخيرة";
             // 
@@ -339,7 +355,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.Settings_Label.ForeColor = System.Drawing.Color.Black;
             this.Settings_Label.Location = new System.Drawing.Point(1246, 0);
             this.Settings_Label.Name = "Settings_Label";
-            this.Settings_Label.Size = new System.Drawing.Size(354, 48);
+            this.Settings_Label.Size = new System.Drawing.Size(354, 46);
             this.Settings_Label.TabIndex = 4;
             this.Settings_Label.Text = "اختر الباقة اللونية للبرنامج";
             // 
@@ -349,7 +365,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.PickColor_Button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PickColor_Button.Location = new System.Drawing.Point(958, 3);
             this.PickColor_Button.Name = "PickColor_Button";
-            this.PickColor_Button.Size = new System.Drawing.Size(234, 42);
+            this.PickColor_Button.Size = new System.Drawing.Size(234, 40);
             this.PickColor_Button.TabIndex = 9;
             this.PickColor_Button.Text = "اختار لون أخر";
             this.PickColor_Button.UseVisualStyleBackColor = true;
@@ -359,7 +375,7 @@ namespace DailyCompanionV2.User_Interfaces
             // 
             this.GeneralSettings_TablePanel.SetColumnSpan(this.recentFNCcount_UpDown, 5);
             this.recentFNCcount_UpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.recentFNCcount_UpDown.Location = new System.Drawing.Point(1078, 99);
+            this.recentFNCcount_UpDown.Location = new System.Drawing.Point(1078, 95);
             this.recentFNCcount_UpDown.Name = "recentFNCcount_UpDown";
             this.recentFNCcount_UpDown.Size = new System.Drawing.Size(114, 43);
             this.recentFNCcount_UpDown.TabIndex = 3;
@@ -862,7 +878,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.bkup_Groupbox.Dock = System.Windows.Forms.DockStyle.Top;
             this.bkup_Groupbox.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bkup_Groupbox.ForeColor = System.Drawing.Color.DarkRed;
-            this.bkup_Groupbox.Location = new System.Drawing.Point(5, 288);
+            this.bkup_Groupbox.Location = new System.Drawing.Point(5, 324);
             this.bkup_Groupbox.Name = "bkup_Groupbox";
             this.bkup_Groupbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.bkup_Groupbox.Size = new System.Drawing.Size(1609, 155);
@@ -939,7 +955,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.loginSettings_Label.ForeColor = System.Drawing.Color.DarkRed;
             this.loginSettings_Label.Image = global::DailyCompanionV2.Properties.Resources.expand;
             this.loginSettings_Label.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.loginSettings_Label.Location = new System.Drawing.Point(0, 842);
+            this.loginSettings_Label.Location = new System.Drawing.Point(0, 878);
             this.loginSettings_Label.Margin = new System.Windows.Forms.Padding(0);
             this.loginSettings_Label.Name = "loginSettings_Label";
             this.loginSettings_Label.Size = new System.Drawing.Size(1623, 60);
@@ -955,7 +971,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.walletContainer_Label.ForeColor = System.Drawing.Color.DarkRed;
             this.walletContainer_Label.Image = global::DailyCompanionV2.Properties.Resources.expand;
             this.walletContainer_Label.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.walletContainer_Label.Location = new System.Drawing.Point(0, 512);
+            this.walletContainer_Label.Location = new System.Drawing.Point(0, 548);
             this.walletContainer_Label.Margin = new System.Windows.Forms.Padding(0);
             this.walletContainer_Label.Name = "walletContainer_Label";
             this.walletContainer_Label.Size = new System.Drawing.Size(1623, 60);
@@ -974,7 +990,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.generalSettings_Panel.Location = new System.Drawing.Point(0, 60);
             this.generalSettings_Panel.Name = "generalSettings_Panel";
             this.generalSettings_Panel.Padding = new System.Windows.Forms.Padding(5);
-            this.generalSettings_Panel.Size = new System.Drawing.Size(1623, 452);
+            this.generalSettings_Panel.Size = new System.Drawing.Size(1623, 488);
             this.generalSettings_Panel.TabIndex = 0;
             this.generalSettings_Panel.Visible = false;
             // 
@@ -984,7 +1000,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.financeSettings_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.financeSettings_Panel.Controls.Add(this.Wallets_Groupbox);
             this.financeSettings_Panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.financeSettings_Panel.Location = new System.Drawing.Point(0, 572);
+            this.financeSettings_Panel.Location = new System.Drawing.Point(0, 608);
             this.financeSettings_Panel.Name = "financeSettings_Panel";
             this.financeSettings_Panel.Padding = new System.Windows.Forms.Padding(5);
             this.financeSettings_Panel.Size = new System.Drawing.Size(1623, 270);
@@ -997,7 +1013,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.loginSettings_Panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.loginSettings_Panel.Controls.Add(this.LoginSettings_Groupbox);
             this.loginSettings_Panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.loginSettings_Panel.Location = new System.Drawing.Point(0, 902);
+            this.loginSettings_Panel.Location = new System.Drawing.Point(0, 938);
             this.loginSettings_Panel.Name = "loginSettings_Panel";
             this.loginSettings_Panel.Padding = new System.Windows.Forms.Padding(5);
             this.loginSettings_Panel.Size = new System.Drawing.Size(1623, 274);
@@ -1031,7 +1047,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.shortcutSettings_Panel.Controls.Add(this.Shrtcuts_Objectlistview);
             this.shortcutSettings_Panel.Controls.Add(this.shortcutsProcess_Groupbox);
             this.shortcutSettings_Panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.shortcutSettings_Panel.Location = new System.Drawing.Point(0, 1236);
+            this.shortcutSettings_Panel.Location = new System.Drawing.Point(0, 1272);
             this.shortcutSettings_Panel.Name = "shortcutSettings_Panel";
             this.shortcutSettings_Panel.Padding = new System.Windows.Forms.Padding(5);
             this.shortcutSettings_Panel.Size = new System.Drawing.Size(1623, 800);
@@ -1425,7 +1441,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.shortcutsSettings_Button.ForeColor = System.Drawing.Color.DarkRed;
             this.shortcutsSettings_Button.Image = global::DailyCompanionV2.Properties.Resources.expand;
             this.shortcutsSettings_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.shortcutsSettings_Button.Location = new System.Drawing.Point(0, 1176);
+            this.shortcutsSettings_Button.Location = new System.Drawing.Point(0, 1212);
             this.shortcutsSettings_Button.Margin = new System.Windows.Forms.Padding(0);
             this.shortcutsSettings_Button.Name = "shortcutsSettings_Button";
             this.shortcutsSettings_Button.Size = new System.Drawing.Size(1623, 60);
@@ -1458,7 +1474,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.Notification_Panel.Controls.Add(this.Notifications_TablePanel);
             this.Notification_Panel.Controls.Add(this.Notificatons_Objectlistview);
             this.Notification_Panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Notification_Panel.Location = new System.Drawing.Point(0, 2096);
+            this.Notification_Panel.Location = new System.Drawing.Point(0, 2132);
             this.Notification_Panel.Name = "Notification_Panel";
             this.Notification_Panel.Size = new System.Drawing.Size(1623, 587);
             this.Notification_Panel.TabIndex = 90;
@@ -1810,7 +1826,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.Notificaiton_Button.ForeColor = System.Drawing.Color.DarkRed;
             this.Notificaiton_Button.Image = global::DailyCompanionV2.Properties.Resources.expand;
             this.Notificaiton_Button.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Notificaiton_Button.Location = new System.Drawing.Point(0, 2036);
+            this.Notificaiton_Button.Location = new System.Drawing.Point(0, 2072);
             this.Notificaiton_Button.Margin = new System.Windows.Forms.Padding(0);
             this.Notificaiton_Button.Name = "Notificaiton_Button";
             this.Notificaiton_Button.Size = new System.Drawing.Size(1623, 60);
@@ -1818,6 +1834,17 @@ namespace DailyCompanionV2.User_Interfaces
             this.Notificaiton_Button.Text = "إعدادات التنبيهات";
             this.Notificaiton_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Notificaiton_Button.Click += new System.EventHandler(this.Notificaiton_Button_Click);
+            // 
+            // sendNotification_Checkbox
+            // 
+            this.sendNotification_Checkbox.AutoSize = true;
+            this.sendNotification_Checkbox.Location = new System.Drawing.Point(1174, 233);
+            this.sendNotification_Checkbox.Name = "sendNotification_Checkbox";
+            this.sendNotification_Checkbox.Size = new System.Drawing.Size(18, 40);
+            this.sendNotification_Checkbox.TabIndex = 16;
+            this.sendNotification_Checkbox.Text = "checkBox1";
+            this.sendNotification_Checkbox.UseVisualStyleBackColor = true;
+            this.sendNotification_Checkbox.CheckedChanged += new System.EventHandler(this.sendNotification_Checkbox_CheckedChanged);
             // 
             // UsrCtrl_Settings
             // 
@@ -1834,6 +1861,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.Size = new System.Drawing.Size(1654, 930);
             this.GeneralSettings_Groupbox.ResumeLayout(false);
             this.GeneralSettings_TablePanel.ResumeLayout(false);
+            this.GeneralSettings_TablePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.notificationRefresh_UpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recentNOTcount_UpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recentTDOcount_UpDown)).EndInit();
@@ -1957,5 +1985,7 @@ namespace DailyCompanionV2.User_Interfaces
         private BrightIdeasSoftware.OLVColumn Notif_donedate_Column;
         private System.Windows.Forms.NumericUpDown notificationRefresh_UpDown;
         private System.Windows.Forms.Label notificationRefresh_Label;
+        private System.Windows.Forms.Label sendNotification_Label;
+        private System.Windows.Forms.CheckBox sendNotification_Checkbox;
     }
 }

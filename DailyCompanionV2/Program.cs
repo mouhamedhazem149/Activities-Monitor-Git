@@ -44,8 +44,9 @@ namespace DailyCompanionV2
                     if (mainSettings.serialnumber != serialNumber) return;
                     Application.Run(new LogInForm());
                 }
-                else if (MessageBox.Show("تم اكتشاف مشكلة في قاعدة البيانات الخاصة بالبرنامج. إعادة ضبط البرنامج ؟", "إخطار", MessageBoxButtons.OKCancel) == DialogResult.OK) Application.Run(new FirstTime());
-                else { Application.Run(new FirstTime()); }
+                else if (MessageBox.Show("تم اكتشاف مشكلة في قاعدة البيانات الخاصة بالبرنامج. إعادة ضبط البرنامج ؟", "إخطار", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    Application.Run(new FirstTime());
+                else Application.Run(new FirstTime());
         }
 
         public static Enums.Resolution currentResolution = Enums.Resolution.A_1920x1080;

@@ -44,7 +44,7 @@ namespace DailyCompanionV2.User_Interfaces
             Shrtcuts_Objectlistview.ChildrenGetter = delegate (object rowObject) { return ((Models.Shortcut)rowObject).childrenShrtcuts; };
 
             Notif_done_Column.AspectToStringConverter = delegate (object rowObject) { return ((bool)rowObject) ? "منتهي" : "غير منتهي"; };
-            Notif_repeatInt_Column.AspectToStringConverter = delegate (object rowObject) { return ((int)rowObject) == 0 ? "دائم": ((int?)rowObject).Value.ToString(); };
+            Notif_repeatInt_Column.AspectToStringConverter = delegate (object rowObject) { return ((int)rowObject) == 0 ? "دائم" : ((int?)rowObject).Value.ToString(); };
             Notif_Complete_Column.AspectToStringConverter = delegate (object rowObject) { return ((bool)rowObject) ? "مكتمل" : "غير مكتمل"; };
             Notif_donedate_Column.AspectToStringConverter = delegate (object rowObject) { return ((DateTime?)rowObject).HasValue ? ((DateTime?)rowObject).Value.ToString("dddd, dd-MMMM-yyyy -- hh:mm tt") : "لم يتم الانهاء بعد"; };
         }
@@ -222,7 +222,8 @@ namespace DailyCompanionV2.User_Interfaces
             recentTDOcount_UpDown.Value = int.Parse(System.Configuration.ConfigurationManager.AppSettings["recentTODOcount"].ToString());
             recentFNCcount_UpDown.Value = int.Parse(System.Configuration.ConfigurationManager.AppSettings["recentFNCcount"].ToString());
             recentNOTcount_UpDown.Value = int.Parse(System.Configuration.ConfigurationManager.AppSettings["recentNOTEcount"].ToString());
-            notificationRefresh_UpDown.Value = int.Parse(System.Configuration.ConfigurationManager.AppSettings["notificationRefresh"].ToString()); 
+            notificationRefresh_UpDown.Value = int.Parse(System.Configuration.ConfigurationManager.AppSettings["notificationRefresh"].ToString());
+            sendNotification_Checkbox.Checked = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["sendNotification"].ToString());
         }
         private void PickColor_Button_Click(object sender, EventArgs e)
         {
@@ -247,8 +248,13 @@ namespace DailyCompanionV2.User_Interfaces
             HM_Manager.UpdateConfiguration(new List<Tuple<string, string>>() { new Tuple<string, string>("recentFNCcount", recentFNCcount_UpDown.Value.ToString()) });
         private void recentNOTcount_UpDown_ValueChanged(object sender, EventArgs e) =>
             HM_Manager.UpdateConfiguration(new List<Tuple<string, string>>() { new Tuple<string, string>("recentNOTEcount", recentNOTcount_UpDown.Value.ToString()) });
-        private void notificationRefresh_UpDown_ValueChanged(object sender, EventArgs e) =>
+        private void notificationRefresh_UpDown_ValueChanged(object sender, EventArgs e)
+        {
             HM_Manager.UpdateConfiguration(new List<Tuple<string, string>>() { new Tuple<string, string>("notificationRefresh", notificationRefresh_UpDown.Value.ToString()) });
+            Program.WorkingForm.UpdateNotificationTimer(null);
+        }
+        private void sendNotification_Checkbox_CheckedChanged(object sender, EventArgs e) =>
+            HM_Manager.UpdateConfiguration(new List<Tuple<string, string>>() { new Tuple<string, string>("sendNotification", sendNotification_Checkbox.Checked.ToString()) });
         private void UsrCtrl_TgleBtn_CheckedChanged(object sender, EventArgs e)
         {
             if (HM_Manager.CheckIfContainWrittenEntries(Wallets_Groupbox))
@@ -482,5 +488,6 @@ namespace DailyCompanionV2.User_Interfaces
             ((Notification)e.Item.RowObject).done_date = DateTime.Now;
             Notificatons_Objectlistview.RefreshObject(e.Item.RowObject);
         }
+
     }
 }

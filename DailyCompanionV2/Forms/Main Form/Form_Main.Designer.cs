@@ -635,6 +635,7 @@
             this.Text = " ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.Buttons_Panel.ResumeLayout(false);
             this.TabButtons_Panel.ResumeLayout(false);
             this.Header_Panel.ResumeLayout(false);

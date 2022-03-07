@@ -9,6 +9,8 @@ using DailyCompanionV2.Models;
 using DailyCompanionV2.User_Interfaces.Finance;
 using DailyCompanionV2.User_Interfaces.Reports;
 using DailyCompanionV2.Utilities;
+using System.Collections.Generic;
+using DailyCompanionV2.User_Interfaces.Settings;
 
 namespace DailyCompanionV2.User_Interfaces
 {
@@ -92,8 +94,15 @@ namespace DailyCompanionV2.User_Interfaces
                 _state = value;
             }
         }
+        private List<Todos> tempTodos = new List<Todos>();
+        private List<Todos> tempTodosDelete = new List<Todos>();
+        private List<Finances> tempFinances = new List<Finances>();
+        private List<Finances> tempFinancesDelete = new List<Finances>();
+        private List<Models.Notes> tempNotes = new List<Models.Notes>();
+        private List<Models.Notes> tempNotesDelete = new List<Models.Notes>(); 
         public Enums.Span Span { get { Enums.Span _span; Enum.TryParse(Reports_Span_Combobox.Text.ToString(), out _span); return _span; } }
         public int dSpan => (int)Reports_Span_Updown.Value;
+
         public DateTime _From { get { return Reports_From_Datetimepicker.Value; } }
         public DateTime _To { get { return Reports_To_Datetimepicker.Value; } }
         public string searchTerm => Report_Search_Textbox.Text;
@@ -108,9 +117,21 @@ namespace DailyCompanionV2.User_Interfaces
         }
         private void UpdatePie(CreateGroupsEventArgs groupCollection) => Reports_Processor.UpdatePieChart(Reports_PieChart, groupCollection);
 
-        private void LoadFinance_Listview(DateTime from, DateTime to) { HM_Manager.Update_OLV(Reports_Processor.FinancesList(from, to, searchTerm), Finances_Objectlistview);/* Reports_Processor.UpdatePieChart(Reports_PieChart, Finances_Objectlistview.Groups);*/ }
-        private void LoadTodos_Listview(DateTime from, DateTime to) { HM_Manager.Update_OLV(Reports_Processor.TodosList(from, to, searchTerm), Todos_Objectlistview); }
-        private void LoadNotes_Listview(string SearchTerm) { HM_Manager.Update_OLV(Reports_Processor.NotesList(SearchTerm), Notes_Objectlistview); }
+        private void LoadTodos_Listview(DateTime from, DateTime to)
+        {
+            tempTodos = Reports_Processor.TodosList(from, to, searchTerm);
+            HM_Manager.Update_OLV(tempTodos, Todos_Objectlistview);
+        }
+        private void LoadFinance_Listview(DateTime from, DateTime to)
+        {
+            tempFinances = Reports_Processor.FinancesList(from, to, searchTerm);
+            HM_Manager.Update_OLV(tempFinances, Finances_Objectlistview);
+        }
+        private void LoadNotes_Listview(string SearchTerm) 
+        {
+            tempNotes = Reports_Processor.NotesList(SearchTerm);
+            HM_Manager.Update_OLV(tempNotes, Notes_Objectlistview); 
+        }
 
         private void Listviews_UPDATE()
         {
@@ -127,7 +148,39 @@ namespace DailyCompanionV2.User_Interfaces
                     break;
             }
         }
-
+        void CheckDelButtonEnabled()
+        {
+            switch (State)
+            {
+                case Enums.report_tabState.مهام:
+                    Reports_Dels_Button.Enabled = Todos_Objectlistview.SelectedObjects != null && Todos_Objectlistview.SelectedObjects.Count > 0;
+                    break;
+                case Enums.report_tabState.مالية:
+                    Reports_Dels_Button.Enabled = Finances_Objectlistview.SelectedObjects != null && Finances_Objectlistview.SelectedObjects.Count > 0;
+                    break;
+                case Enums.report_tabState.ملاحظات:
+                    Reports_Dels_Button.Enabled = Notes_Objectlistview.SelectedObjects != null && Notes_Objectlistview.SelectedObjects.Count > 0;
+                    break;
+            }
+        }
+        private void Reports_Dels_Button_Click(object sender, EventArgs e)
+        {
+            switch (State)
+            {
+                case Enums.report_tabState.مهام:
+                    if (Todos_Objectlistview.SelectedObjects != null && Todos_Objectlistview.SelectedObjects.Count > 0)
+                        Todos_Objectlistview.SelectedObjects.Cast<Todos>().ToList().ForEach(o => { Todos_Objectlistview.RemoveObject(o); tempTodosDelete.Add(o); });
+                    break;
+                case Enums.report_tabState.مالية:
+                    if (Finances_Objectlistview.SelectedObjects != null && Finances_Objectlistview.SelectedObjects.Count > 0)
+                        Finances_Objectlistview.SelectedObjects.Cast<Finances>().ToList().ForEach(o => { Finances_Objectlistview.RemoveObject(o); tempFinancesDelete.Add(o); });
+                    break;
+                case Enums.report_tabState.ملاحظات:
+                    if (Notes_Objectlistview.SelectedObjects != null && Notes_Objectlistview.SelectedObjects.Count > 0)
+                        Notes_Objectlistview.SelectedObjects.Cast<Models.Notes>().ToList().ForEach(o => { Notes_Objectlistview.RemoveObject(o); tempNotesDelete.Add(o); });
+                    break;
+            }
+        }
         private void Datetimepicker_ValueChanged(object sender, EventArgs e) => Check_FromTo_Button((sender as DateTimePicker).Tag as Button);
         private void Check_FromTo_Button(Button btn)
         {
@@ -317,32 +370,39 @@ namespace DailyCompanionV2.User_Interfaces
                 case Enums.report_tabState.مهام:
                     foreach (Todos selectesTDs in Todos_Objectlistview.Objects)
                     {
-                        var old = Program.Todos_List.Where(p => p.id == selectesTDs.id).FirstOrDefault();
+                        var old = tempTodos.Where(p => p.id == selectesTDs.id).FirstOrDefault();
                         if (!selectesTDs.Equals(old))
                             Todo_Processor.HandleTODO(Enums.genericHandle_Type.تعديل, new GroupBox()
                             , selectesTDs.duefrom, selectesTDs.dueto, selectesTDs.todo, selectesTDs.category,selectesTDs.start_date ,selectesTDs.due_date, selectesTDs.done_date.HasValue, selectesTDs.done_date.GetValueOrDefault(),selectesTDs.added_date ,selectesTDs.duration, selectesTDs.notes,selectesTDs.chkpoint_list
                             , Reports_OLV_Label, "", Color.White, old, true);
                     }
+                    tempTodosDelete.ForEach(p => Todo_Processor.HandleTODO(Enums.genericHandle_Type.حذف, null,"", "", "", "",DateTime.Now, DateTime.Now,false, DateTime.Now, DateTime.Now,0,"",null,
+            Reports_OLV_Label, "", Color.White, p, true));
+                    tempTodosDelete.Clear(); 
                     break;
                 case Enums.report_tabState.مالية:
                     foreach (Finances selectesFncs in Finances_Objectlistview.Objects)
                     {
-                        var old = Program.Finances_List.Where(p => p.id == selectesFncs.id).FirstOrDefault();
+                        var old = tempFinances.Where(p => p.id == selectesFncs.id).FirstOrDefault();
                         if (!selectesFncs.Equals(old))
                             Finances_Processor.HandleFNC(Enums.genericHandle_Type.تعديل, new GroupBox()
                        , selectesFncs.relatedentity, selectesFncs.type,selectesFncs.wallet ,selectesFncs.category, selectesFncs.due, selectesFncs.paid, selectesFncs.due_date, selectesFncs.done_date.HasValue, selectesFncs.done_date.GetValueOrDefault(), selectesFncs.notes
                        , Reports_OLV_Label, "", Color.White, old, true);
                     }
-                    break;
+                    tempFinancesDelete.ForEach(p => Finances_Processor.HandleFNC(Enums.genericHandle_Type.حذف, null, "",Enums.financeType.دخل,0,"",0, 0, DateTime.Now,false,DateTime.Now,"",
+               Reports_OLV_Label, "", Color.White, p, true));
+                    tempFinancesDelete.Clear(); break;
                 case Enums.report_tabState.ملاحظات:
                     foreach (Models.Notes selectedNots in Notes_Objectlistview.Objects)
                     {
-                        var old = Program.Notes_List.Where(p => p.id == selectedNots.id).FirstOrDefault();
+                        var old = tempNotes.Where(p => p.id == selectedNots.id).FirstOrDefault();
                         if (!selectedNots.Equals(old))
-                            Notes.Notes_Processor.Handle_Note(Enums.genericHandle_Type.تعديل, new GroupBox()
-                        , selectedNots.title, selectedNots.strNote
+                            Notes.Notes_Processor.Handle_Note(Enums.genericHandle_Type.تعديل, new GroupBox(), selectedNots.title, selectedNots.strNote
                         , Reports_OLV_Label, "", Color.White, old, true);
                     }
+                    tempNotesDelete.ForEach(p => Notes.Notes_Processor.Handle_Note(Enums.genericHandle_Type.حذف, null, "", "",
+               Reports_OLV_Label, "", Color.White, p, true));
+                    tempNotesDelete.Clear(); 
                     break;
             }
         }
@@ -366,5 +426,9 @@ namespace DailyCompanionV2.User_Interfaces
         private void financeTAB_ImageButton_Click(object sender, EventArgs e) => State = Enums.report_tabState.مالية;
         private void notesTAB_ImageButton_Click(object sender, EventArgs e) => State = Enums.report_tabState.ملاحظات;
         private void todosTAB_ImageButton_Click(object sender, EventArgs e) => State = Enums.report_tabState.مهام;
+        
+        private void Objectlistview_SelectionChanged(object sender, EventArgs e) => CheckDelButtonEnabled();
+        private void Objectlistview_ItemsChanged(object sender, ItemsChangedEventArgs e) => CheckDelButtonEnabled();
+
     }
 }

@@ -40,7 +40,7 @@ namespace DailyCompanionV2.User_Interfaces.Notes
                     {
                         if (MessageBox.Show($"سيتم حذف الملاحظة المعنونة ب : {oldModel.title}. هل أنت متأكد ؟", "تحذير", MessageBoxButtons.OKCancel) == DialogResult.OK)
                         {
-                            DBHelper.Delete_Database("todos", new List<Models.Notes> { oldModel }, HM_Manager.HandleHistory, new string[] { "الملاحظات", "تعديل ملاحظات", $"العنوان الخاص بالمهمة: {oldModel.title}" });
+                            DBHelper.Delete_Database("notes", new List<Models.Notes> { oldModel }, HM_Manager.HandleHistory, new string[] { "الملاحظات", "تعديل ملاحظات", $"العنوان الخاص بالمهمة: {oldModel.title}" });
                             SpecificMsg = $"تم التعديل بنجاح. عنوان الملاحظة: {oldModel.title}";
                         }
                     };

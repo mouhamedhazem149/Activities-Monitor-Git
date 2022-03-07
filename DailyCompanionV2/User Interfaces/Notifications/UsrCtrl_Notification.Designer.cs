@@ -70,6 +70,7 @@ namespace DailyCompanionV2.User_Interfaces
             // Notif_Done_Button
             // 
             this.Notif_Done_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Notif_Done_Button.Enabled = false;
             this.Notif_Done_Button.Font = new System.Drawing.Font("Cairo", 8F);
             this.Notif_Done_Button.Location = new System.Drawing.Point(5, 351);
             this.Notif_Done_Button.Name = "Notif_Done_Button";
@@ -102,6 +103,11 @@ namespace DailyCompanionV2.User_Interfaces
             this.notifications_Treeview.ShowNodeToolTips = true;
             this.notifications_Treeview.Size = new System.Drawing.Size(550, 351);
             this.notifications_Treeview.TabIndex = 1;
+            this.notifications_Treeview.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.notifications_Treeview_AfterSelect);
+            this.notifications_Treeview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.notifications_Treeview_KeyUp);
+            this.notifications_Treeview.KeyUp += new System.Windows.Forms.KeyEventHandler(this.notifications_Treeview_KeyUp);
+            this.notifications_Treeview.MouseDown += new System.Windows.Forms.MouseEventHandler(this.notifications_Treeview_MouseUp);
+            this.notifications_Treeview.MouseUp += new System.Windows.Forms.MouseEventHandler(this.notifications_Treeview_MouseUp);
             // 
             // UsrCtrl_Notification
             // 

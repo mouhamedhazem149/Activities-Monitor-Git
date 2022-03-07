@@ -47,6 +47,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.Settings_Label = new System.Windows.Forms.Label();
             this.PickColor_Button = new System.Windows.Forms.Button();
             this.recentFNCcount_UpDown = new System.Windows.Forms.NumericUpDown();
+            this.sendNotification_Checkbox = new System.Windows.Forms.CheckBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.LoginSettings_Groupbox = new System.Windows.Forms.GroupBox();
             this.loginSettings_TablePanel = new System.Windows.Forms.TableLayoutPanel();
@@ -126,7 +127,6 @@ namespace DailyCompanionV2.User_Interfaces
             this.Notif_Complete_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.Notif_donedate_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.Notificaiton_Button = new System.Windows.Forms.Button();
-            this.sendNotification_Checkbox = new System.Windows.Forms.CheckBox();
             this.GeneralSettings_Groupbox.SuspendLayout();
             this.GeneralSettings_TablePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.notificationRefresh_UpDown)).BeginInit();
@@ -380,6 +380,17 @@ namespace DailyCompanionV2.User_Interfaces
             this.recentFNCcount_UpDown.Size = new System.Drawing.Size(114, 43);
             this.recentFNCcount_UpDown.TabIndex = 3;
             this.recentFNCcount_UpDown.ValueChanged += new System.EventHandler(this.recentFNCcount_UpDown_ValueChanged);
+            // 
+            // sendNotification_Checkbox
+            // 
+            this.sendNotification_Checkbox.AutoSize = true;
+            this.sendNotification_Checkbox.Location = new System.Drawing.Point(1174, 233);
+            this.sendNotification_Checkbox.Name = "sendNotification_Checkbox";
+            this.sendNotification_Checkbox.Size = new System.Drawing.Size(18, 40);
+            this.sendNotification_Checkbox.TabIndex = 16;
+            this.sendNotification_Checkbox.Text = "checkBox1";
+            this.sendNotification_Checkbox.UseVisualStyleBackColor = true;
+            this.sendNotification_Checkbox.CheckedChanged += new System.EventHandler(this.sendNotification_Checkbox_CheckedChanged);
             // 
             // LoginSettings_Groupbox
             // 
@@ -1834,17 +1845,6 @@ namespace DailyCompanionV2.User_Interfaces
             this.Notificaiton_Button.Text = "إعدادات التنبيهات";
             this.Notificaiton_Button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Notificaiton_Button.Click += new System.EventHandler(this.Notificaiton_Button_Click);
-            // 
-            // sendNotification_Checkbox
-            // 
-            this.sendNotification_Checkbox.AutoSize = true;
-            this.sendNotification_Checkbox.Location = new System.Drawing.Point(1174, 233);
-            this.sendNotification_Checkbox.Name = "sendNotification_Checkbox";
-            this.sendNotification_Checkbox.Size = new System.Drawing.Size(18, 40);
-            this.sendNotification_Checkbox.TabIndex = 16;
-            this.sendNotification_Checkbox.Text = "checkBox1";
-            this.sendNotification_Checkbox.UseVisualStyleBackColor = true;
-            this.sendNotification_Checkbox.CheckedChanged += new System.EventHandler(this.sendNotification_Checkbox_CheckedChanged);
             // 
             // UsrCtrl_Settings
             // 

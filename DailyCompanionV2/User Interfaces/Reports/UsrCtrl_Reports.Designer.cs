@@ -77,6 +77,7 @@
             this.ColumnChart_Column = new XanderUI.XUIButton();
             this.Reports_Span_Updown = new System.Windows.Forms.NumericUpDown();
             this.all_TablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.Reports_Dels_Button = new System.Windows.Forms.Button();
             this.notesTAB_ImageButton = new ns1.BunifuImageButton();
             this.financeTAB_ImageButton = new ns1.BunifuImageButton();
             this.todosTAB_ImageButton = new ns1.BunifuImageButton();
@@ -152,6 +153,8 @@
             this.Todos_Objectlistview.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.Objectlistview_CellEditFinishing);
             this.Todos_Objectlistview.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.Objectlistview_CellEditStarting);
             this.Todos_Objectlistview.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.Todos_Objectlistview_FormatRow);
+            this.Todos_Objectlistview.ItemsChanged += new System.EventHandler<BrightIdeasSoftware.ItemsChangedEventArgs>(this.Objectlistview_ItemsChanged);
+            this.Todos_Objectlistview.SelectionChanged += new System.EventHandler(this.Objectlistview_SelectionChanged);
             // 
             // Todos_idColumn
             // 
@@ -322,6 +325,8 @@
             this.Finances_Objectlistview.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.Objectlistview_CellEditFinishing);
             this.Finances_Objectlistview.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.Objectlistview_CellEditStarting);
             this.Finances_Objectlistview.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.Finances_Objectlistview_FormatRow);
+            this.Finances_Objectlistview.ItemsChanged += new System.EventHandler<BrightIdeasSoftware.ItemsChangedEventArgs>(this.Objectlistview_ItemsChanged);
+            this.Finances_Objectlistview.SelectionChanged += new System.EventHandler(this.Objectlistview_SelectionChanged);
             // 
             // FinanceID_Column
             // 
@@ -487,6 +492,8 @@
             this.Notes_Objectlistview.AboutToCreateGroups += new System.EventHandler<BrightIdeasSoftware.CreateGroupsEventArgs>(this.Notes_Objectlistview_AboutToCreateGroups);
             this.Notes_Objectlistview.CellEditFinishing += new BrightIdeasSoftware.CellEditEventHandler(this.Objectlistview_CellEditFinishing);
             this.Notes_Objectlistview.CellEditStarting += new BrightIdeasSoftware.CellEditEventHandler(this.Objectlistview_CellEditStarting);
+            this.Notes_Objectlistview.ItemsChanged += new System.EventHandler<BrightIdeasSoftware.ItemsChangedEventArgs>(this.Objectlistview_ItemsChanged);
+            this.Notes_Objectlistview.SelectionChanged += new System.EventHandler(this.Objectlistview_SelectionChanged);
             // 
             // NotesTitle_Column
             // 
@@ -678,7 +685,7 @@
             this.Reports_SaveChanges_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Reports_SaveChanges_Button.Font = new System.Drawing.Font("El Messiri", 10.8F);
             this.Reports_SaveChanges_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Reports_SaveChanges_Button.Location = new System.Drawing.Point(1078, 822);
+            this.Reports_SaveChanges_Button.Location = new System.Drawing.Point(878, 822);
             this.Reports_SaveChanges_Button.Name = "Reports_SaveChanges_Button";
             this.all_TablePanel.SetRowSpan(this.Reports_SaveChanges_Button, 2);
             this.Reports_SaveChanges_Button.Size = new System.Drawing.Size(244, 26);
@@ -689,14 +696,14 @@
             // 
             // Reports_OLV_Label
             // 
-            this.all_TablePanel.SetColumnSpan(this.Reports_OLV_Label, 35);
+            this.all_TablePanel.SetColumnSpan(this.Reports_OLV_Label, 29);
             this.Reports_OLV_Label.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Reports_OLV_Label.Font = new System.Drawing.Font("Cairo SemiBold", 7F, System.Drawing.FontStyle.Bold);
             this.Reports_OLV_Label.ForeColor = System.Drawing.Color.Maroon;
-            this.Reports_OLV_Label.Location = new System.Drawing.Point(178, 819);
+            this.Reports_OLV_Label.Location = new System.Drawing.Point(153, 819);
             this.Reports_OLV_Label.Name = "Reports_OLV_Label";
             this.all_TablePanel.SetRowSpan(this.Reports_OLV_Label, 2);
-            this.Reports_OLV_Label.Size = new System.Drawing.Size(869, 32);
+            this.Reports_OLV_Label.Size = new System.Drawing.Size(719, 32);
             this.Reports_OLV_Label.TabIndex = 67;
             this.Reports_OLV_Label.Text = "label15";
             this.Reports_OLV_Label.Visible = false;
@@ -888,10 +895,11 @@
             this.all_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.538462F));
             this.all_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.538462F));
             this.all_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.538462F));
+            this.all_TablePanel.Controls.Add(this.Reports_Dels_Button, 12, 39);
             this.all_TablePanel.Controls.Add(this.Report_Search_Textbox, 6, 3);
-            this.all_TablePanel.Controls.Add(this.Reports_OLV_Label, 25, 39);
+            this.all_TablePanel.Controls.Add(this.Reports_OLV_Label, 32, 39);
             this.all_TablePanel.Controls.Add(this.Reports_Edit_Button, 4, 39);
-            this.all_TablePanel.Controls.Add(this.Reports_SaveChanges_Button, 14, 39);
+            this.all_TablePanel.Controls.Add(this.Reports_SaveChanges_Button, 22, 39);
             this.all_TablePanel.Controls.Add(this.Reports_Label, 52, 0);
             this.all_TablePanel.Controls.Add(this.Reports_Search_Button, 61, 0);
             this.all_TablePanel.Controls.Add(this.Reports_From_Datetimepicker, 7, 0);
@@ -954,6 +962,24 @@
             this.all_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 4F));
             this.all_TablePanel.Size = new System.Drawing.Size(1675, 851);
             this.all_TablePanel.TabIndex = 74;
+            // 
+            // Reports_Dels_Button
+            // 
+            this.Reports_Dels_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
+            this.all_TablePanel.SetColumnSpan(this.Reports_Dels_Button, 8);
+            this.Reports_Dels_Button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Reports_Dels_Button.Enabled = false;
+            this.Reports_Dels_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Reports_Dels_Button.Font = new System.Drawing.Font("El Messiri", 10.8F);
+            this.Reports_Dels_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Reports_Dels_Button.Location = new System.Drawing.Point(1128, 822);
+            this.Reports_Dels_Button.Name = "Reports_Dels_Button";
+            this.all_TablePanel.SetRowSpan(this.Reports_Dels_Button, 2);
+            this.Reports_Dels_Button.Size = new System.Drawing.Size(194, 26);
+            this.Reports_Dels_Button.TabIndex = 87;
+            this.Reports_Dels_Button.Text = "حذف المحدد";
+            this.Reports_Dels_Button.UseVisualStyleBackColor = false;
+            this.Reports_Dels_Button.Click += new System.EventHandler(this.Reports_Dels_Button_Click);
             // 
             // notesTAB_ImageButton
             // 
@@ -1044,8 +1070,8 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.Charts_AuxPanel);
             this.splitContainer1.Panel1.Controls.Add(this.all_TablePanel);
+            this.splitContainer1.Panel1.Controls.Add(this.Charts_AuxPanel);
             this.splitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             // 
             // splitContainer1.Panel2
@@ -1140,5 +1166,6 @@
         private System.Windows.Forms.Label Splitter_Label;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel OLV_Panel;
+        private System.Windows.Forms.Button Reports_Dels_Button;
     }
 }

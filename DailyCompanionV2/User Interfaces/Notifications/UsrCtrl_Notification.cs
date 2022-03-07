@@ -83,5 +83,9 @@ namespace DailyCompanionV2.User_Interfaces
             Sync();
             Program.WorkingForm.Notify_Sync();
         }
+        void CheckNotifDoneButton() => Notif_Done_Button.Enabled = (notifications_Treeview.Nodes.ContainsKey(requiredNotification) && notifications_Treeview.Nodes[requiredNotification].IsExpanded && notifications_Treeview.Nodes[requiredNotification].Nodes.Count > 0 && notifications_Treeview.SelectedNode != null && notifications_Treeview.SelectedNode.Parent != null && notifications_Treeview.SelectedNode.Parent == notifications_Treeview.Nodes[requiredNotification]);
+        private void notifications_Treeview_MouseUp(object sender, MouseEventArgs e) => CheckNotifDoneButton();
+        private void notifications_Treeview_AfterSelect(object sender, TreeViewEventArgs e) => CheckNotifDoneButton();
+        private void notifications_Treeview_KeyUp(object sender, KeyEventArgs e) => CheckNotifDoneButton();
     }
 }

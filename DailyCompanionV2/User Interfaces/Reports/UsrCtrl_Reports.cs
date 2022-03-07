@@ -120,17 +120,17 @@ namespace DailyCompanionV2.User_Interfaces
         private void LoadTodos_Listview(DateTime from, DateTime to)
         {
             tempTodos = Reports_Processor.TodosList(from, to, searchTerm);
-            HM_Manager.Update_OLV(tempTodos, Todos_Objectlistview);
+            HM_Manager.Update_OLV(Reports_Processor.TodosList(from, to, searchTerm), Todos_Objectlistview);
         }
         private void LoadFinance_Listview(DateTime from, DateTime to)
         {
             tempFinances = Reports_Processor.FinancesList(from, to, searchTerm);
-            HM_Manager.Update_OLV(tempFinances, Finances_Objectlistview);
+            HM_Manager.Update_OLV(Reports_Processor.FinancesList(from, to, searchTerm), Finances_Objectlistview);
         }
         private void LoadNotes_Listview(string SearchTerm) 
         {
             tempNotes = Reports_Processor.NotesList(SearchTerm);
-            HM_Manager.Update_OLV(tempNotes, Notes_Objectlistview); 
+            HM_Manager.Update_OLV(Reports_Processor.NotesList(SearchTerm), Notes_Objectlistview); 
         }
 
         private void Listviews_UPDATE()
@@ -365,6 +365,7 @@ namespace DailyCompanionV2.User_Interfaces
         }
         private void Reports_SaveChanges_Button_Click(object sender, EventArgs e)
         {
+            Reports_OLV_Label.Visible = false;
             switch (State)
             {
                 case Enums.report_tabState.مهام:

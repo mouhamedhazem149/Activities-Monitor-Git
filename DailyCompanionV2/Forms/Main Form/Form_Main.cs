@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using DailyCompanionV2.Forms;
 using DailyCompanionV2.User_Interfaces;
@@ -18,11 +19,15 @@ namespace DailyCompanionV2
         public Form1()
         {
             Program.WorkingForm = this;
-            InitializeByResolution(); 
+            InitializeByResolution();
             LoadUserInfo();
             Change_Color(Color.FromArgb(int.Parse(ConfigurationManager.AppSettings["primaryColor"].Split(',')[0]), int.Parse(ConfigurationManager.AppSettings["primaryColor"].Split(',')[1]), int.Parse(ConfigurationManager.AppSettings["primaryColor"].Split(',')[2])), Color.FromArgb(int.Parse(ConfigurationManager.AppSettings["secondaryColor"].Split(',')[0]), int.Parse(ConfigurationManager.AppSettings["secondaryColor"].Split(',')[1]), int.Parse(ConfigurationManager.AppSettings["secondaryColor"].Split(',')[2])));
             State = Enums.mainformState.dashboard;
+            //dele = new WinEventDelegate(WinEventProc);
+           // IntPtr m_hhook = SetWinEventHook(EVENT_SYSTEM_FOREGROUND, EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, dele, 0, 0, WINEVENT_OUTOFCONTEXT);
         }
+        //WinEventDelegate dele = null; 
+
         void InitializeByResolution()
         {
             switch (Program.currentResolution)
@@ -393,5 +398,73 @@ namespace DailyCompanionV2
             State = Enums.mainformState.addtab;
         }
         private void Form1_Shown(object sender, EventArgs e) => UpdateNotificationTimer();
+
+        private void Login_Button_Click(object sender, EventArgs e)
+        {
+            if (HM_Manager.CheckUser(Login_Password_Textbox.Text, Login_Label, "نافذة الحماية المؤقتة", ref Program.mainSettings))
+            {
+                Main_SplitContainer.Dock = DockStyle.Fill;
+                Main_SplitContainer.Visible = true;
+                tempLock_Panel.Dock = DockStyle.None; tempLock_Panel.Visible = false;
+            }
+        }
+        private async void ForgetPassword_Button_Click(object sender, EventArgs e) => await System.Threading.Tasks.Task.Run(() => LoginForm_Handler.ForgetPassword_Handle(Login_Label));
+        
+        FormWindowState LastWindowState = FormWindowState.Minimized;
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (WindowState != LastWindowState)
+            {
+                LastWindowState = WindowState;
+                switch (WindowState)
+                {
+                    case FormWindowState.Maximized:
+                        break;
+                    case FormWindowState.Minimized:
+                        Main_SplitContainer.Dock = DockStyle.None;
+                        Main_SplitContainer.Visible = false;
+                        tempLock_Panel.Dock = DockStyle.Fill; Login_Password_Textbox.Text = ""; tempLock_Panel.Visible = true;
+                        break;
+                    case FormWindowState.Normal:
+                        break;
+                }
+            }
+
+        }
+
+        #region ACTIVE_WINDOW_Changed
+        delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime);
+        [DllImport("user32.dll")]
+        static extern IntPtr SetWinEventHook(uint eventMin, uint eventMax, IntPtr hmodWinEventProc, WinEventDelegate lpfnWinEventProc, uint idProcess, uint idThread, uint dwFlags);
+
+        private const uint WINEVENT_OUTOFCONTEXT = 0;
+        private const uint EVENT_SYSTEM_FOREGROUND = 3;
+
+        [DllImport("user32.dll")]
+        static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        static extern int GetWindowText(IntPtr hWnd, System.Text.StringBuilder text, int count);
+
+        private string GetActiveWindowTitle()
+        {
+            const int nChars = 256;
+            IntPtr handle = IntPtr.Zero;
+            System.Text.StringBuilder Buff = new System.Text.StringBuilder(nChars);
+            handle = GetForegroundWindow();
+
+            if (GetWindowText(handle, Buff, nChars) > 0)
+            {
+                return Buff.ToString();
+            }
+            return null;
+        }
+
+        public void WinEventProc(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
+        {
+            if (GetForegroundWindow() != Handle)
+                WindowState = FormWindowState.Minimized;
+        }
+        #endregion
     }
 }

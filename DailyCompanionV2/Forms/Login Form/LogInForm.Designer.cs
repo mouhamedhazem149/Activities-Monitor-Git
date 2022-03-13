@@ -96,6 +96,7 @@
             this.Login_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
             this.Login_Password_Textbox.IsPasswordTextbox = true;
             this.Login_Password_Textbox.IsPlaceholder = true;
+            this.Login_Password_Textbox.listboxFont = new System.Drawing.Font("El Messiri SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login_Password_Textbox.Location = new System.Drawing.Point(0, 0);
             this.Login_Password_Textbox.Margin = new System.Windows.Forms.Padding(20);
             this.Login_Password_Textbox.Name = "Login_Password_Textbox";

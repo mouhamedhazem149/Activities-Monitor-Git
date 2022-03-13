@@ -59,6 +59,16 @@
             this.UserInterfaces_Panel = new System.Windows.Forms.Panel();
             this.ActiveTabs_Tabcontrol = new XanderUI.XUIFlatTab();
             this.Main_SplitContainer = new System.Windows.Forms.SplitContainer();
+            this.password_TabePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Login_Label = new System.Windows.Forms.Label();
+            this.Resolution_Combobox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ForgetPassword_Button = new System.Windows.Forms.Button();
+            this.Login_Button = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.Login_Password_Textbox = new ModdedControls.ModdedTextBox();
+            this.tempLock_Panel = new System.Windows.Forms.Panel();
             this.Buttons_Panel.SuspendLayout();
             this.TabButtons_Panel.SuspendLayout();
             this.Header_Panel.SuspendLayout();
@@ -75,6 +85,9 @@
             this.Main_SplitContainer.Panel1.SuspendLayout();
             this.Main_SplitContainer.Panel2.SuspendLayout();
             this.Main_SplitContainer.SuspendLayout();
+            this.password_TabePanel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tempLock_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Buttons_Panel
@@ -617,6 +630,168 @@
             this.Main_SplitContainer.SplitterWidth = 1;
             this.Main_SplitContainer.TabIndex = 32;
             // 
+            // password_TabePanel
+            // 
+            this.password_TabePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.password_TabePanel.ColumnCount = 4;
+            this.password_TabePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.password_TabePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.password_TabePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.password_TabePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.password_TabePanel.Controls.Add(this.label2, 3, 1);
+            this.password_TabePanel.Controls.Add(this.Login_Label, 0, 6);
+            this.password_TabePanel.Controls.Add(this.Resolution_Combobox, 1, 2);
+            this.password_TabePanel.Controls.Add(this.label3, 3, 2);
+            this.password_TabePanel.Controls.Add(this.ForgetPassword_Button, 0, 4);
+            this.password_TabePanel.Controls.Add(this.Login_Button, 2, 4);
+            this.password_TabePanel.Controls.Add(this.panel1, 0, 1);
+            this.password_TabePanel.Location = new System.Drawing.Point(502, 138);
+            this.password_TabePanel.Name = "password_TabePanel";
+            this.password_TabePanel.RowCount = 7;
+            this.password_TabePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.password_TabePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.password_TabePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.password_TabePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.password_TabePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.password_TabePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.password_TabePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.password_TabePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.password_TabePanel.Size = new System.Drawing.Size(975, 519);
+            this.password_TabePanel.TabIndex = 49;
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("ToyorAljanah", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.label2.ForeColor = System.Drawing.Color.DarkRed;
+            this.label2.Location = new System.Drawing.Point(733, 78);
+            this.label2.Margin = new System.Windows.Forms.Padding(4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(238, 66);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "كلمة المرور";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Login_Label
+            // 
+            this.password_TabePanel.SetColumnSpan(this.Login_Label, 4);
+            this.Login_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Login_Label.Font = new System.Drawing.Font("El Messiri", 8.8F);
+            this.Login_Label.ForeColor = System.Drawing.Color.DarkRed;
+            this.Login_Label.Location = new System.Drawing.Point(3, 447);
+            this.Login_Label.Margin = new System.Windows.Forms.Padding(3);
+            this.Login_Label.Name = "Login_Label";
+            this.Login_Label.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Login_Label.Size = new System.Drawing.Size(969, 69);
+            this.Login_Label.TabIndex = 44;
+            this.Login_Label.Text = "تم إرسال كلمة مرور جديدة لبريدك الألكتروني! برجاء التحقق";
+            this.Login_Label.UseMnemonic = false;
+            this.Login_Label.Visible = false;
+            // 
+            // Resolution_Combobox
+            // 
+            this.password_TabePanel.SetColumnSpan(this.Resolution_Combobox, 2);
+            this.Resolution_Combobox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Resolution_Combobox.Enabled = false;
+            this.Resolution_Combobox.Font = new System.Drawing.Font("Alameen", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.Resolution_Combobox.FormattingEnabled = true;
+            this.Resolution_Combobox.Location = new System.Drawing.Point(246, 151);
+            this.Resolution_Combobox.Name = "Resolution_Combobox";
+            this.Resolution_Combobox.Size = new System.Drawing.Size(480, 36);
+            this.Resolution_Combobox.TabIndex = 1002;
+            this.Resolution_Combobox.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("ToyorAljanah", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.label3.ForeColor = System.Drawing.Color.DarkRed;
+            this.label3.Location = new System.Drawing.Point(733, 152);
+            this.label3.Margin = new System.Windows.Forms.Padding(4);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(238, 66);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "دقة الشاشة";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ForgetPassword_Button
+            // 
+            this.password_TabePanel.SetColumnSpan(this.ForgetPassword_Button, 2);
+            this.ForgetPassword_Button.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ForgetPassword_Button.Font = new System.Drawing.Font("El Messiri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForgetPassword_Button.ForeColor = System.Drawing.Color.DarkRed;
+            this.ForgetPassword_Button.Location = new System.Drawing.Point(118, 299);
+            this.ForgetPassword_Button.Margin = new System.Windows.Forms.Padding(3, 3, 80, 3);
+            this.ForgetPassword_Button.Name = "ForgetPassword_Button";
+            this.ForgetPassword_Button.Size = new System.Drawing.Size(288, 68);
+            this.ForgetPassword_Button.TabIndex = 1004;
+            this.ForgetPassword_Button.TabStop = false;
+            this.ForgetPassword_Button.Text = "نسيت كلمة المرور";
+            this.ForgetPassword_Button.UseVisualStyleBackColor = true;
+            this.ForgetPassword_Button.Click += new System.EventHandler(this.ForgetPassword_Button_Click);
+            // 
+            // Login_Button
+            // 
+            this.password_TabePanel.SetColumnSpan(this.Login_Button, 2);
+            this.Login_Button.Dock = System.Windows.Forms.DockStyle.Right;
+            this.Login_Button.Font = new System.Drawing.Font("El Messiri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Login_Button.ForeColor = System.Drawing.Color.Black;
+            this.Login_Button.Location = new System.Drawing.Point(618, 299);
+            this.Login_Button.Margin = new System.Windows.Forms.Padding(3, 3, 80, 3);
+            this.Login_Button.Name = "Login_Button";
+            this.Login_Button.Size = new System.Drawing.Size(277, 68);
+            this.Login_Button.TabIndex = 1003;
+            this.Login_Button.Text = "تسجيل الدخول";
+            this.Login_Button.UseVisualStyleBackColor = true;
+            this.Login_Button.Click += new System.EventHandler(this.Login_Button_Click);
+            // 
+            // panel1
+            // 
+            this.password_TabePanel.SetColumnSpan(this.panel1, 3);
+            this.panel1.Controls.Add(this.Login_Password_Textbox);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 84);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(723, 61);
+            this.panel1.TabIndex = 2;
+            // 
+            // Login_Password_Textbox
+            // 
+            this.Login_Password_Textbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Login_Password_Textbox.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Login_Password_Textbox.ForeColor = System.Drawing.Color.Silver;
+            this.Login_Password_Textbox.IsPasswordTextbox = true;
+            this.Login_Password_Textbox.IsPlaceholder = true;
+            this.Login_Password_Textbox.listboxFont = new System.Drawing.Font("El Messiri SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Login_Password_Textbox.Location = new System.Drawing.Point(0, 0);
+            this.Login_Password_Textbox.Margin = new System.Windows.Forms.Padding(20);
+            this.Login_Password_Textbox.Name = "Login_Password_Textbox";
+            this.Login_Password_Textbox.Placeholder = "ادخل كلمة المرور";
+            this.Login_Password_Textbox.placeholderColor = System.Drawing.Color.Silver;
+            this.Login_Password_Textbox.placeholderFont = null;
+            this.Login_Password_Textbox.SelectedItem = null;
+            this.Login_Password_Textbox.Size = new System.Drawing.Size(723, 39);
+            this.Login_Password_Textbox.TabIndex = 1001;
+            this.Login_Password_Textbox.Tag = "";
+            this.Login_Password_Textbox.Text = "ادخل كلمة المرور";
+            this.Login_Password_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Login_Password_Textbox.Values = null;
+            this.Login_Password_Textbox.Visible_Password_Button = true;
+            // 
+            // tempLock_Panel
+            // 
+            this.tempLock_Panel.Controls.Add(this.password_TabePanel);
+            this.tempLock_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tempLock_Panel.Location = new System.Drawing.Point(0, 0);
+            this.tempLock_Panel.Name = "tempLock_Panel";
+            this.tempLock_Panel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tempLock_Panel.Size = new System.Drawing.Size(1920, 1080);
+            this.tempLock_Panel.TabIndex = 34;
+            this.tempLock_Panel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -625,6 +800,7 @@
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.ControlBox = false;
             this.Controls.Add(this.Main_SplitContainer);
+            this.Controls.Add(this.tempLock_Panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -636,6 +812,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.Buttons_Panel.ResumeLayout(false);
             this.TabButtons_Panel.ResumeLayout(false);
             this.Header_Panel.ResumeLayout(false);
@@ -653,6 +830,10 @@
             this.Main_SplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Main_SplitContainer)).EndInit();
             this.Main_SplitContainer.ResumeLayout(false);
+            this.password_TabePanel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.tempLock_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -685,5 +866,15 @@
         private System.Windows.Forms.Button Tabs_Button;
         private System.Windows.Forms.Button Settings_Button;
         private System.Windows.Forms.Button Dashboard_Button;
+        private System.Windows.Forms.TableLayoutPanel password_TabePanel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Login_Label;
+        private System.Windows.Forms.ComboBox Resolution_Combobox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button ForgetPassword_Button;
+        private System.Windows.Forms.Button Login_Button;
+        private System.Windows.Forms.Panel panel1;
+        private ModdedControls.ModdedTextBox Login_Password_Textbox;
+        private System.Windows.Forms.Panel tempLock_Panel;
     }
 }

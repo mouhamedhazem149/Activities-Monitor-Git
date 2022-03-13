@@ -81,6 +81,7 @@ namespace DailyCompanionV2.User_Interfaces
                 catch (Exception ex) { HM_Manager.Fail_addition(Notification_Label, "برجاء التاكد من بيانات التنبيه"); }
             }
             Sync();
+            CheckNotifDoneButton();
             Program.WorkingForm.Notify_Sync();
         }
         void CheckNotifDoneButton() => Notif_Done_Button.Enabled = (notifications_Treeview.Nodes.ContainsKey(requiredNotification) && notifications_Treeview.Nodes[requiredNotification].IsExpanded && notifications_Treeview.Nodes[requiredNotification].Nodes.Count > 0 && notifications_Treeview.SelectedNode != null && notifications_Treeview.SelectedNode.Parent != null && notifications_Treeview.SelectedNode.Parent == notifications_Treeview.Nodes[requiredNotification]);

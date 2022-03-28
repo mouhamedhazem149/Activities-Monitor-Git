@@ -49,6 +49,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.Add_NOT_Button = new System.Windows.Forms.Button();
             this.Encrypt_Button = new System.Windows.Forms.Button();
             this.Decrypt_Button = new System.Windows.Forms.Button();
+            this.Del_NOT_Button = new ns1.BunifuImageButton();
             this.NOT_strNote_Textbox = new ModdedControls.ModdedTextBox();
             this.NOT_title_Adj_Label = new System.Windows.Forms.Label();
             this.NOT_title_Textbox = new ModdedControls.ModdedTextBox();
@@ -59,15 +60,14 @@ namespace DailyCompanionV2.User_Interfaces
             this.Side_Panel = new System.Windows.Forms.Panel();
             this.sidePanel_Treeview = new System.Windows.Forms.TreeView();
             this.Main_SplitContainer = new System.Windows.Forms.SplitContainer();
-            this.Del_NOT_Button = new ns1.BunifuImageButton();
             this.Note_Groupbox.SuspendLayout();
             this.all_TablePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Del_NOT_Button)).BeginInit();
             this.Tabcontrol_contextMenuStrip.SuspendLayout();
             this.Side_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Main_SplitContainer)).BeginInit();
             this.Main_SplitContainer.Panel1.SuspendLayout();
             this.Main_SplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Del_NOT_Button)).BeginInit();
             this.SuspendLayout();
             // 
             // Note_Groupbox
@@ -281,6 +281,27 @@ namespace DailyCompanionV2.User_Interfaces
             this.Decrypt_Button.UseVisualStyleBackColor = false;
             this.Decrypt_Button.Click += new System.EventHandler(this.Decrypt_Button_Click);
             // 
+            // Del_NOT_Button
+            // 
+            this.Del_NOT_Button.BackColor = System.Drawing.Color.DarkRed;
+            this.all_TablePanel.SetColumnSpan(this.Del_NOT_Button, 2);
+            this.Del_NOT_Button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Del_NOT_Button.Font = new System.Drawing.Font("El Messiri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Del_NOT_Button.ForeColor = System.Drawing.Color.Black;
+            this.Del_NOT_Button.Image = global::DailyCompanionV2.Properties.Resources.bin;
+            this.Del_NOT_Button.ImageActive = null;
+            this.Del_NOT_Button.Location = new System.Drawing.Point(28, 3);
+            this.Del_NOT_Button.Name = "Del_NOT_Button";
+            this.all_TablePanel.SetRowSpan(this.Del_NOT_Button, 3);
+            this.Del_NOT_Button.Size = new System.Drawing.Size(36, 37);
+            this.Del_NOT_Button.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Del_NOT_Button.TabIndex = 57;
+            this.Del_NOT_Button.TabStop = false;
+            this.Del_NOT_Button.Text = "حذف الملاحظة";
+            this.Del_NOT_Button.Visible = false;
+            this.Del_NOT_Button.Zoom = 10;
+            this.Del_NOT_Button.Click += new System.EventHandler(this.NOTE_Button_Click);
+            // 
             // NOT_strNote_Textbox
             // 
             this.all_TablePanel.SetColumnSpan(this.NOT_strNote_Textbox, 63);
@@ -418,6 +439,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.sidePanel_Treeview.RightToLeftLayout = true;
             this.sidePanel_Treeview.Size = new System.Drawing.Size(300, 930);
             this.sidePanel_Treeview.TabIndex = 1;
+            this.sidePanel_Treeview.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.sidePanel_Treeview_MouseDoubleClick);
             // 
             // Main_SplitContainer
             // 
@@ -433,27 +455,6 @@ namespace DailyCompanionV2.User_Interfaces
             this.Main_SplitContainer.SplitterDistance = 851;
             this.Main_SplitContainer.TabIndex = 95;
             // 
-            // Del_NOT_Button
-            // 
-            this.Del_NOT_Button.BackColor = System.Drawing.Color.DarkRed;
-            this.all_TablePanel.SetColumnSpan(this.Del_NOT_Button, 2);
-            this.Del_NOT_Button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Del_NOT_Button.Font = new System.Drawing.Font("El Messiri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Del_NOT_Button.ForeColor = System.Drawing.Color.Black;
-            this.Del_NOT_Button.Image = global::DailyCompanionV2.Properties.Resources.bin;
-            this.Del_NOT_Button.ImageActive = null;
-            this.Del_NOT_Button.Location = new System.Drawing.Point(28, 3);
-            this.Del_NOT_Button.Name = "Del_NOT_Button";
-            this.all_TablePanel.SetRowSpan(this.Del_NOT_Button, 3);
-            this.Del_NOT_Button.Size = new System.Drawing.Size(36, 37);
-            this.Del_NOT_Button.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Del_NOT_Button.TabIndex = 57;
-            this.Del_NOT_Button.TabStop = false;
-            this.Del_NOT_Button.Text = "حذف الملاحظة";
-            this.Del_NOT_Button.Visible = false;
-            this.Del_NOT_Button.Zoom = 10;
-            this.Del_NOT_Button.Click += new System.EventHandler(this.NOTE_Button_Click);
-            // 
             // UsrCtrl_Notes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -467,12 +468,12 @@ namespace DailyCompanionV2.User_Interfaces
             this.Note_Groupbox.ResumeLayout(false);
             this.all_TablePanel.ResumeLayout(false);
             this.all_TablePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Del_NOT_Button)).EndInit();
             this.Tabcontrol_contextMenuStrip.ResumeLayout(false);
             this.Side_Panel.ResumeLayout(false);
             this.Main_SplitContainer.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Main_SplitContainer)).EndInit();
             this.Main_SplitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Del_NOT_Button)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -37,13 +37,13 @@ namespace DailyCompanionV2.User_Interfaces
             InitialLoad();
             switch (LoadArg)
             {
-                case Enums.noteArgument.showNoteManager:
+                case Enums.noteArgument.loadNoteItem:
                     {
                         State = Enums.usrctrlState.mod;
                         NOT_title_Textbox.SelectedItem = NOT_title_Textbox.Text = Program.Notes_List.Where(p => p.id == MethodArg).FirstOrDefault().title;
                     }
                     break;
-                case Enums.noteArgument.loadNoteItem:
+                case Enums.noteArgument.showNoteManager:
                     State = Enums.usrctrlState.add;
                     break;
                 default:
@@ -69,7 +69,6 @@ namespace DailyCompanionV2.User_Interfaces
         public void Set_Tags()
         {
             Add_NOT_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.إضافة, Title = "إضافة ملاحظات", color = Enums.addColor };
-            //Modify_NOT_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.تعديل, Title = "تعديل ملاحظات", color = Enums.modColor };
             Del_NOT_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.حذف, Title = "تعديل ملاحظات", color = Enums.modColor };
 
             Note_Groupbox.ContextMenuStrip = Tabcontrol_contextMenuStrip;
@@ -141,7 +140,13 @@ namespace DailyCompanionV2.User_Interfaces
         private void NOT_title_Textbox_SelectedItemChanged(object sender, EventArgs e)
         {
             if (NOT_title_Textbox.Text != "")
-            { State = Enums.usrctrlState.mod; NOTE_Button_Click("loadData", null); }
+            { 
+                State = Enums.usrctrlState.mod; 
+                NOTE_Button_Click("loadData", null);
+                if (Parent is TabPage)
+                    (Parent as TabPage).Text = NOT_title_Textbox.Text;
+                else Tag = NOT_title_Textbox.Text;
+            }
         }
 
         private void pasteToolStripMenuItem_MouseDown(object sender, MouseEventArgs e)

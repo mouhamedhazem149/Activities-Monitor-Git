@@ -227,18 +227,28 @@ namespace DailyCompanionV2.User_Interfaces
         }
         private void PickColor_Button_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("اختار لون رئيسي", "إخطار", MessageBoxButtons.OK) == DialogResult.OK)
-                if (colorDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    var tempPrimary = colorDialog1.Color;
-                    if (MessageBox.Show("اختار لون ثانوي. في حالة التخطي يتم اختيار درجة لون افتح من اللون الرئيسي", "إخطار", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                        if (colorDialog1.ShowDialog() == DialogResult.OK)
-                        {
-                            var tempSecondary = colorDialog1.Color;
-                            Program.WorkingForm.Change_Color(tempPrimary, tempSecondary);
-                        }
-                    Program.WorkingForm.Change_Color(tempPrimary, ControlPaint.Light(tempPrimary, 0.42F));
-                }
+            Color tempPrimary = Color.FromArgb(93, 93, 93);
+            Color tempSecondary = Color.FromArgb(126, 126, 126);
+            switch (MessageBox.Show("اختار لون رئيسي", "إخطار", MessageBoxButtons.OKCancel))
+            {
+
+                case DialogResult.OK:
+                    if (colorDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        tempPrimary = colorDialog1.Color;
+                        if (MessageBox.Show("اختار لون ثانوي. في حالة التخطي يتم اختيار درجة لون افتح من اللون الرئيسي", "إخطار", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                            if (colorDialog1.ShowDialog() == DialogResult.OK)
+                            {
+                                tempSecondary = colorDialog1.Color;
+                                Program.WorkingForm.Change_Color(tempPrimary, tempSecondary);
+                            }
+                            else tempSecondary = ControlPaint.Light(tempPrimary, 0.42F);
+                    }
+                    break;
+                case DialogResult.Cancel:
+                    break;
+            }
+            Program.WorkingForm.Change_Color(tempPrimary, tempSecondary);
         }
         private void Backup_Button_Click(object sender, EventArgs e) => BackupHelperManager.BackUp(Restore_Label);
         private void Restore_Button_Click(object sender, EventArgs e) => BackupHelperManager.Restore(Restore_Label);
@@ -303,7 +313,7 @@ namespace DailyCompanionV2.User_Interfaces
                     Settings_Processor.HandleShortcut(Enums.genericHandle_Type.إضافة, shortcutsProcess_Groupbox, _new.name, _new.shortcut, _new.process, _new.children,
                 Shortcut_Label, shortcutsProcess_Groupbox.Text, shortcutsProcess_Groupbox.ForeColor, null, true);
             }
-            tempShortcutDelete.ForEach(p => Settings_Processor.HandleShortcut(Enums.genericHandle_Type.حذف, shortcutsProcess_Groupbox, "", "", 0, "",
+            tempShortcutDelete.Where(p => tempShortcut.Where(t => t.id == p.id).FirstOrDefault() != null).ToList().ForEach(p => Settings_Processor.HandleShortcut(Enums.genericHandle_Type.حذف, shortcutsProcess_Groupbox, "", "", 0, "",
                 Shortcut_Label, shortcutsProcess_Groupbox.Text, shortcutsProcess_Groupbox.ForeColor, p, true));
             tempShortcutDelete.Clear();
         }
@@ -420,7 +430,6 @@ namespace DailyCompanionV2.User_Interfaces
                         break;
                 }
         }
-
         private void AddNotification_Button_Click(object sender, EventArgs e) => Notificatons_Objectlistview.AddObject(new Notification());
         private void Del_Notification_Button_Click(object sender, EventArgs e)
         {
@@ -442,18 +451,16 @@ namespace DailyCompanionV2.User_Interfaces
                     Settings_Processor.HandleNotification(Enums.genericHandle_Type.إضافة, null, _new.title, _new.description, _new.category, _new.notif_Date, _new.frequency, _new.freqDInt, _new.repeat, _new.repeatInt, _new.done_date
                 , Notification_Label, "", Color.White, null, true);
             }
-            tempNotificationDelete.ForEach(p => Settings_Processor.HandleNotification(Enums.genericHandle_Type.حذف, null, "", "","",DateTime.Now,Enums.notifFrequency.آخر, 0,Enums.notifRepeat.محدد,0,DateTime.Now,
-                Notification_Label, "", System.Drawing.Color.White, p, true));
+            tempNotificationDelete.Where(p => tempNotification.Where(t => t.id == p.id).FirstOrDefault() != null).ToList().ForEach(p => Settings_Processor.HandleNotification(Enums.genericHandle_Type.حذف, null, "", "","",DateTime.Now,Enums.notifFrequency.آخر, 0,Enums.notifRepeat.محدد,0,DateTime.Now,
+                Notification_Label, "", Color.White, p, true));
             tempNotificationDelete.Clear();
             
             Program.WorkingForm.Notify_Sync();
         }
-
         private void Notificatons_Objectlistview_ItemsChanged(object sender, BrightIdeasSoftware.ItemsChangedEventArgs e) =>
             Del_Notification_Button.Enabled = Notificatons_Objectlistview.SelectedObjects != null && Notificatons_Objectlistview.SelectedObjects.Count > 0;
         private void Notificatons_Objectlistview_SelectionChanged(object sender, EventArgs e)=>
             Del_Notification_Button.Enabled = Notificatons_Objectlistview.SelectedObjects != null && Notificatons_Objectlistview.SelectedObjects.Count > 0;
-
         private void Notificatons_Objectlistview_FormatRow(object sender, BrightIdeasSoftware.FormatRowEventArgs e)
         {
             switch (((Notification)e.Model).completed)
@@ -482,7 +489,6 @@ namespace DailyCompanionV2.User_Interfaces
                     break;
             }
         }
-
         private void Notificatons_Objectlistview_ButtonClick(object sender, BrightIdeasSoftware.CellClickEventArgs e)
         {
             ((Notification)e.Item.RowObject).done_date = DateTime.Now;

@@ -129,7 +129,12 @@ namespace DailyCompanionV2.User_Interfaces
         private void TODO_id_Textbox_SelectedItemChanged(object sender, EventArgs e)
         {
             if (TODO_id_Textbox.Text != "")
+            { 
                 TODO_Button_Click("loadData", null);
+                if (Parent is TabPage)
+                    (Parent as TabPage).Text = TODO_id_Textbox.Text;
+                else Tag = TODO_id_Textbox.Text;
+            }
         }
         private void TODO_id_Textbox_TextChanged(object sender, EventArgs e) => HM_Manager.CheckTxtBoxInt(sender as ModdedControls.ModdedTextBox, id_Label);
         private void Todos_chkpoint_list_Objectlistview_CellEditStarting(object sender, BrightIdeasSoftware.CellEditEventArgs e)
@@ -215,6 +220,8 @@ namespace DailyCompanionV2.User_Interfaces
             {
                 HM_Manager.SetControlsFromModel(AddTodo_Groupbox, HM_Manager.commonFiller(Program.Todos_List.Where(p => p.GetType().GetProperty(HM_Manager.Propertyfromcontrol(sender as ModdedControls.ModdedTextBox)).GetValue(p).ToString() == (sender as ModdedControls.ModdedTextBox).SelectedItem).ToList()));
                 LoadTODOSimilarNode();
+                if (this.Parent is TabPage)
+                    (Parent as TabPage).Text = (sender as ModdedControls.ModdedTextBox).Text;
             }
         }
         private void Todos_chkpoint_list_Objectlistview_ItemsChanged(object sender, BrightIdeasSoftware.ItemsChangedEventArgs e) => TODOs_DelChkPnt_Button.Enabled = (Todos_chkpoint_list_Objectlistview.Items.Count > 0 && Todos_chkpoint_list_Objectlistview.SelectedObjects != null && Todos_chkpoint_list_Objectlistview.SelectedObjects.Count > 0);

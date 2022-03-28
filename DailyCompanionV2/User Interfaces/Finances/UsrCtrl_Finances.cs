@@ -115,7 +115,12 @@ namespace DailyCompanionV2
         private void FNC_id_Textbox_SelectedItemChanged(object sender, EventArgs e)
         {
             if (FNC_id_Textbox.Text != "")
+            {
                 FNC_Button_Click("loadData", null);
+                if (Parent is TabPage)
+                    (Parent as TabPage).Text = FNC_id_Textbox.Text;
+                else Tag = FNC_id_Textbox.Text;
+            }
         }
         private void FNC_value_Textbox_TextChanged(object sender, EventArgs e) { HM_Manager.CheckTxtBoxDecimal(sender as ModdedControls.ModdedTextBox, FNC_Label); CheckValidWalletPaid(); }
         private void FNC_wallet_Combobox_SelectedIndexChanged(object sender, EventArgs e)
@@ -185,6 +190,8 @@ namespace DailyCompanionV2
             {
                 HM_Manager.SetControlsFromModel(AddFinance_Groupbox, HM_Manager.commonFiller(Program.Finances_List.Where(p => p.GetType().GetProperty(System.Text.RegularExpressions.Regex.Match((sender as ModdedControls.ModdedTextBox).Name, HM_Manager.controlsPattern).Groups[HM_Manager.proprtyName].Value).GetValue(p).ToString() == (sender as ModdedControls.ModdedTextBox).SelectedItem).ToList()));
                 LoadFNCSimilarNode();
+                if (Parent is TabPage)
+                    (Parent as TabPage).Text = (sender as ModdedControls.ModdedTextBox).Text;
             }
         }
         private void UsrCtrl_TgleBtn_CheckedChanged(object sender, EventArgs e)

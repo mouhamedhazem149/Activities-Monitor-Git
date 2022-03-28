@@ -238,7 +238,7 @@ namespace DailyCompanionV2
         {
             HM_Manager.UpdateConfiguration(new List<Tuple<string, string>> { new Tuple<string, string>("primaryColor", $"{mClr.R},{mClr.G},{mClr.B}"), new Tuple<string, string>("secondaryColor", $"{sClr.R},{sClr.G},{sClr.B}") });
             mainColor = mClr; secColor = sClr;
-            MainForm_Handler.ChangeColor(mClr, sClr, new List<Control>() { Header_Panel,Main_SplitContainer }, new List<Control>() { Buttons_Panel }, new List<Control>() {  UserInterfaces_Panel,ActiveTabs_Tabcontrol });
+            MainForm_Handler.ChangeColor(mClr, sClr, new List<Control>() { Header_Panel }, new List<Control>() { Buttons_Panel }, new List<Control>() {  UserInterfaces_Panel,ActiveTabs_Tabcontrol, Main_SplitContainer });
         }
         private void Shutdown_ImageButton_Click(object sender, EventArgs e) => Program.WorkingForm.Close();
 
@@ -302,6 +302,7 @@ namespace DailyCompanionV2
             if (pgName != "" && item != null)
             {
                 UserInterfaces_Panel.Visible = false;
+                if (item.Tag != null && item.Tag is string) pgName = item.Tag.ToString();
                 ActiveTabs_Tabcontrol.TabPages.Add($"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count + 1}", $"{pgName}");
                 ActiveTabs_Tabcontrol.TabPages[$"{tabPageName}{ActiveTabs_Tabcontrol.TabPages.Count}"].Controls.Add(item);
                 item.Dock = DockStyle.Fill;
@@ -394,7 +395,7 @@ namespace DailyCompanionV2
         private void Tabs_Button_Click(object sender, EventArgs e)
         {
             TabButtons_Panel.Visible = !TabButtons_Panel.Visible;
-            Tabs_Button.BackColor = TabButtons_Panel.Visible ? secColor : mainColor;
+            Tabs_Button.BackColor = TabButtons_Panel.Visible || ActiveTabs_Tabcontrol.TabCount > 0 ? secColor : mainColor;
             State = Enums.mainformState.addtab;
         }
         private void Form1_Shown(object sender, EventArgs e) => UpdateNotificationTimer();

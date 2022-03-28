@@ -41,8 +41,14 @@ namespace DailyCompanionV2.Forms
         public static void ChangeColor(Color new_mainColor, Color new_secColor, List<Control> mainPanels, List<Control> mainAuxPanels, List<Control> secPanels)
         {
             foreach (Control ctrl in mainPanels) ctrl.BackColor = new_mainColor;
-            foreach (Control ctrl in mainAuxPanels) ctrl.BackColor = ControlPaint.Dark(new_mainColor, 0.01F);
-            foreach(Button ctrl in mainAuxPanels.OfType<Button>()) { ctrl.FlatAppearance.MouseDownBackColor = ctrl.FlatAppearance.MouseOverBackColor = ControlPaint.Light(new_mainColor, 0.01F); }
+            foreach (Control ctrl in mainAuxPanels)
+            {
+                ctrl.BackColor = ControlPaint.Dark(new_mainColor, 0.01F);
+                foreach (Button btn in HM_Manager.GetAllControls(ctrl, typeof(Button))) 
+                {
+                    btn.BackColor = ControlPaint.Dark(new_mainColor, 0.01F); 
+                    btn.FlatAppearance.MouseDownBackColor = btn.FlatAppearance.MouseOverBackColor = ControlPaint.Light(new_mainColor, 0.01F); }
+            }
             foreach (Control ctrl in secPanels) ctrl.BackColor = new_secColor;
         }
     }

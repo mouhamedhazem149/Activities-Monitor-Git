@@ -100,7 +100,7 @@
             this.Buttons_Panel.Controls.Add(this.xuiClock1);
             this.Buttons_Panel.Dock = System.Windows.Forms.DockStyle.Right;
             this.Buttons_Panel.Location = new System.Drawing.Point(0, 0);
-            this.Buttons_Panel.Margin = new System.Windows.Forms.Padding(2);
+            this.Buttons_Panel.Margin = new System.Windows.Forms.Padding(0);
             this.Buttons_Panel.Name = "Buttons_Panel";
             this.Buttons_Panel.Size = new System.Drawing.Size(235, 1080);
             this.Buttons_Panel.TabIndex = 0;
@@ -578,7 +578,7 @@
             this.UserInterfaces_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UserInterfaces_Panel.ForeColor = System.Drawing.Color.Black;
             this.UserInterfaces_Panel.Location = new System.Drawing.Point(0, 139);
-            this.UserInterfaces_Panel.Margin = new System.Windows.Forms.Padding(2);
+            this.UserInterfaces_Panel.Margin = new System.Windows.Forms.Padding(0);
             this.UserInterfaces_Panel.Name = "UserInterfaces_Panel";
             this.UserInterfaces_Panel.Size = new System.Drawing.Size(1684, 941);
             this.UserInterfaces_Panel.TabIndex = 7;
@@ -596,8 +596,10 @@
             this.ActiveTabs_Tabcontrol.InActiveTextColor = System.Drawing.Color.DimGray;
             this.ActiveTabs_Tabcontrol.ItemSize = new System.Drawing.Size(240, 16);
             this.ActiveTabs_Tabcontrol.Location = new System.Drawing.Point(0, 139);
+            this.ActiveTabs_Tabcontrol.Margin = new System.Windows.Forms.Padding(0);
             this.ActiveTabs_Tabcontrol.Name = "ActiveTabs_Tabcontrol";
             this.ActiveTabs_Tabcontrol.OnlyTopLine = true;
+            this.ActiveTabs_Tabcontrol.Padding = new System.Drawing.Point(0, 0);
             this.ActiveTabs_Tabcontrol.PageColor = System.Drawing.Color.LightGray;
             this.ActiveTabs_Tabcontrol.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ActiveTabs_Tabcontrol.SelectedIndex = 0;

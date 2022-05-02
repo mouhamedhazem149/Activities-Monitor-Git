@@ -52,7 +52,7 @@ namespace DailyCompanionV2.Models
         }
         public List<Checkpoint> chkpoint_list { get;  set;}
 
-        private string chkString
+        public string chkString
         {
             get
             {

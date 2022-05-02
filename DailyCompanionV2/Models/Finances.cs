@@ -8,7 +8,7 @@ namespace DailyCompanionV2.Models
         public int id { get; set; }
         
         public int wallet { get; set; }
-        
+        public string wltName => Program.Wallets_List.Where(p => p.id == wallet).FirstOrDefault() != null ? Program.Wallets_List.Where(p => p.id == wallet).First().name : "";
         public string relatedentity { get; set; }
         public Utilities.Enums.financeType type { get; set; }
         public string category { get; set; }
@@ -35,6 +35,6 @@ namespace DailyCompanionV2.Models
         public DateTime lst_updt { get { return lstupdt != null ? DateTime.Parse(lstupdt) : DateTime.Now; } set { lstupdt = value.ToString("g"); } }
         public string notes { get; set; }
         public bool Equals(Finances obj) => (id == obj.id && relatedentity == obj.relatedentity && type == obj.type && category == obj.category && due == obj.due && paid == obj.paid && duedate == obj.duedate && donedate == obj.donedate && notes == obj.notes);
-        public string String => $"{id} {relatedentity} {Program.Wallets_List.Where(p =>p.id == wallet).First().name} {Utilities.Enums.GetDisplayName(type)} {category} {due} {paid} {duedate} {str_done_date} {notes}";
+        public string String => $"{id} {relatedentity} {wltName} {Utilities.Enums.GetDisplayName(type)} {category} {due} {paid} {duedate} {str_done_date} {notes}";
     }
 }

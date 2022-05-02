@@ -30,7 +30,7 @@ namespace DailyCompanionV2.User_Interfaces
         private void LoadTODORecentNode()
         {
             int todoRecent_Count = int.Parse(System.Configuration.ConfigurationManager.AppSettings["recentTODOcount"].ToString());
-            var todoRecent = Program.Todos_List.OrderByDescending(p => p.lst_updt).ThenBy(p => p.id).Take(todoRecent_Count).ToList();
+            var todoRecent = Program.Todos_List.OrderByDescending(p => p.lst_updt).ThenByDescending(p => p.id).Take(todoRecent_Count).ToList();
             sidePanel_Treeview.Nodes.Add(todoSideRecent, $"تم إضافته مؤخرا (أقصى حد : {todoRecent_Count}) :");
             foreach (var recent in todoRecent)
                 sidePanel_Treeview.Nodes[todoSideRecent].Nodes.Add(new TreeNode($"{recent.category} \n {recent.todo} :: ({recent.id}). تاريخ أخر تعديل : {recent.lst_updt.ToString("D")}") { Tag = recent.id });
@@ -49,14 +49,22 @@ namespace DailyCompanionV2.User_Interfaces
         private void LoadTODOPreviousNode()
         {
             string property = HM_Manager.Propertyfromcontrol(focusedTextbox);
-            List<string> previousTODO = new List<string>();
-            if (focusedTextbox != null) previousTODO = Program.Todos_List.Select(p => p.GetType().GetProperty(property).GetValue(p).ToString()).ToList();
-            if (!sidePanel_Treeview.Nodes.ContainsKey(todoSidePrevious)) sidePanel_Treeview.Nodes.Add(todoSidePrevious, $"خيارات مقترحة ({previousTODO.Distinct().Count()}) :");
-            else sidePanel_Treeview.Nodes[todoSidePrevious].Text = $"خيارات مقترحة ({previousTODO.Distinct().Count()}) :";
+            List<IGrouping<string, Todos>> previousTODO = new List<IGrouping<string, Todos>>();
+            if (focusedTextbox != null) previousTODO = Program.Todos_List.GroupBy(p => p.GetType().GetProperty(property).GetValue(p).ToString()).ToList();
+
+            if (!sidePanel_Treeview.Nodes.ContainsKey(todoSidePrevious)) sidePanel_Treeview.Nodes.Add(todoSidePrevious, $"خيارات مقترحة ({previousTODO.Select(p => p.Key).Count()}) :");
+            else sidePanel_Treeview.Nodes[todoSidePrevious].Text = $"خيارات مقترحة ({previousTODO.Select(p => p.Key).Count()}) :";
+
             sidePanel_Treeview.Nodes[todoSidePrevious].Nodes.Clear();
-            foreach (var previous in previousTODO.Distinct())
-                sidePanel_Treeview.Nodes[todoSidePrevious].Nodes.Add(new TreeNode($"{previous} : ({previousTODO.Count(p => p == previous)})") { Tag = previous });
+
+            foreach (var previous in previousTODO)
+            {
+                TreeNode[] todoSidePreviousArray = previous.ToList()
+                    .Select(prevG => new TreeNode($"{prevG.id}") { Tag = prevG.id }).ToArray();
+                sidePanel_Treeview.Nodes[todoSidePrevious].Nodes.Add(new TreeNode($"{previous.Key} : ({previous.Count()})", todoSidePreviousArray) { Tag = previous.Key });
+            }
         }
+        
         private void LoadTODOSimilarNode()
         {//3 levels , parent node containg different properties, under each property possible values, under each value possible matches by ID
             string property = HM_Manager.Propertyfromcontrol(focusedTextbox);
@@ -136,6 +144,10 @@ namespace DailyCompanionV2.User_Interfaces
                                 if (selNode.Tag is string)
                                     if (focusedTextbox.Values.Contains(selNode.Tag as string))
                                         focusedTextbox.SelectedItem = focusedTextbox.Text = selNode.Tag as string;
+                                break;
+                            case 2:
+                                if (selNode.Tag is int?)
+                                    Program.WorkingForm.Click_TODO(Enums.todoArgument.loadTodoItem, (selNode.Tag as int?).Value);
                                 break;
                         }
                         break;

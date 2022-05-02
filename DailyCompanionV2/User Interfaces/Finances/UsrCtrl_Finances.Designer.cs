@@ -34,18 +34,18 @@ namespace DailyCompanionV2
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsrCtrl_Finances));
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Node3");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("مهام مقترحة", new System.Windows.Forms.TreeNode[] {
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Node4");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("مهام مطلوبة", new System.Windows.Forms.TreeNode[] {
-            treeNode11});
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Node5");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Node6");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("خيارات سابقة", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14});
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("مهام شبيهة");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node3");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("مهام مقترحة", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Node4");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("مهام مطلوبة", new System.Windows.Forms.TreeNode[] {
+            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Node6");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("خيارات سابقة", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("مهام شبيهة");
             this.cityColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.FNCReq_Groupbox = new System.Windows.Forms.GroupBox();
             this.reqFNC_Objectlistview = new BrightIdeasSoftware.ObjectListView();
@@ -79,6 +79,7 @@ namespace DailyCompanionV2
             this.FNCWallets_Groupbox = new System.Windows.Forms.GroupBox();
             this.Wallets_TablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.all_TablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.FNC_WltCrdt_Label = new System.Windows.Forms.Label();
             this.FNC_notes_Adj_Label = new System.Windows.Forms.Label();
             this.FNC_notes_Textbox = new ModdedControls.ModdedTextBox();
             this.FNC_Label = new System.Windows.Forms.Label();
@@ -98,7 +99,6 @@ namespace DailyCompanionV2
             this.FNC_id_Label = new System.Windows.Forms.Label();
             this.FNC_category_Textbox = new ModdedControls.ModdedTextBox();
             this.FNC_category_Adj_Label = new System.Windows.Forms.Label();
-            this.FNC_type_Combobox = new System.Windows.Forms.ComboBox();
             this.FNC_Type_Adj_Label = new System.Windows.Forms.Label();
             this.FNC_wltName_Adj_Label = new System.Windows.Forms.Label();
             this.FNC_relatedidentity_Adj_Label = new System.Windows.Forms.Label();
@@ -106,6 +106,8 @@ namespace DailyCompanionV2
             this.relatedIdntity_Panel = new System.Windows.Forms.Panel();
             this.FNC_relatedentity_Textbox = new ModdedControls.ModdedTextBox();
             this.FNC_relatedentity_Combobox = new System.Windows.Forms.ComboBox();
+            this.FNC_type_Panel = new System.Windows.Forms.Panel();
+            this.FNC_type_Combobox = new System.Windows.Forms.ComboBox();
             this.UsrCtrl_TgleBtn = new CustomControls.RJControls.RJToggleButton();
             this.Tabcontrol_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -129,6 +131,7 @@ namespace DailyCompanionV2
             this.DTPicker_contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Del_FNC_Button)).BeginInit();
             this.relatedIdntity_Panel.SuspendLayout();
+            this.FNC_type_Panel.SuspendLayout();
             this.Tabcontrol_contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Main_SplitContainer)).BeginInit();
             this.Main_SplitContainer.Panel1.SuspendLayout();
@@ -740,6 +743,7 @@ namespace DailyCompanionV2
             this.all_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.538462F));
             this.all_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.538462F));
             this.all_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.538462F));
+            this.all_TablePanel.Controls.Add(this.FNC_WltCrdt_Label, 43, 5);
             this.all_TablePanel.Controls.Add(this.FNC_notes_Adj_Label, 0, 26);
             this.all_TablePanel.Controls.Add(this.FNC_notes_Textbox, 0, 28);
             this.all_TablePanel.Controls.Add(this.FNC_Label, 2, 40);
@@ -757,12 +761,12 @@ namespace DailyCompanionV2
             this.all_TablePanel.Controls.Add(this.FNC_id_Label, 44, 2);
             this.all_TablePanel.Controls.Add(this.FNC_category_Textbox, 8, 13);
             this.all_TablePanel.Controls.Add(this.FNC_category_Adj_Label, 1, 13);
-            this.all_TablePanel.Controls.Add(this.FNC_type_Combobox, 8, 0);
             this.all_TablePanel.Controls.Add(this.FNC_Type_Adj_Label, 0, 0);
             this.all_TablePanel.Controls.Add(this.FNC_wltName_Adj_Label, 0, 4);
             this.all_TablePanel.Controls.Add(this.FNC_relatedidentity_Adj_Label, 0, 8);
             this.all_TablePanel.Controls.Add(this.FNC_wallet_Combobox, 8, 4);
             this.all_TablePanel.Controls.Add(this.relatedIdntity_Panel, 8, 8);
+            this.all_TablePanel.Controls.Add(this.FNC_type_Panel, 8, 0);
             this.all_TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.all_TablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.all_TablePanel.Location = new System.Drawing.Point(3, 39);
@@ -814,6 +818,19 @@ namespace DailyCompanionV2
             this.all_TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.5F));
             this.all_TablePanel.Size = new System.Drawing.Size(1369, 809);
             this.all_TablePanel.TabIndex = 84;
+            // 
+            // FNC_WltCrdt_Label
+            // 
+            this.all_TablePanel.SetColumnSpan(this.FNC_WltCrdt_Label, 19);
+            this.FNC_WltCrdt_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FNC_WltCrdt_Label.Font = new System.Drawing.Font("El Messiri", 7.5F);
+            this.FNC_WltCrdt_Label.ForeColor = System.Drawing.Color.Green;
+            this.FNC_WltCrdt_Label.Location = new System.Drawing.Point(70, 80);
+            this.FNC_WltCrdt_Label.Name = "FNC_WltCrdt_Label";
+            this.FNC_WltCrdt_Label.Size = new System.Drawing.Size(393, 20);
+            this.FNC_WltCrdt_Label.TabIndex = 74;
+            this.FNC_WltCrdt_Label.Text = "رصيد المحفظة";
+            this.FNC_WltCrdt_Label.Visible = false;
             // 
             // FNC_notes_Adj_Label
             // 
@@ -1137,21 +1154,6 @@ namespace DailyCompanionV2
             this.FNC_category_Adj_Label.Text = "التصنيف";
             this.FNC_category_Adj_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // FNC_type_Combobox
-            // 
-            this.FNC_type_Combobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.all_TablePanel.SetColumnSpan(this.FNC_type_Combobox, 35);
-            this.FNC_type_Combobox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FNC_type_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.FNC_type_Combobox.Font = new System.Drawing.Font("El Messiri", 15F);
-            this.FNC_type_Combobox.FormattingEnabled = true;
-            this.FNC_type_Combobox.Location = new System.Drawing.Point(469, 3);
-            this.FNC_type_Combobox.Name = "FNC_type_Combobox";
-            this.all_TablePanel.SetRowSpan(this.FNC_type_Combobox, 3);
-            this.FNC_type_Combobox.Size = new System.Drawing.Size(729, 47);
-            this.FNC_type_Combobox.TabIndex = 1;
-            this.FNC_type_Combobox.SelectedIndexChanged += new System.EventHandler(this.FNC_type_Combobox_SelectedIndexChanged);
-            // 
             // FNC_Type_Adj_Label
             // 
             this.all_TablePanel.SetColumnSpan(this.FNC_Type_Adj_Label, 8);
@@ -1255,6 +1257,32 @@ namespace DailyCompanionV2
             this.FNC_relatedentity_Combobox.TabIndex = 3;
             this.FNC_relatedentity_Combobox.Visible = false;
             this.FNC_relatedentity_Combobox.SelectedIndexChanged += new System.EventHandler(this.FNC_relatedwallet_Combobox_SelectedIndexChanged);
+            // 
+            // FNC_type_Panel
+            // 
+            this.all_TablePanel.SetColumnSpan(this.FNC_type_Panel, 35);
+            this.FNC_type_Panel.Controls.Add(this.FNC_type_Combobox);
+            this.FNC_type_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FNC_type_Panel.Location = new System.Drawing.Point(469, 3);
+            this.FNC_type_Panel.Name = "FNC_type_Panel";
+            this.FNC_type_Panel.Padding = new System.Windows.Forms.Padding(3);
+            this.all_TablePanel.SetRowSpan(this.FNC_type_Panel, 3);
+            this.FNC_type_Panel.Size = new System.Drawing.Size(729, 54);
+            this.FNC_type_Panel.TabIndex = 75;
+            // 
+            // FNC_type_Combobox
+            // 
+            this.FNC_type_Combobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.FNC_type_Combobox.BackColor = System.Drawing.SystemColors.Window;
+            this.FNC_type_Combobox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FNC_type_Combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FNC_type_Combobox.Font = new System.Drawing.Font("El Messiri", 15F);
+            this.FNC_type_Combobox.FormattingEnabled = true;
+            this.FNC_type_Combobox.Location = new System.Drawing.Point(3, 3);
+            this.FNC_type_Combobox.Name = "FNC_type_Combobox";
+            this.FNC_type_Combobox.Size = new System.Drawing.Size(723, 47);
+            this.FNC_type_Combobox.TabIndex = 1;
+            this.FNC_type_Combobox.SelectedIndexChanged += new System.EventHandler(this.FNC_type_Combobox_SelectedIndexChanged);
             // 
             // UsrCtrl_TgleBtn
             // 
@@ -1368,27 +1396,27 @@ namespace DailyCompanionV2
             this.sidePanel_Treeview.Font = new System.Drawing.Font("Cairo SemiBold", 9.8F, System.Drawing.FontStyle.Bold);
             this.sidePanel_Treeview.Location = new System.Drawing.Point(0, 0);
             this.sidePanel_Treeview.Name = "sidePanel_Treeview";
-            treeNode9.Name = "Node3";
-            treeNode9.Text = "Node3";
-            treeNode10.Name = "Node0";
-            treeNode10.Text = "مهام مقترحة";
-            treeNode11.Name = "Node4";
-            treeNode11.Text = "Node4";
-            treeNode12.Name = "Node1";
-            treeNode12.Text = "مهام مطلوبة";
-            treeNode13.Name = "Node5";
-            treeNode13.Text = "Node5";
-            treeNode14.Name = "Node6";
-            treeNode14.Text = "Node6";
-            treeNode15.Name = "Node2";
-            treeNode15.Text = "خيارات سابقة";
-            treeNode16.Name = "Node7";
-            treeNode16.Text = "مهام شبيهة";
+            treeNode1.Name = "Node3";
+            treeNode1.Text = "Node3";
+            treeNode2.Name = "Node0";
+            treeNode2.Text = "مهام مقترحة";
+            treeNode3.Name = "Node4";
+            treeNode3.Text = "Node4";
+            treeNode4.Name = "Node1";
+            treeNode4.Text = "مهام مطلوبة";
+            treeNode5.Name = "Node5";
+            treeNode5.Text = "Node5";
+            treeNode6.Name = "Node6";
+            treeNode6.Text = "Node6";
+            treeNode7.Name = "Node2";
+            treeNode7.Text = "خيارات سابقة";
+            treeNode8.Name = "Node7";
+            treeNode8.Text = "مهام شبيهة";
             this.sidePanel_Treeview.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode12,
-            treeNode15,
-            treeNode16});
+            treeNode2,
+            treeNode4,
+            treeNode7,
+            treeNode8});
             this.sidePanel_Treeview.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.sidePanel_Treeview.RightToLeftLayout = true;
             this.sidePanel_Treeview.Size = new System.Drawing.Size(300, 930);
@@ -1421,6 +1449,7 @@ namespace DailyCompanionV2
             ((System.ComponentModel.ISupportInitialize)(this.Del_FNC_Button)).EndInit();
             this.relatedIdntity_Panel.ResumeLayout(false);
             this.relatedIdntity_Panel.PerformLayout();
+            this.FNC_type_Panel.ResumeLayout(false);
             this.Tabcontrol_contextMenuStrip.ResumeLayout(false);
             this.Main_SplitContainer.Panel1.ResumeLayout(false);
             this.Main_SplitContainer.Panel2.ResumeLayout(false);
@@ -1504,5 +1533,7 @@ namespace DailyCompanionV2
         private TableLayoutPanel Wallets_TablePanel;
         private ContextMenuStrip DTPicker_contextMenuStrip;
         private ToolStripMenuItem nowStripMenuItem;
+        private Label FNC_WltCrdt_Label;
+        private Panel FNC_type_Panel;
     }
 }

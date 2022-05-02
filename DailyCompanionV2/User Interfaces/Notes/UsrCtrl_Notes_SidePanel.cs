@@ -23,7 +23,7 @@ namespace DailyCompanionV2.User_Interfaces
         private void LoadNOTRecentNode()
         {
             int notRecent_Count = int.Parse(System.Configuration.ConfigurationManager.AppSettings["recentNOTEcount"].ToString());
-            var notRecent = Program.Notes_List.OrderByDescending(p => p.lst_updt).ThenBy(p => p.id).Take(notRecent_Count).ToList();
+            var notRecent = Program.Notes_List.OrderByDescending(p => p.lst_updt).ThenByDescending(p => p.id).Take(notRecent_Count).ToList();
             sidePanel_Treeview.Nodes.Add(notSideRecent, $"تم إضافته مؤخرا (أقصى حد : {notRecent_Count}) :");
             foreach (var recent in notRecent)
                 sidePanel_Treeview.Nodes[notSideRecent].Nodes.Add(new TreeNode($"{recent.title}. تاريخ أخر تعديل : {recent.lst_updt.ToString("D")}") { Tag = recent.id });

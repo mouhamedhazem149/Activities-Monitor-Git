@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DailyCompanionV2.Models;
@@ -125,24 +126,35 @@ namespace DailyCompanionV2
         private void FNC_value_Textbox_TextChanged(object sender, EventArgs e) { HM_Manager.CheckTxtBoxDecimal(sender as ModdedControls.ModdedTextBox, FNC_Label); CheckValidWalletPaid(); }
         private void FNC_wallet_Combobox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmboboxWlt != null) HM_Manager.Success_addition(FNC_WltCrdt_Label, $"رصيد المحفظة : {cmboboxWlt.credit} جنيه");
+            else FNC_WltCrdt_Label.Visible = false;
             CheckValidWalletPaid();
             if (FNC_relatedentity_Combobox.Visible) UpdateRelatedWallets();
         }
         private void FNC_type_Combobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Enums.GetValueFromName<Enums.financeType>(FNC_type_Combobox.Text) == Enums.financeType.تحويل_أرصدة)
+            switch (Enums.GetValueFromName<Enums.financeType>(FNC_type_Combobox.Text))
             {
-                FNC_relatedentity_Textbox.Visible = false;
-                FNC_relatedentity_Combobox.Visible = true; FNC_relatedentity_Combobox.Dock = DockStyle.Fill;
-                UpdateRelatedWallets();
-            }
-            else
-            {
-                FNC_relatedentity_Textbox.Visible = true; FNC_relatedentity_Textbox.Dock = DockStyle.Fill;
-                FNC_relatedentity_Combobox.Visible = false;
+                case Enums.financeType.تحويل_أرصدة:
+                    FNC_type_Panel.BackColor = Color.Blue;
+                    FNC_relatedentity_Textbox.Visible = false;
+                    FNC_relatedentity_Combobox.Visible = true; FNC_relatedentity_Combobox.Dock = DockStyle.Fill;
+                    UpdateRelatedWallets();
+                    break;
+                case Enums.financeType.مدفوعات:
+                    FNC_type_Panel.BackColor = Color.Red;
+                    FNC_relatedentity_Textbox.Visible = true; FNC_relatedentity_Textbox.Dock = DockStyle.Fill;
+                    FNC_relatedentity_Combobox.Visible = false;
+                    break;
+                case Enums.financeType.دخل:
+                    FNC_type_Panel.BackColor = Color.Green; 
+                    FNC_relatedentity_Textbox.Visible = true; FNC_relatedentity_Textbox.Dock = DockStyle.Fill;
+                    FNC_relatedentity_Combobox.Visible = false;
+                    break;
             }
             CheckValidWalletPaid();
         }
+        private Wallet cmboboxWlt => Program.Wallets_List.Where(p => p.id == (FNC_wallet_Combobox.SelectedValue as int?).Value).FirstOrDefault();
         private void CheckValidWalletPaid()
         {
             decimal temp = 0;
@@ -150,17 +162,17 @@ namespace DailyCompanionV2
                 if (decimal.TryParse(FNC_paid_Textbox.Text, out temp))
                     if (AddFinance_Groupbox.ForeColor == Enums.addColor)
                     {
-                        if (temp > Program.Wallets_List.Where(p => p.id == (FNC_wallet_Combobox.SelectedValue as int?).Value).First().credit)
+                        if (temp > cmboboxWlt.credit)
                         {
-                            FNC_paid_Textbox.Text = Program.Wallets_List.Where(p => p.id == (FNC_wallet_Combobox.SelectedValue as int?).Value).First().credit.ToString();
+                            FNC_paid_Textbox.Text = cmboboxWlt.credit.ToString();
                             HM_Manager.Fail_addition(FNC_Label, "لا يمكن ان تكون القيمة المدفوعة اكبر من رصيد المحفظة");
                         }
                     }
                     else
                     {
-                        if (temp > Program.Wallets_List.Where(p => p.id == (FNC_wallet_Combobox.SelectedValue as int?).Value).First().credit + (decimal)Program.Finances_List.Where(p => p.id.ToString() == FNC_id_Textbox.Text).First().paid)
+                        if (temp > cmboboxWlt.credit + (decimal)Program.Finances_List.Where(p => p.id.ToString() == FNC_id_Textbox.Text).First().paid)
                         {
-                            FNC_paid_Textbox.Text = Program.Wallets_List.Where(p => p.id == (FNC_wallet_Combobox.SelectedValue as int?).Value).First().credit.ToString();
+                            FNC_paid_Textbox.Text = cmboboxWlt.credit.ToString();
                             HM_Manager.Fail_addition(FNC_Label, "لا يمكن ان تكون القيمة المدفوعة اكبر من رصيد المحفظة");
                         }
                     }
@@ -188,11 +200,16 @@ namespace DailyCompanionV2
         {
             if ((sender as ModdedControls.ModdedTextBox).SelectedItem != null && (sender as ModdedControls.ModdedTextBox).SelectedItem != "")
             {
-                HM_Manager.SetControlsFromModel(AddFinance_Groupbox, HM_Manager.commonFiller(Program.Finances_List.Where(p => p.GetType().GetProperty(System.Text.RegularExpressions.Regex.Match((sender as ModdedControls.ModdedTextBox).Name, HM_Manager.controlsPattern).Groups[HM_Manager.proprtyName].Value).GetValue(p).ToString() == (sender as ModdedControls.ModdedTextBox).SelectedItem).ToList()));
-                LoadFNCSimilarNode();
-                if (Parent is TabPage)
-                    (Parent as TabPage).Text = (sender as ModdedControls.ModdedTextBox).Text;
+                Finances cmnFlr = HM_Manager.commonFiller(Program.Finances_List.Where(p => p.GetType().GetProperty(HM_Manager.Propertyfromcontrol(sender as ModdedControls.ModdedTextBox)).GetValue(p).ToString() == (sender as ModdedControls.ModdedTextBox).SelectedItem).ToList());
+                if (cmnFlr != null)
+                {
+                    HM_Manager.SetControlsFromModel(AddFinance_Groupbox, cmnFlr);
+                    LoadFNCSimilarNode();
+                    if (Parent is TabPage)
+                        (Parent as TabPage).Text = (sender as ModdedControls.ModdedTextBox).Text;
+                }
             }
+            else (Parent as TabPage).Text = "";
         }
         private void UsrCtrl_TgleBtn_CheckedChanged(object sender, EventArgs e)
         {

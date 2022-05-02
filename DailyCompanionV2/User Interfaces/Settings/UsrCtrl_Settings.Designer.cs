@@ -1658,7 +1658,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.Notificatons_Objectlistview.ShowItemCountOnGroups = true;
             this.Notificatons_Objectlistview.Size = new System.Drawing.Size(1623, 485);
             this.Notificatons_Objectlistview.SortGroupItemsByPrimaryColumn = false;
-            this.Notificatons_Objectlistview.Sorting = System.Windows.Forms.SortOrder.Descending;
+            this.Notificatons_Objectlistview.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.Notificatons_Objectlistview.TabIndex = 88;
             this.Notificatons_Objectlistview.TintSortColumn = true;
             this.Notificatons_Objectlistview.UseCompatibleStateImageBehavior = false;

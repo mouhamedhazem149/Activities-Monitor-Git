@@ -871,6 +871,7 @@ namespace DailyCompanionV2.User_Interfaces
             this.Todos_chkpoint_list_Objectlistview.ShowFilterMenuOnRightClick = false;
             this.Todos_chkpoint_list_Objectlistview.Size = new System.Drawing.Size(687, 281);
             this.Todos_chkpoint_list_Objectlistview.SortGroupItemsByPrimaryColumn = false;
+            this.Todos_chkpoint_list_Objectlistview.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.Todos_chkpoint_list_Objectlistview.SpaceBetweenGroups = 5;
             this.Todos_chkpoint_list_Objectlistview.TabIndex = 10;
             this.Todos_chkpoint_list_Objectlistview.TintSortColumn = true;

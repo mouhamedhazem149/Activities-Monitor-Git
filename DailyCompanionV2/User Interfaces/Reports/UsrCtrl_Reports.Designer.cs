@@ -37,6 +37,7 @@
             this.TodosCategory_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.TodosTodo_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.TodosDuedate_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.TodosChkString_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.TodosStartdate_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.TodosDonedate_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.TodosAddeddate_Column = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -113,6 +114,7 @@
             this.Todos_Objectlistview.AllColumns.Add(this.TodosAddeddate_Column);
             this.Todos_Objectlistview.AllColumns.Add(this.TodosDuration_Column);
             this.Todos_Objectlistview.AllColumns.Add(this.TodosNotes_Column);
+            this.Todos_Objectlistview.AllColumns.Add(this.TodosChkString_Column);
             this.Todos_Objectlistview.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.DoubleClick;
             this.Todos_Objectlistview.CellEditUseWholeCell = false;
             this.Todos_Objectlistview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -126,7 +128,8 @@
             this.TodosDonedate_Column,
             this.TodosAddeddate_Column,
             this.TodosDuration_Column,
-            this.TodosNotes_Column});
+            this.TodosNotes_Column,
+            this.TodosChkString_Column});
             this.Todos_Objectlistview.Cursor = System.Windows.Forms.Cursors.Default;
             this.Todos_Objectlistview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Todos_Objectlistview.EmptyListMsg = "لا يوجد عناصر";
@@ -217,6 +220,15 @@
             this.TodosDuedate_Column.Text = "التاريخ النهائي";
             this.TodosDuedate_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TodosDuedate_Column.Width = 250;
+            // 
+            // TodosChkString_Column
+            // 
+            this.TodosChkString_Column.AspectName = "chkString";
+            this.TodosChkString_Column.MinimumWidth = 150;
+            this.TodosChkString_Column.Tag = "string";
+            this.TodosChkString_Column.Text = "نقاط فاصلة (مراحل)";
+            this.TodosChkString_Column.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TodosChkString_Column.Width = 150;
             // 
             // TodosStartdate_Column
             // 
@@ -1167,5 +1179,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel OLV_Panel;
         private System.Windows.Forms.Button Reports_Dels_Button;
+        private BrightIdeasSoftware.OLVColumn TodosChkString_Column;
     }
 }

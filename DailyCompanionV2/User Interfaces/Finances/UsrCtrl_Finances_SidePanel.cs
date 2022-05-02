@@ -32,7 +32,7 @@ namespace DailyCompanionV2
         private void LoadFNCRecentNode()
         {
             int fncRecent_Count = int.Parse(System.Configuration.ConfigurationManager.AppSettings["recentFNCcount"].ToString());
-            var fncRecent = Program.Finances_List.OrderByDescending(p => p.lst_updt).ThenBy(p => p.id).Take(fncRecent_Count).ToList();
+            var fncRecent = Program.Finances_List.OrderByDescending(p => p.lst_updt).ThenByDescending(p => p.id).Take(fncRecent_Count).ToList();
             sidePanel_Treeview.Nodes.Add(fncSideRecent, $"تم إضافته مؤخرا (أقصى حد : {fncRecent_Count}) :");
             foreach (var recent in fncRecent)
                 sidePanel_Treeview.Nodes[fncSideRecent].Nodes.Add(new TreeNode($"{recent.category} \n {recent.paid}/{recent.due} إلى {recent.relatedentity} :: ({recent.id}). تاريخ أخر تعديل : {recent.lst_updt.ToString("D")}") { Tag = recent.id });
@@ -51,13 +51,20 @@ namespace DailyCompanionV2
         private void LoadFNCPreviousNode()
         {
             string property = HM_Manager.Propertyfromcontrol(focusedTextbox);
-            List<string> previousFNC = new List<string>();
-            if (focusedTextbox != null) previousFNC = Program.Finances_List.Select(p => p.GetType().GetProperty(property).GetValue(p).ToString()).ToList();
-            if (!sidePanel_Treeview.Nodes.ContainsKey(fncSidePrevious)) sidePanel_Treeview.Nodes.Add(fncSidePrevious, $"خيارات مقترحة ({previousFNC.Distinct().Count()}) :");
-            else sidePanel_Treeview.Nodes[fncSidePrevious].Text = $"خيارات مقترحة ({previousFNC.Distinct().Count()}) :";
+            List<IGrouping<string, Finances>> previousFNC = new List<IGrouping<string, Finances>>();
+            if (focusedTextbox != null) previousFNC = Program.Finances_List.GroupBy(p => p.GetType().GetProperty(property).GetValue(p).ToString()).ToList();
+
+            if (!sidePanel_Treeview.Nodes.ContainsKey(fncSidePrevious)) sidePanel_Treeview.Nodes.Add(fncSidePrevious, $"خيارات مقترحة ({previousFNC.Select(p => p.Key).Count()}) :");
+            else sidePanel_Treeview.Nodes[fncSidePrevious].Text = $"خيارات مقترحة ({previousFNC.Select(p => p.Key).Count()}) :";
+
             sidePanel_Treeview.Nodes[fncSidePrevious].Nodes.Clear();
-            foreach (var previous in previousFNC.Distinct())
-                sidePanel_Treeview.Nodes[fncSidePrevious].Nodes.Add(new TreeNode($"{previous} : ({previousFNC.Count(p => p == previous)})") { Tag = previous });
+
+            foreach (var previous in previousFNC)
+            {
+                TreeNode[] fncSidePreviousArray = previous.ToList()
+                    .Select(prevG => new TreeNode($"{prevG.id}") { Tag = prevG.id }).ToArray();
+                sidePanel_Treeview.Nodes[fncSidePrevious].Nodes.Add(new TreeNode($"{previous.Key} : ({previous.Count()})", fncSidePreviousArray) { Tag = previous.Key });
+            }
         }
         private void LoadFNCSimilarNode()
         {//3 levels , parent node containg different properties, under each property possible values, under each value possible matches by ID
@@ -138,6 +145,10 @@ namespace DailyCompanionV2
                                 if (selNode.Tag is string)
                                     if (focusedTextbox.Values.Contains(selNode.Tag as string))
                                         focusedTextbox.SelectedItem = focusedTextbox.Text = selNode.Tag as string;
+                                break;
+                            case 2:
+                                if (selNode.Tag is int?)
+                                    Program.WorkingForm.Click_FNC(Enums.financeArgument.loadFinanceItem, (selNode.Tag as int?).Value);
                                 break;
                         }
                         break;

@@ -95,18 +95,33 @@ namespace DailyCompanionV2.Utilities
             .Any(txtbx => txtbx.Visible && txtbx.Enabled && txtbx.Text.Length > 0);
         public static void Reset_Groupbox_Controls(Control groupbox)
         {
-            groupbox.SuspendLayout();
             foreach (Control ctrl in GetControlHierarchy(groupbox))
             {
                 try
                 {
-                    if (ctrl is ModdedControls.ModdedTextBox && ctrl.Visible && ctrl.Enabled) { ctrl.Select(); (ctrl as ModdedControls.ModdedTextBox).Text = ""; (ctrl as ModdedControls.ModdedTextBox).SelectedItem = null; ctrl.Refresh(); }
-                    else if (ctrl is ObjectListView) (ctrl as ObjectListView).SetObjects(null);//اعمل لستة جديدة من نفس النوع بتاع الليست وخليها فاضية
-                    else if (ctrl is ListView) (ctrl as ListView).Items.Clear();
+                    switch (ctrl)
+                    {
+                        case ModdedControls.ModdedTextBox txtbx:
+                            if (ctrl.Visible && ctrl.Enabled)
+                            {
+                                ctrl.Select();
+                                (ctrl as ModdedControls.ModdedTextBox).Text = ""; (ctrl as ModdedControls.ModdedTextBox).SelectedItem = null;
+                                ctrl.Refresh();
+                            }
+                            break;
+                        case ObjectListView olv:
+                            olv.SetObjects(null);
+                            break;
+                        case ListView lv:
+                            lv.Items.Clear();
+                            break;
+                        case ComboBox cmbobx:
+                            cmbobx.SelectedIndex = cmbobx.SelectedIndex;
+                            break;
+                    }
                 }
                 catch (Exception) { Console.WriteLine($"{ctrl.Name}"); }
             }
-            groupbox.ResumeLayout();
             groupbox.Focus();
         }
 

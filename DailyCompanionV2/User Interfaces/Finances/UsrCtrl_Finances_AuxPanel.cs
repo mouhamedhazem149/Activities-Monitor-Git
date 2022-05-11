@@ -63,7 +63,7 @@ namespace DailyCompanionV2
         {
             if (To < From) return;
             List<int> Ids = Wlts_Search_Objectlistview.SelectedObjects != null ? Wlts_Search_Objectlistview.SelectedObjects.OfType<Wallet>().Select(p => p.id).ToList() : new List<int>();
-            HM_Manager.Update_OLV(Program.Finances_List.Where(p => p.done_date.HasValue && p.done_date.Value >= From && p.done_date.Value <= To && Ids.Contains(p.wallet)).ToList(), Wlts_Objectlistview);
+            HM_Manager.Update_OLV(Program.Finances_List.Where(fnc => (fnc.due_date.IsBetween(From, To) || fnc.done_date.IsBetween(From, To)) && Ids.Contains(fnc.wallet)).ToList(), Wlts_Objectlistview);
         }
         private void LoadWltsSearch()
         {
@@ -83,7 +83,7 @@ namespace DailyCompanionV2
                 double totalIncome = group.Items.Where(p => ((Finances)p.RowObject).type == Enums.financeType.دخل).Sum(p => ((Finances)p.RowObject).paid);
                 double totalPaid = group.Items.Sum(p => ((Finances)p.RowObject).paid) - totalIncome;
                 double totalNet = totalIncome - totalPaid;
-                string tempHeader = group.Header == null ? "" : group.Header;
+                string tempHeader = string.IsNullOrEmpty(group.Header) ? "" : group.Header;
                 group.Header = string.Format($"{tempHeader} :: عدد العمليات المالية : {count}  بإجمالي مدفوعات : {totalPaid.ToString("N2")} وإجمالي دخل : {totalIncome.ToString("N2")} بصافي دخل : {totalNet}");
                 group.Tag = count;
             }

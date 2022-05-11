@@ -89,8 +89,22 @@ namespace DailyCompanionV2
             Del_FNC_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.حذف, Title = "تعديل عملية مالية", color = Enums.modColor };
 
             TypFNC_Column.AspectToStringConverter = delegate (object rowObject) { return (rowObject as Enum).GetDisplayName(); };
+            
             finalFNC_Column.GroupKeyGetter = delegate (object rowObject) { return DateTime.Parse(((Finances)rowObject).due_date.ToString("d")); };
             finalFNC_Column.GroupKeyToTitleConverter = delegate (object groupKey) { return ((DateTime)groupKey).ToString("dddd, dd MMMM,yyyy", System.Globalization.CultureInfo.GetCultureInfo("ar-EG")); };
+
+            FinancialDonedate_Column.AspectToStringConverter = delegate (object rowObject)
+            {
+                switch (rowObject)
+                {
+                    case DateTime dt:
+                        return dt.ToString("dddd, dd-MMMM-yyyy :: hh-mm tt");
+                    default:
+                        return HM_Manager.dateNotFinished;
+                }
+            };
+            FinancialDonedate_Column.GroupKeyGetter = delegate (object rowObject) { return ((Finances)rowObject).str_done_date; };
+            FinancialDonedate_Column.GroupKeyToTitleConverter = delegate (object groupKey) { return (string)groupKey; };
 
             AddFinance_Groupbox.ContextMenuStrip = Tabcontrol_contextMenuStrip;
         }

@@ -451,7 +451,8 @@ namespace DailyCompanionV2
             // 
             // FinancialDonedate_Column
             // 
-            this.FinancialDonedate_Column.AspectName = "str_done_date";
+            this.FinancialDonedate_Column.AspectName = "done_date";
+            this.FinancialDonedate_Column.AspectToStringFormat = "";
             this.FinancialDonedate_Column.Hideable = false;
             this.FinancialDonedate_Column.MinimumWidth = 200;
             this.FinancialDonedate_Column.Tag = "datetime";

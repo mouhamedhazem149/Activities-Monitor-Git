@@ -1,5 +1,4 @@
-﻿using DailyCompanionV2.Models;
-using DailyCompanionV2.Utilities;
+﻿using DailyCompanionV2.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +37,7 @@ namespace DailyCompanionV2.User_Interfaces
             .Concat(children.Where(chld => (chld.childrenShrtcuts == null || chld.childrenShrtcuts.Count == 0)).Select(p => new TreeNode(p.name) { ContextMenuStrip = node_MenuStrip, ToolTipText = p.shortcut, Tag = p })).ToArray() 
             : null;
          private void editToolStripMenuItem_Click(object sender, EventArgs e) =>
-            Program.WorkingForm.Click_Settings(Utilities.Enums.settingsState.shortcut);
+            Program.WorkingForm.Click_Settings(Enums.settingsState.shortcut);
 
         void OpenShortcut(Models.Shortcut shrtCut)
         {

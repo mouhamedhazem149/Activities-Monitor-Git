@@ -191,16 +191,19 @@ namespace DailyCompanionV2.User_Interfaces
 
         private void TODOs_DelChkPnt_Button_Click(object sender, EventArgs e)
         {
-            HM_Manager.Update_OLV
-                (Todos_chkpoint_list_Objectlistview.Objects.OfType<Checkpoint>().Where(chkpnt => !Todos_chkpoint_list_Objectlistview.SelectedObjects.Contains(chkpnt)).ToList()
-                , Todos_chkpoint_list_Objectlistview);
+            List<Checkpoint> tempList = Todos_chkpoint_list_Objectlistview.Objects.Cast<Checkpoint>().Where(chkpnt => !Todos_chkpoint_list_Objectlistview.SelectedObjects.Contains(chkpnt)).ToList();
+            foreach (Checkpoint chk in Todos_chkpoint_list_Objectlistview.SelectedObjects.Cast<Checkpoint>().OrderByDescending(p => p.index))
+                tempList.Where(checkpoint => checkpoint.index > chk.index).ToList().ForEach(newChkpnt => newChkpnt.index -= 1);
+            HM_Manager.Update_OLV(tempList, Todos_chkpoint_list_Objectlistview);
         }
         private void Todos_chkpoint_list_Objectlistview_CellEditFinishing(object sender, BrightIdeasSoftware.CellEditEventArgs e)
         {
-            if (TODO_done_date_Datetimepicker.Checked && e.NewValue is DateTime? && (e.NewValue as DateTime?).Value > TODO_done_date_Datetimepicker.Value)
+            if (e.NewValue is DateTime? && ((TODO_done_date_Datetimepicker.Checked && (e.NewValue as DateTime?).Value > TODO_done_date_Datetimepicker.Value) || (e.NewValue as DateTime?).Value < TODO_start_date_Datetimepicker.Value))
             {
                 HM_Manager.Fail_addition(AddTODO_Label, "لا يمكن أن يكون تاريخ النقطة الفاصلة أكبر من تاريخ الإنهاء");
-                e.NewValue = TODO_done_date_Datetimepicker.Value;
+                if (Todos_chkpoint_list_Objectlistview.Items.Count > 1 && (e.RowObject as Checkpoint).index < Todos_chkpoint_list_Objectlistview.Items.Count)
+                    e.NewValue = Todos_chkpoint_list_Objectlistview.Objects.Cast<Checkpoint>().OrderByDescending(p => p.index).First(p => p.index < (e.RowObject as Checkpoint).index).Chk_Date;
+                else e.NewValue = TODO_done_date_Datetimepicker.Value;
             }
             else HM_Manager.Success_addition(AddTODO_Label, "");
         }

@@ -229,5 +229,8 @@ namespace DailyCompanionV2.Utilities
                     store.Controls.Add(CtrlVariableDuplicate(child));
             return store;
         }
+
+        public static bool IsBetween(this DateTime? dt, DateTime from, DateTime to) => dt.HasValue && dt.Value >= from && dt.Value <= to;
+        public static bool IsBetween(this DateTime dt, DateTime from, DateTime to) => dt >= from && dt <= to;
     }
 }

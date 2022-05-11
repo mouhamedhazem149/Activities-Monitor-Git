@@ -293,7 +293,9 @@ namespace DailyCompanionV2
         public void Click_Settings(Enums.settingsState argument, string eventArgs = "")
         {
             State = Enums.mainformState.settings;
-            UsrCtrl_Settings settings = UserInterfaces_Panel.Controls.OfType<UsrCtrl_Settings>().First();
+            UsrCtrl_Settings settings = UserInterfaces_Panel.Controls.OfType<UsrCtrl_Settings>().Count() > 0 
+                ? UserInterfaces_Panel.Controls.OfType<UsrCtrl_Settings>().First() 
+                : new UsrCtrl_Settings();
             settings.SetState(argument, eventArgs);
         }
         

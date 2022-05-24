@@ -7,6 +7,8 @@ using DailyCompanionV2.Utilities;
 using System.Collections.Generic;
 using Shortcut = DailyCompanionV2.Models.Shortcut;
 using System.Drawing;
+using System.IO;
+using Microsoft.VisualBasic;
 
 namespace DailyCompanionV2.User_Interfaces
 {
@@ -40,8 +42,8 @@ namespace DailyCompanionV2.User_Interfaces
             Add_PRC_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.إضافة, Title = "Add Process", color = Enums.addColor };
             Del_PRC_Button.Tag = new settingsButtonTag_Item() { handleType = Enums.genericHandle_Type.تعديل, Title = "Edit Process", color = Enums.modColor };
 
-            Shrtcuts_Objectlistview.CanExpandGetter = delegate (object rowObject) { return ((rowObject as Models.Shortcut).childrenShrtcuts != null && (rowObject as Models.Shortcut).childrenShrtcuts.Count > 0); };
-            Shrtcuts_Objectlistview.ChildrenGetter = delegate (object rowObject) { return ((Models.Shortcut)rowObject).childrenShrtcuts; };
+            Shrtcuts_Objectlistview.CanExpandGetter = delegate (object rowObject) { return ((rowObject as Shortcut).childrenShrtcuts(tempShortcut) != null && (rowObject as Shortcut).childrenShrtcuts(tempShortcut).Count > 0); };
+            Shrtcuts_Objectlistview.ChildrenGetter = delegate (object rowObject) { return ((Shortcut)rowObject).childrenShrtcuts(tempShortcut); };
 
             Notif_done_Column.AspectToStringConverter = delegate (object rowObject) { return ((bool)rowObject) ? "منتهي" : "غير منتهي"; };
             Notif_repeatInt_Column.AspectToStringConverter = delegate (object rowObject) { return ((int)rowObject) == 0 ? "دائم" : ((int?)rowObject).Value.ToString(); };
@@ -84,8 +86,8 @@ namespace DailyCompanionV2.User_Interfaces
                     case Enums.settingsState.shortcut:
                         {
                             shortcutSettings_Panel.Visible = true;
-                            HM_Manager.Update_OLV(Program.Shortcuts_List, Shrtcuts_Objectlistview);
-                            tempShortcut = Program.Shortcuts_List;
+                            tempShortcut = Program.Shortcuts_List; 
+                            HM_Manager.Update_OLV(tempShortcut.Where(p => p.parent_id == 0).ToList(), Shrtcuts_Objectlistview);
                             tempShortcutDelete.Clear();
                             break;
                         }
@@ -201,14 +203,14 @@ namespace DailyCompanionV2.User_Interfaces
             if (sender is Button)
             {
                 Settings_Processor.HandleProcess(((sender as Button).Tag as settingsButtonTag_Item?).Value.handleType, shortcutsProcess_Groupbox
-                    , PRC_name_Textbox.Text, PRC_processname_Textbox.Text, PRC_Label, ((sender as Button).Tag as settingsButtonTag_Item?).Value.Title, ((sender as Button).Tag as settingsButtonTag_Item?).Value.color
+                    , PRC_name_Textbox.Text, PRC_processname_Textbox.Text, PRC_NoWindow_Checkbox.Checked, PRC_Label, ((sender as Button).Tag as settingsButtonTag_Item?).Value.Title, ((sender as Button).Tag as settingsButtonTag_Item?).Value.color
                     , activeProcess);
                 activeProcess = null;
             }
             else
             {
                 Settings_Processor.HandleProcess(Enums.genericHandle_Type.تحميل_البيانات, shortcutsProcess_Groupbox
-                    , "", "", PRC_Label, (Del_PRC_Button.Tag as settingsButtonTag_Item?).Value.Title, (Del_PRC_Button.Tag as settingsButtonTag_Item?).Value.color
+                    , "", "", false, PRC_Label, (Del_PRC_Button.Tag as settingsButtonTag_Item?).Value.Title, (Del_PRC_Button.Tag as settingsButtonTag_Item?).Value.color
                     , Program.Processs_List.Where(item => item.name == PRC_name_Textbox.Text).FirstOrDefault());
                 activeProcess = Program.Processs_List.Where(item => item.name == PRC_name_Textbox.Text).FirstOrDefault();
             }
@@ -219,6 +221,9 @@ namespace DailyCompanionV2.User_Interfaces
         {
             Wallet_name_Textbox.Values = Program.Wallets_List.Select(p => p.name).ToArray();
             PRC_name_Textbox.Values = Program.Processs_List.Select(p => p.name).ToArray();
+
+            HM_Manager.Update_Combobox(nwAdapters_Combobox, NetMon_Ex.NM_Monitor.adapterInstance_Names.ToList(), defaultText: System.Configuration.ConfigurationManager.AppSettings["networkAdapter"].ToString());
+
             recentTDOcount_UpDown.Value = int.Parse(System.Configuration.ConfigurationManager.AppSettings["recentTODOcount"].ToString());
             recentFNCcount_UpDown.Value = int.Parse(System.Configuration.ConfigurationManager.AppSettings["recentFNCcount"].ToString());
             recentNOTcount_UpDown.Value = int.Parse(System.Configuration.ConfigurationManager.AppSettings["recentNOTEcount"].ToString());
@@ -252,6 +257,9 @@ namespace DailyCompanionV2.User_Interfaces
         }
         private void Backup_Button_Click(object sender, EventArgs e) => BackupHelperManager.BackUp(Restore_Label);
         private void Restore_Button_Click(object sender, EventArgs e) => BackupHelperManager.Restore(Restore_Label);
+
+        private void nwAdapters_Combobox_SelectedIndexChanged(object sender, EventArgs e) =>
+            HM_Manager.UpdateConfiguration(new List<Tuple<string, string>>() { new Tuple<string, string>("networkAdapter", nwAdapters_Combobox.Text.ToString()) });
         private void recentTDOcount_UpDown_ValueChanged(object sender, EventArgs e) =>
             HM_Manager.UpdateConfiguration(new List<Tuple<string, string>>() { new Tuple<string, string>("recentTODOcount", recentTDOcount_UpDown.Value.ToString()) });
         private void recentFNCcount_UpDown_ValueChanged(object sender, EventArgs e) =>
@@ -282,13 +290,15 @@ namespace DailyCompanionV2.User_Interfaces
             if (Shrtcuts_Objectlistview.SelectedObject != null && Shrtcuts_Objectlistview.SelectedObjects.Count == 1)
             {
                 var tempSht = (Shrtcuts_Objectlistview.SelectedObject as Shortcut);
-                if (tempSht.childrenShrtcuts != null)
-                    tempSht.childrenShrtcuts.Add(new Shortcut() { parent = tempSht, name = "", shortcut = "", process = tempSht.process });
-                else tempSht.childrenShrtcuts = new List<Shortcut>() { new Shortcut() { parent = tempSht, name = "", shortcut = "", process = tempSht.process } };
-                
+                tempShortcut.Add(new Shortcut() { id = HM_Manager.GetFirstRandom(tempShortcut.Select(p => p.id).Append(0).ToHashSet()), parent_id = tempSht.id, name = "", shortcut = "", process = tempSht.process });
                 Shrtcuts_Objectlistview.RefreshObject(tempSht);
             }
-            else Shrtcuts_Objectlistview.AddObject(new Shortcut() { name = "", shortcut = "" });
+            else
+            {
+                Shortcut newShtct = new Shortcut() { id = HM_Manager.GetFirstRandom(tempShortcut.Select(p => p.id).Append(0).ToHashSet()), parent_id = 0, name = "", shortcut = "" };
+                tempShortcut.Add(newShtct);
+                Shrtcuts_Objectlistview.AddObject(newShtct);
+            }
         }
         private void prc_ToogleButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -300,22 +310,28 @@ namespace DailyCompanionV2.User_Interfaces
         }
         private void shrtcutSavechanges_Button_Click(object sender, EventArgs e)
         {
-            foreach (var root in Shrtcuts_Objectlistview.Roots)
+            List<Shortcut> tempFallback = Program.Shortcuts_List;
+            tempShortcutDelete.Where(p => tempFallback.Select(shtlist => shtlist.id).Contains(p.id)).ToList().ForEach(p => Settings_Processor.HandleShortcut(Enums.genericHandle_Type.حذف, shortcutsProcess_Groupbox,null,0, "", "", 0, "",
+                  Shortcut_Label, shortcutsProcess_Groupbox.Text, shortcutsProcess_Groupbox.ForeColor, p, true));
+            tempShortcutDelete.Clear();
+
+            List<Shortcut> currentTemp = Program.Shortcuts_List;
+            foreach (var shrtCut in tempShortcut)
             {
-                Shortcut _new = (Shortcut)root; Shortcut _old = tempShortcut.Where(p => p.id == _new.id).FirstOrDefault();
+                Shortcut _new = shrtCut; Shortcut _old = currentTemp.Where(p => p.id == _new.id).FirstOrDefault();
+                int? tempID = _new.id == 0 ? null : (int?)_new.id;
                 if (_old != null)
-                    if (_old.Equals((Shortcut)root))
+                    if (_old.Equals(shrtCut))
                         continue;
                     else
-                        Settings_Processor.HandleShortcut(Enums.genericHandle_Type.تعديل, shortcutsProcess_Groupbox, _new.name, _new.shortcut, _new.process, _new.children,
-                            Shortcut_Label, shortcutsProcess_Groupbox.Text, shortcutsProcess_Groupbox.ForeColor, _old,true);
+                        Settings_Processor.HandleShortcut(Enums.genericHandle_Type.تعديل, shortcutsProcess_Groupbox , null, _new.parent_id, _new.name, _new.shortcut, _new.process, "",
+                            Shortcut_Label, shortcutsProcess_Groupbox.Text, shortcutsProcess_Groupbox.ForeColor, _old, true);
                 else
-                    Settings_Processor.HandleShortcut(Enums.genericHandle_Type.إضافة, shortcutsProcess_Groupbox, _new.name, _new.shortcut, _new.process, _new.children,
+                    Settings_Processor.HandleShortcut(Enums.genericHandle_Type.إضافة, shortcutsProcess_Groupbox, tempID, _new.parent_id, _new.name, _new.shortcut, _new.process, "",
                 Shortcut_Label, shortcutsProcess_Groupbox.Text, shortcutsProcess_Groupbox.ForeColor, null, true);
             }
-            tempShortcutDelete.Where(p => tempShortcut.Where(t => t.id == p.id).FirstOrDefault() != null).ToList().ForEach(p => Settings_Processor.HandleShortcut(Enums.genericHandle_Type.حذف, shortcutsProcess_Groupbox, "", "", 0, "",
-                Shortcut_Label, shortcutsProcess_Groupbox.Text, shortcutsProcess_Groupbox.ForeColor, p, true));
-            tempShortcutDelete.Clear();
+            tempShortcut = Program.Shortcuts_List;
+            HM_Manager.Update_OLV(tempShortcut.Where(p => p.parent_id == 0).ToList(), Shrtcuts_Objectlistview);
         }
         private void shortcutsSettings_Button_Click(object sender, EventArgs e) => State = Enums.settingsState.shortcut;
         private void PRC_name_Textbox_SelectedItemChanged(object sender, EventArgs e)
@@ -324,19 +340,78 @@ namespace DailyCompanionV2.User_Interfaces
         {
             foreach (Shortcut shtCut in Shrtcuts_Objectlistview.SelectedObjects.Cast<Shortcut>())
             {
-                var tempParent = shtCut.parent;
-                if (tempParent == null)
-                { Shrtcuts_Objectlistview.RemoveObject(shtCut); tempShortcutDelete.Add(shtCut); }
-                else
-                { tempParent.childrenShrtcuts.Remove(shtCut); Shrtcuts_Objectlistview.RefreshObject(tempParent); }
+                List<Shortcut> pandChild = tempShortcut.Where(p => p.id == shtCut.id || p.parent_id == shtCut.id).ToList();
+                while (pandChild.SafeCount() > 0)
+                {
+                    tempShortcutDelete.AddRange(pandChild);
+                    tempShortcut.RemoveAll(p => pandChild.Contains(p));
+                    pandChild = tempShortcut.Where(cid => pandChild.Select(p => p.id).Contains(cid.parent_id)).ToList();
+                }
+                Shrtcuts_Objectlistview.RemoveObjects(Shrtcuts_Objectlistview.Objects.Cast<Shortcut>().Where(p => tempShortcutDelete.Select(del => del.id).Contains(p.id)).ToArray());
             }
         }
         private void Shrtcuts_Objectlistview_SelectionChanged(object sender, EventArgs e) =>
             Del_Shortcut_Button.Enabled = Shrtcuts_Objectlistview.SelectedObjects != null && Shrtcuts_Objectlistview.SelectedObjects.Count > 0;
         private void Shrtcuts_Objectlistview_ItemsChanged(object sender, BrightIdeasSoftware.ItemsChangedEventArgs e) =>
             Del_Shortcut_Button.Enabled = (Shrtcuts_Objectlistview.Items.Count > 0 && Shrtcuts_Objectlistview.SelectedObjects != null && Shrtcuts_Objectlistview.SelectedObjects.Count > 0);
+        private void AddPath_Button_Click(object sender, EventArgs e)
+        {
+            ids.Clear();
+            ids = tempShortcut.Select(p => p.id).Append(0).ToHashSet();
+            int level = 0;
+            bool getHidden = false;
+            if (folderBrowser.ShowDialog() == DialogResult.OK)
+                if (int.TryParse(Interaction.InputBox("ادخل عدد مستويات المجلدات للإضافة"), out level))
+                {
+                    getHidden = MessageBox.Show("هل تريد اضافة المجلدات المخفية ؟", "إخطار", MessageBoxButtons.YesNo, MessageBoxIcon.Stop) == DialogResult.Yes;
+                    int parent_id =  (Shrtcuts_Objectlistview.SelectedObject != null && Shrtcuts_Objectlistview.SelectedObjects.Count == 1) ? ((Shortcut)Shrtcuts_Objectlistview.SelectedObject).id : 0;
+                    int process =  (Shrtcuts_Objectlistview.SelectedObject != null && Shrtcuts_Objectlistview.SelectedObjects.Count == 1) ? ((Shortcut)Shrtcuts_Objectlistview.SelectedObject).process : 0 ;
 
+                    tempShortcut.AddRange(pathMapper(folderBrowser.SelectedPath, getHidden, level, parent_id, process));
 
+                    HM_Manager.Update_OLV(tempShortcut.Where(p => p.parent_id == 0).ToList(), Shrtcuts_Objectlistview);
+                    HM_Manager.Success_addition(Shortcut_Label, "تم إضافة المسار");
+                }
+                else { HM_Manager.Fail_addition(Shortcut_Label); }
+        }
+        private HashSet<int> ids = new HashSet<int>();
+        private List<Shortcut> pathMapper(string path, bool hidden, int level, int parent_id, int process)
+        {
+            DirectoryInfo tempDir = new DirectoryInfo(path);
+            Shortcut newParent = spathMapper(path, parent_id, process);
+            ids.Add(newParent.id);
+            List<Shortcut> tempList = new List<Shortcut>() { newParent };
+            if (level > 0)
+            {
+                DirectoryInfo[] subDirs = null;
+                try
+                {
+                    subDirs = tempDir.GetDirectories().Where(s => s.Attributes.HasFlag(FileAttributes.Directory))
+                  .Where(s => !s.Attributes.HasFlag(FileAttributes.System)).Where(s => !s.Attributes.HasFlag(FileAttributes.ReadOnly)).ToArray();
+                }
+                catch (Exception ex) {  }
+
+                if (!hidden) subDirs = subDirs.Where(s => !s.Attributes.HasFlag(FileAttributes.Hidden)).ToArray();
+                foreach (var subDir in subDirs)
+                    tempList.AddRange(pathMapper(subDir.FullName, hidden, level - 1, newParent.id, newParent.process));
+            }
+            return tempList;
+        }
+        private Shortcut spathMapper(string path, int parent_id, int process)
+        {
+            DirectoryInfo tempDir = new DirectoryInfo(path);
+            Shortcut tempShtcut = new Shortcut();
+
+            if (!tempDir.Exists) return null;
+
+            tempShtcut.id = HM_Manager.GetFirstRandom(ids);
+            tempShtcut.parent_id = parent_id;
+            tempShtcut.shortcut = tempDir.FullName;
+            tempShtcut.name = tempDir.Name;
+            tempShtcut.process = process;
+
+            return tempShtcut;
+        }
         private void Objectlistview_CellEditStarting(object sender, BrightIdeasSoftware.CellEditEventArgs e)
         {
             if (e.Column == Notif_freqDInt_Column && ((Notification)e.RowObject).frequency != Enums.notifFrequency.آخر) { e.Cancel = true; return; }
@@ -411,6 +486,16 @@ namespace DailyCompanionV2.User_Interfaces
         {
             if (e.Column == Notif_freqDInt_Column && ((Notification)e.RowObject).frequency != Enums.notifFrequency.آخر) { e.Cancel = true; return; }
             if (e.Column == Notif_repeatInt_Column && ((Notification)e.RowObject).repeat != Enums.notifRepeat.محدد) { e.NewValue = null; e.Cancel = true; return; }
+            if (e.Column == processnameColumn)
+            {
+                List<Shortcut> temp = tempShortcut.Where(p => ((Shortcut)e.RowObject).id == p.parent_id).ToList();
+                while (temp.SafeCount() > 0)
+                {
+                    temp.ForEach(p => p.process = (int)e.NewValue);
+                    temp = temp.SelectMany(p => p.childrenShrtcuts(tempShortcut)).ToList();
+                }
+                Shrtcuts_Objectlistview.RefreshObject((Shortcut)e.RowObject);
+            }
             if (e.Column.Tag != null)
                 switch (e.Column.Tag.ToString())
                 {
@@ -494,6 +579,5 @@ namespace DailyCompanionV2.User_Interfaces
             ((Notification)e.Item.RowObject).done_date = DateTime.Now;
             Notificatons_Objectlistview.RefreshObject(e.Item.RowObject);
         }
-
     }
 }

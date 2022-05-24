@@ -62,7 +62,7 @@ namespace DailyCompanionV2.Utilities
                 }
                 if (compress)
                 {
-                    Process compressProcess = Process.Start(HM_Manager.ExecuteProcess(compressor_7z, cmdCompress, path));
+                    Process compressProcess = Process.Start(HM_Manager.ExecuteProcess(compressor_7z, cmdCompress,true, path));
                     compressProcess.WaitForExit(); compressProcess.Close();
                     add_info = $"تم النسخ الاحتياطي للملف: {backup_name}.zip بواسطة: {Program.mainSettings.name} بكلمة مرور: {compress_password}";
                 }

@@ -10,6 +10,7 @@ using DailyCompanionV2.User_Interfaces;
 using DailyCompanionV2.Utilities;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Microsoft.WindowsAPICodePack.Taskbar;
+using NetMon_Ex;
 
 namespace DailyCompanionV2
 {
@@ -118,6 +119,7 @@ namespace DailyCompanionV2
                         Shortcut_ImageButton.BackColor = secColor;
                         UsrCtrl_Shortcut toAdd = new UsrCtrl_Shortcut(mainColor);
                         Controls.Add(toAdd);
+                        toAdd.Sync();
                         var tempLocation = this.PointToClient(Header_Panel.PointToScreen(Shortcut_ImageButton.Location));
                         toAdd.Location = new Point(tempLocation.X, tempLocation.Y + Shortcut_ImageButton.Height);
                         toAdd.BringToFront();
@@ -469,5 +471,32 @@ namespace DailyCompanionV2
                 WindowState = FormWindowState.Minimized;
         }
         #endregion
+
+        private void NetworkMonitor_BW_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            NM_Monitor nmMonitor = new NM_Monitor();
+            string nwMonitoredName = ConfigurationManager.AppSettings["networkAdapter"].ToString();
+
+            if (nmMonitor.arrAdapters.FirstOrDefault(p => p.AdapterName == nwMonitoredName) == null)
+            {
+                HM_Manager.ScaleFontforLabel(NWDdownload_Label, "تاكد من منفذ الشبكة");
+                HM_Manager.ScaleFontforLabel(NWDUpload_Label, "تاكد من منفذ الشبكة");
+                return;
+            }
+            nmMonitor.Start();
+            while (!NetworkMonitor_BW.CancellationPending)
+            {
+                HM_Manager.SetText($"DL: {HM_Manager.KilobytesFormat(nmMonitor.arrAdapters.FirstOrDefault(p => p.AdapterName == nwMonitoredName).DownloadSpeedKbps)}",NWDdownload_Label);
+                HM_Manager.SetText($"UL: {HM_Manager.KilobytesFormat(nmMonitor.arrAdapters.FirstOrDefault(p => p.AdapterName == nwMonitoredName).UploadSpeedKbps)}", NWDUpload_Label);
+                System.Threading.Thread.Sleep(500);
+            }
+            nmMonitor.Stop();
+        }
+
+        private void NWMonitior_Toggle_CheckedChanged(object sender, EventArgs e)
+        {
+            if (NWMonitior_Toggle.Checked) NetworkMonitor_BW.RunWorkerAsync();
+            else NetworkMonitor_BW.CancelAsync();
+        }
     }
 }

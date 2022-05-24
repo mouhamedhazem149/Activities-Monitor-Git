@@ -69,6 +69,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Login_Password_Textbox = new ModdedControls.ModdedTextBox();
             this.tempLock_Panel = new System.Windows.Forms.Panel();
+            this.NWDdownload_Label = new System.Windows.Forms.Label();
+            this.NWDUpload_Label = new System.Windows.Forms.Label();
+            this.NetworkMonitor_BW = new System.ComponentModel.BackgroundWorker();
+            this.NWMonitior_Toggle = new CustomControls.RJControls.RJToggleButton();
             this.Buttons_Panel.SuspendLayout();
             this.TabButtons_Panel.SuspendLayout();
             this.Header_Panel.SuspendLayout();
@@ -338,7 +342,7 @@
             this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
             this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
             this.header_TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.header_TablePanel.Controls.Add(this.CompanyName_Label, 0, 0);
+            this.header_TablePanel.Controls.Add(this.CompanyName_Label, 0, 4);
             this.header_TablePanel.Controls.Add(this.Shutdown_ImageButton, 49, 0);
             this.header_TablePanel.Controls.Add(this.Minimize_ImageButton, 47, 0);
             this.header_TablePanel.Controls.Add(this.Shortcut_ImageButton, 44, 5);
@@ -348,6 +352,9 @@
             this.header_TablePanel.Controls.Add(this.User_welcome_Label, 26, 4);
             this.header_TablePanel.Controls.Add(this.User_Name_Label, 26, 6);
             this.header_TablePanel.Controls.Add(this.notification_Panel, 42, 5);
+            this.header_TablePanel.Controls.Add(this.NWDdownload_Label, 0, 0);
+            this.header_TablePanel.Controls.Add(this.NWDUpload_Label, 0, 2);
+            this.header_TablePanel.Controls.Add(this.NWMonitior_Toggle, 5, 0);
             this.header_TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.header_TablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.header_TablePanel.Location = new System.Drawing.Point(0, 0);
@@ -369,13 +376,13 @@
             this.CompanyName_Label.BackColor = System.Drawing.Color.Transparent;
             this.header_TablePanel.SetColumnSpan(this.CompanyName_Label, 15);
             this.CompanyName_Label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CompanyName_Label.Font = new System.Drawing.Font("Cairo", 40F, System.Drawing.FontStyle.Bold);
+            this.CompanyName_Label.Font = new System.Drawing.Font("Cairo", 20F, System.Drawing.FontStyle.Bold);
             this.CompanyName_Label.ForeColor = System.Drawing.Color.Navy;
-            this.CompanyName_Label.Location = new System.Drawing.Point(1191, 0);
+            this.CompanyName_Label.Location = new System.Drawing.Point(1191, 68);
             this.CompanyName_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CompanyName_Label.Name = "CompanyName_Label";
-            this.header_TablePanel.SetRowSpan(this.CompanyName_Label, 8);
-            this.CompanyName_Label.Size = new System.Drawing.Size(491, 139);
+            this.header_TablePanel.SetRowSpan(this.CompanyName_Label, 4);
+            this.CompanyName_Label.Size = new System.Drawing.Size(491, 71);
             this.CompanyName_Label.TabIndex = 29;
             this.CompanyName_Label.Text = "اسم الشركة";
             this.CompanyName_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -794,6 +801,55 @@
             this.tempLock_Panel.TabIndex = 34;
             this.tempLock_Panel.Visible = false;
             // 
+            // NWDdownload_Label
+            // 
+            this.NWDdownload_Label.AutoSize = true;
+            this.header_TablePanel.SetColumnSpan(this.NWDdownload_Label, 5);
+            this.NWDdownload_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NWDdownload_Label.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NWDdownload_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(61)))), ((int)(((byte)(61)))));
+            this.NWDdownload_Label.Location = new System.Drawing.Point(1522, 0);
+            this.NWDdownload_Label.Name = "NWDdownload_Label";
+            this.header_TablePanel.SetRowSpan(this.NWDdownload_Label, 2);
+            this.NWDdownload_Label.Size = new System.Drawing.Size(159, 34);
+            this.NWDdownload_Label.TabIndex = 34;
+            // 
+            // NWDUpload_Label
+            // 
+            this.NWDUpload_Label.AutoSize = true;
+            this.header_TablePanel.SetColumnSpan(this.NWDUpload_Label, 5);
+            this.NWDUpload_Label.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NWDUpload_Label.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NWDUpload_Label.ForeColor = System.Drawing.Color.Navy;
+            this.NWDUpload_Label.Location = new System.Drawing.Point(1522, 34);
+            this.NWDUpload_Label.Name = "NWDUpload_Label";
+            this.header_TablePanel.SetRowSpan(this.NWDUpload_Label, 2);
+            this.NWDUpload_Label.Size = new System.Drawing.Size(159, 34);
+            this.NWDUpload_Label.TabIndex = 35;
+            // 
+            // NetworkMonitor_BW
+            // 
+            this.NetworkMonitor_BW.WorkerSupportsCancellation = true;
+            this.NetworkMonitor_BW.DoWork += new System.ComponentModel.DoWorkEventHandler(this.NetworkMonitor_BW_DoWork);
+            // 
+            // NWMonitior_Toggle
+            // 
+            this.NWMonitior_Toggle.AutoSize = true;
+            this.header_TablePanel.SetColumnSpan(this.NWMonitior_Toggle, 2);
+            this.NWMonitior_Toggle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NWMonitior_Toggle.Location = new System.Drawing.Point(1456, 3);
+            this.NWMonitior_Toggle.MinimumSize = new System.Drawing.Size(45, 22);
+            this.NWMonitior_Toggle.Name = "NWMonitior_Toggle";
+            this.NWMonitior_Toggle.OffBackColor = System.Drawing.Color.Gray;
+            this.NWMonitior_Toggle.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.NWMonitior_Toggle.OnBackColor = System.Drawing.Color.Lime;
+            this.NWMonitior_Toggle.OnToggleColor = System.Drawing.Color.DarkGreen;
+            this.header_TablePanel.SetRowSpan(this.NWMonitior_Toggle, 2);
+            this.NWMonitior_Toggle.Size = new System.Drawing.Size(60, 28);
+            this.NWMonitior_Toggle.TabIndex = 37;
+            this.NWMonitior_Toggle.UseVisualStyleBackColor = true;
+            this.NWMonitior_Toggle.CheckedChanged += new System.EventHandler(this.NWMonitior_Toggle_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -819,6 +875,7 @@
             this.TabButtons_Panel.ResumeLayout(false);
             this.Header_Panel.ResumeLayout(false);
             this.header_TablePanel.ResumeLayout(false);
+            this.header_TablePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Shutdown_ImageButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Minimize_ImageButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Shortcut_ImageButton)).EndInit();
@@ -878,5 +935,9 @@
         private System.Windows.Forms.Panel panel1;
         private ModdedControls.ModdedTextBox Login_Password_Textbox;
         private System.Windows.Forms.Panel tempLock_Panel;
+        private System.Windows.Forms.Label NWDdownload_Label;
+        private System.Windows.Forms.Label NWDUpload_Label;
+        private CustomControls.RJControls.RJToggleButton NWMonitior_Toggle;
+        private System.ComponentModel.BackgroundWorker NetworkMonitor_BW;
     }
 }

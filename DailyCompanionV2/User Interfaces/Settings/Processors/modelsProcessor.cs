@@ -51,11 +51,11 @@ namespace DailyCompanionV2.User_Interfaces.Settings
             }
             return HM_Manager.genericHandler(grpbox, Title, color, oldModel, MsgLabel, tobeDone, ref SpecificMsg, byPass);
         }
-        public static bool HandleProcess(Enums.genericHandle_Type handleType, GroupBox grpbox, string name, string processname, Label MsgLabel, string Title, Color color, Process oldModel, bool byPass = false)
+        public static bool HandleProcess(Enums.genericHandle_Type handleType, GroupBox grpbox, string name, string processname,bool noOutput ,Label MsgLabel, string Title, Color color, Process oldModel, bool byPass = false)
         {
             HM_Manager.Func tobeDone = null;
             int id = oldModel != null ? oldModel.id : 0;
-            Process _prcNew = new Process() { id = id, name = name, processname = processname };
+            Process _prcNew = new Process() { id = id, name = name, processname = processname,NoWindow = noOutput };
             int _id = id;
             string SpecificMsg = "تمت العملية بنجاح";
             switch (handleType)
@@ -63,14 +63,14 @@ namespace DailyCompanionV2.User_Interfaces.Settings
                 case Enums.genericHandle_Type.إضافة:
                     tobeDone = delegate ()
                     {
-                        _id = DBHelper.Insert_Database("processes", new List<string> { "name", "processname" }, new List<Process> { _prcNew }, HM_Manager.HandleHistory, new string[] { "Processes", "إضافة عملية", "" });
+                        _id = DBHelper.Insert_Database("processes", new List<string> { "name", "processname", "nooutput" }, new List<Process> { _prcNew }, HM_Manager.HandleHistory, new string[] { "Processes", "إضافة عملية", "" });
                         SpecificMsg = $"تمت الإضافة بنجاح. اسم Process : {_prcNew.name}";
                     };
                     break;
                 case Enums.genericHandle_Type.تعديل:
                     tobeDone = delegate ()
                     {
-                        DBHelper.Update_Database("processes", new List<string> { "name", "processname" }, new List<Process> { _prcNew }, HM_Manager.HandleHistory, new string[] { "Processes", "تعديل البيانات", $"الProcess باسم : {oldModel.name} بعنوان {oldModel.processname}." });
+                        DBHelper.Update_Database("processes", new List<string> { "name", "processname", "nooutput" }, new List<Process> { _prcNew }, HM_Manager.HandleHistory, new string[] { "Processes", "تعديل البيانات", $"الProcess باسم : {oldModel.name} بعنوان {oldModel.processname}." });
                         SpecificMsg = $"تم التعديل بنجاح. اسم Process : {_prcNew.name}";
                     };
                     break;
@@ -92,11 +92,11 @@ namespace DailyCompanionV2.User_Interfaces.Settings
             }
             return HM_Manager.genericHandler(grpbox, Title, color, oldModel, MsgLabel, tobeDone, ref SpecificMsg, byPass);
         }
-        public static bool HandleShortcut(Enums.genericHandle_Type handleType, GroupBox grpbox, string Nm, string stCut, int Pcs, string chldren, Label MsgLabel, string Title, Color color, Shortcut oldModel, bool byPass = false)
+        public static bool HandleShortcut(Enums.genericHandle_Type handleType, GroupBox grpbox,int? D_id,int parent_id ,string Nm, string stCut, int Pcs, string chldren, Label MsgLabel, string Title, Color color, Shortcut oldModel, bool byPass = false)
         {
             HM_Manager.Func tobeDone = null;
-            int id = oldModel != null ? oldModel.id : 0;
-            Shortcut _shtNew = new Shortcut() { id = id, name = Nm, shortcut = stCut, process = Pcs, children = chldren };
+            int id = D_id == null ? oldModel != null ? oldModel.id : 0 : D_id.Value;
+            Shortcut _shtNew = new Shortcut() { id = id, parent_id = parent_id ,name = Nm, shortcut = stCut, process = Pcs };
             int _id = id;
             string SpecificMsg = "تمت العملية بنجاح";
             switch (handleType)
@@ -104,14 +104,16 @@ namespace DailyCompanionV2.User_Interfaces.Settings
                 case Enums.genericHandle_Type.إضافة:
                     tobeDone = delegate ()
                     {
-                        _id = DBHelper.Insert_Database("shortcuts", new List<string> { "name", "shortcut", "process", "children" }, new List<Shortcut> { _shtNew }, HM_Manager.HandleHistory, new string[] { "الاختصارات", "إضافة عملية", "" });
+                        if (D_id != null)
+                            DBHelper.Insert_Database("shortcuts", new List<string> {"id", "parent_id", "name", "shortcut", "process"}, new List<Shortcut> { _shtNew }, HM_Manager.HandleHistory, new string[] { "الاختصارات", "إضافة عملية", "" });
+                        else _id = DBHelper.Insert_Database("shortcuts", new List<string> {"parent_id", "name", "shortcut", "process" }, new List<Shortcut> { _shtNew }, HM_Manager.HandleHistory, new string[] { "الاختصارات", "إضافة عملية", "" });
                         SpecificMsg = $"تمت الإضافة بنجاح. اسم الاختصار : {_shtNew.name}";
                     };
                     break;
                 case Enums.genericHandle_Type.تعديل:
                     tobeDone = delegate ()
                     {
-                        DBHelper.Update_Database("shortcuts", new List<string> { "name", "shortcut", "process", "children" }, new List<Shortcut> { _shtNew }, HM_Manager.HandleHistory, new string[] { "الاختصارات", "تعديل البيانات", $"الاختصار باسم : {oldModel.name} بعنوان {oldModel.shortcut}." });
+                        DBHelper.Update_Database("shortcuts", new List<string> { "parent_id", "name", "shortcut", "process" }, new List<Shortcut> { _shtNew }, HM_Manager.HandleHistory, new string[] { "الاختصارات", "تعديل البيانات", $"الاختصار باسم : {oldModel.name} بعنوان {oldModel.shortcut}." });
                         SpecificMsg = $"تم التعديل بنجاح. اسم الاختصار : {_shtNew.name}";
                     };
                     break;
@@ -122,6 +124,7 @@ namespace DailyCompanionV2.User_Interfaces.Settings
                         if (MessageBox.Show($"سيتم حذف الاختصار باسم : {oldModel.name} بعنوان {oldModel.shortcut}. هل أنت متأكد ؟", "تحذير", MessageBoxButtons.OKCancel) == DialogResult.OK)
                         {
                             DBHelper.Delete_Database("shortcuts", new List<Shortcut> { oldModel }, HM_Manager.HandleHistory, new string[] { "الاختصارات", "حذف البيانات", $"الاختصار باسم : {oldModel.name} بعنوان {oldModel.shortcut}." });
+                            //DBHelper.Delete_Database("shortcuts", new Shortcut() { parent_id = oldModel.id },HM_Manager.HandleHistory, new string[] { "الاختصارات", "حذف البيانات", $"الاختصار باسم : {oldModel.name} بعنوان {oldModel.shortcut}." }, KEY: "parent_id");
                             SpecificMsg = $"تم التعديل بنجاح. اسم الاختصار : {oldModel.name}";
                         }
                     };

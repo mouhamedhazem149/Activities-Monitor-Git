@@ -93,7 +93,7 @@ namespace DailyCompanionV2.Utilities
         public static Dictionary<string, object> GetObjectAsDictionary(object obj) => obj.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public)
                         .ToDictionary(prop => prop.Name, prop => prop.GetValue(obj, null));
 
-        public static void WriteBytesToConsole(byte[] Array,string name = "Array") => Console.WriteLine($"Length:: {Array.Length} {name}:: {string.Join(" ", Array.Select(byt => byt.ToString()))}");
+        public static void WriteBytesToConsole(byte[] Array, string name = "Array") => Console.WriteLine($"Length:: {Array.Length} {name}:: {string.Join(" ", Array.Select(byt => byt.ToString()))}");
 
         public static string[] commonEntities => Program.Todos_List.Select(tdo => tdo.duefrom).Union(Program.Todos_List.Select(tdo => tdo.dueto)).Union(Program.Finances_List.Select(fnc => fnc.relatedentity)).ToArray();
         public static string[] commonCategories => Program.Todos_List.Select(tdo => tdo.category).Union(Program.Finances_List.Select(fnc => fnc.category)).ToArray();
@@ -126,15 +126,20 @@ namespace DailyCompanionV2.Utilities
         public static void CheckPhoneNumber(object txtbox, Label lbl) { if ((txtbox as ModdedControls.ModdedTextBox).IsPlaceholder || (txtbox as ModdedControls.ModdedTextBox).Text.Split(',').ToList().TrueForAll(p => Regex.IsMatch(p, "^([+][0-9])?[0-9]+$"))) { lbl.Visible = false; } else { (txtbox as ModdedControls.ModdedTextBox).Text = ""; lbl.Visible = true; lbl.ForeColor = Color.DarkRed; lbl.Text = "برجاء إدخال رقم هاتف صالح"; } }
         public static void CheckNationalID(object txtbox, Label lbl) { if ((txtbox as ModdedControls.ModdedTextBox).IsPlaceholder || Regex.IsMatch((txtbox as ModdedControls.ModdedTextBox).Text, "^([0-9]{14})$|^([0-9]{7})$")) { lbl.Visible = false; } else { (txtbox as ModdedControls.ModdedTextBox).Text = ""; lbl.Visible = true; lbl.ForeColor = Color.DarkRed; lbl.Text = "برجاء إدخال رقم قومي صالح"; } }
         public static bool Verify_Mail(string email) { try { MailAddress m = new MailAddress(email); return true; } catch (FormatException) { return false; } }
-        public static ProcessStartInfo ExecuteProcess(string processName, string Args, string path = "")
+        public static ProcessStartInfo ExecuteProcess(string processName, string Args, bool noWindow, string path = "")
         {
             var processInfo = new ProcessStartInfo(processName, Args);
             processInfo.WorkingDirectory = path == "" ? Environment.CurrentDirectory : path;
-            processInfo.CreateNoWindow = true;
+            processInfo.CreateNoWindow = noWindow;
             processInfo.UseShellExecute = false;
-            processInfo.RedirectStandardError = true;
-            processInfo.RedirectStandardOutput = true;
+            //processInfo.RedirectStandardError = true;
+            //processInfo.RedirectStandardOutput = true;
             return processInfo;
         }
+        public static int GetFirstRandom(HashSet<int> exclusion =  null)
+        {
+            if (exclusion == null || exclusion.Count < 1) return 1;
+            else return Enumerable.Range(0, exclusion.Max() + 2).Where(num => !exclusion.Contains(num)).OrderBy(p => p).First();
+        } 
     }
 }

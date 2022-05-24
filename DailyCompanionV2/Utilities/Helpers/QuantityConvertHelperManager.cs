@@ -5,6 +5,20 @@ namespace DailyCompanionV2.Utilities
 {
     public static partial class HM_Manager
     {
+        public static string KilobytesFormat(double Kb)
+        {
+            switch (Kb)
+            {
+                case double TBs when Kb >= (1024^3):
+                    return $"{(Kb / (1024 ^ 3)).ToString("0.0#") } Tbps"; 
+                case double GBs when Kb >= (1024 ^ 2):
+                    return $"{(Kb / (1024 ^ 2)).ToString("0.0#")} Gbps";
+                case double MBs when Kb >= 1024:
+                    return $"{(Kb / (1024)).ToString("0.0#")} Mbps";
+                default:
+                    return $"{Kb.ToString("{0.0#}")} Kbps";
+            }
+        }
         public static string MinutesToDuration(object mins)
         {
             try

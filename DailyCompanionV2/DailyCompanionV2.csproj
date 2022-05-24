@@ -49,6 +49,9 @@
     <Reference Include="ModdedControls">
       <HintPath>..\..\HelperUtilities\ModdedControls\bin\Debug\ModdedControls.dll</HintPath>
     </Reference>
+    <Reference Include="NetMonitor">
+      <HintPath>..\..\HelperUtilities\NetMonitor\bin\Debug\NetMonitor.dll</HintPath>
+    </Reference>
     <Reference Include="ObjectListView">
       <HintPath>..\..\..\..\packages\ObjectListView.dll</HintPath>
       <Private>True</Private>
@@ -213,10 +216,11 @@
     <Compile Include="Utilities\Helpers\DBHelper.cs" />
     <Compile Include="Utilities\Helpers\EmailHelperManager.cs" />
     <Compile Include="Utilities\Helpers\EncryptionHelperManager.cs" />
+    <Compile Include="Utilities\Helpers\ExtensionMethodsManager.cs" />
     <Compile Include="Utilities\Helpers\HelperMethodsManager.cs" />
     <Compile Include="Utilities\Helpers\HistoryHelperManager.cs" />
     <Compile Include="Utilities\Helpers\ModelsHelperManager.cs" />
-    <Compile Include="Utilities\Helpers\TimeHelperManager.cs" />
+    <Compile Include="Utilities\Helpers\QuantityConvertHelperManager.cs" />
     <EmbeddedResource Include="Forms\FirstTime Form\FirstTime.resx">
       <DependentUpon>FirstTime.cs</DependentUpon>
     </EmbeddedResource>

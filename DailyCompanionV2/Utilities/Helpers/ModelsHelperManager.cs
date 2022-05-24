@@ -77,10 +77,10 @@ namespace DailyCompanionV2.Utilities
                             Update_LV(Dict[Prop] as List<string>, lv);
                             break;
                         case CheckBox chkbx:
-                            chkbx.Checked = Dict[Prop].ToString() == "1";
+                            chkbx.Checked = Dict[Prop] is bool ? (bool)Dict[Prop] : Dict[Prop].ToString() == "1";
                             break;
                         case RadioButton rdobtn:
-                            rdobtn.Checked = Dict[Prop].ToString() == "1";
+                            rdobtn.Checked = Dict[Prop] is bool ? (bool)Dict[Prop] : Dict[Prop].ToString() == "1";
                             break;
                         case DateTimePicker dtp:
                             if ((Dict[Prop] as DateTime?).HasValue) { dtp.Checked = true; dtp.Value = (Dict[Prop] as DateTime?).Value; }

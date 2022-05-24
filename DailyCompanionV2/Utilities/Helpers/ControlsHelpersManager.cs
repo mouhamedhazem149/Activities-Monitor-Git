@@ -39,11 +39,12 @@ namespace DailyCompanionV2.Utilities
             else
                 lbl.Text = text;
         }
-        public static void Update_Combobox<T>(ComboBox cmbobx, List<T> dataSource, string displayMember = "", string valueMember = "")
+        public static void Update_Combobox<T>(ComboBox cmbobx, List<T> dataSource, string displayMember = "", string valueMember = "", string defaultText = "")
         {
             cmbobx.DataSource = null; cmbobx.Items.Clear(); cmbobx.DataSource = dataSource;
             if (displayMember != "") cmbobx.DisplayMember = displayMember;
             if (valueMember != "") cmbobx.ValueMember = valueMember;
+            if (defaultText != "") cmbobx.Text = defaultText;
         }
         private static IEnumerable<Control> GetControlHierarchy(Control root)
         {
@@ -229,8 +230,5 @@ namespace DailyCompanionV2.Utilities
                     store.Controls.Add(CtrlVariableDuplicate(child));
             return store;
         }
-
-        public static bool IsBetween(this DateTime? dt, DateTime from, DateTime to) => dt.HasValue && dt.Value >= from && dt.Value <= to;
-        public static bool IsBetween(this DateTime dt, DateTime from, DateTime to) => dt >= from && dt <= to;
     }
 }
